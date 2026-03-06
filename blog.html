@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Blog | Automatización y Estrategia | STRUCTOR</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="../Imputs/favicon.png">
+    <meta name="description"
+        content="Artículos sobre automatización de procesos, arquitectura operativa y sistemas inteligentes para escalar tu negocio.">
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1"
+        rel="stylesheet" />
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#136dec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101822",
+                    },
+                    fontFamily: { "display": ["Inter", "sans-serif"] },
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        /* Ambient Flow Animation */
+        @keyframes pulse-flow {
+            0% {
+                stroke-dashoffset: 100;
+                opacity: 0;
+            }
+
+            50% {
+                opacity: 1;
+            }
+
+            100% {
+                stroke-dashoffset: -100;
+                opacity: 0;
+            }
+        }
+
+        .node-network {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 0;
+            opacity: 0.35;
+            background-attachment: fixed;
+        }
+
+        .node-path {
+            stroke: #475569;
+            stroke-width: 1.5;
+            fill: none;
+        }
+
+        .node-flow {
+            stroke: #3b82f6;
+            stroke-width: 2.5;
+            fill: none;
+            stroke-dasharray: 20 100;
+            animation: pulse-flow 4s linear infinite;
+            filter: drop-shadow(0 0 4px rgba(59, 130, 246, 0.8));
+        }
+
+        .node-flow.delayed {
+            animation-delay: 2s;
+            stroke: #fef08a;
+            filter: drop-shadow(0 0 6px rgba(254, 240, 138, 0.9));
+        }
+
+        .node-dot {
+            fill: #60a5fa;
+            filter: drop-shadow(0 0 4px rgba(96, 165, 250, 0.8));
+        }
+
+        .node-dot.yellow {
+            fill: #fef08a;
+            filter: drop-shadow(0 0 5px rgba(254, 240, 138, 0.9));
+        }
+
+        .pill-nav {
+            backdrop-filter: blur(12px);
+            background-color: rgba(255, 255, 255, 0.7);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .nav-link {
+            position: relative;
+            padding: 0.5rem 1.25rem;
+            border-radius: 9999px;
+            transition: all 0.2s ease;
+        }
+
+        .nav-link:hover {
+            background-color: #fef08a;
+            color: #0f172a;
+        }
+
+        /* Premium Card Animations */
+        .blog-card {
+            transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+            will-change: transform, box-shadow;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-10px) scale(1.02) rotate(-1deg);
+            box-shadow: 0 30px 60px -12px rgba(15, 23, 42, 0.12), 0 18px 36px -18px rgba(15, 23, 42, 0.12);
+        }
+
+        .blog-card:nth-child(even):hover {
+            transform: translateY(-10px) scale(1.02) rotate(1deg);
+        }
+
+        .blog-card:hover .card-img {
+            transform: scale(1.1);
+        }
+
+        .card-img {
+            transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+
+        /* Floating Badge */
+        .category-badge {
+            backdrop-filter: blur(8px);
+            background: rgba(255, 255, 255, 0.8);
+        }
+
+        /* Ambient Background (Same as Main) */
+        #mouse-spotlight {
+            position: fixed;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(254, 249, 195, 0.12) 0%, rgba(254, 249, 195, 0) 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 1;
+            transform: translate(-50%, -50%);
+            transition: opacity 0.3s ease;
+            opacity: 0;
+        }
+
+        /* Entry Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .text-mask-container {
+            overflow: hidden;
+            display: inline-block;
+            vertical-align: top;
+        }
+
+        .text-mask-child {
+            display: inline-block;
+            transform: translateY(110%);
+            transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: transform;
+        }
+
+        .text-mask-child.active {
+            transform: translateY(0);
+        }
+    </style>
+</head>
+
+<body class="bg-slate-50 text-slate-900 overflow-x-hidden">
+    <div id="mouse-spotlight"></div>
+
+    <!-- Header Navigation (Consistent) -->
+    <header class="fixed top-8 left-1/2 -translate-x-1/2 w-auto z-50">
+        <nav
+            class="pill-nav shadow-lg rounded-full px-2 py-2 flex items-center justify-center border border-slate-100/50">
+            <div class="flex gap-1 text-sm font-semibold text-slate-600">
+                <a class="nav-link" href="index.html#inicio">Inicio</a>
+                <a class="nav-link" href="index.html#sobre-mi">Sobre mí</a>
+                <a class="nav-link" href="index.html#servicios">Servicios</a>
+                <a class="nav-link bg-yellow-100 text-slate-900" href="blog.html">Blog</a>
+                <a class="nav-link" href="contacto.html">Contacto</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="pt-48 pb-32 px-6 max-w-7xl mx-auto">
+        <!-- Hero Title -->
+        <div class="text-center mb-24 reveal active">
+            <div class="text-mask-container mb-4">
+                <span class="text-mask-child text-blue-500 font-bold tracking-[0.2em] uppercase text-sm">PENSAMIENTOS Y
+                    ESTRATEGIA</span>
+            </div>
+            <h1 class="text-5xl md:text-7xl font-black tracking-tight text-slate-900 mb-6">
+                Blog de <span class="relative inline-block">
+                    <span class="relative z-10">Aceleración</span>
+                    <div
+                        class="absolute bottom-2 left-0 w-full h-4 lg:h-5 bg-yellow-200 -z-0 rounded-sm mix-blend-multiply opacity-70">
+                    </div>
+                </span>
+            </h1>
+            <p class="text-slate-500 text-lg max-w-xl mx-auto font-medium">
+                Sistemas, automatización y reflexiones sobre cómo escalar tu negocio eliminando el caos operativo.
+            </p>
+        </div>
+
+        <!-- Filters (Webflow Style) -->
+        <div id="filter-container" class="flex flex-wrap justify-center gap-4 mb-16 reveal active"
+            style="transition-delay: 0.2s;">
+            <button data-filter="Todos"
+                class="filter-btn px-6 py-2 rounded-full border border-slate-200 text-sm font-semibold hover:bg-slate-900 hover:text-white transition-all bg-slate-900 text-white shadow-md">Todos</button>
+            <button data-filter="Estrategia"
+                class="filter-btn px-6 py-2 rounded-full border border-slate-200 text-sm font-semibold hover:bg-slate-900 hover:text-white transition-all">Estrategia</button>
+            <button data-filter="Sistema"
+                class="filter-btn px-6 py-2 rounded-full border border-slate-200 text-sm font-semibold hover:bg-slate-900 hover:text-white transition-all">Sistema</button>
+            <button data-filter="N8N"
+                class="filter-btn px-6 py-2 rounded-full border border-slate-200 text-sm font-semibold hover:bg-slate-900 hover:text-white transition-all">N8N</button>
+            <button data-filter="Automatización"
+                class="filter-btn px-6 py-2 rounded-full border border-slate-200 text-sm font-semibold hover:bg-slate-900 hover:text-white transition-all">Automatización</button>
+            <button data-filter="Notion"
+                class="filter-btn px-6 py-2 rounded-full border border-slate-200 text-sm font-semibold hover:bg-slate-900 hover:text-white transition-all">Notion</button>
+            <button data-filter="Reflexiones"
+                class="filter-btn px-6 py-2 rounded-full border border-slate-200 text-sm font-semibold hover:bg-slate-900 hover:text-white transition-all">Reflexiones</button>
+        </div>
+
+        <!-- Content Grid (Dynamic Loading) -->
+        <div id="blog-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 min-h-[400px]">
+            <!-- Dynamic Content Injected Here -->
+            <div id="loading-spinner" class="col-span-full py-20 flex flex-col items-center gap-4">
+                <div class="size-10 border-4 border-slate-200 border-t-primary rounded-full animate-spin"></div>
+                <p class="text-xs font-bold uppercase tracking-widest text-slate-400">Sincronizando con Notion...</p>
+            </div>
+        </div>
+
+        <template id="post-template">
+            <a href="post.html"
+                class="blog-card group flex flex-col bg-white rounded-[2.5rem] p-4 border border-slate-100 hover:border-yellow-200 transition-all opacity-0 translate-y-4">
+                <div class="relative rounded-[2rem] overflow-hidden aspect-[4/3] mb-6">
+                    <img src="" alt="" class="card-img w-full h-full object-cover">
+                    <div class="absolute top-4 left-4">
+                        <span
+                            class="category-badge px-4 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-widest text-slate-900 shadow-sm border border-white/50 bg-white/90"></span>
+                    </div>
+                </div>
+                <div class="px-4 pb-4 flex-1 flex flex-col">
+                    <div
+                        class="flex items-center gap-2 text-slate-400 text-[10px] font-bold uppercase tracking-widest mb-3">
+                        <span class="post-date"></span>
+                        <span class="size-1 rounded-full bg-slate-300"></span>
+                        <span class="post-reading-time"></span>
+                    </div>
+                    <h3
+                        class="post-title text-2xl font-bold leading-tight text-slate-900 mb-4 group-hover:text-primary transition-colors line-clamp-2">
+                    </h3>
+                    <p class="post-summary text-slate-500 text-sm leading-relaxed mb-6 line-clamp-3"></p>
+                    <div
+                        class="mt-auto inline-flex items-center gap-2 text-primary font-bold text-xs uppercase tracking-widest">
+                        Leer artículo
+                        <span
+                            class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                    </div>
+                </div>
+            </a>
+        </template>
+        </div>
+
+        <!-- Load More (Webflow Visual Style) -->
+        <div class="mt-20 text-center reveal">
+            <button class="group inline-flex flex-col items-center gap-4">
+                <span
+                    class="text-xs font-bold uppercase tracking-widest text-slate-400 group-hover:text-primary transition-colors">Ver
+                    más artículos</span>
+                <div
+                    class="size-12 rounded-full border border-slate-200 flex items-center justify-center group-hover:border-primary group-hover:bg-primary group-hover:text-white transition-all">
+                    <span class="material-symbols-outlined">expand_more</span>
+                </div>
+            </button>
+        </div>
+    </main>
+
+    <!-- Footer (Consistent) -->
+    <!-- Final Footer -->
+    <footer
+        class="pt-16 pb-12 px-6 bg-slate-900 text-white rounded-t-[3rem] mt-12 relative overflow-hidden text-center sm:text-left">
+        <!-- Animated Circuit/Lines Background -->
+        <div class="node-network" style="opacity: 0.15; z-index: 0;">
+            <svg preserveAspectRatio="xMidYMid slice" viewBox="0 0 1000 600" class="w-full h-full">
+                <!-- Grid Lines (Subtle Architecture) -->
+                <path d="M 0 150 L 1000 150 M 0 300 L 1000 300 M 0 450 L 1000 450" stroke="#334155" stroke-width="0.8"
+                    stroke-dasharray="4 4" fill="none" opacity="0.6"></path>
+                <path d="M 250 0 L 250 600 M 500 0 L 500 600 M 750 0 L 750 600" stroke="#334155" stroke-width="0.8"
+                    stroke-dasharray="4 4" fill="none" opacity="0.6"></path>
+
+                <!-- Structural Paths -->
+                <path class="node-path" d="M -50 100 L 250 100 L 400 250 L 600 250 L 750 150 L 1050 150"></path>
+                <path class="node-path" d="M -50 400 L 200 400 L 350 250 L 500 250 L 650 450 L 1050 450"></path>
+                <path class="node-path" d="M 250 100 L 250 200 L 500 400 L 500 650"></path>
+                <path class="node-path" d="M 750 150 L 750 300 L 650 450"></path>
+
+                <!-- Flow Paths (Animated Data Packets) -->
+                <path class="node-flow" d="M -50 100 L 250 100 L 400 250 L 600 250 L 750 150 L 1050 150"
+                    pathLength="100"></path>
+                <path class="node-flow delayed" d="M -50 400 L 200 400 L 350 250 L 500 250 L 650 450 L 1050 450"
+                    pathLength="100" style="animation-duration: 5s;"></path>
+                <path class="node-flow" d="M 250 100 L 250 200 L 500 400 L 500 650" pathLength="100"
+                    style="animation-duration: 3.5s;"></path>
+                <path class="node-flow delayed" d="M 750 150 L 750 300 L 650 450" pathLength="100"
+                    style="animation-duration: 4.5s;"></path>
+
+                <!-- Static Connecting Nodes (Dots) -->
+                <circle cx="250" cy="100" r="3" class="node-dot"></circle>
+                <circle cx="400" cy="250" r="3" class="node-dot yellow"></circle>
+                <circle cx="600" cy="250" r="3" class="node-dot"></circle>
+                <circle cx="750" cy="150" r="3" class="node-dot yellow"></circle>
+                <circle cx="200" cy="400" r="3" class="node-dot yellow"></circle>
+                <circle cx="350" cy="250" r="3" class="node-dot"></circle>
+                <circle cx="650" cy="450" r="3" class="node-dot yellow"></circle>
+                <circle cx="500" cy="400" r="3" class="node-dot"></circle>
+            </svg>
+        </div>
+
+        <!-- Dynamic Yellow Glow Background -->
+        <div class="absolute -top-24 left-0 w-full h-64 bg-yellow-400/5 blur-[120px] pointer-events-none z-0"></div>
+        <div class="absolute -bottom-24 -right-24 size-96 bg-blue-500/5 blur-[120px] pointer-events-none z-0"></div>
+
+        <div class="max-w-6xl mx-auto relative z-10">
+            <!-- Global Footer Content -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-12">
+                <!-- Left Column: Logo & Mission -->
+                <div class="flex flex-col items-center md:items-start gap-8">
+                    <div class="relative group">
+                        <!-- Branding Aura/Glow -->
+                        <div
+                            class="absolute -inset-4 bg-yellow-400/10 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none">
+                        </div>
+
+                        <!-- Logo Container (Premium Badge) -->
+                        <div
+                            class="relative bg-white p-2 rounded-full inline-flex items-center justify-center shadow-xl shadow-yellow-400/5 hover:shadow-yellow-400/20 transition-all duration-500 animate-float-gentle active:scale-95 group-hover:scale-110">
+                            <img src="../Imputs/Juanchi Notion Avatar Transparente.png" alt="STRUCTOR"
+                                class="w-20 h-auto md:w-24" />
+                        </div>
+                    </div>
+                    <p class="text-slate-400 max-w-sm text-sm leading-relaxed text-center md:text-left">
+                        Eliminamos el caos operativo diseñando arquitecturas inteligentes que organizan, automatizan y
+                        optimizan la gestión de tu negocio.
+                    </p>
+                </div>
+
+                <!-- Right Column: Navigation & Social -->
+                <div class="grid grid-cols-2 sm:grid-cols-3 gap-8 md:justify-items-end z-10">
+                    <!-- Navigation -->
+                    <div class="flex flex-col gap-4">
+                        <span class="text-xs font-bold text-slate-500 uppercase tracking-widest">Navegación</span>
+                        <a href="index.html#inicio"
+                            class="text-sm text-slate-300 hover:text-yellow-400 transition-colors">Inicio</a>
+                        <a href="index.html#sobre-mi"
+                            class="text-sm text-slate-300 hover:text-yellow-400 transition-colors">Sobre
+                            mí</a>
+                        <a href="index.html#servicios"
+                            class="text-sm text-slate-300 hover:text-yellow-400 transition-colors">Servicios</a>
+                        <a href="blog.html"
+                            class="text-sm text-slate-300 hover:text-yellow-400 transition-colors">Blog</a>
+                    </div>
+
+                    <!-- Company -->
+                    <div class="flex flex-col gap-4">
+                        <span class="text-xs font-bold text-slate-500 uppercase tracking-widest">Contacto</span>
+                        <a href="contacto.html"
+                            class="text-sm text-slate-300 hover:text-yellow-400 transition-colors">Formulario</a>
+                    </div>
+
+                    <!-- Social -->
+                    <div class="flex flex-col gap-4">
+                        <span class="text-xs font-bold text-slate-500 uppercase tracking-widest">Sígueme</span>
+                        <a href="https://www.linkedin.com/in/juan-andr%C3%A9s-ib%C3%A1%C3%B1ez-pasarella-structor/"
+                            target="_blank"
+                            class="flex items-center gap-2 text-sm text-slate-300 hover:text-yellow-400 transition-colors">
+                            <svg class="size-5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                            </svg>
+                            LinkedIn
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Row: Copyright -->
+            <div
+                class="pt-8 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-500 font-medium uppercase tracking-widest">
+                <span>© 2026 STRUCTOR | Systems & Automation</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Spotlight logic
+            const spotlight = document.getElementById('mouse-spotlight');
+            let mouseX = 0, mouseY = 0, spotlightX = 0, spotlightY = 0;
+            document.addEventListener('mousemove', (e) => {
+                mouseX = e.clientX;
+                mouseY = e.clientY;
+                if (spotlight) spotlight.style.opacity = '1';
+            });
+
+            function animate() {
+                spotlightX += (mouseX - spotlightX) * 0.1;
+                spotlightY += (mouseY - spotlightY) * 0.1;
+                if (spotlight) {
+                    spotlight.style.left = `${spotlightX}px`;
+                    spotlight.style.top = `${spotlightY}px`;
+                }
+                requestAnimationFrame(animate);
+            }
+            animate();
+
+            // Blog Dynamic Loading System
+            const blogGrid = document.getElementById('blog-grid');
+            const postTemplate = document.getElementById('post-template');
+            let allPosts = [];
+
+            const loadPosts = async () => {
+                try {
+                    // Cache busting with timestamp
+                    const response = await fetch(`data/posts.json?v=${new Date().getTime()}`);
+                    if (!response.ok) throw new Error('Network response was not ok');
+                    allPosts = await response.json();
+                    console.log('Posts cargados:', allPosts);
+                    renderPosts(allPosts);
+                } catch (error) {
+                    console.error('Error cargando posts:', error);
+                    blogGrid.innerHTML = `<p class="col-span-full text-center text-slate-400 pb-20">Error al conectar con los datos. Reintenta más tarde.</p>`;
+                }
+            };
+
+            const renderPosts = (posts) => {
+                blogGrid.innerHTML = '';
+                if (!posts || posts.length === 0) {
+                    blogGrid.innerHTML = '<p class="col-span-full text-center text-slate-400 py-20">No se encontraron artículos en esta categoría.</p>';
+                    return;
+                }
+
+                posts.forEach((post, index) => {
+                    if (!postTemplate) return;
+                    const clone = postTemplate.content.cloneNode(true);
+                    const card = clone.querySelector('.blog-card');
+
+                    // Aseguramos que el card tenga el ID o slug correcto
+                    const postRef = post.slug || post.id;
+                    card.href = `post.html?id=${postRef}`;
+
+                    const img = card.querySelector('.card-img');
+                    img.src = post.image || 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=1200';
+                    img.alt = post.title;
+
+                    card.querySelector('.category-badge').textContent = post.category || 'General';
+
+                    const dateStr = post.date ? new Date(post.date).toLocaleDateString('es-ES', { month: 'long', day: 'numeric', year: 'numeric' }) : 'Reciente';
+                    card.querySelector('.post-date').textContent = dateStr;
+
+                    card.querySelector('.post-reading-time').textContent = post.readingTime || '5 min lectura';
+                    card.querySelector('.post-title').textContent = post.title;
+                    card.querySelector('.post-summary').textContent = post.summary || 'Lee el artículo completo.';
+
+                    // Append the card FIRST
+                    blogGrid.appendChild(clone);
+
+                    // Capture the element we just added to avoid timing issues with lastElementChild
+                    const addedElement = blogGrid.children[blogGrid.children.length - 1];
+
+                    setTimeout(() => {
+                        if (addedElement) {
+                            addedElement.classList.remove('opacity-0', 'translate-y-4');
+                            addedElement.classList.add('opacity-100', 'translate-y-0');
+                        }
+                    }, index * 100);
+                });
+            };
+
+            // Filtering Logic
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            filterButtons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const category = btn.getAttribute('data-filter');
+
+                    filterButtons.forEach(b => b.classList.remove('bg-slate-900', 'text-white', 'shadow-md'));
+                    btn.classList.add('bg-slate-900', 'text-white', 'shadow-md');
+
+                    if (category === 'Todos') {
+                        renderPosts(allPosts);
+                    } else {
+                        const filtered = allPosts.filter(p => p.category === category);
+                        renderPosts(filtered);
+                    }
+                });
+            });
+
+            loadPosts();
+
+            // Reveal logic
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        entry.target.querySelectorAll('.text-mask-child').forEach(c => c.classList.add('active'));
+                    }
+                });
+            }, { threshold: 0.1 });
+            document.querySelectorAll('.reveal, .text-mask-container').forEach(el => observer.observe(el));
+        });
+    </script>
+</body>
+
+</html>

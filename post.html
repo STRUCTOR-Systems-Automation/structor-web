@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Post | STRUCTOR Blog</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="../Imputs/favicon.png">
+    <script src="https://cdn.tailwindcss.com?plugins=typography,forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1"
+        rel="stylesheet" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: { "primary": "#136dec" },
+                    fontFamily: { "display": ["Inter", "sans-serif"] },
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        /* Ambient Flow Animation */
+        @keyframes pulse-flow {
+            0% {
+                stroke-dashoffset: 100;
+                opacity: 0;
+            }
+
+            50% {
+                opacity: 1;
+            }
+
+            100% {
+                stroke-dashoffset: -100;
+                opacity: 0;
+            }
+        }
+
+        .node-network {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 0;
+            opacity: 0.35;
+            background-attachment: fixed;
+        }
+
+        .node-path {
+            stroke: #475569;
+            stroke-width: 1.5;
+            fill: none;
+        }
+
+        .node-flow {
+            stroke: #3b82f6;
+            stroke-width: 2.5;
+            fill: none;
+            stroke-dasharray: 20 100;
+            animation: pulse-flow 4s linear infinite;
+            filter: drop-shadow(0 0 4px rgba(59, 130, 246, 0.8));
+        }
+
+        .node-flow.delayed {
+            animation-delay: 2s;
+            stroke: #fef08a;
+            filter: drop-shadow(0 0 6px rgba(254, 240, 138, 0.9));
+        }
+
+        .node-dot {
+            fill: #60a5fa;
+            filter: drop-shadow(0 0 4px rgba(96, 165, 250, 0.8));
+        }
+
+        .node-dot.yellow {
+            fill: #fef08a;
+            filter: drop-shadow(0 0 5px rgba(254, 240, 138, 0.9));
+        }
+
+        .pill-nav {
+            backdrop-filter: blur(12px);
+            background-color: rgba(255, 255, 255, 0.7);
+        }
+
+        .nav-link {
+            padding: 0.5rem 1.25rem;
+            border-radius: 9999px;
+            transition: all 0.2s ease;
+        }
+
+        .nav-link:hover {
+            background-color: #fef08a;
+        }
+
+        /* Reader Progress Bar */
+        #progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: #136dec;
+            width: 0%;
+            z-index: 100;
+            transition: width 0.1s ease-out;
+        }
+
+        /* Typography Polish */
+        .prose h2 {
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            color: #0f172a;
+            margin-top: 2.5em;
+        }
+
+        .prose p {
+            color: #334155;
+            line-height: 1.8;
+        }
+
+        .prose blockquote {
+            border-left-color: #136dec;
+            font-style: italic;
+            color: #1e293b;
+            background: #f8fafc;
+            padding: 1.5rem;
+            border-radius: 0 1rem 1rem 0;
+        }
+
+        /* Floating Meta */
+        .post-meta-card {
+            backdrop-filter: blur(8px);
+            background: rgba(255, 255, 255, 0.8);
+            border: 1px solid rgba(226, 232, 240, 0.5);
+        }
+    </style>
+</head>
+
+<body class="bg-slate-50 text-slate-900 selection:bg-yellow-100 selection:text-slate-900 font-display">
+    <div id="progress-bar"></div>
+
+    <!-- Header Navigation (Consistent) -->
+    <header class="fixed top-8 left-1/2 -translate-x-1/2 w-auto z-50">
+        <nav
+            class="pill-nav shadow-lg rounded-full px-2 py-2 flex items-center justify-center border border-slate-100/50">
+            <div class="flex gap-1 text-sm font-semibold text-slate-600">
+                <a class="nav-link" href="blog.html">← Volver al Blog</a>
+                <div class="h-4 w-px bg-slate-200 mt-2.5 mx-2"></div>
+                <a class="nav-link" href="index.html#inicio">Inicio</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Post Content Container -->
+    <article class="pt-48 pb-32 px-6">
+        <div class="max-w-3xl mx-auto">
+
+            <!-- Post Header -->
+            <header class="mb-16">
+                <div class="flex items-center gap-3 mb-8">
+                    <span id="post-category"
+                        class="px-4 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-widest bg-blue-50 text-blue-600 border border-blue-100">Cargando...</span>
+                    <span id="post-date" class="text-slate-400 text-xs font-medium">--</span>
+                </div>
+                <h1 id="post-title"
+                    class="text-4xl md:text-6xl font-black tracking-tight text-slate-900 leading-[1.1] mb-8">
+                    Cargando artículo...
+                </h1>
+
+                <!-- Author Card -->
+                <div class="flex items-center gap-4 p-6 rounded-3xl bg-slate-50 border border-slate-100 mb-12">
+                    <img src="../Imputs/Juanchi Notion Avatar Transparente.png" alt="Juan Andrés"
+                        class="size-12 rounded-full bg-white shadow-sm">
+                    <div>
+                        <span class="block font-bold text-slate-900 text-sm">Juan Andrés Ibáñez Pasarella</span>
+                        <span class="text-slate-500 text-xs">Systems & Automation</span>
+                    </div>
+                </div>
+
+                <div class="rounded-[3rem] overflow-hidden aspect-video shadow-2xl shadow-slate-200 mb-16">
+                    <img id="post-image" src="" alt="Cover" class="w-full h-full object-cover">
+                </div>
+            </header>
+
+            <!-- Main Content (Prose Wrapper) -->
+            <div id="post-content"
+                class="prose prose-slate prose-lg max-w-none prose-headings:font-black prose-p:text-slate-600 prose-img:rounded-3xl prose-a:text-primary prose-a:no-underline hover:prose-a:underline">
+                <!-- Content Injected Here -->
+            </div>
+
+            <!-- Footer Author Sign-off -->
+            <footer class="mt-20 pt-12 border-t border-slate-100 flex flex-col items-center text-center">
+                <h4 class="text-lg font-bold text-slate-900 mb-4">¿Te ha gustado este artículo?</h4>
+                <p class="text-slate-500 mb-8 max-w-sm">Si quieres que analicemos la arquitectura de tu negocio,
+                    hablemos.</p>
+                <a href="contacto.html"
+                    class="bg-primary text-white font-bold py-4 px-10 rounded-full hover:shadow-xl hover:-translate-y-1 transition-all">
+                    Trabajar con STRUCTOR
+                </a>
+            </footer>
+
+        </div>
+    </article>
+
+    <!-- Final Footer -->
+    <footer
+        class="pt-16 pb-12 px-6 bg-slate-900 text-white rounded-t-[3rem] mt-12 relative overflow-hidden text-center sm:text-left">
+        <!-- Animated Circuit/Lines Background -->
+        <div class="node-network" style="opacity: 0.15; z-index: 0;">
+            <svg preserveAspectRatio="xMidYMid slice" viewBox="0 0 1000 600" class="w-full h-full">
+                <!-- Grid Lines (Subtle Architecture) -->
+                <path d="M 0 150 L 1000 150 M 0 300 L 1000 300 M 0 450 L 1000 450" stroke="#334155" stroke-width="0.8"
+                    stroke-dasharray="4 4" fill="none" opacity="0.6"></path>
+                <path d="M 250 0 L 250 600 M 500 0 L 500 600 M 750 0 L 750 600" stroke="#334155" stroke-width="0.8"
+                    stroke-dasharray="4 4" fill="none" opacity="0.6"></path>
+
+                <!-- Structural Paths -->
+                <path class="node-path" d="M -50 100 L 250 100 L 400 250 L 600 250 L 750 150 L 1050 150"></path>
+                <path class="node-path" d="M -50 400 L 200 400 L 350 250 L 500 250 L 650 450 L 1050 450"></path>
+                <path class="node-path" d="M 250 100 L 250 200 L 500 400 L 500 650"></path>
+                <path class="node-path" d="M 750 150 L 750 300 L 650 450"></path>
+
+                <!-- Flow Paths (Animated Data Packets) -->
+                <path class="node-flow" d="M -50 100 L 250 100 L 400 250 L 600 250 L 750 150 L 1050 150"
+                    pathLength="100"></path>
+                <path class="node-flow delayed" d="M -50 400 L 200 400 L 350 250 L 500 250 L 650 450 L 1050 450"
+                    pathLength="100" style="animation-duration: 5s;"></path>
+                <path class="node-flow" d="M 250 100 L 250 200 L 500 400 L 500 650" pathLength="100"
+                    style="animation-duration: 3.5s;"></path>
+                <path class="node-flow delayed" d="M 750 150 L 750 300 L 650 450" pathLength="100"
+                    style="animation-duration: 4.5s;"></path>
+
+                <!-- Static Connecting Nodes (Dots) -->
+                <circle cx="250" cy="100" r="3" class="node-dot"></circle>
+                <circle cx="400" cy="250" r="3" class="node-dot yellow"></circle>
+                <circle cx="600" cy="250" r="3" class="node-dot"></circle>
+                <circle cx="750" cy="150" r="3" class="node-dot yellow"></circle>
+                <circle cx="200" cy="400" r="3" class="node-dot yellow"></circle>
+                <circle cx="350" cy="250" r="3" class="node-dot"></circle>
+                <circle cx="650" cy="450" r="3" class="node-dot yellow"></circle>
+                <circle cx="500" cy="400" r="3" class="node-dot"></circle>
+            </svg>
+        </div>
+
+        <!-- Dynamic Yellow Glow Background -->
+        <div class="absolute -top-24 left-0 w-full h-64 bg-yellow-400/5 blur-[120px] pointer-events-none z-0"></div>
+        <div class="absolute -bottom-24 -right-24 size-96 bg-blue-500/5 blur-[120px] pointer-events-none z-0"></div>
+
+        <div class="max-w-6xl mx-auto relative z-10">
+            <!-- Global Footer Content -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-12">
+                <!-- Left Column: Logo & Mission -->
+                <div class="flex flex-col items-center md:items-start gap-8">
+                    <div class="relative group">
+                        <!-- Branding Aura/Glow -->
+                        <div
+                            class="absolute -inset-4 bg-yellow-400/10 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none">
+                        </div>
+
+                        <!-- Logo Container (Premium Badge) -->
+                        <div
+                            class="relative bg-white p-2 rounded-full inline-flex items-center justify-center shadow-xl shadow-yellow-400/5 hover:shadow-yellow-400/20 transition-all duration-500 animate-float-gentle active:scale-95 group-hover:scale-110">
+                            <img src="../Imputs/Juanchi Notion Avatar Transparente.png" alt="STRUCTOR"
+                                class="w-20 h-auto md:w-24" />
+                        </div>
+                    </div>
+                    <p class="text-slate-400 max-w-sm text-sm leading-relaxed text-center md:text-left">
+                        Eliminamos el caos operativo diseñando arquitecturas inteligentes que organizan, automatizan y
+                        optimizan la gestión de tu negocio.
+                    </p>
+                </div>
+
+                <!-- Right Column: Navigation & Social -->
+                <div class="grid grid-cols-2 sm:grid-cols-3 gap-8 md:justify-items-end z-10">
+                    <!-- Navigation -->
+                    <div class="flex flex-col gap-4">
+                        <span class="text-xs font-bold text-slate-500 uppercase tracking-widest">Navegación</span>
+                        <a href="index.html#inicio"
+                            class="text-sm text-slate-300 hover:text-yellow-400 transition-colors">Inicio</a>
+                        <a href="index.html#sobre-mi"
+                            class="text-sm text-slate-300 hover:text-yellow-400 transition-colors">Sobre
+                            mí</a>
+                        <a href="index.html#servicios"
+                            class="text-sm text-slate-300 hover:text-yellow-400 transition-colors">Servicios</a>
+                        <a href="blog.html"
+                            class="text-sm text-slate-300 hover:text-yellow-400 transition-colors">Blog</a>
+                    </div>
+
+                    <!-- Company -->
+                    <div class="flex flex-col gap-4">
+                        <span class="text-xs font-bold text-slate-500 uppercase tracking-widest">Contacto</span>
+                        <a href="contacto.html"
+                            class="text-sm text-slate-300 hover:text-yellow-400 transition-colors">Formulario</a>
+                    </div>
+
+                    <!-- Social -->
+                    <div class="flex flex-col gap-4">
+                        <span class="text-xs font-bold text-slate-500 uppercase tracking-widest">Sígueme</span>
+                        <a href="https://www.linkedin.com/in/juan-andr%C3%A9s-ib%C3%A1%C3%B1ez-pasarella-structor/"
+                            target="_blank"
+                            class="flex items-center gap-2 text-sm text-slate-300 hover:text-yellow-400 transition-colors">
+                            <svg class="size-5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                            </svg>
+                            LinkedIn
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Row: Copyright -->
+            <div
+                class="pt-8 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-500 font-medium uppercase tracking-widest">
+                <span>© 2026 STRUCTOR | Systems & Automation</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Progress Bar logic
+        window.addEventListener('scroll', () => {
+            const h = document.documentElement,
+                b = document.body,
+                st = 'scrollTop',
+                sh = 'scrollHeight';
+            const percent = (h[st] || b[st]) / ((h[sh] || b[sh]) - h.clientHeight) * 100;
+            document.getElementById('progress-bar').style.width = percent + '%';
+        });
+
+        // Dynamic Post Loading
+        document.addEventListener('DOMContentLoaded', async () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const postId = urlParams.get('id');
+
+            if (!postId) {
+                window.location.href = 'blog.html';
+                return;
+            }
+
+            try {
+                // Cache busting with timestamp
+                const response = await fetch(`data/posts.json?v=${new Date().getTime()}`);
+                const posts = await response.json();
+                const post = posts.find(p => p.slug === postId || p.id === postId);
+
+                if (!post) {
+                    document.getElementById('post-title').innerText = 'Artículo no encontrado';
+                    return;
+                }
+
+                // Inject Data
+                document.title = `${post.title} | STRUCTOR`;
+                document.getElementById('post-title').innerText = post.title;
+                document.getElementById('post-category').innerText = post.category;
+                document.getElementById('post-date').innerText = new Date(post.date).toLocaleDateString('es-ES', { month: 'long', day: 'numeric', year: 'numeric' });
+                document.getElementById('post-image').src = post.image;
+                document.getElementById('post-content').innerHTML = post.contentHtml;
+
+            } catch (error) {
+                console.error('Error loading post:', error);
+                document.getElementById('post-title').innerText = 'Error cargando el artículo';
+            }
+        });
+    </script>
+</body>
+
+</html>

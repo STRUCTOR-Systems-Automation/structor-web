@@ -1,0 +1,1575 @@
+<!DOCTYPE html>
+
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+
+    <!-- SEO Optimization -->
+    <title>Automatización de Procesos para Empresas | STRUCTOR</title>
+    <meta name="description"
+        content="Diseñamos sistemas inteligentes para automatizar procesos de negocio, eliminar trabajo manual y optimizar la gestión operativa de tu empresa.">
+
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Automatización de Procesos para Empresas | STRUCTOR">
+    <meta property="og:description"
+        content="Diseñamos sistemas inteligentes para automatizar procesos de negocio, eliminar trabajo manual y optimizar la gestión operativa de tu empresa.">
+    <meta property="og:image" content="../Imputs/Juanchi Notion Avatar Transparente.png">
+
+    <link rel="icon" type="image/png" href="../Imputs/favicon.png">
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#136dec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101822",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        .notion-shadow {
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+        }
+
+        .pill-nav {
+            backdrop-filter: blur(12px);
+            background-color: rgba(255, 255, 255, 0.7);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .nav-link {
+            position: relative;
+            padding: 0.5rem 1.25rem;
+            border-radius: 9999px;
+            transition: all 0.2s ease;
+        }
+
+        .nav-link:hover {
+            background-color: #fef08a;
+            /* bg-yellow-100 */
+            color: #0f172a;
+            /* text-slate-900 */
+        }
+
+        @keyframes slide-right {
+            0% {
+                transform: translateX(0);
+                opacity: 0.3;
+            }
+
+            50% {
+                transform: translateX(10px);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateX(0);
+                opacity: 0.3;
+            }
+        }
+
+        .animate-slide-right {
+            animation: slide-right 2s infinite ease-in-out;
+        }
+
+        @keyframes bar-grow {
+            0% {
+                transform: scaleY(0.4);
+                opacity: 0.5;
+            }
+
+            100% {
+                transform: scaleY(1);
+                opacity: 1;
+            }
+        }
+
+        .animate-bar-grow {
+            animation: bar-grow 1.2s ease-in-out infinite alternate;
+            transform-origin: bottom;
+        }
+
+        @keyframes draw-path {
+            from {
+                stroke-dasharray: 0, 300;
+            }
+
+            to {
+                stroke-dasharray: 300, 300;
+            }
+        }
+
+        .animate-draw-path {
+            animation: draw-path 2s ease-out forwards;
+        }
+
+        @keyframes float-gentle {
+            0% {
+                transform: translateY(0);
+            }
+
+            100% {
+                transform: translateY(-5px);
+            }
+        }
+
+        .animate-float-gentle {
+            animation: float-gentle 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes slide-up-fade {
+            0% {
+                transform: translateY(10px);
+                opacity: 0;
+            }
+
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .animate-slide-up-fade {
+            animation: slide-up-fade 0.4s ease-out forwards;
+        }
+
+        @keyframes dash {
+            to {
+                stroke-dashoffset: -8;
+            }
+        }
+
+        /* Ambient Flow Animation */
+        @keyframes pulse-flow {
+            0% {
+                stroke-dashoffset: 100;
+                opacity: 0;
+            }
+
+            50% {
+                opacity: 1;
+            }
+
+            100% {
+                stroke-dashoffset: -100;
+                opacity: 0;
+            }
+        }
+
+        .node-network {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 0;
+            opacity: 0.35;
+            /* Increased opacity from 0.15 for more visibility */
+            /* Mild fixed attachment creates a smooth parallax effect without JS */
+            background-attachment: fixed;
+        }
+
+        .node-path {
+            stroke: #475569;
+            /* slate-600 */
+            stroke-width: 1.5;
+            fill: none;
+        }
+
+        .node-flow {
+            stroke: #3b82f6;
+            /* blue-500 */
+            stroke-width: 2.5;
+            fill: none;
+            stroke-dasharray: 20 100;
+            animation: pulse-flow 4s linear infinite;
+            filter: drop-shadow(0 0 4px rgba(59, 130, 246, 0.8));
+            /* Blue glow */
+        }
+
+        .node-flow.delayed {
+            animation-delay: 2s;
+            stroke: #fef08a;
+            /* yellow-200 */
+            filter: drop-shadow(0 0 6px rgba(254, 240, 138, 0.9));
+            /* Yellow glow */
+        }
+
+        .node-dot {
+            fill: #60a5fa;
+            /* blue-400 */
+            filter: drop-shadow(0 0 4px rgba(96, 165, 250, 0.8));
+        }
+
+        .node-dot.yellow {
+            fill: #fef08a;
+            /* yellow-200 */
+            filter: drop-shadow(0 0 5px rgba(254, 240, 138, 0.9));
+        }
+
+        @keyframes marquee {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        .animate-marquee {
+            animation: marquee 40s linear infinite;
+        }
+
+        .animate-marquee-slow {
+            animation: marquee 60s linear infinite;
+        }
+
+        .cursor-form {
+            cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 24 24' fill='%23000' stroke='%23fff' stroke-width='1.5'><path d='M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z'/><polyline points='14 2 14 8 20 8'/><line x1='16' y1='13' x2='8' y2='13'/><line x1='16' y1='17' x2='8' y2='17'/><polyline points='10 9 9 9 8 9'/></svg>") 16 16, pointer;
+        }
+
+        /* FAQ Transitions (AAAgency Inspiration) */
+        .faq-content {
+            display: grid;
+            grid-template-rows: 0fr;
+            transition: grid-template-rows 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .faq-item.active .faq-content {
+            grid-template-rows: 1fr;
+        }
+
+        .faq-inner {
+            overflow: hidden;
+            transition: opacity 0.3s ease;
+            opacity: 0;
+        }
+
+        .faq-item.active .faq-inner {
+            opacity: 1;
+        }
+
+        .faq-icon {
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(45deg);
+        }
+
+        /* Mouse Spotlight */
+        #mouse-spotlight {
+            position: fixed;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(254, 249, 195, 0.12) 0%, rgba(254, 249, 195, 0) 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 1;
+            transform: translate(-50%, -50%);
+            transition: opacity 0.3s ease;
+            opacity: 0;
+        }
+
+        /* Legacy Scroll Reveal (Kept for basic blocks) */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ----------------------------------------------------
+           Premium Animations (Webflow Style) 
+           ---------------------------------------------------- */
+
+        /* 1. Text Mask Reveal (Text pushes from invisible bottom bound) */
+        .text-mask-container {
+            overflow: hidden;
+            display: inline-block;
+            vertical-align: top;
+        }
+
+        .text-mask-child {
+            display: inline-block;
+            transform: translateY(110%);
+            transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: transform;
+        }
+
+        .text-mask-child.active {
+            transform: translateY(0);
+        }
+
+        /* 2. Slow Image Parallax Scale (110% -> 100% on scroll) */
+        .img-scale-container {
+            overflow: hidden;
+            position: relative;
+        }
+
+        .img-scale-child {
+            transform: scale(1.15);
+            transition: transform 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+            will-change: transform;
+        }
+
+        .img-scale-child.active {
+            transform: scale(1);
+        }
+
+        /* 3. Staggered Cards (Waves of reveals) */
+        .stagger-group.active .stagger-child {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .stagger-child {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1),
+                transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+            will-change: opacity, transform;
+        }
+
+        /* Stagger Delays helper */
+        .stagger-child:nth-child(1) {
+            transition-delay: 0.0s;
+        }
+
+        .stagger-child:nth-child(2) {
+            transition-delay: 0.15s;
+        }
+
+        .stagger-child:nth-child(3) {
+            transition-delay: 0.30s;
+        }
+
+        .stagger-child:nth-child(4) {
+            transition-delay: 0.45s;
+        }
+
+        /* Card Depth & Highlights */
+        .premium-card {
+            @apply border border-slate-100/50 shadow-sm transition-all duration-500;
+        }
+
+        .premium-card:hover {
+            @apply border-yellow-200/50 shadow-xl shadow-yellow-100/20 -translate-y-1;
+        }
+    </style>
+    <style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+</head>
+
+<body class="bg-white text-slate-900 font-display">
+    <!-- Semantic SEO H1 (Invisible visually but critical for Google) -->
+    <h1 class="sr-only">Automatización de procesos para empresas</h1>
+
+    <div id="mouse-spotlight"></div>
+    <!-- Header: Centered Pill Navigation -->
+    <header class="fixed top-8 left-1/2 -translate-x-1/2 w-auto z-50">
+        <nav
+            class="pill-nav notion-shadow rounded-full px-2 py-2 flex items-center justify-center border border-slate-100/50">
+            <div class="flex gap-1 text-sm font-semibold text-slate-600">
+                <a class="nav-link" href="#inicio">Inicio</a>
+                <a class="nav-link" href="#sobre-mi">Sobre mí</a>
+                <a class="nav-link" href="#servicios">Servicios</a>
+                <a class="nav-link" href="blog.html">Blog</a>
+                <a class="nav-link" href="contacto.html">Contacto</a>
+            </div>
+            <!-- Mobile Menu Placeholder -->
+            <button class="material-symbols-outlined text-slate-700 sm:hidden ml-2 px-2">menu</button>
+        </nav>
+    </header>
+    <!-- Hero Section -->
+    <section class="pt-40 pb-20 px-6 reveal" id="inicio">
+        <div class="max-w-4xl mx-auto flex flex-col items-center text-center">
+
+            <!-- Large Logo -->
+            <img src="../Imputs/Juanchi Notion Avatar Transparente.png"
+                alt="Consultor experto en automatización de procesos de negocio"
+                class="w-48 h-auto mb-8 drop-shadow-sm img-scale-child" id="hero-avatar" />
+
+            <!-- Main Title Base -->
+            <h2 class="text-4xl sm:text-5xl font-extrabold tracking-tight text-slate-900 mb-2">
+                <span class="text-mask-container"><span class="text-mask-child" id="hero-title-1">STRUCTOR | <span
+                            class="font-normal text-slate-700">Systems & Automation</span></span></span>
+            </h2>
+
+            <!-- Highlighted Tagline -->
+            <h2 class="text-2xl sm:text-3xl font-medium text-slate-800 mb-12 relative inline-block text-mask-container">
+                <span class="text-mask-child relative block" id="hero-title-2">
+                    <span class="relative z-10">Elimina el caos operativo. Automatiza lo repetitivo.</span>
+                    <div class="absolute bottom-1 left-0 w-full h-3 bg-yellow-100 -z-0 rounded-sm mix-blend-multiply">
+                    </div>
+                </span>
+            </h2>
+
+            <!-- Conversational Speech Bubble -->
+            <div
+                class="relative bg-white border border-slate-200 rounded-2xl p-6 md:p-8 shadow-sm mb-12 max-w-3xl text-left sm:text-center text-lg text-slate-700 leading-relaxed">
+                <div
+                    class="absolute -top-3 left-1/2 -translate-x-1/2 w-6 h-6 bg-white border-t border-l border-slate-200 rotate-45">
+                </div>
+                <p class="relative z-10 text-center">
+                    Te ayudo a eliminar el trabajo manual y el caos operativo diseñando <span
+                        class="font-bold text-slate-900">sistemas inteligentes</span> que organizan, automatizan y
+                    optimizan la gestión de tu negocio.
+                </p>
+            </div>
+
+            <!-- New Minimalist CTA -->
+            <a href="contacto.html"
+                class="w-full sm:w-auto bg-slate-900 text-white font-bold py-5 px-10 rounded-full inline-flex items-center justify-center gap-2 hover:bg-slate-800 transition-all shadow-xl mx-auto group mb-16">
+                <span class="text-lg">Analizar mi negocio</span>
+                <span
+                    class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+            </a>
+
+            <!-- Comparison Header -->
+            <div class="mt-20 mb-16 text-mask-container">
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 leading-tight text-mask-child">
+                    Tu negocio no necesita más trabajo duro.<br />
+                    <span class="text-slate-800">Necesita un sistema inteligente.</span>
+                </h2>
+            </div>
+
+            <!-- Comparison Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 w-full mb-16">
+
+                <!-- Lo Habitual -->
+                <div class="bg-white rounded-3xl p-8 border border-slate-200 shadow-sm flex flex-col items-center">
+                    <span class="text-2xl font-extrabold text-slate-900 mb-8 relative inline-block text-mask-container">
+                        <span class="relative z-10 text-mask-child">Lo habitual</span>
+                        <div class="absolute bottom-1 left-0 w-full h-3 bg-blue-100 -z-0 rounded-sm mix-blend-multiply">
+                        </div>
+                    </span>
+
+                    <!-- Chaotic Animation -->
+                    <div class="mb-10 w-full">
+                        <div class="relative w-full overflow-hidden flex justify-center img-scale-container">
+                            <img alt="Comparativa de caos por trabajo manual sin automatización de procesos empresariales"
+                                loading="lazy"
+                                class="w-full h-auto object-cover transform mix-blend-multiply img-scale-child [clip-path:inset(6%_0)]"
+                                src="../Imputs/Desorden.webp" />
+                        </div>
+                    </div>
+
+                    <ul class="space-y-4 text-left w-full max-w-[240px]">
+                        <li class="flex items-center gap-3 text-slate-600">
+                            <span class="material-symbols-outlined text-slate-400">edit_note</span>
+                            <span>Trabajo manual</span>
+                        </li>
+                        <li class="flex items-center gap-3 text-slate-600">
+                            <span class="material-symbols-outlined text-slate-400">cloud_off</span>
+                            <span>Datos dispersos</span>
+                        </li>
+                        <li class="flex items-center gap-3 text-slate-600">
+                            <span class="material-symbols-outlined text-slate-400">groups_3</span>
+                            <span>Dependencia de personas</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- La Solución -->
+                <div
+                    class="bg-white rounded-3xl p-8 border-2 border-slate-900 shadow-xl flex flex-col items-center relative overflow-hidden">
+                    <span class="text-2xl font-extrabold text-slate-900 mb-8 relative inline-block text-mask-container">
+                        <span class="relative z-10 text-mask-child">La Solución</span>
+                        <div
+                            class="absolute bottom-1 left-0 w-full h-3 bg-yellow-100 -z-0 rounded-sm mix-blend-multiply">
+                        </div>
+                    </span>
+
+                    <!-- Integrated System Animation -->
+                    <div class="mb-10 w-full transition-all duration-[1000ms] ease-out opacity-0 translate-y-16 reveal">
+                        <div class="relative w-full overflow-hidden flex justify-center img-scale-container">
+                            <img alt="Sistemas inteligentes para automatizar tareas repetitivas en empresas"
+                                loading="lazy"
+                                class="w-full h-auto object-cover origin-center mix-blend-multiply img-scale-child [clip-path:inset(6%_0)]"
+                                src="../Imputs/SistemaInteligente.webp" />
+                        </div>
+                    </div>
+
+                    <ul class="space-y-4 text-left w-full max-w-[240px]">
+                        <li class="flex items-center gap-3 text-slate-900 font-medium">
+                            <span class="material-symbols-outlined text-slate-900">settings_suggest</span>
+                            <span>Sistemas automáticos</span>
+                        </li>
+                        <li class="flex items-center gap-3 text-slate-900 font-medium">
+                            <span class="material-symbols-outlined text-slate-900">visibility</span>
+                            <span>Claridad total</span>
+                        </li>
+                        <li class="flex items-center gap-3 text-slate-900 font-medium">
+                            <span class="material-symbols-outlined text-slate-900">area_chart</span>
+                            <span>Estructuras escalables</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+
+        </div>
+    </section>
+    <!-- Sobre mí Section (Integrated Premium Card) -->
+    <section class="py-32 bg-slate-900 px-6 reveal font-['Inter'] relative overflow-hidden" id="sobre-mi">
+        <!-- Dynamic Node Network Background -->
+        <div class="node-network">
+            <svg preserveAspectRatio="xMidYMid slice" viewBox="0 0 1000 600" class="w-full h-full">
+                <!-- Grid Lines (Subtle Architecture) -->
+                <path d="M 0 150 L 1000 150 M 0 300 L 1000 300 M 0 450 L 1000 450" stroke="#334155" stroke-width="0.8"
+                    stroke-dasharray="4 4" fill="none" opacity="0.6"></path>
+                <path d="M 250 0 L 250 600 M 500 0 L 500 600 M 750 0 L 750 600" stroke="#334155" stroke-width="0.8"
+                    stroke-dasharray="4 4" fill="none" opacity="0.6"></path>
+
+                <!-- Structural Paths -->
+                <path class="node-path" d="M -50 100 L 250 100 L 400 250 L 600 250 L 750 150 L 1050 150"></path>
+                <path class="node-path" d="M -50 400 L 200 400 L 350 250 L 500 250 L 650 450 L 1050 450"></path>
+                <path class="node-path" d="M 250 100 L 250 200 L 500 400 L 500 650"></path>
+                <path class="node-path" d="M 750 150 L 750 300 L 650 450"></path>
+
+                <!-- Flow Paths (Animated Data Packets) -->
+                <path class="node-flow" d="M -50 100 L 250 100 L 400 250 L 600 250 L 750 150 L 1050 150"
+                    pathLength="100"></path>
+                <path class="node-flow delayed" d="M -50 400 L 200 400 L 350 250 L 500 250 L 650 450 L 1050 450"
+                    pathLength="100" style="animation-duration: 5s;"></path>
+                <path class="node-flow" d="M 250 100 L 250 200 L 500 400 L 500 650" pathLength="100"
+                    style="animation-duration: 3.5s;"></path>
+                <path class="node-flow delayed" d="M 750 150 L 750 300 L 650 450" pathLength="100"
+                    style="animation-duration: 4.5s;"></path>
+
+                <!-- Static Connecting Nodes (Dots) -->
+                <circle cx="250" cy="100" r="3" class="node-dot"></circle>
+                <circle cx="400" cy="250" r="3" class="node-dot yellow"></circle>
+                <circle cx="600" cy="250" r="3" class="node-dot"></circle>
+                <circle cx="750" cy="150" r="3" class="node-dot yellow"></circle>
+                <circle cx="200" cy="400" r="3" class="node-dot yellow"></circle>
+                <circle cx="350" cy="250" r="3" class="node-dot"></circle>
+                <circle cx="650" cy="450" r="3" class="node-dot yellow"></circle>
+                <circle cx="500" cy="400" r="3" class="node-dot"></circle>
+            </svg>
+        </div>
+
+        <div
+            class="max-w-4xl mx-auto border border-slate-800 rounded-[3rem] p-10 md:p-16 bg-white relative overflow-hidden shadow-2xl relative z-10">
+            <!-- Subtle background glow -->
+            <div class="absolute -top-24 -right-24 size-64 bg-yellow-100/30 blur-3xl rounded-full"></div>
+            <div class="absolute -bottom-24 -left-24 size-64 bg-blue-50/30 blur-3xl rounded-full"></div>
+
+            <div class="mb-10 text-center md:text-left text-mask-container block">
+                <span
+                    class="text-blue-500 font-bold text-sm tracking-[0.2em] uppercase mb-4 block text-mask-child">SOBRE
+                    MÍ</span>
+                <h2 class="text-3xl md:text-4xl font-black text-slate-900 tracking-tight text-mask-child"
+                    style="transition-delay: 0.1s;">¿Quién está detrás de
+                    STRUCTOR?</h2>
+            </div>
+
+            <div class="block">
+                <!-- Integrated Avatar -->
+                <div class="md:float-left mb-8 md:mb-4 md:mr-12 flex justify-center md:block">
+                    <div class="relative group">
+                        <div
+                            class="absolute -inset-2 bg-gradient-to-tr from-yellow-100 to-blue-50 rounded-full blur-lg opacity-40 group-hover:opacity-60 transition-opacity">
+                        </div>
+                        <div
+                            class="size-32 md:size-40 rounded-full overflow-hidden border-4 border-white shadow-xl relative z-10 bg-white img-scale-container">
+                            <div class="w-full h-full scale-[1.03]">
+                                <img src="../Imputs/Sobre mí.webp"
+                                    alt="Juan Andrés Ibáñez Pasarella, arquitecto de sistemas operativos para negocios"
+                                    loading="lazy" class="w-full h-full object-cover img-scale-child">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Text Block (Editorial style) -->
+                <div class="text-slate-600 text-[15px] leading-[1.8] space-y-5">
+                    <h3 class="text-xl font-bold text-slate-900 mb-4 block">Juan Andrés Ibáñez Pasarella</h3>
+                    <p>Durante años trabajé en agencias gestionando estrategias de <strong
+                            class="text-slate-900 font-extrabold">Paid Media</strong> para marcas internacionales,
+                        optimizando campañas en entornos donde cada decisión debía generar retorno.</p>
+
+                    <p>En ese contexto entendí algo clave: el crecimiento no siempre falla por falta de tráfico,
+                        sino por <strong class="text-slate-900 font-extrabold">falta de sistema</strong>.</p>
+
+                    <p>He visto equipos brillantes perder eficiencia por <strong
+                            class="text-slate-900 font-extrabold">procesos manuales</strong> y tareas operativas que
+                        consumen tiempo sin aportar valor real. Por eso empecé a diseñar mis propios sistemas,
+                        flujos y procesos que reducen la fricción.</p>
+
+                    <p>Así nace <span class="font-black text-slate-900">STRUCTOR</span> (del latín <em
+                            class="italic text-xs font-normal">structor</em>: <strong
+                            class="text-slate-900 font-extrabold">arquitecto o constructor</strong>). Diseño la
+                        <strong class="text-slate-900 font-extrabold">arquitectura operativa</strong> que organiza
+                        procesos y convierte datos en decisiones.
+                    </p>
+
+                    <p>Hoy aplico esa misma mentalidad: menos improvisación y más <strong
+                            class="text-slate-900 font-extrabold">claridad para crecer con orden</strong>. Si tu
+                        negocio crece pero tu operación es manual, no necesitas más esfuerzo.</p>
+
+                    <p class="text-xl font-black text-slate-900 pt-2">Necesitas un <span class="relative"><span
+                                class="relative z-10">sistema</span><span
+                                class="absolute bottom-1 left-0 w-full h-3 bg-yellow-200/60 -z-1 rounded-sm mix-blend-multiply"></span></span>.
+                    </p>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+    <!-- Servicios Section (Enriched) -->
+    <section class="py-32 px-6 bg-white" id="servicios">
+        <div class="max-w-6xl mx-auto">
+            <span
+                class="text-blue-500 font-bold text-sm tracking-[0.2em] uppercase mb-4 block text-center">SERVICIOS</span>
+            <div class="text-center mb-20 text-mask-container block max-w-full">
+                <h2 class="text-3xl md:text-5xl font-extrabold text-slate-900 text-mask-child">Sistemas que transforman
+                    tu
+                    negocio</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 stagger-group">
+                <!-- Pillar 1: Automatización Estratégica -->
+                <div
+                    class="group premium-card rounded-3xl p-10 bg-slate-50 relative overflow-hidden flex flex-col items-start text-left stagger-child">
+                    <div class="mb-8 pl-0">
+                        <span
+                            class="material-symbols-outlined text-7xl text-slate-900 font-light translate-x-[-10px]">electric_bolt</span>
+                    </div>
+                    <h3 class="text-3xl font-black text-slate-900 mb-6 leading-tight">
+                        <span>Automatización</span><br />
+                        <span class="relative inline-block">
+                            <span class="relative z-10">Estratégica</span>
+                            <div
+                                class="absolute bottom-1 left-0 w-full h-4 bg-yellow-200 -z-0 rounded-sm mix-blend-multiply opacity-70">
+                            </div>
+                        </span>
+                    </h3>
+                    <p class="text-slate-500 text-lg leading-snug mb-8 max-w-[280px]">
+                        Convertir tareas repetitivas en procesos que funcionan solos.<br />
+                        <span class="block mt-4 text-sm font-bold text-slate-900 italic opacity-80">"Lo que antes
+                            llevaba días, ahora en minutos."</span>
+                    </p>
+                    <div
+                        class="mt-auto pt-6 border-t border-slate-200 w-full opacity-60 group-hover:opacity-100 transition-opacity">
+                        <span class="text-[10px] font-bold uppercase tracking-wider text-slate-400">Impacto
+                            Medible</span>
+                        <p class="text-slate-900 font-bold mt-1 text-xs italic mb-4">ROA (Return on Automation)</p>
+
+                        <!-- Dynamic ROA Graph (Increased height to h-56) -->
+                        <div class="w-full h-56 relative group/roa pt-4">
+                            <svg viewBox="0 0 200 160" class="w-full h-full overflow-visible">
+                                <defs>
+                                    <pattern id="hatch-roa" width="8" height="8" patternUnits="userSpaceOnUse"
+                                        patternTransform="rotate(45)">
+                                        <line x1="0" y1="0" x2="0" y2="8" stroke="#cbd5e1" stroke-width="1.5" />
+                                    </pattern>
+                                </defs>
+
+                                <!-- Axes -->
+                                <line x1="25" y1="10" x2="25" y2="140" stroke="#94a3b8" stroke-width="2" />
+                                <line x1="25" y1="140" x2="185" y2="140" stroke="#94a3b8" stroke-width="2" />
+
+                                <!-- Labels -->
+                                <text x="12" y="75" transform="rotate(-90, 12, 75)"
+                                    class="text-[11px] fill-slate-700 font-extrabold uppercase tracking-widest">Esfuerzo</text>
+                                <text x="95" y="158"
+                                    class="text-[11px] fill-slate-700 font-extrabold uppercase tracking-widest">Tiempo</text>
+
+                                <!-- Manual Work Line (Static) -->
+                                <line x1="25" y1="30" x2="170" y2="30" stroke="#94a3b8" stroke-width="1.5"
+                                    stroke-dasharray="5,4" />
+                                <text x="172" y="34" class="text-[10px] fill-slate-600 font-black">MANUAL</text>
+
+                                <!-- Hatched Area (ROA) -->
+                                <path d="M 25 30 Q 60 120, 175 135 L 175 30 Z" fill="url(#hatch-roa)"
+                                    class="opacity-0 group-hover/roa:opacity-100 transition-opacity duration-1000" />
+
+                                <!-- Automation Curve -->
+                                <path d="M 25 30 Q 60 120, 175 135" fill="none" stroke="#0f172a" stroke-width="4"
+                                    stroke-linecap="round" class="animate-draw-path" />
+                                <text x="177" y="145"
+                                    class="text-[11px] fill-slate-900 font-black italic">SISTEMA</text>
+
+                                <!-- ROA Central Label -->
+                                <g
+                                    class="animate-float-gentle opacity-0 group-hover/roa:opacity-100 transition-opacity duration-500">
+                                    <rect x="70" y="60" width="70" height="28" rx="14" fill="black" />
+                                    <text x="105" y="79" text-anchor="middle"
+                                        class="text-[14px] fill-white font-black uppercase tracking-widest">ROA</text>
+                                </g>
+
+                                <!-- Corner Gear Icon -->
+                                <text x="182" y="75"
+                                    class="material-symbols-outlined text-slate-200 text-lg group-hover/roa:text-yellow-400 transition-all duration-500 group-hover/roa:rotate-90">settings</text>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pillar 2: Sistemas Operativos (OS) -->
+                <div
+                    class="group premium-card rounded-3xl p-10 bg-slate-50 relative overflow-hidden flex flex-col items-start text-left stagger-child">
+                    <div class="mb-8">
+                        <span
+                            class="material-symbols-outlined text-7xl text-slate-900 font-light translate-x-[-10px]">account_tree</span>
+                    </div>
+                    <h3 class="text-3xl font-black text-slate-900 mb-6 leading-tight">
+                        <span>Sistemas</span><br />
+                        <span class="relative inline-block">
+                            <span class="relative z-10">Operativos (OS)</span>
+                            <div
+                                class="absolute bottom-1 left-0 w-full h-4 bg-blue-200 -z-0 rounded-sm mix-blend-multiply opacity-70">
+                            </div>
+                        </span>
+                    </h3>
+                    <p class="text-slate-500 text-lg leading-snug mb-6 max-w-[280px]">
+                        Estructuras sin dependencias ni caos para gestionar equipos y proyectos.
+                    </p>
+                    <div class="mt-auto pt-4 w-full opacity-70 group-hover:opacity-100 transition-opacity">
+                        <ul class="space-y-2 text-[12px] text-slate-600 mb-6">
+                            <li class="flex items-center gap-2">
+                                <span class="material-symbols-outlined text-slate-900 text-sm">check_circle</span>
+                                <span>Sin dependencias innecesarias</span>
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <span class="material-symbols-outlined text-slate-900 text-sm">check_circle</span>
+                                <span>Conocimiento centralizado</span>
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <span class="material-symbols-outlined text-slate-900 text-sm">check_circle</span>
+                                <span>Gestión de proyectos fluida</span>
+                            </li>
+                        </ul>
+
+                        <!-- Mini-OS Interface (Notion-style - Height increased to h-56) -->
+                        <div
+                            class="bg-white border border-slate-200 rounded-xl shadow-sm overflow-hidden flex flex-col h-56 w-full group/window hover:shadow-md transition-shadow">
+                            <!-- Top Window Area -->
+                            <div class="flex-1 flex overflow-hidden">
+                                <!-- Sidebar -->
+                                <div class="w-12 bg-slate-50 border-r border-slate-100 flex flex-col p-3 gap-3">
+                                    <div class="flex gap-1.5 mb-2">
+                                        <div class="size-1.5 bg-[#ff5f56] rounded-full"></div>
+                                        <div class="size-1.5 bg-[#ffbd2e] rounded-full"></div>
+                                        <div class="size-1.5 bg-[#27c93f] rounded-full"></div>
+                                    </div>
+                                    <div class="w-full h-1.5 bg-slate-200 rounded-full"></div>
+                                    <div class="w-4/5 h-1.5 bg-slate-200 rounded-full"></div>
+                                    <div class="w-full h-1.5 bg-slate-200 rounded-full mt-4"></div>
+                                    <div class="w-3/5 h-1.5 bg-slate-200 rounded-full"></div>
+                                    <div class="w-full h-1.5 bg-slate-200 rounded-full mt-4"></div>
+                                </div>
+                                <!-- Main Content -->
+                                <div class="flex-1 p-5 bg-[#fbfbfa]">
+                                    <div class="w-full h-3 bg-slate-200 rounded-full mb-8"></div>
+                                    <div class="grid grid-cols-3 gap-4">
+                                        <!-- Mini Card 1 -->
+                                        <div
+                                            class="bg-white border border-slate-100 rounded-xl p-4 flex flex-col items-center justify-center hover:shadow-md hover:-translate-y-1 transition-all cursor-pointer group/mini active:scale-95 shadow-sm">
+                                            <span
+                                                class="material-symbols-outlined text-yellow-500 text-3xl mb-2">folder</span>
+                                            <span
+                                                class="text-[11px] font-black text-slate-900 tracking-wider uppercase">Proyectos</span>
+                                        </div>
+                                        <!-- Mini Card 2 -->
+                                        <div
+                                            class="bg-white border border-slate-100 rounded-xl p-4 flex flex-col items-center justify-center hover:shadow-md hover:-translate-y-1 transition-all cursor-pointer group/mini active:scale-95 delay-[50ms] shadow-sm">
+                                            <span
+                                                class="material-symbols-outlined text-blue-500 text-3xl mb-2">description</span>
+                                            <span
+                                                class="text-[11px] font-black text-slate-900 tracking-wider uppercase">Wiki</span>
+                                        </div>
+                                        <!-- Mini Card 3 -->
+                                        <div
+                                            class="bg-white border border-slate-100 rounded-xl p-4 flex flex-col items-center justify-center hover:shadow-md hover:-translate-y-1 transition-all cursor-pointer group/mini active:scale-95 delay-[100ms] shadow-sm">
+                                            <span
+                                                class="material-symbols-outlined text-emerald-500 text-3xl mb-2">checklist</span>
+                                            <span
+                                                class="text-[11px] font-black text-slate-900 tracking-wider uppercase">Tareas</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Bottom Status Bar -->
+                            <div
+                                class="h-8 bg-slate-50 border-t border-slate-100 px-4 flex items-center justify-between">
+                                <div class="flex items-center gap-2">
+                                    <div class="size-2 bg-emerald-500 rounded-full animate-pulse"></div>
+                                    <span class="text-[9px] font-bold text-slate-400 uppercase tracking-widest">Sistema
+                                        activo</span>
+                                </div>
+                                <span class="text-[9px] font-black text-slate-900">SYNC OK</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pillar 3: Control de Datos -->
+                <div
+                    class="group premium-card rounded-3xl p-10 bg-slate-50 relative overflow-hidden flex flex-col items-start text-left stagger-child">
+                    <div class="mb-8 pl-0">
+                        <span
+                            class="material-symbols-outlined text-7xl text-slate-900 font-light translate-x-[-10px]">troubleshoot</span>
+                    </div>
+                    <h3 class="text-3xl font-black text-slate-900 mb-6 leading-tight">
+                        <span>Control de</span><br />
+                        <span class="relative inline-block">
+                            <span class="relative z-10">Datos</span>
+                            <div
+                                class="absolute bottom-1 left-0 w-full h-4 bg-yellow-200 -z-0 rounded-sm mix-blend-multiply opacity-70">
+                            </div>
+                        </span>
+                    </h3>
+                    <p class="text-slate-500 text-lg leading-snug mb-8 max-w-[280px]">
+                        De datos dispersos a paneles accionables para tomar decisiones reales.<br />
+                        <span class="block mt-4 font-bold text-slate-900 text-sm underline decoration-yellow-400">Datos
+                            dispersos → Decisiones claras</span>
+                    </p>
+
+                    <!-- Mini-Dashboard: Control de Datos (Vertical Stack for better width/legibility) -->
+                    <div class="mt-auto w-full flex flex-col gap-3">
+                        <!-- Card 1: Distribución -->
+                        <div
+                            class="bg-white border border-slate-200 rounded-2xl p-4 flex items-center justify-between hover:shadow-md transition-shadow group/sub">
+                            <div class="flex flex-col gap-1.5">
+                                <span
+                                    class="text-[14px] font-black text-slate-900 uppercase tracking-wider">Distribución</span>
+                                <span class="text-[11px] font-extrabold text-slate-400 uppercase">Visibilidad
+                                    total</span>
+                            </div>
+                            <div class="relative size-14">
+                                <svg viewBox="0 0 100 100" class="w-full h-full -rotate-90">
+                                    <circle cx="50" cy="50" r="40" fill="none" stroke="#f1f5f9" stroke-width="12" />
+                                    <circle cx="50" cy="50" r="40" fill="none" stroke="#0f172a" stroke-width="12"
+                                        stroke-dasharray="180 251"
+                                        class="transition-all duration-1000 group-hover/sub:stroke-dasharray-[210 251]" />
+                                    <circle cx="50" cy="50" r="28" fill="none" stroke="#cbd5e1" stroke-width="8"
+                                        stroke-dasharray="120 175" />
+                                </svg>
+                                <div class="absolute inset-0 flex items-center justify-center">
+                                    <span class="material-symbols-outlined text-sm text-slate-900">visibility</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 2: Tendencia -->
+                        <div
+                            class="bg-white border border-slate-200 rounded-2xl p-4 flex items-center justify-between hover:shadow-md transition-shadow group/sub">
+                            <div class="flex flex-col gap-1.5">
+                                <span
+                                    class="text-[14px] font-black text-slate-900 uppercase tracking-wider">Tendencia</span>
+                                <div class="flex gap-2">
+                                    <span class="text-[11px] font-extrabold text-slate-400 uppercase">Q1</span>
+                                    <span class="text-[11px] font-black text-slate-900">→ Q4</span>
+                                </div>
+                            </div>
+                            <div class="flex items-end gap-1 h-10">
+                                <div class="w-2 bg-slate-200 rounded-t-sm animate-bar-grow h-[30%]"></div>
+                                <div
+                                    class="w-2 bg-slate-200 rounded-t-sm animate-bar-grow h-[50%] [animation-delay:0.2s]">
+                                </div>
+                                <div
+                                    class="w-2 bg-slate-400 rounded-t-sm animate-bar-grow h-[70%] [animation-delay:0.4s]">
+                                </div>
+                                <div
+                                    class="w-2 bg-slate-900 rounded-t-sm animate-bar-grow h-[100%] [animation-delay:0.6s]">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 3: Confiabilidad -->
+                        <div
+                            class="bg-white border border-slate-200 rounded-2xl p-4 flex items-center justify-between hover:shadow-md transition-shadow group/sub overflow-hidden">
+                            <div class="flex flex-col gap-1.5">
+                                <span
+                                    class="text-[14px] font-black text-slate-900 uppercase tracking-wider">Confiabilidad</span>
+                                <span class="text-[11px] font-extrabold text-slate-400 uppercase">de la
+                                    información</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <span class="text-3xl font-black text-slate-900 tracking-tighter">100%</span>
+                                <span
+                                    class="material-symbols-outlined text-blue-500 text-xl group-hover/sub:translate-x-1 group-hover/sub:-translate-y-1 transition-transform">north_east</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Proceso Section (Horizontal Redesign) -->
+    <section class="py-32 px-6 bg-slate-50 overflow-hidden">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-20 text-mask-container block">
+                <span
+                    class="text-blue-500 font-bold text-sm tracking-[0.2em] uppercase mb-4 block text-mask-child">Metodología</span>
+                <h2 class="text-4xl md:text-5xl font-extrabold text-slate-900 mb-6 relative inline-block text-mask-child"
+                    style="transition-delay: 0.1s;">
+                    Un sistema claro. Sin improvisaciones.
+                    <div class="absolute bottom-1 left-0 w-full h-3 bg-yellow-100 -z-10 rounded-sm mix-blend-multiply">
+                    </div>
+                </h2>
+            </div>
+
+            <!-- Horizontal Step Container -->
+            <div class="relative grid grid-cols-1 md:grid-cols-4 gap-8 stagger-group">
+                <!-- SVG Connecting Lines (Desktop Only) -->
+                <div class="hidden md:block absolute top-[15%] left-0 w-full pointer-events-none">
+                    <div class="flex justify-around items-center px-12">
+                        <div class="w-1/4 flex justify-center translate-x-12">
+                            <svg width="100" height="20" viewBox="0 0 100 20" class="opacity-20">
+                                <path d="M0,10 L90,10" stroke="#0f172a" stroke-width="2" stroke-dasharray="4,4"
+                                    fill="none" class="animate-[dash_2s_linear_infinite]" />
+                                <path d="M85,5 L95,10 L85,15" stroke="#0f172a" stroke-width="2" fill="none" />
+                            </svg>
+                        </div>
+                        <div class="w-1/4 flex justify-center translate-x-4">
+                            <svg width="100" height="20" viewBox="0 0 100 20" class="opacity-20">
+                                <path d="M0,10 L90,10" stroke="#0f172a" stroke-width="2" stroke-dasharray="4,4"
+                                    fill="none" class="animate-[dash_2s_linear_infinite]" />
+                                <path d="M85,5 L95,10 L85,15" stroke="#0f172a" stroke-width="2" fill="none" />
+                            </svg>
+                        </div>
+                        <div class="w-1/4 flex justify-center -translate-x-4">
+                            <svg width="100" height="20" viewBox="0 0 100 20" class="opacity-20">
+                                <path d="M0,10 L90,10" stroke="#0f172a" stroke-width="2" stroke-dasharray="4,4"
+                                    fill="none" class="animate-[dash_2s_linear_infinite]" />
+                                <path d="M85,5 L95,10 L85,15" stroke="#0f172a" stroke-width="2" fill="none" />
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 1: Diagnóstico -->
+                <div
+                    class="relative bg-white p-8 rounded-3xl border border-slate-100 shadow-sm flex flex-col items-center hover:shadow-xl hover:-translate-y-2 transition-all duration-500 group/step stagger-child">
+                    <div
+                        class="size-16 rounded-full bg-slate-50 border-2 border-slate-100 flex items-center justify-center mb-6 group-hover/step:bg-yellow-50 group-hover/step:border-yellow-200 transition-colors">
+                        <span class="text-2xl font-black text-slate-900">01</span>
+                    </div>
+                    <span
+                        class="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-2">Diagnóstico</span>
+                    <h4 class="text-xl font-bold text-slate-900 mb-4">Análisis Inicial</h4>
+                    <p class="text-slate-500 text-sm text-center leading-relaxed">
+                        Analizamos frenos y tareas repetitivas para detectar el impacto real.
+                    </p>
+                </div>
+
+                <!-- Step 2: Diseño -->
+                <div
+                    class="relative bg-white p-8 rounded-3xl border border-slate-100 shadow-sm flex flex-col items-center hover:shadow-xl hover:-translate-y-2 transition-all duration-500 group/step stagger-child">
+                    <div
+                        class="size-16 rounded-full bg-slate-50 border-2 border-slate-100 flex items-center justify-center mb-6 group-hover/step:bg-blue-50 group-hover/step:border-blue-200 transition-colors">
+                        <span class="text-2xl font-black text-slate-900">02</span>
+                    </div>
+                    <span class="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-2">Diseño</span>
+                    <h4 class="text-xl font-bold text-slate-900 mb-4">Plan de Flujo</h4>
+                    <p class="text-slate-500 text-sm text-center leading-relaxed">
+                        Planificamos el flujo sin caos, definiendo el sistema a medida.
+                    </p>
+                </div>
+
+                <!-- Step 3: Construcción -->
+                <div
+                    class="relative bg-white p-8 rounded-3xl border border-slate-100 shadow-sm flex flex-col items-center hover:shadow-xl hover:-translate-y-2 transition-all duration-500 group/step stagger-child">
+                    <div
+                        class="size-16 rounded-full bg-slate-50 border-2 border-slate-100 flex items-center justify-center mb-6 group-hover/step:bg-emerald-50 group-hover/step:border-emerald-200 transition-colors">
+                        <span class="text-2xl font-black text-slate-900">03</span>
+                    </div>
+                    <span
+                        class="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-2">Construcción</span>
+                    <h4 class="text-xl font-bold text-slate-900 mb-4">Implementación</h4>
+                    <p class="text-slate-500 text-sm text-center leading-relaxed">
+                        Ejecutamos la automatización y configuramos las herramientas clave.
+                    </p>
+                </div>
+
+                <!-- Step 4: Optimización -->
+                <div
+                    class="relative bg-slate-900 p-8 rounded-3xl border border-slate-900 shadow-xl flex flex-col items-center hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 group/step scale-105 stagger-child">
+                    <div
+                        class="size-16 rounded-full bg-slate-800 border-2 border-slate-700 flex items-center justify-center mb-6 group-hover/step:border-yellow-400/50 transition-colors">
+                        <span class="text-2xl font-black text-white">04</span>
+                    </div>
+                    <span
+                        class="text-[10px] font-black text-slate-500 uppercase tracking-[0.2em] mb-2">Optimización</span>
+                    <h4 class="text-xl font-bold text-white mb-4">Impacto Real</h4>
+                    <p class="text-slate-400 text-sm text-center leading-relaxed">
+                        Pruebas en tiempo real, ajustes y medición del éxito obtenido.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tech Stack Section (Refined: Real Logos & Integrated Quote) -->
+    <section class="py-20 px-6 bg-white border-t border-slate-100 overflow-hidden">
+        <div class="max-w-6xl mx-auto text-center mb-16">
+            <h2 class="text-3xl md:text-5xl font-black text-slate-900 tracking-tight">La tecnología al servicio del
+                sistema.</h2>
+        </div>
+
+        <!-- Infinite Marquee Container -->
+        <div class="flex flex-col gap-6 relative">
+            <!-- Row 1 -->
+            <div class="relative flex overflow-x-hidden group">
+                <div
+                    class="flex gap-8 py-4 animate-marquee whitespace-nowrap group-hover:[animation-play-state:paused]">
+                    <!-- Marquee Row 1: Zero-Dependency Embedded SVGs -->
+                    <div
+                        class="flex-shrink-0 flex items-center gap-3 bg-white border border-slate-100 px-6 py-3.5 rounded-xl shadow-sm hover:border-slate-300 transition-all min-w-[140px]">
+                        <img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/notion.svg" class="h-7 w-auto"
+                            alt="Notion" />
+                        <span class="text-sm font-bold text-slate-800 tracking-tight">Notion</span>
+                    </div>
+                    <div
+                        class="flex-shrink-0 flex items-center gap-3 bg-white border border-slate-100 px-6 py-3.5 rounded-xl shadow-sm hover:border-slate-300 transition-all min-w-[140px]">
+                        <!-- n8n (Direct SVG Pink) -->
+                        <svg class="h-7 w-auto" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
+                            fill="#EA4B71">
+                            <path
+                                d="M21.4737 5.6842c-1.1772 0-2.1663.8051-2.4468 1.8947h-2.8955c-1.235 0-2.289.893-2.492 2.111l-.1038.623a1.263 1.263 0 0 1-1.246 1.0555H11.289c-.2805-1.0896-1.2696-1.8947-2.4468-1.8947s-2.1663.8051-2.4467 1.8947H4.973c-.2805-1.0896-1.2696-1.8947-2.4468-1.8947C1.1311 9.4737 0 10.6047 0 12s1.131 2.5263 2.5263 2.5263c1.1772 0 2.1663-.8051 2.4468-1.8947h1.4223c.2804 1.0896 1.2696 1.8947 2.4467 1.8947 1.1772 0 2.1663-.8051 2.4468-1.8947h1.0008a1.263 1.263 0 0 1 1.2459 1.0555l.1038.623c.203 1.218 1.257 2.111 2.492 2.111h.3692c.2804 1.0895 1.2696 1.8947 2.4468 1.8947 1.3952 0 2.5263-1.131 2.5263-2.5263s-1.131-2.5263-2.5263-2.5263c-1.1772 0-2.1664.805-2.4468 1.8947h-.3692a1.263 1.263 0 0 1-1.246-1.0555l-.1037-.623A2.52 2.52 0 0 0 13.9607 12a2.52 2.52 0 0 0 .821-1.4794l.1038-.623a1.263 1.263 0 0 1 1.2459-1.0555h2.8955c.2805 1.0896 1.2696 1.8947 2.4468 1.8947 1.3952 0 2.5263-1.131 2.5263-2.5263s-1.131-2.5263-2.5263-2.5263m0 1.2632a1.263 1.263 0 0 1 1.2631 1.2631 1.263 1.263 0 0 1-1.2631 1.2632 1.263 1.263 0 0 1-1.2632-1.2632 1.263 1.263 0 0 1 1.2632-1.2631M2.5263 10.7368A1.263 1.263 0 0 1 3.7895 12a1.263 1.263 0 0 1-1.2632 1.2632A1.263 1.263 0 0 1 1.2632 12a1.263 1.263 0 0 1 1.2631-1.2632m6.3158 0A1.263 1.263 0 0 1 10.1053 12a1.263 1.263 0 0 1-1.2632 1.2632A1.263 1.263 0 0 1 7.579 12a1.263 1.263 0 0 1 1.2632-1.2632m10.1053 3.7895a1.263 1.263 0 0 1 1.2631 1.2632 1.263 1.263 0 0 1-1.2631 1.2631 1.263 1.263 0 0 1-1.2632-1.2631 1.263 1.263 0 0 1 1.2632-1.2632" />
+                        </svg>
+                        <span class="text-sm font-bold text-slate-800 tracking-tight">n8n</span>
+                    </div>
+                    <div
+                        class="flex-shrink-0 flex items-center gap-3 bg-white border border-slate-100 px-6 py-3.5 rounded-xl shadow-sm hover:border-slate-300 transition-all min-w-[180px]">
+                        <!-- Looker Studio (Direct SVG Rings) -->
+                        <svg class="h-7 w-auto" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#4285F4">
+                            <path
+                                d="M11.9475 0c-1.1598.0021-2.0982.944-2.096 2.1038a2.1 2.1 0 00.356 1.166l.895-.8959a.884.884 0 11.565.564l-.895.895c.9593.6478 2.2621.3953 2.91-.564.6478-.9593.3953-2.262-.564-2.91A2.096 2.096 0 0011.9475 0zm-.835 6.1128a3.2629 3.2629 0 00-.653-1.965l-1.164 1.162a1.667 1.667 0 01-.318 2.012l.632 1.5449a3.2819 3.2819 0 001.503-2.754zm-3.2499 1.666h-.03c-.9217.0009-1.6697-.7455-1.6707-1.6673-.001-.9217.7454-1.6697 1.6672-1.6707a1.669 1.669 0 01.9195.275l1.152-1.152c-1.4069-1.141-3.4724-.9257-4.6135.4811s-.9257 3.4723.481 4.6135a3.2799 3.2799 0 002.7275.6652l-.633-1.5439v-.001zm4.1279 1.3359c-.728 0-1.452.106-2.15.315l.922 2.2519c2.6872-.6819 5.4184.9438 6.1002 3.631.6818 2.6873-.9439 5.4184-3.6311 6.1002s-5.4184-.9439-6.1002-3.631c-.5682-2.2394.4655-4.5774 2.5041-5.6643l-.91-2.2449c-3.6908 1.808-5.2173 6.2657-3.4093 9.9567l.0005.001c1.808 3.6909 6.2657 5.2173 9.9567 3.4093l.001-.0005c3.6913-1.8071 5.2187-6.2645 3.4116-9.9558a7.4417 7.4417 0 00-6.6865-4.1696h-.008l-.001.001z" />
+                        </svg>
+                        <span class="text-sm font-bold text-slate-800 tracking-tight">Looker Studio</span>
+                    </div>
+                    <div
+                        class="flex-shrink-0 flex items-center gap-3 bg-white border border-slate-100 px-6 py-3.5 rounded-xl shadow-sm hover:border-slate-300 transition-all min-w-[150px]">
+                        <!-- Airtable (Direct SVG) -->
+                        <svg class="h-7 w-auto" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#18BFFF">
+                            <path
+                                d="M11.992 1.966c-.434 0-.87.086-1.28.257L1.779 5.917c-.503.208-.49.908.012 1.116l8.982 3.558a3.266 3.266 0 0 0 2.454 0l8.982-3.558c.503-.196.503-.908.012-1.116l-8.957-3.694a3.255 3.255 0 0 0-1.272-.257zM23.4 8.056a.589.589 0 0 0-.222.045l-10.012 3.877a.612.612 0 0 0-.38.564v8.896a.6.6 0 0 0 .821.552L23.62 18.1a.583.583 0 0 0 .38-.551V8.653a.6.6 0 0 0-.6-.596zM.676 8.095a.644.644 0 0 0-.48.19C.086 8.396 0 8.53 0 8.69v8.355c0 .442.515.737.908.54l6.27-3.006.307-.147 2.969-1.436c.466-.22.43-.908-.061-1.092L.883 8.138a.57.57 0 0 0-.207-.044z" />
+                        </svg>
+                        <span class="text-sm font-bold text-slate-800 tracking-tight">Airtable</span>
+                    </div>
+                    <!-- Duplicate for marquee loop -->
+                    <div
+                        class="flex-shrink-0 flex items-center gap-3 bg-white border border-slate-100 px-6 py-3.5 rounded-xl shadow-sm hover:border-slate-300 transition-all min-w-[140px]">
+                        <img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/notion.svg" class="h-7 w-auto"
+                            alt="Notion" />
+                        <span class="text-sm font-bold text-slate-800 tracking-tight">Notion</span>
+                    </div>
+                    <div
+                        class="flex-shrink-0 flex items-center gap-3 bg-white border border-slate-100 px-6 py-3.5 rounded-xl shadow-sm hover:border-slate-300 transition-all min-w-[140px]">
+                        <svg class="h-7 w-auto" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
+                            fill="#EA4B71">
+                            <path
+                                d="M21.4737 5.6842c-1.1772 0-2.1663.8051-2.4468 1.8947h-2.8955c-1.235 0-2.289.893-2.492 2.111l-.1038.623a1.263 1.263 0 0 1-1.246 1.0555H11.289c-.2805-1.0896-1.2696-1.8947-2.4468-1.8947s-2.1663.8051-2.4467 1.8947H4.973c-.2805-1.0896-1.2696-1.8947-2.4468-1.8947C1.1311 9.4737 0 10.6047 0 12s1.131 2.5263 2.5263 2.5263c1.1772 0 2.1663-.8051 2.4468-1.8947h1.4223c.2804 1.0896 1.2696 1.8947 2.4467 1.8947 1.1772 0 2.1663-.8051 2.4468-1.8947h1.0008a1.263 1.263 0 0 1 1.2459 1.0555l.1038.623c.203 1.218 1.257 2.111 2.492 2.111h.3692c.2804 1.0895 1.2696 1.8947 2.4468 1.8947 1.3952 0 2.5263-1.131 2.5263-2.5263s-1.131-2.5263-2.5263-2.5263c-1.1772 0-2.1664.805-2.4468 1.8947h-.3692a1.263 1.263 0 0 1-1.246-1.0555l-.1037-.623A2.52 2.52 0 0 0 13.9607 12a2.52 2.52 0 0 0 .821-1.4794l.1038-.623a1.263 1.263 0 0 1 1.2459-1.0555h2.8955c.2805 1.0896 1.2696 1.8947 2.4468 1.8947 1.3952 0 2.5263-1.131 2.5263-2.5263s-1.131-2.5263-2.5263-2.5263m0 1.2632a1.263 1.263 0 0 1 1.2631 1.2631 1.263 1.263 0 0 1-1.2631 1.2632 1.263 1.263 0 0 1-1.2632-1.2632 1.263 1.263 0 0 1 1.2632-1.2631M2.5263 10.7368A1.263 1.263 0 0 1 3.7895 12a1.263 1.263 0 0 1-1.2632 1.2632A1.263 1.263 0 0 1 1.2632 12a1.263 1.263 0 0 1 1.2631-1.2632m6.3158 0A1.263 1.263 0 0 1 10.1053 12a1.263 1.263 0 0 1-1.2632 1.2632A1.263 1.263 0 0 1 7.579 12a1.263 1.263 0 0 1 1.2632-1.2632m10.1053 3.7895a1.263 1.263 0 0 1 1.2631 1.2632 1.263 1.263 0 0 1-1.2631 1.2631 1.263 1.263 0 0 1-1.2632-1.2631 1.263 1.263 0 0 1 1.2632-1.2632" />
+                        </svg>
+                        <span class="text-sm font-bold text-slate-800 tracking-tight">n8n</span>
+                    </div>
+                    <div
+                        class="flex-shrink-0 flex items-center gap-3 bg-white border border-slate-100 px-6 py-3.5 rounded-xl shadow-sm hover:border-slate-300 transition-all min-w-[180px]">
+                        <svg class="h-7 w-auto" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#4285F4">
+                            <path
+                                d="M11.9475 0c-1.1598.0021-2.0982.944-2.096 2.1038a2.1 2.1 0 00.356 1.166l.895-.8959a.884.884 0 11.565.564l-.895.895c.9593.6478 2.2621.3953 2.91-.564.6478-.9593.3953-2.262-.564-2.91A2.096 2.096 0 0011.9475 0zm-.835 6.1128a3.2629 3.2629 0 00-.653-1.965l-1.164 1.162a1.667 1.667 0 01-.318 2.012l.632 1.5449a3.2819 3.2819 0 001.503-2.754zm-3.2499 1.666h-.03c-.9217.0009-1.6697-.7455-1.6707-1.6673-.001-.9217.7454-1.6697 1.6672-1.6707a1.669 1.669 0 01.9195.275l1.152-1.152c-1.4069-1.141-3.4724-.9257-4.6135.4811s-.9257 3.4723.481 4.6135a3.2799 3.2799 0 002.7275.6652l-.633-1.5439v-.001zm4.1279 1.3359c-.728 0-1.452.106-2.15.315l.922 2.2519c2.6872-.6819 5.4184.9438 6.1002 3.631.6818 2.6873-.9439 5.4184-3.6311 6.1002s-5.4184-.9439-6.1002-3.631c-.5682-2.2394.4655-4.5774 2.5041-5.6643l-.91-2.2449c-3.6908 1.808-5.2173 6.2657-3.4093 9.9567l.0005.001c1.808 3.6909 6.2657 5.2173 9.9567 3.4093l.001-.0005c3.6913-1.8071 5.2187-6.2645 3.4116-9.9558a7.4417 7.4417 0 00-6.6865-4.1696h-.008l-.001.001z" />
+                        </svg>
+                        <span class="text-sm font-bold text-slate-800 tracking-tight">Looker Studio</span>
+                    </div>
+                    <div
+                        class="flex-shrink-0 flex items-center gap-3 bg-white border border-slate-100 px-6 py-3.5 rounded-xl shadow-sm hover:border-slate-300 transition-all min-w-[150px]">
+                        <svg class="h-7 w-auto" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#18BFFF">
+                            <path
+                                d="M11.992 1.966c-.434 0-.87.086-1.28.257L1.779 5.917c-.503.208-.49.908.012 1.116l8.982 3.558a3.266 3.266 0 0 0 2.454 0l8.982-3.558c.503-.196.503-.908.012-1.116l-8.957-3.694a3.255 3.255 0 0 0-1.272-.257zM23.4 8.056a.589.589 0 0 0-.222.045l-10.012 3.877a.612.612 0 0 0-.38.564v8.896a.6.6 0 0 0 .821.552L23.62 18.1a.583.583 0 0 0 .38-.551V8.653a.6.6 0 0 0-.6-.596zM.676 8.095a.644.644 0 0 0-.48.19C.086 8.396 0 8.53 0 8.69v8.355c0 .442.515.737.908.54l6.27-3.006.307-.147 2.969-1.436c.466-.22.43-.908-.061-1.092L.883 8.138a.57.57 0 0 0-.207-.044z" />
+                        </svg>
+                        <span class="text-sm font-bold text-slate-800 tracking-tight">Airtable</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Integrated Quote Row (Injected in the middle of marquee rows) -->
+            <div class="py-12 relative z-10 overflow-visible">
+                <div class="max-w-4xl mx-auto px-4">
+                    <div class="relative">
+                        <!-- Decorative elements -->
+                        <div
+                            class="absolute -top-10 -left-10 text-8xl text-slate-100 font-serif opacity-50 select-none">
+                            “</div>
+                        <p
+                            class="text-2xl md:text-3xl font-medium text-slate-800 leading-tight tracking-tight relative z-10 text-center italic font-serif">
+                            La herramienta es solo el medio.
+                            <span class="relative inline-block ml-1">
+                                <span class="relative z-10 text-blue-600 font-black not-italic">La solución es el
+                                    sistema.</span>
+                                <div
+                                    class="absolute bottom-1 left-0 w-full h-3 bg-blue-50 -z-0 rounded-sm mix-blend-multiply">
+                                </div>
+                            </span>
+                        </p>
+                        <div
+                            class="absolute -bottom-20 -right-10 text-8xl text-slate-100 font-serif opacity-50 select-none">
+                            ”</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Row 2 (Reverse movement) -->
+            <div class="relative flex overflow-x-hidden group">
+                <div
+                    class="flex gap-8 py-4 animate-marquee-slow whitespace-nowrap group-hover:[animation-play-state:paused] [animation-direction:reverse]">
+                    <div
+                        class="flex-shrink-0 flex items-center gap-3 bg-white border border-slate-100 px-6 py-3.5 rounded-xl shadow-sm hover:border-slate-300 transition-all min-w-[240px]">
+                        <!-- Google Workspace (Official 4-color Icon + Wordmark) -->
+                        <svg class="h-6 w-auto" viewBox="0 0 3995 512" xmlns="http://www.w3.org/2000/svg">
+                            <path fill="#5f6368"
+                                d="M2087 39h47l-94 350h-46l-75-231h-2l-76 231h-46l-97-350h47l74 275h2l76-228h42l76 228h2l70-275z" />
+                            <g fill="#5f6368">
+                                <path
+                                    d="M2129 269q0-55 35-91t89-36 88 36q35 36 35 91 0 56-35 92t-88 36-89-36q-35-36-35-92m45 0q0 39 23 63t56 24q33 0 56-24t22-63q0-38-22-62-23-24-56-24t-56 24q-23 24-23 62M2453 389h-45V149h43v40h2q7-20 29-33t42-14q19 0 33 6l-14 44q-8-3-26-3-26 0-45 20t-19 48zM2789 389h-55l-74-113-37 37v76h-45V39h45v216l104-106h57v2l-93 93 98 143v2z" />
+                                <path
+                                    d="M2984 323q0 31-27 53t-70 21q-36 0-63-19a104 104 0 01-39-49l40-17q9 21 25 33a62 62 0 0037 12q22 0 36-9t15-22q0-23-35-34l-42-10q-70-18-70-68 0-33 27-53t68-20q32 0 58 16t36 40l-40 17a51 51 0 00-22-24 70 70 0 00-35-8 58 58 0 00-32 8q-14 9-14 22 0 21 39 29l36 10q72 17 72 72M3140 397q-26 0-48-11t-33-30h-2l2 33v106h-45V149h43v34h2q11-19 33-30t49-11q47 0 80 37 34 37 34 90 0 54-34 91-33 37-80 37m-8-41q33 0 55-24t22-63q0-37-22-62t-55-24q-33 0-55 24-21 25-21 62 0 39 21 63 22 24 55 24M3378 142q50 0 79 26t29 73v148h-43v-33h-2q-28 41-75 41-39 0-66-23t-27-59q0-37 28-59t76-22q40 0 66 14v-10q0-24-19-40a64 64 0 00-43-16q-38 0-60 32l-40-25q33-47 97-47m-58 174q0 18 15 29t35 12q28 0 50-21t23-49q-21-17-59-17-27 0-46 13t-18 33M3639 397q-54 0-89-36-35-37-35-92t35-91q35-36 89-36 37 0 64 18t41 51l-41 17q-19-45-67-45-31 0-54 25-22 25-22 61t22 62q23 25 54 25 49 0 69-45l41 17q-14 33-42 51t-65 18M3881 397q-53 0-87-36t-34-92q0-54 33-91t85-36q54 0 85 34t32 97v5h-189q1 35 23 57t54 21q43 0 68-43l40 20a120 120 0 01-45 47q-28 17-65 17m-72-157h138q-2-25-20-41t-50-16q-25 0-43 15t-25 42" />
+                            </g>
+                            <g>
+                                <path fill="#4285f4"
+                                    d="M202 236v-55h182a178 178 0 013 34c0 40-11 91-47 126-35 37-79 56-139 56C92 397 0 308 0 199S92 0 201 0c61 0 104 24 137 55l-39 38A142 142 0 0059 199c0 80 63 144 142 144 52 0 82-21 101-40 15-15 25-37 29-67z" />
+                                <path fill="#ea4335"
+                                    d="M664 269c0 74-58 128-129 128s-128-54-128-128 58-128 128-128 129 54 129 128m-57 0c0-46-33-77-72-77s-72 31-72 77 34 78 72 78 72-32 72-78" />
+                                <path fill="#fbbc04"
+                                    d="M944 269c0 74-58 128-129 128s-128-54-128-128 58-128 128-128 129 54 129 128m-57 0c0-46-33-77-72-77s-72 31-72 77 34 78 72 78 72-32 72-78" />
+                                <path fill="#4285f4"
+                                    d="M1212 149v230c0 94-56 133-122 133-62 0-99-42-113-76l49-20c9 21 30 46 64 46 43 0 69-27 69-75v-19h-2a87 87 0 01-68 29c-63 0-122-56-122-127 0-72 59-129 122-129 31 0 55 14 68 29h2v-21zm-49 121c0-45-30-78-69-78-38 0-71 33-71 78 0 44 33 77 71 77 39 0 69-33 69-77" />
+                                <path fill="#34a853" d="M1251 15h56v375h-56z" />
+                                <path fill="#ea4335"
+                                    d="M1524 311l44 30c-14 20-48 56-107 56-73 0-127-56-127-128 0-76 55-128 121-128s99 53 109 82l6 14-171 71c13 26 33 39 62 39s48-14 63-36m-134-46l114-47c-6-16-25-27-47-27-29 0-69 25-67 74" />
+                            </g>
+                        </svg>
+                        <span class="text-sm font-bold text-slate-800 tracking-tight sr-only">Google Workspace</span>
+                    </div>
+                    <div
+                        class="flex-shrink-0 flex items-center gap-3 bg-white border border-slate-100 px-6 py-3.5 rounded-xl shadow-sm hover:border-slate-300 transition-all min-w-[140px]">
+                        <!-- Microsoft (4-color squares) -->
+                        <svg class="h-6 w-auto" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0 0h15.206v15.206H0z" fill="#f25022" />
+                            <path d="M16.794 0H32v15.206H16.794z" fill="#7fba00" />
+                            <path d="M0 16.794h15.206V32H0z" fill="#00a4ef" />
+                            <path d="M16.794 16.794H32V32H16.794z" fill="#ffb900" />
+                        </svg>
+                        <span class="text-sm font-bold text-slate-800 tracking-tight">Microsoft</span>
+                    </div>
+                    <div
+                        class="flex-shrink-0 flex items-center gap-3 bg-white border border-slate-100 px-6 py-3.5 rounded-xl shadow-sm hover:border-slate-300 transition-all min-w-[140px]">
+                        <!-- Slack (4-color hashtag) -->
+                        <svg class="h-6 w-auto" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="m 17.77 40.3 c 0 -3.7 2.8 -6.7 6.3 -6.7 s 6.3 3 6.3 6.7 v 16.5 c 0 3.7 -2.8 6.7 -6.3 6.7 s -6.3 -3 -6.3 -6.7 z"
+                                fill="#e01e5a" />
+                            <path
+                                d="m 40.3 46.2 c -3.7 0 -6.7 -2.8 -6.7 -6.3 s 3 -6.3 6.7 -6.3 h 16.5 c 3.7 0 6.7 2.8 6.7 6.3 s -3 6.3 -6.7 6.3 z"
+                                fill="#ecb22d" />
+                            <path
+                                d="m 33.5 7.1 c 0 -3.7 2.8 -6.7 6.3 -6.7 s 6.3 3 6.3 6.7 v 16.5 c 0 3.7 -2.8 6.7 -6.3 6.7 s -6.3 -3 -6.3 -6.7 z"
+                                fill="#2fb67c" />
+                            <path
+                                d="m 7.1 30.4 c -3.7 0 -6.7 -2.8 -6.7 -6.3 s 3 -6.3 6.7 -6.3 h 16.5 c 3.7 0 6.7 2.8 6.7 6.3 s -3 6.3 -6.7 6.3 z"
+                                fill="#36c5f1" />
+                            <g transform="matrix(0.79,0,0,0.79,-0.39,-0.39)">
+                                <path d="m 43,73 a 8,8 0 0 0 8,8 c 4.4,0 8,-3.5 8,-8 a 8,8 0 0 0 -8,-8 h -8 z"
+                                    fill="#ecb22d" />
+                                <path d="m 73,39 h -8 v -8 c 0,-4.4 3.5,-8 8,-8 s 8,3.5 8,8 c 0,4.4 -3.5,8 -8,8 z"
+                                    fill="#2fb67c" />
+                                <path d="m 9,43 h 8 v 8 c 0,4.4 -3.5,8 -8,8 s -8,-3.5 -8,-8 c 0,-4.4 3.5,-8 8,-8 z"
+                                    fill="#e01e5a" />
+                                <path d="m 39,9 v 8 H 31 a 8,8 0 0 1 -8,-8 c 0,-4.4 3.5,-8 8,-8 s 8,3.5 8,8 z"
+                                    fill="#36c5f1" />
+                            </g>
+                        </svg>
+                        <span class="text-sm font-bold text-slate-800 tracking-tight">Slack</span>
+                    </div>
+                    <div
+                        class="flex-shrink-0 flex items-center gap-3 bg-white border border-slate-100 px-6 py-3.5 rounded-xl shadow-sm hover:border-slate-300 transition-all min-w-[140px]">
+                        <!-- WhatsApp (Brand Green) -->
+                        <svg class="h-7 w-auto" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M16 0.01C7.17 0.01 0 7.18 0 16c0 2.82 0.73 5.57 2.12 7.99l-2.12 7.73 7.91-2.08A15.87 15.87 0 0 0 16 31.99c8.82 0 16-7.17 16-16s-7.18-15.99-16-15.99H16z"
+                                fill="#25D366" />
+                            <path
+                                d="M11.54 8.13c-.3-.74-.55-.77-1.02-.8l-.54-.02c-.61 0-1.25.18-1.64.57-.47.48-1.64 1.6-1.64 3.89s1.67 4.51 1.9 4.82c.24.3 3.26 5.09 7.96 7.03 3.68 1.52 4.77 1.38 5.6 1.2 1.22-.26 2.75-1.17 3.14-2.26s.39-2.02.27-2.22-.42-.3-.89-.55-2.75-1.36-3.19-1.51c-.42-.16-.83-.1-1.15.35-.45.63-.89 1.27-1.25 1.65-.28.3-.74.34-1.13.18-.52-.22-1.96-.72-3.75-2.31-1.38-1.23-2.32-2.76-2.6-3.22-.27-.47-.03-.74.19-1 .24-.29.46-.5.7-.77s.37-.41.52-.73c.16-.3.05-.63-.07-.87s-1.05-2.53-1.44-3.46z"
+                                fill="#fefefe" />
+                        </svg>
+                        <span class="text-sm font-bold text-slate-800 tracking-tight">WhatsApp</span>
+                    </div>
+                    <div
+                        class="flex-shrink-0 flex items-center gap-3 bg-white border border-slate-100 px-6 py-3.5 rounded-xl shadow-sm hover:border-slate-300 transition-all min-w-[140px]">
+                        <!-- Telegram (Official Blue) -->
+                        <svg class="h-7 w-auto" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="16" cy="16" r="16" fill="#26A5E4" />
+                            <path d="M7 16l4 1.5M16 11l-9 5 18-8-15 13v5l3-4.5 5 3.5 3-14-18 8z" fill="#fff" />
+                        </svg>
+                        <span class="text-sm font-bold text-slate-800 tracking-tight">Telegram</span>
+                    </div>
+                    <!-- Duplicate for loop -->
+                    <div
+                        class="flex-shrink-0 flex items-center gap-3 bg-white border border-slate-100 px-6 py-3.5 rounded-xl shadow-sm hover:border-slate-300 transition-all min-w-[240px]">
+                        <svg class="h-6 w-auto" viewBox="0 0 3995 512" xmlns="http://www.w3.org/2000/svg">
+                            <path fill="#5f6368"
+                                d="M2087 39h47l-94 350h-46l-75-231h-2l-76 231h-46l-97-350h47l74 275h2l76-228h42l76 228h2l70-275z" />
+                            <g fill="#5f6368">
+                                <path
+                                    d="M2129 269q0-55 35-91t89-36 88 36q35 36 35 91 0 56-35 92t-88 36-89-36q-35-36-35-92m45 0q0 39 23 63t56 24q33 0 56-24t22-63q0-38-22-62-23-24-56-24t-56 24q-23 24-23 62M2453 389h-45V149h43v40h2q7-20 29-33t42-14q19 0 33 6l-14 44q-8-3-26-3-26 0-45 20t-19 48zM2789 389h-55l-74-113-37 37v76h-45V39h45v216l104-106h57v2l-93 93 98 143v2z" />
+                                <path
+                                    d="M2984 323q0 31-27 53t-70 21q-36 0-63-19a104 104 0 01-39-49l40-17q9 21 25 33a62 62 0 0037 12q22 0 36-9t15-22q0-23-35-34l-42-10q-70-18-70-68 0-33 27-53t68-20q32 0 58 16t36 40l-40 17a51 51 0 00-22-24 70 70 0 00-35-8 58 58 0 00-32 8q-14 9-14 22 0 21 39 29l36 10q72 17 72 72M3140 397q-26 0-48-11t-33-30h-2l2 33v106h-45V149h43v34h2q11-19 33-30t49-11q47 0 80 37 34 37 34 90 0 54-34 91-33 37-80 37m-8-41q33 0 55-24t22-63q0-37-22-62t-55-24q-33 0-55 24-21 25-21 62 0 39 21 63 22 24 55 24M3378 142q50 0 79 26t29 73v148h-43v-33h-2q-28 41-75 41-39 0-66-23t-27-59q0-37 28-59t76-22q40 0 66 14v-10q0-24-19-40a64 64 0 00-43-16q-38 0-60 32l-40-25q33-47 97-47m-58 174q0 18 15 29t35 12q28 0 50-21t23-49q-21-17-59-17-27 0-46 13t-18 33M3639 397q-54 0-89-36-35-37-35-92t35-91q35-36 89-36 37 0 64 18t41 51l-41 17q-19-45-67-45-31 0-54 25-22 25-22 61t22 62q23 25 54 25 49 0 69-45l41 17q-14 33-42 51t-65 18M3881 397q-53 0-87-36t-34-92q0-54 33-91t85-36q54 0 85 34t32 97v5h-189q1 35 23 57t54 21q43 0 68-43l40 20a120 120 0 01-45 47q-28 17-65 17m-72-157h138q-2-25-20-41t-50-16q-25 0-43 15t-25 42" />
+                            </g>
+                            <g>
+                                <path fill="#4285f4"
+                                    d="M202 236v-55h182a178 178 0 013 34c0 40-11 91-47 126-35 37-79 56-139 56C92 397 0 308 0 199S92 0 201 0c61 0 104 24 137 55l-39 38A142 142 0 0059 199c0 80 63 144 142 144 52 0 82-21 101-40 15-15 25-37 29-67z" />
+                                <path fill="#ea4335"
+                                    d="M664 269c0 74-58 128-129 128s-128-54-128-128 58-128 128-128 129 54 129 128m-57 0c0-46-33-77-72-77s-72 31-72 77 34 78 72 78 72-32 72-78" />
+                                <path fill="#fbbc04"
+                                    d="M944 269c0 74-58 128-129 128s-128-54-128-128 58-128 128-128 129 54 129 128m-57 0c0-46-33-77-72-77s-72 31-72 77 34 78 72 78 72-32 72-78" />
+                                <path fill="#4285f4"
+                                    d="M1212 149v230c0 94-56 133-122 133-62 0-99-42-113-76l49-20c9 21 30 46 64 46 43 0 69-27 69-75v-19h-2a87 87 0 01-68 29c-63 0-122-56-122-127 0-72 59-129 122-129 31 0 55 14 68 29h2v-21zm-49 121c0-45-30-78-69-78-38 0-71 33-71 78 0 44 33 77 71 77 39 0 69-33 69-77" />
+                                <path fill="#34a853" d="M1251 15h56v375h-56z" />
+                                <path fill="#ea4335"
+                                    d="M1524 311l44 30c-14 20-48 56-107 56-73 0-127-56-127-128 0-76 55-128 121-128s99 53 109 82l6 14-171 71c13 26 33 39 62 39s48-14 63-36m-134-46l114-47c-6-16-25-27-47-27-29 0-69 25-67 74" />
+                            </g>
+                        </svg>
+                        <span class="text-sm font-bold text-slate-800 tracking-tight sr-only">Google Workspace</span>
+                    </div>
+                    <div
+                        class="flex-shrink-0 flex items-center gap-3 bg-white border border-slate-100 px-6 py-3.5 rounded-xl shadow-sm hover:border-slate-300 transition-all min-w-[140px]">
+                        <svg class="h-6 w-auto" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0 0h15.206v15.206H0z" fill="#f25022" />
+                            <path d="M16.794 0H32v15.206H16.794z" fill="#7fba00" />
+                            <path d="M0 16.794h15.206V32H0z" fill="#00a4ef" />
+                            <path d="M16.794 16.794H32V32H16.794z" fill="#ffb900" />
+                        </svg>
+                        <span class="text-sm font-bold text-slate-800 tracking-tight">Microsoft</span>
+                    </div>
+                    <div
+                        class="flex-shrink-0 flex items-center gap-3 bg-white border border-slate-100 px-6 py-3.5 rounded-xl shadow-sm hover:border-slate-300 transition-all min-w-[140px]">
+                        <svg class="h-6 w-auto" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="m 17.77 40.3 c 0 -3.7 2.8 -6.7 6.3 -6.7 s 6.3 3 6.3 6.7 v 16.5 c 0 3.7 -2.8 6.7 -6.3 6.7 s -6.3 -3 -6.3 -6.7 z"
+                                fill="#e01e5a" />
+                            <path
+                                d="m 40.3 46.2 c -3.7 0 -6.7 -2.8 -6.7 -6.3 s 3 -6.3 6.7 -6.3 h 16.5 c 3.7 0 6.7 2.8 6.7 6.3 s -3 6.3 -6.7 6.3 z"
+                                fill="#ecb22d" />
+                            <path
+                                d="m 33.5 7.1 c 0 -3.7 2.8 -6.7 6.3 -6.7 s 6.3 3 6.3 6.7 v 16.5 c 0 3.7 -2.8 6.7 -6.3 6.7 s -6.3 -3 -6.3 -6.7 z"
+                                fill="#2fb67c" />
+                            <path
+                                d="m 7.1 30.4 c -3.7 0 -6.7 -2.8 -6.7 -6.3 s 3 -6.3 6.7 -6.3 h 16.5 c 3.7 0 6.7 2.8 6.7 6.3 s -3 6.3 -6.7 6.3 z"
+                                fill="#36c5f1" />
+                            <g transform="matrix(0.79,0,0,0.79,-0.39,-0.39)">
+                                <path d="m 43,73 a 8,8 0 0 0 8,8 c 4.4,0 8,-3.5 8,-8 a 8,8 0 0 0 -8,-8 h -8 z"
+                                    fill="#ecb22d" />
+                                <path d="m 73,39 h -8 v -8 c 0,-4.4 3.5,-8 8,-8 s 8,3.5 8,8 c 0,4.4 -3.5,8 -8,8 z"
+                                    fill="#2fb67c" />
+                                <path d="m 9,43 h 8 v 8 c 0,4.4 -3.5,8 -8,8 s -8,-3.5 -8,-8 c 0,-4.4 3.5,-8 8,-8 z"
+                                    fill="#e01e5a" />
+                                <path d="m 39,9 v 8 H 31 a 8,8 0 0 1 -8,-8 c 0,-4.4 3.5,-8 8,-8 s 8,3.5 8,8 z"
+                                    fill="#36c5f1" />
+                            </g>
+                        </svg>
+                        <span class="text-sm font-bold text-slate-800 tracking-tight">Slack</span>
+                    </div>
+                    <div
+                        class="flex-shrink-0 flex items-center gap-3 bg-white border border-slate-100 px-6 py-3.5 rounded-xl shadow-sm hover:border-slate-300 transition-all min-w-[140px]">
+                        <!-- WhatsApp (Brand Green) -->
+                        <svg class="h-7 w-auto" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M16 0.01C7.17 0.01 0 7.18 0 16c0 2.82 0.73 5.57 2.12 7.99l-2.12 7.73 7.91-2.08A15.87 15.87 0 0 0 16 31.99c8.82 0 16-7.17 16-16s-7.18-15.99-16-15.99H16z"
+                                fill="#25D366" />
+                            <path
+                                d="M11.54 8.13c-.3-.74-.55-.77-1.02-.8l-.54-.02c-.61 0-1.25.18-1.64.57-.47.48-1.64 1.6-1.64 3.89s1.67 4.51 1.9 4.82c.24.3 3.26 5.09 7.96 7.03 3.68 1.52 4.77 1.38 5.6 1.2 1.22-.26 2.75-1.17 3.14-2.26s.39-2.02.27-2.22-.42-.3-.89-.55-2.75-1.36-3.19-1.51c-.42-.16-.83-.1-1.15.35-.45.63-.89 1.27-1.25 1.65-.28.3-.74.34-1.13.18-.52-.22-1.96-.72-3.75-2.31-1.38-1.23-2.32-2.76-2.6-3.22-.27-.47-.03-.74.19-1 .24-.29.46-.5.7-.77s.37-.41.52-.73c.16-.3.05-.63-.07-.87s-1.05-2.53-1.44-3.46z"
+                                fill="#fefefe" />
+                        </svg>
+                        <span class="text-sm font-bold text-slate-800 tracking-tight">WhatsApp</span>
+                    </div>
+                    <div
+                        class="flex-shrink-0 flex items-center gap-3 bg-white border border-slate-100 px-6 py-3.5 rounded-xl shadow-sm hover:border-slate-300 transition-all min-w-[140px]">
+                        <!-- Telegram (Official Blue) -->
+                        <svg class="h-7 w-auto" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="16" cy="16" r="16" fill="#26A5E4" />
+                            <path d="M7 16l4 1.5M16 11l-9 5 18-8-15 13v5l3-4.5 5 3.5 3-14-18 8z" fill="#fff" />
+                        </svg>
+                        <span class="text-sm font-bold text-slate-800 tracking-tight">Telegram</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA Section (Extracted from footer for consistency) -->
+    <section class="py-8 px-6 bg-white reveal">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-4xl md:text-5xl font-extrabold mb-10 tracking-tight text-slate-900">¿Listo para sistematizar
+                tu éxito?</h2>
+            <a href="contacto.html"
+                class="w-full sm:w-auto bg-slate-900 text-white font-bold py-5 px-10 rounded-full inline-flex items-center justify-center gap-2 hover:bg-slate-800 transition-all shadow-xl mx-auto group">
+                <span class="text-lg">Analizar mi negocio</span>
+                <span
+                    class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- Final Footer -->
+    <!-- Final Footer -->
+    <footer
+        class="pt-16 pb-12 px-6 bg-slate-900 text-white rounded-t-[3rem] mt-12 relative overflow-hidden text-center sm:text-left">
+        <!-- Animated Circuit/Lines Background -->
+        <div class="node-network" style="opacity: 0.15; z-index: 0;">
+            <svg preserveAspectRatio="xMidYMid slice" viewBox="0 0 1000 600" class="w-full h-full">
+                <!-- Grid Lines (Subtle Architecture) -->
+                <path d="M 0 150 L 1000 150 M 0 300 L 1000 300 M 0 450 L 1000 450" stroke="#334155" stroke-width="0.8"
+                    stroke-dasharray="4 4" fill="none" opacity="0.6"></path>
+                <path d="M 250 0 L 250 600 M 500 0 L 500 600 M 750 0 L 750 600" stroke="#334155" stroke-width="0.8"
+                    stroke-dasharray="4 4" fill="none" opacity="0.6"></path>
+
+                <!-- Structural Paths -->
+                <path class="node-path" d="M -50 100 L 250 100 L 400 250 L 600 250 L 750 150 L 1050 150"></path>
+                <path class="node-path" d="M -50 400 L 200 400 L 350 250 L 500 250 L 650 450 L 1050 450"></path>
+                <path class="node-path" d="M 250 100 L 250 200 L 500 400 L 500 650"></path>
+                <path class="node-path" d="M 750 150 L 750 300 L 650 450"></path>
+
+                <!-- Flow Paths (Animated Data Packets) -->
+                <path class="node-flow" d="M -50 100 L 250 100 L 400 250 L 600 250 L 750 150 L 1050 150"
+                    pathLength="100"></path>
+                <path class="node-flow delayed" d="M -50 400 L 200 400 L 350 250 L 500 250 L 650 450 L 1050 450"
+                    pathLength="100" style="animation-duration: 5s;"></path>
+                <path class="node-flow" d="M 250 100 L 250 200 L 500 400 L 500 650" pathLength="100"
+                    style="animation-duration: 3.5s;"></path>
+                <path class="node-flow delayed" d="M 750 150 L 750 300 L 650 450" pathLength="100"
+                    style="animation-duration: 4.5s;"></path>
+
+                <!-- Static Connecting Nodes (Dots) -->
+                <circle cx="250" cy="100" r="3" class="node-dot"></circle>
+                <circle cx="400" cy="250" r="3" class="node-dot yellow"></circle>
+                <circle cx="600" cy="250" r="3" class="node-dot"></circle>
+                <circle cx="750" cy="150" r="3" class="node-dot yellow"></circle>
+                <circle cx="200" cy="400" r="3" class="node-dot yellow"></circle>
+                <circle cx="350" cy="250" r="3" class="node-dot"></circle>
+                <circle cx="650" cy="450" r="3" class="node-dot yellow"></circle>
+                <circle cx="500" cy="400" r="3" class="node-dot"></circle>
+            </svg>
+        </div>
+
+        <!-- Dynamic Yellow Glow Background -->
+        <div class="absolute -top-24 left-0 w-full h-64 bg-yellow-400/5 blur-[120px] pointer-events-none z-0"></div>
+        <div class="absolute -bottom-24 -right-24 size-96 bg-blue-500/5 blur-[120px] pointer-events-none z-0"></div>
+
+        <div class="max-w-6xl mx-auto relative z-10">
+            <!-- Global Footer Content -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-12">
+                <!-- Left Column: Logo & Mission -->
+                <div class="flex flex-col items-center md:items-start gap-8">
+                    <div class="relative group">
+                        <!-- Branding Aura/Glow -->
+                        <div
+                            class="absolute -inset-4 bg-yellow-400/10 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none">
+                        </div>
+
+                        <!-- Logo Container (Premium Badge) -->
+                        <div
+                            class="relative bg-white p-2 rounded-full inline-flex items-center justify-center shadow-xl shadow-yellow-400/5 hover:shadow-yellow-400/20 transition-all duration-500 animate-float-gentle active:scale-95 group-hover:scale-110">
+                            <img src="../Imputs/Juanchi Notion Avatar Transparente.png" alt="STRUCTOR"
+                                class="w-20 h-auto md:w-24" />
+                        </div>
+                    </div>
+                    <p class="text-slate-400 max-w-sm text-sm leading-relaxed text-center md:text-left">
+                        Eliminamos el caos operativo diseñando arquitecturas inteligentes que organizan, automatizan y
+                        optimizan la gestión de tu negocio.
+                    </p>
+                </div>
+
+                <!-- Right Column: Navigation & Social -->
+                <div class="grid grid-cols-2 sm:grid-cols-3 gap-8 md:justify-items-end z-10">
+                    <!-- Navigation -->
+                    <div class="flex flex-col gap-4">
+                        <span class="text-xs font-bold text-slate-500 uppercase tracking-widest">Navegación</span>
+                        <a href="index.html#inicio"
+                            class="text-sm text-slate-300 hover:text-yellow-400 transition-colors">Inicio</a>
+                        <a href="index.html#sobre-mi"
+                            class="text-sm text-slate-300 hover:text-yellow-400 transition-colors">Sobre
+                            mí</a>
+                        <a href="index.html#servicios"
+                            class="text-sm text-slate-300 hover:text-yellow-400 transition-colors">Servicios</a>
+                        <a href="blog.html"
+                            class="text-sm text-slate-300 hover:text-yellow-400 transition-colors">Blog</a>
+                    </div>
+
+                    <!-- Company -->
+                    <div class="flex flex-col gap-4">
+                        <span class="text-xs font-bold text-slate-500 uppercase tracking-widest">Contacto</span>
+                        <a href="contacto.html"
+                            class="text-sm text-slate-300 hover:text-yellow-400 transition-colors">Formulario</a>
+                    </div>
+
+                    <!-- Social -->
+                    <div class="flex flex-col gap-4">
+                        <span class="text-xs font-bold text-slate-500 uppercase tracking-widest">Sígueme</span>
+                        <a href="https://www.linkedin.com/in/juan-andr%C3%A9s-ib%C3%A1%C3%B1ez-pasarella-structor/"
+                            target="_blank"
+                            class="flex items-center gap-2 text-sm text-slate-300 hover:text-yellow-400 transition-colors">
+                            <svg class="size-5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                            </svg>
+                            LinkedIn
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Row: Copyright -->
+            <div
+                class="pt-8 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-500 font-medium uppercase tracking-widest">
+                <span>© 2026 STRUCTOR | Systems & Automation</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive Scripts -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // Infinite Marquee Loop Gap Fix
+            // Duplicates the original marquee content enough times to ensure no gaps are 
+            // visible even on ultrawide monitors when translating by -50%.
+            const marquees = document.querySelectorAll('.animate-marquee, .animate-marquee-slow');
+            marquees.forEach(marquee => {
+                const content = marquee.innerHTML;
+                for (let i = 0; i < 4; i++) {
+                    marquee.innerHTML += content;
+                }
+            });
+
+            // Mouse Spotlight Logic
+            const spotlight = document.getElementById('mouse-spotlight');
+            let mouseX = 0, mouseY = 0;
+            let spotlightX = 0, spotlightY = 0;
+
+            document.addEventListener('mousemove', (e) => {
+                mouseX = e.clientX;
+                mouseY = e.clientY;
+                if (spotlight && (spotlight.style.opacity === '0' || !spotlight.style.opacity)) {
+                    spotlight.style.opacity = '1';
+                }
+            });
+
+            function animateSpotlight() {
+                spotlightX += (mouseX - spotlightX) * 0.1;
+                spotlightY += (mouseY - spotlightY) * 0.1;
+
+                if (spotlight) {
+                    spotlight.style.left = `${spotlightX}px`;
+                    spotlight.style.top = `${spotlightY}px`;
+                }
+
+                requestAnimationFrame(animateSpotlight);
+            }
+            animateSpotlight();
+
+            // New Integrated Premium Observer
+            const premiumObserverOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const premiumObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // Activate general reveals, text-masking, image scaling, and stagger groups
+                        entry.target.classList.add('active');
+
+                        // Extra step for grouping triggers (so we trigger children directly if needed)
+                        if (entry.target.classList.contains('text-mask-container')) {
+                            entry.target.querySelectorAll('.text-mask-child').forEach(c => c.classList.add('active'));
+                        }
+                        if (entry.target.classList.contains('img-scale-container')) {
+                            entry.target.querySelectorAll('.img-scale-child').forEach(c => c.classList.add('active'));
+                        }
+                    } else {
+                        // Reset animations when scrolled out of view to replay continuously
+                        entry.target.classList.remove('active');
+
+                        if (entry.target.classList.contains('text-mask-container')) {
+                            entry.target.querySelectorAll('.text-mask-child').forEach(c => c.classList.remove('active'));
+                        }
+                        if (entry.target.classList.contains('img-scale-container')) {
+                            entry.target.querySelectorAll('.img-scale-child').forEach(c => c.classList.remove('active'));
+                        }
+                    }
+                });
+            }, premiumObserverOptions);
+
+            // Observe all elements needing animations
+            const targets = document.querySelectorAll('.reveal, .text-mask-container, .img-scale-container, .stagger-group');
+            targets.forEach(el => premiumObserver.observe(el));
+
+            // Small delay for Hero Elements so they animate exactly on load (since they are at the top)
+            setTimeout(() => {
+                const heroItems = document.querySelectorAll('#inicio .text-mask-child, #inicio .img-scale-child');
+                heroItems.forEach(item => item.classList.add('active'));
+            }, 100);
+
+            // True Parallax Effect for SVG Node Network
+            const nodeNetwork = document.querySelector('.node-network');
+            const sobreMiSection = document.getElementById('sobre-mi');
+
+            if (nodeNetwork && sobreMiSection) {
+                window.addEventListener('scroll', () => {
+                    const rect = sobreMiSection.getBoundingClientRect();
+                    // Only calculate when section is visible in viewport
+                    if (rect.top < window.innerHeight && rect.bottom > 0) {
+                        // Move background down slightly slower, and offset it upwards so it starts higher
+                        const parallaxOffset = ((window.innerHeight - rect.top) * 0.15) - 150;
+                        nodeNetwork.style.transform = `translateY(${parallaxOffset}px)`;
+                    }
+                });
+            }
+
+        });
+    </script>
+</body>
+
+</html>

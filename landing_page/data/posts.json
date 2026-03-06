@@ -1,0 +1,24 @@
+[
+    {
+        "id": "1",
+        "title": "Cómo Notion cambió la arquitectura operativa de mi agencia",
+        "slug": "notion-arquitectura-operativa",
+        "category": "Notion",
+        "date": "2026-03-05",
+        "summary": "Descubre los 3 pilares fundamentales para organizar el flujo de clientes sin depender de hojas de cálculo infinitas.",
+        "image": "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=1200",
+        "readingTime": "5 min lectura",
+        "contentHtml": "<p class=\"text-xl font-medium text-slate-800 leading-relaxed italic mb-12\">\"La diferencia entre un negocio estancado y uno escalable no es el talento de su equipo, sino la calidad de sus sistemas invisibles.\"</p><p>Hace dos años, nuestra agencia era un caos de hojas de cálculo, mensajes de WhatsApp y procesos que solo vivían en mi cabeza. Cada nuevo cliente era una celebración seguida de un suspiro de agotamiento.</p><h2>El mito de la \"herramienta perfecta\"</h2><p>Probamos todo. Desde CRMs carísimos hasta apps minimalistas. Nada se adaptaba. Fue entonces cuando entendimos que no necesitábamos una aplicación; necesitábamos una <strong>arquitectura operativa dinámica</strong>. Notion no fue la solución, fue el lienzo donde diseñamos el sistema.</p><blockquote>Automatizar lo que no funciona solo sirve para que el caos sea más rápido. Primero estandariza, luego optimiza, y después automatiza.</blockquote><h3>1. Centralización Total</h3><p>El primer paso fue eliminar los 'silos de información'. Si un dato no estaba en la base de datos maestra de Notion, no existía. Esto permitió que cualquier miembro del equipo supiera el estado exacto de un proyecto en menos de 10 segundos.</p>"
+    },
+    {
+        "id": "2",
+        "title": "El costo invisible de los procesos manuales en el B2B",
+        "slug": "costo-procesos-manuales-b2b",
+        "category": "Estrategia",
+        "date": "2026-03-02",
+        "summary": "Calcula cuánto tiempo y dinero pierde tu equipo en tareas repetitivas y cómo recuperarlo en menos de un trimestre.",
+        "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1200",
+        "readingTime": "8 min lectura",
+        "contentHtml": "<p>Vivir en procesos manuales es como intentar llenar un cubo con agujeros. No importa cuánto talento inyectes, la energía se drena.</p><h2>La paradoja del crecimiento</h2><p>Muchos fundadores creen que contratar más gente soluciona el caos. Error. El caos se multiplica geométricamente con cada nueva contratación si no hay procesos claros.</p>"
+    }
+]
