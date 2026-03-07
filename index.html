@@ -404,8 +404,8 @@
 
             /* Fix Hero Title cutting off or overflowing */
             .text-4xl {
-                font-size: 1.7rem !important;
-                line-height: 2.1rem !important;
+                font-size: 1.6rem !important;
+                line-height: 1.9rem !important;
             }
 
             /* Responsive Navigation for Mobile */
@@ -417,39 +417,16 @@
             }
 
             .nav-link {
-                padding: 0.5rem 0.4rem;
+                padding: 0.5rem 0.35rem;
+                /* Tighter for "Sobre mí" fit */
                 font-size: 0.65rem;
-                /* Slightly smaller for better fit */
-                letter-spacing: -0.01em;
+                letter-spacing: -0.02em;
                 white-space: nowrap;
             }
 
             /* Adjust Hero Tagline */
             .text-2xl {
                 font-size: 1.1rem !important;
-            }
-
-            /* Multiline-aware Dynamic Highlighter */
-            .mobile-highlight {
-                background: linear-gradient(120deg, rgba(254, 240, 138, 0.5) 0%, rgba(254, 240, 138, 0.5) 100%);
-                background-repeat: no-repeat;
-                background-size: 0% 0.4em;
-                background-position: 0 85%;
-                transition: background-size 1.2s cubic-bezier(0.16, 1, 0.3, 1);
-                display: inline !important;
-                box-decoration-break: clone;
-                -webkit-box-decoration-break: clone;
-            }
-
-            .active .mobile-highlight {
-                background-size: 100% 0.4em !important;
-            }
-
-            /* Force hide the bar on mobile */
-            .highlight-bar {
-                display: none !important;
-                visibility: hidden !important;
-                height: 0 !important;
             }
 
             /* Spacing adjustments for sections */
@@ -473,6 +450,32 @@
                 align-items: center !important;
                 text-align: center !important;
             }
+        }
+
+        /* Unified Multiline Highlighter */
+        .premium-highlight {
+            background: linear-gradient(120deg, rgba(254, 240, 138, 0.5) 0%, rgba(254, 240, 138, 0.5) 100%);
+            background-repeat: no-repeat;
+            background-size: 0% 0.35em;
+            background-position: 0 88%;
+            transition: background-size 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+            display: inline !important;
+            box-decoration-break: clone;
+            -webkit-box-decoration-break: clone;
+        }
+
+        .active .premium-highlight,
+        .active.premium-highlight {
+            background-size: 100% 0.35em !important;
+        }
+
+        .highlight-blue {
+            background: linear-gradient(120deg, rgba(219, 234, 254, 0.6) 0%, rgba(219, 234, 254, 0.6) 100%);
+        }
+
+        /* Hide the old bar globally since we use the new system */
+        .highlight-bar {
+            display: none !important;
         }
     </style>
 </head>
@@ -515,11 +518,8 @@
             <!-- Highlighted Tagline -->
             <h2 class="text-2xl sm:text-3xl font-medium text-slate-800 mb-12 relative inline-block text-mask-container">
                 <span class="text-mask-child relative inline sm:block" id="hero-title-2">
-                    <span class="relative z-10 mobile-highlight">Elimina el caos operativo. Automatiza lo
+                    <span class="relative z-10 premium-highlight">Elimina el caos operativo. Automatiza lo
                         repetitivo.</span>
-                    <div
-                        class="highlight-bar absolute bottom-1 left-0 w-full h-3 bg-yellow-100 -z-0 rounded-sm mix-blend-multiply">
-                    </div>
                 </span>
             </h2>
 
@@ -558,10 +558,7 @@
                 <!-- Lo Habitual -->
                 <div class="bg-white rounded-3xl p-8 border border-slate-200 shadow-sm flex flex-col items-center">
                     <span class="text-2xl font-extrabold text-slate-900 mb-8 relative inline-block text-mask-container">
-                        <span class="relative z-10 text-mask-child">Lo habitual</span>
-                        <div
-                            class="highlight-bar absolute bottom-1 left-0 w-full h-3 bg-blue-100 -z-0 rounded-sm mix-blend-multiply">
-                        </div>
+                        <span class="relative z-10 text-mask-child premium-highlight highlight-blue">Lo habitual</span>
                     </span>
 
                     <!-- Chaotic Animation -->
@@ -594,10 +591,7 @@
                 <div
                     class="bg-white rounded-3xl p-8 border-2 border-slate-900 shadow-xl flex flex-col items-center relative overflow-hidden">
                     <span class="text-2xl font-extrabold text-slate-900 mb-8 relative inline-block text-mask-container">
-                        <span class="relative z-10 text-mask-child">La Solución</span>
-                        <div
-                            class="highlight-bar absolute bottom-1 left-0 w-full h-3 bg-yellow-100 -z-0 rounded-sm mix-blend-multiply">
-                        </div>
+                        <span class="relative z-10 text-mask-child premium-highlight">La Solución</span>
                     </span>
 
                     <!-- Integrated System Animation -->

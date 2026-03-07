@@ -47,37 +47,22 @@
         @media (max-width: 640px) {
             .pill-nav {
                 width: 98vw;
-                padding: 0.15rem;
+                padding: 0.1rem;
                 justify-content: center;
-                gap: 0;
+                gap: 2px;
             }
 
             .nav-link {
-                padding: 0.5rem 0.45rem;
-                font-size: 0.7rem;
+                padding: 0.5rem 0.35rem;
+                font-size: 0.65rem;
+                letter-spacing: -0.02em;
                 white-space: nowrap;
             }
 
             section,
             main {
-                padding-left: 1.25rem !important;
-                padding-right: 1.25rem !important;
-            }
-
-            /* Multiline Highlights */
-            .mobile-highlight {
-                background: linear-gradient(120deg, rgba(254, 240, 138, 0.5) 0%, rgba(254, 240, 138, 0.5) 100%);
-                background-repeat: no-repeat;
-                background-size: 0% 40%;
-                background-position: 0 85%;
-                transition: background-size 1s cubic-bezier(0.16, 1, 0.3, 1);
-                display: inline;
-                box-decoration-break: clone;
-                -webkit-box-decoration-break: clone;
-            }
-
-            .reveal.active .mobile-highlight {
-                background-size: 100% 40%;
+                padding-left: 1.5rem !important;
+                padding-right: 1.5rem !important;
             }
 
             /* Center Footer on Mobile */
@@ -90,9 +75,28 @@
             }
 
             .footer-col-center {
+                display: flex !important;
+                flex-direction: column !important;
                 align-items: center !important;
                 text-align: center !important;
             }
+        }
+
+        /* Unified Multiline Highlighter */
+        .premium-highlight {
+            background: linear-gradient(120deg, rgba(254, 240, 138, 0.5) 0%, rgba(254, 240, 138, 0.5) 100%);
+            background-repeat: no-repeat;
+            background-size: 0% 0.35em;
+            background-position: 0 88%;
+            transition: background-size 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+            display: inline !important;
+            box-decoration-break: clone;
+            -webkit-box-decoration-break: clone;
+        }
+
+        .active .premium-highlight,
+        .active.premium-highlight {
+            background-size: 100% 0.35em !important;
         }
 
         .faq-content {
@@ -345,7 +349,7 @@
                     <span
                         class="text-blue-500 font-bold text-sm tracking-[0.2em] uppercase mb-4 block text-mask-child">CONTACTO</span>
                     <h2 class="text-4xl md:text-5xl font-black text-slate-900 mb-6 tracking-tight text-mask-child"
-                        style="transition-delay: 0.1s;"><span class="mobile-highlight inline sm:block">Diseñemos tu
+                        style="transition-delay: 0.1s;"><span class="premium-highlight inline sm:block">Diseñemos tu
                             arquitectura operativa.</span></h2>
                     <p class="text-lg text-slate-600 leading-relaxed max-w-lg text-mask-child"
                         style="transition-delay: 0.2s;">
