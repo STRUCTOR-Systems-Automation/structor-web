@@ -46,20 +46,52 @@
         /* Mobile Specific Style Adjustments */
         @media (max-width: 640px) {
             .pill-nav {
-                width: 95vw;
-                padding: 0.25rem;
-                justify-content: space-around;
+                width: 98vw;
+                padding: 0.15rem;
+                justify-content: center;
+                gap: 0;
             }
 
             .nav-link {
-                padding: 0.5rem 0.6rem;
-                font-size: 0.75rem;
+                padding: 0.5rem 0.45rem;
+                font-size: 0.7rem;
                 white-space: nowrap;
             }
 
-            section {
-                padding-left: 1rem !important;
-                padding-right: 1rem !important;
+            section,
+            main {
+                padding-left: 1.25rem !important;
+                padding-right: 1.25rem !important;
+            }
+
+            /* Multiline Highlights */
+            .mobile-highlight {
+                background: linear-gradient(120deg, rgba(254, 240, 138, 0.5) 0%, rgba(254, 240, 138, 0.5) 100%);
+                background-repeat: no-repeat;
+                background-size: 0% 40%;
+                background-position: 0 85%;
+                transition: background-size 1s cubic-bezier(0.16, 1, 0.3, 1);
+                display: inline;
+                box-decoration-break: clone;
+                -webkit-box-decoration-break: clone;
+            }
+
+            .reveal.active .mobile-highlight {
+                background-size: 100% 40%;
+            }
+
+            /* Center Footer on Mobile */
+            .footer-grid-mobile {
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: center !important;
+                text-align: center !important;
+                gap: 2.5rem !important;
+            }
+
+            .footer-col-center {
+                align-items: center !important;
+                text-align: center !important;
             }
         }
 
@@ -307,14 +339,14 @@
     <main class="pt-32 pb-20 px-6">
         <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20">
 
-            <!-- Left Side: Copy and FAQ -->
-            <div class="space-y-12">
+            <!-- Left Side: Copy and FAQ (Order 2 on Mobile) -->
+            <div class="space-y-12 order-2 lg:order-1">
                 <div class="reveal active text-mask-container block">
                     <span
                         class="text-blue-500 font-bold text-sm tracking-[0.2em] uppercase mb-4 block text-mask-child">CONTACTO</span>
                     <h2 class="text-4xl md:text-5xl font-black text-slate-900 mb-6 tracking-tight text-mask-child"
-                        style="transition-delay: 0.1s;">Diseñemos tu
-                        arquitectura operativa.</h2>
+                        style="transition-delay: 0.1s;"><span class="mobile-highlight inline sm:block">Diseñemos tu
+                            arquitectura operativa.</span></h2>
                     <p class="text-lg text-slate-600 leading-relaxed max-w-lg text-mask-child"
                         style="transition-delay: 0.2s;">
                         Cuéntame un poco sobre tu negocio y el caos que quieres eliminar. Recibirás una respuesta en
@@ -415,8 +447,9 @@
                 </div>
             </div>
 
-            <!-- Right Side: The Form -->
-            <div class="bg-white rounded-[2.5rem] p-8 md:p-12 shadow-xl border border-slate-100 reveal active relative">
+            <!-- Right Side: The Form (Order 1 on Mobile) -->
+            <div
+                class="bg-white rounded-[2.5rem] p-8 md:p-12 shadow-xl border border-slate-100 reveal active relative order-1 lg:order-2">
                 <form id="lead-form" class="space-y-8">
                     <!-- Section 1: Datos Básicos -->
                     <div class="form-section active" data-section="1">
@@ -681,9 +714,9 @@
                 </div>
 
                 <!-- Right Column: Navigation & Social -->
-                <div class="grid grid-cols-2 sm:grid-cols-3 gap-8 md:justify-items-end z-10">
+                <div class="grid grid-cols-2 sm:grid-cols-3 gap-8 md:justify-items-end z-10 footer-grid-mobile">
                     <!-- Navigation -->
-                    <div class="flex flex-col gap-4">
+                    <div class="flex flex-col gap-4 footer-col-center">
                         <span class="text-xs font-bold text-slate-500 uppercase tracking-widest">Navegación</span>
                         <a href="index.html#inicio"
                             class="text-sm text-slate-300 hover:text-yellow-400 transition-colors">Inicio</a>
@@ -697,14 +730,14 @@
                     </div>
 
                     <!-- Company -->
-                    <div class="flex flex-col gap-4">
+                    <div class="flex flex-col gap-4 footer-col-center">
                         <span class="text-xs font-bold text-slate-500 uppercase tracking-widest">Contacto</span>
                         <a href="contacto.html"
                             class="text-sm text-slate-300 hover:text-yellow-400 transition-colors">Formulario</a>
                     </div>
 
                     <!-- Social -->
-                    <div class="flex flex-col gap-4">
+                    <div class="flex flex-col gap-4 footer-col-center">
                         <span class="text-xs font-bold text-slate-500 uppercase tracking-widest">Sígueme</span>
                         <a href="https://www.linkedin.com/in/juan-andr%C3%A9s-ib%C3%A1%C3%B1ez-pasarella-structor/"
                             target="_blank"

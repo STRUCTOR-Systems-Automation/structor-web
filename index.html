@@ -404,41 +404,74 @@
 
             /* Fix Hero Title cutting off or overflowing */
             .text-4xl {
-                font-size: 1.75rem !important;
-                /* Slightly smaller than text-3xl for safety */
-                line-height: 2.25rem !important;
+                font-size: 1.7rem !important;
+                line-height: 2.1rem !important;
             }
 
             /* Responsive Navigation for Mobile */
             .pill-nav {
-                width: 95vw;
-                padding: 0.25rem;
-                justify-content: space-around;
+                width: 98vw;
+                padding: 0.1rem;
+                justify-content: center;
+                gap: 2px;
             }
 
             .nav-link {
-                padding: 0.5rem 0.6rem;
-                font-size: 0.75rem;
-                /* text-xs */
+                padding: 0.5rem 0.4rem;
+                font-size: 0.65rem;
+                /* Slightly smaller for better fit */
+                letter-spacing: -0.01em;
                 white-space: nowrap;
             }
 
             /* Adjust Hero Tagline */
             .text-2xl {
-                font-size: 1.125rem !important;
-                /* text-lg */
+                font-size: 1.1rem !important;
             }
 
-            /* Ensure image scale works well on mobile */
-            #hero-avatar {
-                width: 9rem !important;
-                margin-bottom: 1.5rem !important;
+            /* Multiline-aware Dynamic Highlighter */
+            .mobile-highlight {
+                background: linear-gradient(120deg, rgba(254, 240, 138, 0.5) 0%, rgba(254, 240, 138, 0.5) 100%);
+                background-repeat: no-repeat;
+                background-size: 0% 0.4em;
+                background-position: 0 85%;
+                transition: background-size 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+                display: inline !important;
+                box-decoration-break: clone;
+                -webkit-box-decoration-break: clone;
+            }
+
+            .active .mobile-highlight {
+                background-size: 100% 0.4em !important;
+            }
+
+            /* Force hide the bar on mobile */
+            .highlight-bar {
+                display: none !important;
+                visibility: hidden !important;
+                height: 0 !important;
             }
 
             /* Spacing adjustments for sections */
             section {
-                padding-left: 1rem !important;
-                padding-right: 1rem !important;
+                padding-left: 1.5rem !important;
+                padding-right: 1.5rem !important;
+            }
+
+            /* Center Footer on Mobile */
+            .footer-grid-mobile {
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: center !important;
+                text-align: center !important;
+                gap: 2.5rem !important;
+            }
+
+            .footer-col-center {
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: center !important;
+                text-align: center !important;
             }
         }
     </style>
@@ -481,9 +514,11 @@
 
             <!-- Highlighted Tagline -->
             <h2 class="text-2xl sm:text-3xl font-medium text-slate-800 mb-12 relative inline-block text-mask-container">
-                <span class="text-mask-child relative block" id="hero-title-2">
-                    <span class="relative z-10">Elimina el caos operativo. Automatiza lo repetitivo.</span>
-                    <div class="absolute bottom-1 left-0 w-full h-3 bg-yellow-100 -z-0 rounded-sm mix-blend-multiply">
+                <span class="text-mask-child relative inline sm:block" id="hero-title-2">
+                    <span class="relative z-10 mobile-highlight">Elimina el caos operativo. Automatiza lo
+                        repetitivo.</span>
+                    <div
+                        class="highlight-bar absolute bottom-1 left-0 w-full h-3 bg-yellow-100 -z-0 rounded-sm mix-blend-multiply">
                     </div>
                 </span>
             </h2>
@@ -524,7 +559,8 @@
                 <div class="bg-white rounded-3xl p-8 border border-slate-200 shadow-sm flex flex-col items-center">
                     <span class="text-2xl font-extrabold text-slate-900 mb-8 relative inline-block text-mask-container">
                         <span class="relative z-10 text-mask-child">Lo habitual</span>
-                        <div class="absolute bottom-1 left-0 w-full h-3 bg-blue-100 -z-0 rounded-sm mix-blend-multiply">
+                        <div
+                            class="highlight-bar absolute bottom-1 left-0 w-full h-3 bg-blue-100 -z-0 rounded-sm mix-blend-multiply">
                         </div>
                     </span>
 
@@ -560,7 +596,7 @@
                     <span class="text-2xl font-extrabold text-slate-900 mb-8 relative inline-block text-mask-container">
                         <span class="relative z-10 text-mask-child">La Solución</span>
                         <div
-                            class="absolute bottom-1 left-0 w-full h-3 bg-yellow-100 -z-0 rounded-sm mix-blend-multiply">
+                            class="highlight-bar absolute bottom-1 left-0 w-full h-3 bg-yellow-100 -z-0 rounded-sm mix-blend-multiply">
                         </div>
                     </span>
 
@@ -1466,9 +1502,9 @@
                 </div>
 
                 <!-- Right Column: Navigation & Social -->
-                <div class="grid grid-cols-2 sm:grid-cols-3 gap-8 md:justify-items-end z-10">
+                <div class="grid grid-cols-2 sm:grid-cols-3 gap-8 md:justify-items-end z-10 footer-grid-mobile">
                     <!-- Navigation -->
-                    <div class="flex flex-col gap-4">
+                    <div class="flex flex-col gap-4 footer-col-center">
                         <span class="text-xs font-bold text-slate-500 uppercase tracking-widest">Navegación</span>
                         <a href="index.html#inicio"
                             class="text-sm text-slate-300 hover:text-yellow-400 transition-colors">Inicio</a>
@@ -1482,14 +1518,14 @@
                     </div>
 
                     <!-- Company -->
-                    <div class="flex flex-col gap-4">
+                    <div class="flex flex-col gap-4 footer-col-center">
                         <span class="text-xs font-bold text-slate-500 uppercase tracking-widest">Contacto</span>
                         <a href="contacto.html"
                             class="text-sm text-slate-300 hover:text-yellow-400 transition-colors">Formulario</a>
                     </div>
 
                     <!-- Social -->
-                    <div class="flex flex-col gap-4">
+                    <div class="flex flex-col gap-4 footer-col-center">
                         <span class="text-xs font-bold text-slate-500 uppercase tracking-widest">Sígueme</span>
                         <a href="https://www.linkedin.com/in/juan-andr%C3%A9s-ib%C3%A1%C3%B1ez-pasarella-structor/"
                             target="_blank"

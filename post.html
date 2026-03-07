@@ -31,21 +31,37 @@
         /* Mobile Specific Style Adjustments */
         @media (max-width: 640px) {
             .pill-nav {
-                width: 95vw;
-                padding: 0.25rem;
-                justify-content: space-around;
+                width: 98vw;
+                padding: 0.15rem;
+                justify-content: center;
+                gap: 0;
             }
 
             .nav-link {
-                padding: 0.5rem 0.6rem;
-                font-size: 0.75rem;
+                padding: 0.5rem 0.45rem;
+                font-size: 0.7rem;
                 white-space: nowrap;
             }
 
             section,
+            main,
             article {
-                padding-left: 1rem !important;
-                padding-right: 1rem !important;
+                padding-left: 1.25rem !important;
+                padding-right: 1.25rem !important;
+            }
+
+            /* Center Footer on Mobile */
+            .footer-grid-mobile {
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: center !important;
+                text-align: center !important;
+                gap: 2.5rem !important;
+            }
+
+            .footer-col-center {
+                align-items: center !important;
+                text-align: center !important;
             }
         }
 
@@ -303,9 +319,9 @@
                 </div>
 
                 <!-- Right Column: Navigation & Social -->
-                <div class="grid grid-cols-2 sm:grid-cols-3 gap-8 md:justify-items-end z-10">
+                <div class="grid grid-cols-2 sm:grid-cols-3 gap-8 md:justify-items-end z-10 footer-grid-mobile">
                     <!-- Navigation -->
-                    <div class="flex flex-col gap-4">
+                    <div class="flex flex-col gap-4 footer-col-center">
                         <span class="text-xs font-bold text-slate-500 uppercase tracking-widest">Navegación</span>
                         <a href="index.html#inicio"
                             class="text-sm text-slate-300 hover:text-yellow-400 transition-colors">Inicio</a>
@@ -319,14 +335,14 @@
                     </div>
 
                     <!-- Company -->
-                    <div class="flex flex-col gap-4">
+                    <div class="flex flex-col gap-4 footer-col-center">
                         <span class="text-xs font-bold text-slate-500 uppercase tracking-widest">Contacto</span>
                         <a href="contacto.html"
                             class="text-sm text-slate-300 hover:text-yellow-400 transition-colors">Formulario</a>
                     </div>
 
                     <!-- Social -->
-                    <div class="flex flex-col gap-4">
+                    <div class="flex flex-col gap-4 footer-col-center">
                         <span class="text-xs font-bold text-slate-500 uppercase tracking-widest">Sígueme</span>
                         <a href="https://www.linkedin.com/in/juan-andr%C3%A9s-ib%C3%A1%C3%B1ez-pasarella-structor/"
                             target="_blank"
