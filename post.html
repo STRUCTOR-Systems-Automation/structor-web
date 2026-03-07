@@ -28,6 +28,27 @@
             scroll-behavior: smooth;
         }
 
+        /* Mobile Specific Style Adjustments */
+        @media (max-width: 640px) {
+            .pill-nav {
+                width: 95vw;
+                padding: 0.25rem;
+                justify-content: space-around;
+            }
+
+            .nav-link {
+                padding: 0.5rem 0.6rem;
+                font-size: 0.75rem;
+                white-space: nowrap;
+            }
+
+            section,
+            article {
+                padding-left: 1rem !important;
+                padding-right: 1rem !important;
+            }
+        }
+
         /* Ambient Flow Animation */
         @keyframes pulse-flow {
             0% {

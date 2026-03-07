@@ -398,6 +398,49 @@
         body {
             min-height: max(884px, 100dvh);
         }
+
+        /* Mobile Specific Style Adjustments */
+        @media (max-width: 640px) {
+
+            /* Fix Hero Title cutting off or overflowing */
+            .text-4xl {
+                font-size: 1.75rem !important;
+                /* Slightly smaller than text-3xl for safety */
+                line-height: 2.25rem !important;
+            }
+
+            /* Responsive Navigation for Mobile */
+            .pill-nav {
+                width: 95vw;
+                padding: 0.25rem;
+                justify-content: space-around;
+            }
+
+            .nav-link {
+                padding: 0.5rem 0.6rem;
+                font-size: 0.75rem;
+                /* text-xs */
+                white-space: nowrap;
+            }
+
+            /* Adjust Hero Tagline */
+            .text-2xl {
+                font-size: 1.125rem !important;
+                /* text-lg */
+            }
+
+            /* Ensure image scale works well on mobile */
+            #hero-avatar {
+                width: 9rem !important;
+                margin-bottom: 1.5rem !important;
+            }
+
+            /* Spacing adjustments for sections */
+            section {
+                padding-left: 1rem !important;
+                padding-right: 1rem !important;
+            }
+        }
     </style>
 </head>
 
