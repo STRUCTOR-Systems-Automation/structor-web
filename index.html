@@ -571,13 +571,9 @@
                     <!-- Chaotic Animation -->
                     <div class="mb-10 w-full">
                         <div class="relative w-full overflow-hidden flex justify-center">
-                            <video autoplay loop muted playsinline
-                                class="w-full h-auto object-cover mix-blend-multiply [clip-path:inset(6%_0)]"
-                                poster="Imputs/Desorden.webp">
+                            <video autoplay loop muted playsinline preload="auto"
+                                class="w-full h-auto object-cover mix-blend-multiply [clip-path:inset(6%_0)]">
                                 <source src="Imputs/desorden.mp4" type="video/mp4">
-                                <img src="Imputs/Desorden.webp"
-                                    alt="Comparativa de caos por trabajo manual sin automatización"
-                                    class="w-full h-auto">
                             </video>
                         </div>
                     </div>
@@ -608,13 +604,9 @@
                     <!-- Integrated System Animation -->
                     <div class="mb-10 w-full">
                         <div class="relative w-full overflow-hidden flex justify-center">
-                            <video autoplay loop muted playsinline
-                                class="w-full h-auto object-cover origin-center mix-blend-multiply [clip-path:inset(6%_0)]"
-                                poster="Imputs/SistemaInteligente.webp">
+                            <video autoplay loop muted playsinline preload="auto"
+                                class="w-full h-auto object-cover origin-center mix-blend-multiply [clip-path:inset(6%_0)]">
                                 <source src="Imputs/sistema-inteligente.mp4" type="video/mp4">
-                                <img src="Imputs/SistemaInteligente.webp"
-                                    alt="Sistemas inteligentes para automatizar tareas repetitivas"
-                                    class="w-full h-auto">
                             </video>
                         </div>
                     </div>
@@ -703,12 +695,9 @@
                         <div
                             class="size-32 md:size-40 rounded-full overflow-hidden border-4 border-white shadow-xl relative z-10 bg-white">
                             <div class="w-full h-full">
-                                <video autoplay loop muted playsinline class="w-full h-full object-cover"
-                                    poster="Imputs/sobre-mi.webp">
-                                    <source src="Imputs/sobre-mi.mp4" type="video/mp4">
-                                    <img src="Imputs/sobre-mi.webp" alt="Juan Andrés Ibáñez Pasarella"
-                                        class="w-full h-full object-cover">
-                                </video>
+                                <img src="Imputs/sobre-mi.webp"
+                                    alt="Juan Andrés Ibáñez Pasarella, arquitecto de sistemas operativos para negocios"
+                                    class="w-full h-full object-cover">
                             </div>
                         </div>
                     </div>
@@ -1625,6 +1614,25 @@
             // Observe all elements needing animations
             const targets = document.querySelectorAll('.reveal, .text-mask-container, .img-scale-container, .stagger-group');
             targets.forEach(el => premiumObserver.observe(el));
+
+            // Mobile Video Autoplay: force play when in viewport (required for iOS Safari)
+            const videoObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    const vid = entry.target;
+                    if (entry.isIntersecting) {
+                        vid.play().catch(() => {/* blocked by browser */ });
+                    } else {
+                        vid.pause();
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('video').forEach(v => {
+                v.muted = true; // Ensure muted before play attempt
+                videoObserver.observe(v);
+                // Also try immediate play in case already in viewport on load
+                v.play().catch(() => { });
+            });
 
             // Small delay for Hero Elements so they animate exactly on load (since they are at the top)
             setTimeout(() => {
