@@ -571,10 +571,14 @@
                     <!-- Chaotic Animation -->
                     <div class="mb-10 w-full">
                         <div class="relative w-full overflow-hidden flex justify-center">
-                            <img src="Imputs/Desorden.webp"
-                                alt="Comparativa de caos por trabajo manual sin automatización" loading="eager"
-                                decoding="async"
-                                class="w-full h-auto object-cover mix-blend-multiply [clip-path:inset(6%_0)]" />
+                            <video autoplay loop muted playsinline preload="auto"
+                                class="w-full h-auto object-cover mix-blend-multiply [clip-path:inset(6%_0)]"
+                                poster="Imputs/Desorden.webp">
+                                <source src="Imputs/desorden-v2.mp4" type="video/mp4">
+                                <img src="Imputs/Desorden.webp"
+                                    alt="Comparativa de caos por trabajo manual sin automatización"
+                                    class="w-full h-auto">
+                            </video>
                         </div>
                     </div>
 
@@ -1624,6 +1628,12 @@
             targets.forEach(el => premiumObserver.observe(el));
 
             // Mobile Video Autoplay: force play when in viewport (required for iOS Safari)
+            // iOS LOW POWER MODE / AUTOPLAY BYPASS
+            // In low power mode, iOS Safari ignores 'autoplay' attribute.
+            // We force play() on intersection, and crucially, we attach a one-time global touch listener
+            // to trick Safari into thinking all videos are user-initiated.
+            const videos = document.querySelectorAll('video');
+
             const videoObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     const vid = entry.target;
@@ -1635,12 +1645,25 @@
                 });
             }, { threshold: 0.1 });
 
-            document.querySelectorAll('video').forEach(v => {
+            videos.forEach(v => {
                 v.muted = true; // Ensure muted before play attempt
+                v.setAttribute('playsinline', ''); // Ensure playsinline is strictly applied
                 videoObserver.observe(v);
-                // Also try immediate play in case already in viewport on load
                 v.play().catch(() => { });
             });
+
+            // The magical iOS Safari fix: Any user interaction validates video play
+            const forcePlayAllVideos = () => {
+                videos.forEach(v => {
+                    v.play().catch(() => { });
+                });
+                // Remove listener once triggered so it doesn't run on every tap
+                document.removeEventListener('touchstart', forcePlayAllVideos);
+                document.removeEventListener('click', forcePlayAllVideos);
+            };
+
+            document.addEventListener('touchstart', forcePlayAllVideos, { once: true, passive: true });
+            document.addEventListener('click', forcePlayAllVideos, { once: true, passive: true });
 
             // Small delay for Hero Elements so they animate exactly on load (since they are at the top)
             setTimeout(() => {
