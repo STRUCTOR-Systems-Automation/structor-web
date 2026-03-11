@@ -427,16 +427,18 @@
                     </div>
 
                     <!-- Legal -->
-                    <div class="flex flex-col gap-4 footer-col-center">
-                        <span class="text-xs font-bold text-slate-500 uppercase tracking-widest">Legal</span>
+                    <div class="flex flex-col gap-3 footer-col-center">
+                        <span class="text-[10px] font-bold text-slate-600 uppercase tracking-[0.2em] mb-1">Legal</span>
                         <a href="terminos.html"
-                            class="text-sm text-slate-300 hover:text-yellow-400 transition-colors">Aviso Legal</a>
+                            class="text-[11px] text-slate-500 hover:text-yellow-400/80 transition-colors">Aviso
+                            Legal</a>
                         <a href="privacidad.html"
-                            class="text-sm text-slate-300 hover:text-yellow-400 transition-colors">Política de
-                            Privacidad</a>
+                            class="text-[11px] text-slate-500 hover:text-yellow-400/80 transition-colors">Privacidad</a>
                         <a href="cookies.html"
-                            class="text-sm text-slate-300 hover:text-yellow-400 transition-colors">Política de
-                            Cookies</a>
+                            class="text-[11px] text-slate-500 hover:text-yellow-400/80 transition-colors">Cookies</a>
+                        <button onclick="reopenCookieBanner()"
+                            class="text-[11px] text-slate-500 hover:text-yellow-400/80 transition-colors text-left footer-col-center">Configurar
+                            Cookies</button>
                     </div>
                 </div>
             </div>
@@ -566,11 +568,17 @@
             });
 
             // Lógica de Rechazar
+            // Lógica de Rechazar
             btnReject.addEventListener('click', function () {
                 localStorage.setItem('structor_cookie_consent', 'rejected');
                 banner.classList.add('translate-y-full');
                 // GTM se queda denegado por defecto
             });
+
+            // Función Global para reabrir el banner
+            window.reopenCookieBanner = function () {
+                banner.classList.remove('translate-y-full');
+            };
         });
     </script>
 </body>

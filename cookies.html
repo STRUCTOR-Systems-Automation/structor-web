@@ -283,16 +283,18 @@
                     </div>
 
                     <!-- Legal -->
-                    <div class="flex flex-col gap-4 footer-col-center">
-                        <span class="text-xs font-bold text-slate-500 uppercase tracking-widest">Legal</span>
+                    <div class="flex flex-col gap-3 footer-col-center">
+                        <span class="text-[10px] font-bold text-slate-600 uppercase tracking-[0.2em] mb-1">Legal</span>
                         <a href="terminos.html"
-                            class="text-sm text-slate-300 hover:text-yellow-400 transition-colors">Aviso Legal</a>
+                            class="text-[11px] text-slate-500 hover:text-yellow-400/80 transition-colors">Aviso
+                            Legal</a>
                         <a href="privacidad.html"
-                            class="text-sm text-slate-300 hover:text-yellow-400 transition-colors">Política de
-                            Privacidad</a>
+                            class="text-[11px] text-slate-500 hover:text-yellow-400/80 transition-colors">Privacidad</a>
                         <a href="cookies.html"
-                            class="text-sm text-slate-300 hover:text-yellow-400 transition-colors">Política de
-                            Cookies</a>
+                            class="text-[11px] text-slate-500 hover:text-yellow-400/80 transition-colors">Cookies</a>
+                        <button onclick="reopenCookieBanner()"
+                            class="text-[11px] text-slate-500 hover:text-yellow-400/80 transition-colors text-left footer-col-center">Configurar
+                            Cookies</button>
                     </div>
                 </div>
             </div>
@@ -305,10 +307,87 @@
         </div>
     </footer>
 
-    <!-- Cookie Banner Script -->
+    <!-- Cookie Banner y Logica de Consentimiento -->
+    <div id="cookie-banner"
+        class="fixed bottom-0 left-0 right-0 p-4 md:p-6 z-[100] transform translate-y-full transition-transform duration-[600ms] ease-out flex justify-center">
+        <div
+            class="bg-slate-900/95 backdrop-blur-xl border border-slate-700/50 shadow-2xl shadow-blue-900/20 rounded-2xl p-6 max-w-4xl w-full flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+            <div class="flex-1">
+                <div class="flex items-center gap-2 mb-2">
+                    <span class="material-symbols-outlined text-yellow-400 text-xl">cookie</span>
+                    <h3 class="text-white font-bold text-lg">Tu privacidad es importante</h3>
+                </div>
+                <p class="text-slate-300 text-sm leading-relaxed">
+                    Utilizo cookies propias y de terceros (Google Analytics y analíticas similares) para entender
+                    cómo interactúas con mi web y mejorar tu experiencia. Al hacer clic en "Aceptar todo",
+                    consientes el uso de TODAS las cookies para seguimiento analítico.
+                </p>
+            </div>
+            <div class="flex flex-col sm:flex-row gap-3 w-full md:w-auto shrink-0">
+                <button id="btn-reject-cookies"
+                    class="px-6 py-2.5 rounded-full border border-slate-600 text-slate-300 font-medium hover:bg-slate-800 transition-colors text-sm text-center">
+                    Rechazar
+                </button>
+                <button id="btn-accept-cookies"
+                    class="px-6 py-2.5 rounded-full bg-blue-500 text-white font-bold hover:bg-blue-600 hover:shadow-lg hover:shadow-blue-500/30 transition-all text-sm text-center tracking-wide">
+                    Aceptar todo
+                </button>
+            </div>
+        </div>
+    </div>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            // Placeholder
+            const banner = document.getElementById('cookie-banner');
+            const btnAccept = document.getElementById('btn-accept-cookies');
+            const btnReject = document.getElementById('btn-reject-cookies');
+
+            // Comprobamos si ya hay elección previa
+            const cookieChoice = localStorage.getItem('structor_cookie_consent');
+
+            if (!cookieChoice) {
+                // Mostrar con un pequeño retraso elegante
+                setTimeout(() => {
+                    banner.classList.remove('translate-y-full');
+                }, 1500);
+            } else if (cookieChoice === 'accepted') {
+                // Si ya había aceptado ANTES en visitas previas, activamos GTM directamente
+                if (typeof gtag === 'function') {
+                    gtag('consent', 'update', {
+                        'analytics_storage': 'granted',
+                        'ad_storage': 'granted',
+                        'ad_user_data': 'granted',
+                        'ad_personalization': 'granted'
+                    });
+                }
+            }
+
+            // Lógica de Aceptar
+            btnAccept.addEventListener('click', function () {
+                localStorage.setItem('structor_cookie_consent', 'accepted');
+                banner.classList.add('translate-y-full');
+
+                // Disparamos la actualización de consentimiento para que GTM se active
+                if (typeof gtag === 'function') {
+                    gtag('consent', 'update', {
+                        'analytics_storage': 'granted',
+                        'ad_storage': 'granted',
+                        'ad_user_data': 'granted',
+                        'ad_personalization': 'granted'
+                    });
+                }
+            });
+
+            // Lógica de Rechazar
+            btnReject.addEventListener('click', function () {
+                localStorage.setItem('structor_cookie_consent', 'rejected');
+                banner.classList.add('translate-y-full');
+                // GTM se queda denegado por defecto
+            });
+
+            // Función Global para reabrir el banner
+            window.reopenCookieBanner = function () {
+                banner.classList.remove('translate-y-full');
+            };
         });
     </script>
 </body>
