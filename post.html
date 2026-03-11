@@ -3,6 +3,28 @@
 
 <head>
     <meta charset="utf-8" />
+
+    <!-- Google Tag Manager & Consent Mode v2 -->
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('consent', 'default', {
+            'analytics_storage': 'denied',
+            'ad_storage': 'denied',
+            'ad_user_data': 'denied',
+            'ad_personalization': 'denied',
+            'wait_for_update': 500
+        });
+        (function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-K3CWX83L');
+    </script>
+    <!-- End Google Tag Manager -->
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>Post | STRUCTOR Blog</title>
     <!-- Favicon -->
@@ -213,6 +235,10 @@
 </head>
 
 <body class="bg-slate-50 text-slate-900 selection:bg-yellow-100 selection:text-slate-900 font-display">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K3CWX83L" height="0" width="0"
+            style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
     <div id="progress-bar"></div>
 
     <!-- Header Navigation (Consistent) -->
@@ -453,6 +479,84 @@
                 console.error('Error loading post:', error);
                 document.getElementById('post-title').innerText = 'Error cargando el artículo';
             }
+        });
+    </script>
+    <!-- Cookie Banner y Logica de Consentimiento -->
+    <div id="cookie-banner"
+        class="fixed bottom-0 left-0 right-0 p-4 md:p-6 z-[100] transform translate-y-full transition-transform duration-[600ms] ease-out flex justify-center">
+        <div
+            class="bg-slate-900/95 backdrop-blur-xl border border-slate-700/50 shadow-2xl shadow-blue-900/20 rounded-2xl p-6 max-w-4xl w-full flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+            <div class="flex-1">
+                <div class="flex items-center gap-2 mb-2">
+                    <span class="material-symbols-outlined text-yellow-400 text-xl">cookie</span>
+                    <h3 class="text-white font-bold text-lg">Tu privacidad nos importa</h3>
+                </div>
+                <p class="text-slate-300 text-sm leading-relaxed">
+                    Utilizamos cookies propias y de terceros (Google Analytics y analíticas similares) para entender
+                    cómo interactúas con nuestra web y mejorar tu experiencia. Al hacer clic en "Aceptar todo",
+                    consientes el uso de TODAS las cookies para seguimiento analítico.
+                </p>
+            </div>
+            <div class="flex flex-col sm:flex-row gap-3 w-full md:w-auto shrink-0">
+                <button id="btn-reject-cookies"
+                    class="px-6 py-2.5 rounded-full border border-slate-600 text-slate-300 font-medium hover:bg-slate-800 transition-colors text-sm text-center">
+                    Rechazar
+                </button>
+                <button id="btn-accept-cookies"
+                    class="px-6 py-2.5 rounded-full bg-blue-500 text-white font-bold hover:bg-blue-600 hover:shadow-lg hover:shadow-blue-500/30 transition-all text-sm text-center tracking-wide">
+                    Aceptar todo
+                </button>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const banner = document.getElementById('cookie-banner');
+            const btnAccept = document.getElementById('btn-accept-cookies');
+            const btnReject = document.getElementById('btn-reject-cookies');
+
+            // Comprobamos si ya hay elección previa
+            const cookieChoice = localStorage.getItem('structor_cookie_consent');
+
+            if (!cookieChoice) {
+                // Mostrar con un pequeño retraso elegante
+                setTimeout(() => {
+                    banner.classList.remove('translate-y-full');
+                }, 1500);
+            } else if (cookieChoice === 'accepted') {
+                // Si ya había aceptado ANTES en visitas previas, activamos GTM directamente
+                if (typeof gtag === 'function') {
+                    gtag('consent', 'update', {
+                        'analytics_storage': 'granted',
+                        'ad_storage': 'granted',
+                        'ad_user_data': 'granted',
+                        'ad_personalization': 'granted'
+                    });
+                }
+            }
+
+            // Lógica de Aceptar
+            btnAccept.addEventListener('click', function () {
+                localStorage.setItem('structor_cookie_consent', 'accepted');
+                banner.classList.add('translate-y-full');
+
+                // Disparamos la actualización de consentimiento para que GTM se active
+                if (typeof gtag === 'function') {
+                    gtag('consent', 'update', {
+                        'analytics_storage': 'granted',
+                        'ad_storage': 'granted',
+                        'ad_user_data': 'granted',
+                        'ad_personalization': 'granted'
+                    });
+                }
+            });
+
+            // Lógica de Rechazar
+            btnReject.addEventListener('click', function () {
+                localStorage.setItem('structor_cookie_consent', 'rejected');
+                banner.classList.add('translate-y-full');
+                // GTM se queda denegado por defecto
+            });
         });
     </script>
 </body>
