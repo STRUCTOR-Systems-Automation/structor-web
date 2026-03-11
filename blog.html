@@ -519,11 +519,8 @@
                             Legal</a>
                         <a href="privacidad.html"
                             class="text-[11px] text-slate-500 hover:text-yellow-400/80 transition-colors">Privacidad</a>
-                        <a href="cookies.html"
+                        <a href="cookies.html#reopen"
                             class="text-[11px] text-slate-500 hover:text-yellow-400/80 transition-colors">Cookies</a>
-                        <button onclick="reopenCookieBanner()"
-                            class="text-[11px] text-slate-500 hover:text-yellow-400/80 transition-colors text-left footer-col-center">Configurar
-                            Cookies</button>
                     </div>
                 </div>
             </div>
@@ -735,6 +732,16 @@
             window.reopenCookieBanner = function () {
                 banner.classList.remove('translate-y-full');
             };
+
+            // Detectar hash para reabrir
+            function checkHash() {
+                if (window.location.hash === '#reopen') {
+                    reopenCookieBanner();
+                    history.replaceState(null, null, window.location.pathname);
+                }
+            }
+            window.addEventListener('hashchange', checkHash);
+            checkHash();
         });
     </script>
 </body>
