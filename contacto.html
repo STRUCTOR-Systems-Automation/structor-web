@@ -369,7 +369,7 @@
     <main class="pt-32 pb-20 px-6">
         <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20">
 
-            <!-- Left Side: Copy and FAQ (Order 2 on Mobile) -->
+            <!-- Left Side: Copy and FAQ -->
             <div class="space-y-12 order-1 lg:order-1">
                 <div class="reveal active text-mask-container block">
                     <span
@@ -382,6 +382,57 @@
                         Cuéntame un poco sobre tu negocio y el caos que quieres eliminar. Recibirás una respuesta en
                         menos de 24 horas para agendar una llamada gratuita de diagnóstico.
                     </p>
+                </div>
+
+                <!-- FAQ Section (Desktop: Under Title, Mobile: Below Form) -->
+                <div class="hidden lg:block border-t border-slate-200">
+                    <span class="text-slate-400 font-bold text-[10px] uppercase tracking-widest mb-8 block">PREGUNTAS
+                        FRECUENTES</span>
+                    <div class="space-y-0">
+                        <!-- Q1 -->
+                        <div class="faq-item-desktop border-b border-slate-200 group pb-4">
+                            <button
+                                class="flex items-center justify-between w-full py-4 text-left transition-all hover:text-slate-600"
+                                onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('.faq-icon').classList.toggle('rotate-45')">
+                                <span class="font-bold text-slate-800 pr-4 text-sm">¿Cuánto tiempo tarda un
+                                    proyecto?</span>
+                                <span
+                                    class="material-symbols-outlined text-slate-400 faq-icon text-xl transition-transform">add</span>
+                            </button>
+                            <div class="hidden text-slate-600 text-xs leading-relaxed animate-fadeIn">
+                                Entre 7 y 14 días desde la aprobación (aunque todo dependerá de complejidad del
+                                proyecto).
+                            </div>
+                        </div>
+                        <!-- Q2 -->
+                        <div class="faq-item-desktop border-b border-slate-200 group pb-4">
+                            <button
+                                class="flex items-center justify-between w-full py-4 text-left transition-all hover:text-slate-600"
+                                onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('.faq-icon').classList.toggle('rotate-45')">
+                                <span class="font-bold text-slate-800 pr-4 text-sm">¿Qué pasa si hay ajustes
+                                    necesarios?</span>
+                                <span
+                                    class="material-symbols-outlined text-slate-400 faq-icon text-xl transition-transform">add</span>
+                            </button>
+                            <div class="hidden text-slate-600 text-xs leading-relaxed animate-fadeIn">
+                                Probamos el sistema en entorno real y realizamos los ajustes necesarios sin costes
+                                adicionales.
+                            </div>
+                        </div>
+                        <!-- Q3 -->
+                        <div class="faq-item-desktop border-b border-slate-200 group pb-4">
+                            <button
+                                class="flex items-center justify-between w-full py-4 text-left transition-all hover:text-slate-600"
+                                onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('.faq-icon').classList.toggle('rotate-45')">
+                                <span class="font-bold text-slate-800 pr-4 text-sm">¿Qué herramientas utilizas?</span>
+                                <span
+                                    class="material-symbols-outlined text-slate-400 faq-icon text-xl transition-transform">add</span>
+                            </button>
+                            <div class="hidden text-slate-600 text-xs leading-relaxed animate-fadeIn">
+                                N8N, Notion, Looker Studio y el ecosistema Google/Microsoft.
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -582,8 +633,8 @@
             </div>
         </div>
 
-        <!-- FAQ Section (Moved to be below Form on all devices) -->
-        <div class="max-w-3xl mx-auto mt-24">
+        <!-- FAQ Section (Mobile Only) -->
+        <div class="max-w-3xl mx-auto mt-24 lg:hidden">
             <div class="reveal active pt-12 border-t border-slate-200">
                 <span
                     class="text-slate-400 font-bold text-[10px] uppercase tracking-widest mb-8 block text-center md:text-left">PREGUNTAS
