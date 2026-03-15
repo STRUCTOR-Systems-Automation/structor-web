@@ -981,11 +981,47 @@
                             </div>
                         </span>
                     </h3>
-                    <p class="text-slate-500 text-lg leading-snug mb-8 max-w-[280px]">
+                    <p class="text-slate-500 text-lg leading-snug mb-6 max-w-[280px]">
                         De datos dispersos a paneles accionables para tomar decisiones reales.<br />
                         <span class="block mt-4 font-bold text-slate-900 text-sm underline decoration-yellow-400">Datos
                             dispersos → Decisiones claras</span>
                     </p>
+
+                    <!-- Data Transformation Visual (Minimalist Editorial Style) -->
+                    <div class="w-full h-32 mb-8 flex items-center justify-between bg-white/50 border border-slate-100 rounded-2xl px-8 relative group/trans overflow-hidden shadow-sm">
+                        <!-- Scattered Particles (Data) -->
+                        <div class="flex flex-wrap gap-1.5 w-16 opacity-30 group-hover/trans:opacity-100 transition-opacity duration-700">
+                            <div class="w-3 h-1.5 bg-slate-300 rounded-sm rotate-12"></div>
+                            <div class="w-2 h-2.5 bg-slate-400 rounded-sm -rotate-6"></div>
+                            <div class="w-4 h-1 bg-slate-200 rounded-sm rotate-45"></div>
+                            <div class="w-2.5 h-2 bg-slate-300 rounded-sm -rotate-12"></div>
+                            <div class="w-1.5 h-1.5 bg-slate-400 rounded-sm rotate-90"></div>
+                            <div class="w-3 h-1 bg-slate-200 rounded-sm"></div>
+                        </div>
+
+                        <!-- Central Flow Arrow -->
+                        <div class="relative flex items-center justify-center flex-1">
+                            <div class="absolute w-12 h-[1px] bg-slate-200"></div>
+                            <div class="absolute w-8 h-[2px] bg-blue-500/30 blur-[2px] animate-pulse"></div>
+                            <span class="material-symbols-outlined text-slate-300 text-xl group-hover/trans:text-blue-500 group-hover/trans:translate-x-2 transition-all duration-500">trending_flat</span>
+                        </div>
+
+                        <!-- Organized Result (Laptop/Screen representation) -->
+                        <div class="w-20 h-14 border-2 border-slate-900 rounded-lg p-1.5 flex flex-col gap-1 relative bg-white group-hover/trans:shadow-lg transition-all">
+                            <div class="h-1.5 w-full bg-slate-100 rounded-full overflow-hidden">
+                                <div class="h-full w-2/3 bg-blue-500"></div>
+                            </div>
+                            <div class="flex-1 flex gap-1 items-end">
+                                <div class="w-full h-2 bg-slate-200 rounded-t-[1px]"></div>
+                                <div class="w-full h-4 bg-slate-900 rounded-t-[1px]"></div>
+                                <div class="w-full h-3 bg-blue-500 rounded-t-[1px]"></div>
+                            </div>
+                            <!-- Small green check bubble -->
+                            <div class="absolute -top-1 -right-1 size-3 bg-emerald-500 rounded-full border border-white flex items-center justify-center opacity-0 group-hover/trans:opacity-100 transition-opacity delay-150">
+                                <span class="text-[6px] text-white font-bold">✓</span>
+                            </div>
+                        </div>
+                    </div>
 
                     <!-- Mini-Dashboard: Control de Datos (Vertical Stack for better width/legibility) -->
                     <div class="mt-auto w-full flex flex-col gap-3">
