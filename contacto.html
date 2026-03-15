@@ -1019,7 +1019,7 @@
                 // Convert payload to search params (www-form-urlencoded) to bypass CORS preflight
                 const formBody = new URLSearchParams(payload).toString();
 
-                const response = await fetch('https://structor-systems-automation-n8n.45kxje.easypanel.host/webhook-test/94dc0408-fb04-494e-a03a-a97a2f65e5de', {
+                const response = await fetch('https://structor-systems-automation-n8n.45kxje.easypanel.host/webhook/94dc0408-fb04-494e-a03a-a97a2f65e5de', {
                     method: 'POST',
                     mode: 'no-cors', // Bypasses CORS origin restrictions for local testing
                     headers: {
