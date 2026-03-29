@@ -1,1 +1,13 @@
-[]
+[
+  {
+    "id": "332dc24b-e7d1-8158-8402-eb4a21e00f8c",
+    "title": "Evolución de la automatización: del Excel clásico a los sistemas agenticos modernos",
+    "slug": "evolucion-de-la-automatizacion",
+    "category": "Arquitectura de sistemas",
+    "date": "2026-03-29",
+    "summary": "Descubre la evolución de la automatización desde Excel clásico hasta sistemas agenticos modernos con n8n y agentes autónomos.",
+    "image": "https://res.cloudinary.com/duyfckwjc/image/upload/f_auto,q_auto/wxa9bzbd1h7a7kzxpyn8.png",
+    "readingTime": "5 min lectura",
+    "contentHtml": ""
+  }
+]
