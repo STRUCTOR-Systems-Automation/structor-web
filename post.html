@@ -37,6 +37,7 @@
     <meta property="og:description"
         content="Te ayudo a eliminar el trabajo manual y el caos operativo diseñando sistemas inteligentes que organizan, automatizan y optimizan la gestión de tu negocio.">
     <meta property="og:image" content="https://structorsystemsautomation.com/Imputs/social-share-card.png">
+    <link id="canonical-link" rel="canonical" href="https://structorsystemsautomation.com/post.html">
     <script src="https://cdn.tailwindcss.com?plugins=typography,forms,container-queries"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
         rel="stylesheet" />
@@ -487,6 +488,10 @@
                 document.getElementById('post-date').innerText = new Date(post.date).toLocaleDateString('es-ES', { month: 'long', day: 'numeric', year: 'numeric' });
                 document.getElementById('post-image').src = post.image;
                 document.getElementById('post-content').innerHTML = post.contentHtml;
+
+                // Actualizar Canonical dinámicamente
+                const currentSlug = post.slug || postId;
+                document.getElementById('canonical-link').href = `https://structorsystemsautomation.com/post.html?id=${currentSlug}`;
 
             } catch (error) {
                 console.error('Error loading post:', error);
