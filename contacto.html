@@ -337,6 +337,54 @@
         .animate-float-gentle {
             animation: float-gentle 2s ease-in-out infinite alternate;
         }
+
+        /* Service Picker Toggle */
+        .service-toggle-container {
+            display: flex;
+            background: #f1f5f9;
+            padding: 4px;
+            border-radius: 9999px;
+            position: relative;
+            isolation: isolate;
+            cursor: pointer;
+        }
+        .service-toggle-bg {
+            position: absolute;
+            top: 4px;
+            left: 4px;
+            height: calc(100% - 8px);
+            width: calc(50% - 4px);
+            background: #3b82f6; /* Blue by default */
+            border-radius: 9999px;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            z-index: 1;
+            pointer-events: none; /* Crucial: Let clicks through to buttons */
+        }
+        .service-btn {
+            flex: 1;
+            padding: 12px 16px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-align: center;
+            color: #64748b;
+            position: relative;
+            z-index: 2;
+            transition: color 0.3s ease;
+            user-select: none;
+        }
+        .service-btn.active { color: white !important; }
+        
+        .toggle-nexus .service-toggle-bg { 
+            transform: translateX(100%); 
+            background: #eab308; 
+            box-shadow: 0 4px 12px rgba(234, 179, 8, 0.2);
+        }
+
+        /* Dynamic Theme Overrides */
+        .theme-nexus .indicator.bg-active { background-color: #eab308 !important; }
+        .theme-nexus #next-btn { background-color: #eab308 !important; }
+        .theme-nexus .focus\:ring-blue-500:focus { --tw-ring-color: #eab308 !important; }
     </style>
 </head>
 
@@ -390,7 +438,24 @@
                     <span class="text-slate-400 font-bold text-[10px] uppercase tracking-widest mb-8 block">PREGUNTAS
                         FRECUENTES</span>
                     <div class="space-y-0">
-                        <!-- Q1 -->
+                        <!-- Q1 (Featured) -->
+                        <div class="faq-item-desktop border border-blue-100 bg-blue-50/40 rounded-2xl px-5 py-2 mb-6 group ring-4 ring-blue-50/30">
+                            <button
+                                class="flex items-center justify-between w-full py-4 text-left transition-all hover:text-blue-600"
+                                onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('.faq-icon').classList.toggle('rotate-45')">
+                                <span class="font-black text-blue-700 pr-4 text-sm">¿Soluciones a medida o Nexus?</span>
+                                <span
+                                    class="material-symbols-outlined text-blue-400 faq-icon text-xl transition-transform">add</span>
+                            </button>
+                            <div class="hidden text-slate-700 text-xs leading-relaxed animate-fadeIn space-y-3 pb-4">
+                                <p>No se trata de elegir un servicio, sino de definir el sistema adecuado.</p>
+                                <p>Los <strong class="text-yellow-500">packs Nexus</strong> están pensados para quienes buscan un sistema integral que centralice diferentes áreas del negocio en una sola estructura: desde la web y la captación de leads hasta la gestión interna y las automatizaciones. Al ser soluciones más completas, implican una mayor inversión, pero también un mayor impacto y escalabilidad desde el inicio.</p>
+                                <p>Las <strong class="text-blue-600">soluciones a medida</strong>, en cambio, se enfocan en resolver necesidades más concretas o en diseñar partes específicas del sistema según tu situación.</p>
+                                <p>En cualquier caso, durante la llamada analizamos tu negocio, detectamos los puntos de mejora y te recomendamos la opción más adecuada.</p>
+                            </div>
+                        </div>
+
+                        <!-- Q2 -->
                         <div class="faq-item-desktop border-b border-slate-200 group pb-4">
                             <button
                                 class="flex items-center justify-between w-full py-4 text-left transition-all hover:text-slate-600"
@@ -477,6 +542,17 @@
             <div
                 class="bg-white rounded-[2.5rem] p-8 md:p-12 shadow-xl border border-slate-100 reveal active relative order-2 lg:order-2">
                 <form id="lead-form" class="space-y-8">
+                    <!-- Service Picker -->
+                    <div class="space-y-4">
+                        <label class="block text-xs font-bold text-slate-400 uppercase tracking-widest mb-2">¿En qué estás interesad@? *</label>
+                        <div class="service-toggle-container toggle-soluciones" id="service-picker">
+                            <div class="service-toggle-bg"></div>
+                            <div class="service-btn active soluciones" data-value="Soluciones a medida">Soluciones a medida</div>
+                            <div class="service-btn nexus" data-value="Nexus">Nexus</div>
+                        </div>
+                        <input type="hidden" name="servicio_interesado" id="servicio_interesado_input" value="Soluciones a medida">
+                    </div>
+
                     <!-- Section 1: Datos Básicos -->
                     <div class="form-section active" data-section="1">
                         <div class="space-y-6">
@@ -642,7 +718,7 @@
 
                     <!-- Step Indicators -->
                     <div class="flex gap-2 justify-center pt-8">
-                        <div class="w-8 h-1 bg-blue-500 rounded-full indicator" data-step="1"></div>
+                        <div class="w-8 h-1 bg-blue-500 rounded-full indicator bg-active" data-step="1"></div>
                         <div class="w-8 h-1 bg-slate-100 rounded-full indicator" data-step="2"></div>
                         <div class="w-8 h-1 bg-slate-100 rounded-full indicator" data-step="3"></div>
                         <div class="w-8 h-1 bg-slate-100 rounded-full indicator" data-step="4"></div>
@@ -677,7 +753,25 @@
                     class="text-slate-400 font-bold text-[10px] uppercase tracking-widest mb-8 block text-center md:text-left">PREGUNTAS
                     FRECUENTES</span>
                 <div class="space-y-0">
-                    <!-- Q1 -->
+                    <!-- Q1 (Featured) -->
+                    <div class="faq-item bg-blue-50/40 rounded-2xl p-5 border border-blue-100 mb-6 group ring-4 ring-blue-50/30">
+                        <button
+                            class="flex items-center justify-between w-full py-2 text-left transition-all hover:text-blue-600"
+                            onclick="this.parentElement.classList.toggle('active')">
+                            <span class="font-black text-blue-700 pr-4">¿Soluciones a medida o Nexus?</span>
+                            <span class="material-symbols-outlined text-blue-400 faq-icon text-2xl">add</span>
+                        </button>
+                        <div class="faq-content">
+                            <div class="faq-inner text-slate-700 text-sm pb-5 leading-relaxed space-y-4">
+                                <p>No se trata de elegir un servicio, sino de definir el sistema adecuado.</p>
+                                <p>Los <strong class="text-yellow-500">packs Nexus</strong> están pensados para quienes buscan un sistema integral que centralice diferentes áreas del negocio en una sola estructura: desde la web y la captación de leads hasta la gestión interna y las automatizaciones. Al ser soluciones más completas, implican una mayor inversión, pero también un mayor impacto y escalabilidad desde el inicio.</p>
+                                <p>Las <strong class="text-blue-600">soluciones a medida</strong>, en cambio, se enfocan en resolver necesidades más concretas o en diseñar partes específicas del sistema según tu situación.</p>
+                                <p>En cualquier caso, durante la llamada analizamos tu negocio, detectamos los puntos de mejora y te recomendamos la opción más adecuada.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Q2 -->
                     <div class="faq-item border-b border-slate-200 group">
                         <button
                             class="flex items-center justify-between w-full py-5 text-left transition-all hover:text-slate-600"
@@ -911,6 +1005,42 @@
     </footer>
 
     <script>
+        // Service Picker Logic
+        const initServicePicker = () => {
+            const servicePicker = document.getElementById('service-picker');
+            const serviceInput = document.getElementById('servicio_interesado_input');
+            const serviceBtns = document.querySelectorAll('.service-btn');
+            const leadForm = document.getElementById('lead-form');
+
+            if (!servicePicker) return;
+
+            serviceBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const val = btn.getAttribute('data-value');
+                    serviceInput.value = val;
+                    
+                    // Update classes
+                    serviceBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    
+                    if(val === 'Nexus') {
+                        servicePicker.classList.remove('toggle-soluciones');
+                        servicePicker.classList.add('toggle-nexus');
+                        leadForm.classList.add('theme-nexus');
+                        leadForm.classList.remove('theme-soluciones');
+                    } else {
+                        servicePicker.classList.remove('toggle-nexus');
+                        servicePicker.classList.add('toggle-soluciones');
+                        leadForm.classList.remove('theme-nexus');
+                        leadForm.classList.add('theme-soluciones');
+                    }
+                });
+            });
+        };
+
+        // Initialize on load
+        initServicePicker();
+
         const form = document.getElementById('lead-form');
         const sections = document.querySelectorAll('.form-section');
         const nextBtn = document.getElementById('next-btn');
@@ -938,11 +1068,18 @@
 
         const updateNav = () => {
             sections.forEach(s => s.classList.remove('active'));
-            document.querySelector(`.form-section[data-section="${currentSection}"]`).classList.add('active');
+            const targetSection = document.querySelector(`.form-section[data-section="${currentSection}"]`);
+            if(targetSection) targetSection.classList.add('active');
 
             indicators.forEach((ind, i) => {
-                ind.classList.toggle('bg-blue-500', i < currentSection);
-                ind.classList.toggle('bg-blue-100', i >= currentSection);
+                const step = parseInt(ind.getAttribute('data-step'));
+                if (step <= currentSection) {
+                    ind.classList.add('bg-active', 'bg-blue-500');
+                    ind.classList.remove('bg-slate-100');
+                } else {
+                    ind.classList.remove('bg-active', 'bg-blue-500');
+                    ind.classList.add('bg-slate-100');
+                }
             });
 
             prevBtn.classList.toggle('hidden', currentSection === 1);
@@ -1008,6 +1145,7 @@
                 procesos_actuales: data.procesos_actuales,
                 timeline: getSelectText('timeline'),
                 presupuesto: getSelectText('presupuesto'),
+                servicio_interesado: data.servicio_interesado,
                 source: "web-form",
                 created_at: new Date().toISOString()
             };

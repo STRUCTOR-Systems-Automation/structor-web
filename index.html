@@ -419,11 +419,17 @@
 
         /* Card Depth & Highlights */
         .premium-card {
-            @apply border border-slate-100/50 shadow-sm transition-all duration-500;
+            border: 1px solid rgba(241, 245, 249, 0.5); 
+            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); 
+            transition: all 500ms;
         }
 
         .premium-card:hover {
-            @apply border-yellow-200/50 shadow-xl shadow-yellow-100/20 -translate-y-1;
+            border-color: rgba(254, 240, 138, 0.5); 
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 
+                        0 8px 10px -6px rgba(0, 0, 0, 0.1), 
+                        0 0 20px rgba(254, 240, 138, 0.2); 
+            transform: translateY(-4px);
         }
     </style>
     <style>
@@ -779,430 +785,109 @@
         </div>
     </section>
     <!-- Servicios Section (Enriched) -->
+    <!-- Elige tu Camino Section (Redesigned Services) -->
     <section class="py-32 px-6 bg-white" id="servicios">
         <div class="max-w-6xl mx-auto">
-            <span
-                class="text-blue-500 font-bold text-sm tracking-[0.2em] uppercase mb-4 block text-center">SERVICIOS</span>
-            <div class="text-center mb-20 text-mask-container block max-w-full">
-                <h2
-                    class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 text-mask-child tracking-tight">
-                    Sistemas que transforman tu negocio</h2>
+            <span class="text-blue-500 font-bold text-sm tracking-[0.2em] uppercase mb-4 block text-center">SERVICIOS</span>
+            <div class="text-center mb-6 text-mask-container block max-w-full pb-2">
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 text-mask-child tracking-tight active pb-2">Elige tu camino</h2>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 stagger-group">
-                <!-- Pillar 1: Automatización Estratégica -->
-                <div
-                    class="group premium-card rounded-3xl p-10 bg-slate-50 relative overflow-hidden flex flex-col items-start text-left stagger-child">
-                    <div class="mb-8 pl-0">
-                        <span
-                            class="material-symbols-outlined text-7xl text-slate-900 font-light translate-x-[-10px]">electric_bolt</span>
-                    </div>
-                    <h3 class="text-3xl font-black text-slate-900 mb-6 leading-tight">
-                        <span>Automatización</span><br />
-                        <span class="relative inline-block">
-                            <span class="relative z-10">Estratégica</span>
-                            <div
-                                class="absolute bottom-1 left-0 w-full h-4 bg-yellow-200 -z-0 rounded-sm mix-blend-multiply opacity-70">
-                            </div>
-                        </span>
-                    </h3>
-                    <p class="text-slate-500 text-lg leading-snug mb-6 max-w-[280px]">
-                        Convertir tareas repetitivas en procesos que funcionan solos conectando herramientas, datos e IA cuando aporta valor.<br />
-                        <span class="block mt-4 text-sm font-bold text-slate-900 italic opacity-80">"Lo que antes
-                            llevaba días, ahora en minutos."</span>
-                    </p>
-                    <div
-                        class="mt-auto pt-6 border-t border-slate-200 w-full opacity-60 group-hover:opacity-100 transition-opacity">
-                        <span class="text-[10px] font-bold uppercase tracking-wider text-slate-400">Impacto
-                            Medible</span>
-                        <p class="text-slate-900 font-bold mt-1 text-xs italic mb-4">ROA (Return on Automation)</p>
-
-                        <!-- Dynamic ROA Graph (Increased height to h-56) -->
-                        <div class="w-full h-56 relative group/roa pt-4">
-                            <svg viewBox="0 0 200 160" class="w-full h-full overflow-visible">
-                                <defs>
-                                    <pattern id="hatch-roa" width="8" height="8" patternUnits="userSpaceOnUse"
-                                        patternTransform="rotate(45)">
-                                        <line x1="0" y1="0" x2="0" y2="8" stroke="#cbd5e1" stroke-width="1.5" />
-                                    </pattern>
-                                </defs>
-
-                                <!-- Axes -->
-                                <line x1="25" y1="10" x2="25" y2="140" stroke="#94a3b8" stroke-width="2" />
-                                <line x1="25" y1="140" x2="185" y2="140" stroke="#94a3b8" stroke-width="2" />
-
-                                <!-- Labels -->
-                                <text x="12" y="75" transform="rotate(-90, 12, 75)"
-                                    class="text-[11px] fill-slate-700 font-extrabold uppercase tracking-widest">Esfuerzo</text>
-                                <text x="95" y="158"
-                                    class="text-[11px] fill-slate-700 font-extrabold uppercase tracking-widest">Tiempo</text>
-
-                                <!-- Manual Work Line (Static) -->
-                                <line x1="25" y1="30" x2="170" y2="30" stroke="#94a3b8" stroke-width="1.5"
-                                    stroke-dasharray="5,4" />
-                                <text x="172" y="34" class="text-[10px] fill-slate-600 font-black">MANUAL</text>
-
-                                <!-- Hatched Area (ROA) -->
-                                <path d="M 25 30 Q 60 120, 175 135 L 175 30 Z" fill="url(#hatch-roa)"
-                                    class="opacity-0 group-hover/roa:opacity-100 transition-opacity duration-1000" />
-
-                                <!-- Automation Curve -->
-                                <path d="M 25 30 Q 60 120, 175 135" fill="none" stroke="#0f172a" stroke-width="4"
-                                    stroke-linecap="round" class="animate-draw-path" />
-                                <text x="177" y="145"
-                                    class="text-[11px] fill-slate-900 font-black italic">SISTEMA</text>
-
-                                <!-- ROA Central Label -->
-                                <g
-                                    class="animate-float-gentle opacity-0 group-hover/roa:opacity-100 transition-opacity duration-500">
-                                    <rect x="70" y="60" width="70" height="28" rx="14" fill="black" />
-                                    <text x="105" y="79" text-anchor="middle"
-                                        class="text-[14px] fill-white font-black uppercase tracking-widest">ROA</text>
-                                </g>
-
-                                <!-- Corner Gear Icon -->
-                                <text x="182" y="75"
-                                    class="material-symbols-outlined text-slate-200 text-lg group-hover/roa:text-yellow-400 transition-all duration-500 group-hover/roa:rotate-90">settings</text>
-                            </svg>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Pillar 2: Sistemas Operativos (OS) -->
-                <div
-                    class="group premium-card rounded-3xl p-10 bg-slate-50 relative overflow-hidden flex flex-col items-start text-left stagger-child">
-                    <div class="mb-8">
-                        <svg class="h-16 w-16 text-slate-900 translate-x-[-10px]" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M4.459 4.208c.746.606 1.026.56 2.428.466l13.215-.793c.28 0 .047-.28-.046-.326L17.86 1.968c-.42-.326-.981-.7-2.055-.607L3.01 2.295c-.466.046-.56.28-.374.466zm.793 3.08v13.904c0 .747.373 1.027 1.214.98l14.523-.84c.841-.046.935-.56.935-1.167V6.354c0-.606-.233-.933-.748-.887l-15.177.887c-.56.047-.747.327-.747.933zm14.337.745c.093.42 0 .84-.42.888l-.7.14v10.264c-.608.327-1.168.514-1.635.514-.748 0-.935-.234-1.495-.933l-4.577-7.186v6.952L12.21 19s0 .84-1.168.84l-3.222.186c-.093-.186 0-.653.327-.746l.84-.233V9.854L7.822 9.76c-.094-.42.14-1.026.793-1.073l3.456-.233 4.764 7.279v-6.44l-1.215-.139c-.093-.514.28-.887.747-.933zM1.936 1.035l13.31-.98c1.634-.14 2.055-.047 3.082.7l4.249 2.986c.7.513.934.653.934 1.213v16.378c0 1.026-.373 1.634-1.68 1.726l-15.458.934c-.98.047-1.448-.093-1.962-.747l-3.129-4.06c-.56-.747-.793-1.306-.793-1.96V2.667c0-.839.374-1.54 1.447-1.632z"/>
+            
+            <p class="text-slate-600 text-lg md:text-xl max-w-6xl mx-auto mb-16 text-center leading-relaxed">
+                No se trata de elegir un servicio, sino de definir el sistema adecuado. Los packs <span class="text-yellow-500 font-bold">Nexus</span> ofrecen una solución integral que implica una mayor inversión, pero también mayor impacto y escalabilidad desde el inicio, mientras que las <span class="text-blue-600 font-bold text-nowrap">soluciones a medida</span> se adaptan a necesidades más específicas. Puedes agendar una llamada gratuita para que analicemos tu caso y definamos la mejor opción.
+</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:gap-20 gap-12 stagger-group active">
+                
+                <!-- Opción 1: Soluciones a Medida -->
+                <div class="group premium-card rounded-[3rem] p-12 bg-slate-50 relative overflow-hidden flex flex-col stagger-child shadow-xl hover:shadow-2xl transition-all duration-700">
+                    <!-- Technical Architecture Visual -->
+                    <div class="absolute top-0 right-0 w-1/2 h-full opacity-[0.07] pointer-events-none group-hover:opacity-[0.12] transition-opacity duration-700">
+                        <svg viewBox="0 0 200 400" class="w-full h-full">
+                            <path class="node-path" d="M 50 50 L 150 100 L 100 200 L 180 300" stroke="#0f172a" fill="none" stroke-width="2" />
+                            <circle cx="50" cy="50" r="4" fill="#0f172a" />
+                            <circle cx="150" cy="100" r="4" fill="#3b82f6" />
+                            <circle cx="100" cy="200" r="4" fill="#0f172a" />
+                            <circle cx="180" cy="300" r="4" fill="#facc15" />
+                            <!-- Animated flow line -->
+                            <path d="M 50 50 L 150 100 L 100 200 L 180 300" stroke="#3b82f6" fill="none" stroke-width="3" stroke-dasharray="10 20" class="animate-[dash_3s_linear_infinite]" />
                         </svg>
                     </div>
-                    <h3 class="text-3xl font-black text-slate-900 mb-6 leading-tight">
-                        <span>Sistemas Operativos</span><br />
-                        <span class="relative inline-block">
-                            <span class="relative z-10">en Notion</span>
-                            <div
-                                class="absolute bottom-1 left-0 w-full h-4 bg-blue-200 -z-0 rounded-sm mix-blend-multiply opacity-70">
-                            </div>
-                        </span>
-                    </h3>
-                    <p class="text-slate-500 text-lg leading-snug mb-6 max-w-[280px]">
-                        Estructuras operativas de negocio construidas en Notion, donde herramientas, procesos e información se organizan dentro de un mismo sistema.
-                    </p>
-                    <div class="mt-auto pt-4 w-full opacity-70 group-hover:opacity-100 transition-opacity">
-                        <ul class="space-y-2 text-[12px] text-slate-600 mb-6">
-                            <li class="flex items-center gap-2">
-                                <span class="material-symbols-outlined text-slate-900 text-sm">check_circle</span>
-                                <span>Sin dependencias innecesarias</span>
+
+                    <div class="relative z-10 flex flex-col h-full">
+                        <h3 class="text-3xl font-black text-slate-900 mb-6 leading-tight">Soluciones a <br/><span class="text-blue-600">tu medida</span></h3>
+                        <p class="text-slate-600 text-lg leading-relaxed mb-8">
+                            Diseñemos juntos un sistema adaptado a tus necesidades para organizar tus flujos, tus equipos y tus datos.
+                        </p>
+                        
+                        <ul class="space-y-4 mb-10">
+                            <li class="flex items-center gap-3 text-slate-800 font-bold">
+                                <span class="material-symbols-outlined text-blue-500">settings_suggest</span>
+                                <span>Automatización estratégica</span>
                             </li>
-                            <li class="flex items-center gap-2">
-                                <span class="material-symbols-outlined text-slate-900 text-sm">check_circle</span>
-                                <span>Conocimiento centralizado</span>
+                            <li class="flex items-center gap-3 text-slate-800 font-bold">
+                                <img src="Imputs/notion_logo_blue.png" class="w-6 h-6 object-contain" alt="Notion">
+                                <span>Sistemas Operativos en Notion</span>
                             </li>
-                            <li class="flex items-center gap-2">
-                                <span class="material-symbols-outlined text-slate-900 text-sm">check_circle</span>
-                                <span>Gestión de proyectos fluida</span>
+                            <li class="flex items-center gap-3 text-slate-800 font-bold">
+                                <span class="material-symbols-outlined text-blue-500">monitoring</span>
+                                <span>Control de datos</span>
                             </li>
                         </ul>
 
-                        <!-- Mini-OS Interface (Notion-style - Height increased to h-56) -->
-                        <div
-                            class="bg-white border border-slate-200 rounded-xl shadow-sm overflow-hidden flex flex-col h-56 w-full group/window hover:shadow-md transition-shadow">
-                            <!-- Top Window Area -->
-                            <div class="flex-1 flex overflow-hidden">
-                                <!-- Sidebar -->
-                                <div class="w-12 bg-slate-50 border-r border-slate-100 flex flex-col p-3 gap-3">
-                                    <div class="flex gap-1.5 mb-2">
-                                        <div class="size-1.5 bg-[#ff5f56] rounded-full"></div>
-                                        <div class="size-1.5 bg-[#ffbd2e] rounded-full"></div>
-                                        <div class="size-1.5 bg-[#27c93f] rounded-full"></div>
-                                    </div>
-                                    <div class="w-full h-1.5 bg-slate-200 rounded-full"></div>
-                                    <div class="w-4/5 h-1.5 bg-slate-200 rounded-full"></div>
-                                    <div class="w-full h-1.5 bg-slate-200 rounded-full mt-4"></div>
-                                    <div class="w-3/5 h-1.5 bg-slate-200 rounded-full"></div>
-                                    <div class="w-full h-1.5 bg-slate-200 rounded-full mt-4"></div>
-                                </div>
-                                <!-- Main Content -->
-                                <div class="flex-1 p-5 bg-[#fbfbfa]">
-                                    <div class="w-full h-3 bg-slate-200 rounded-full mb-8"></div>
-                                    <div class="grid grid-cols-3 gap-4">
-                                        <!-- Mini Card 1 -->
-                                        <div
-                                            class="bg-white border border-slate-100 rounded-xl p-4 flex flex-col items-center justify-center hover:shadow-md hover:-translate-y-1 transition-all cursor-pointer group/mini active:scale-95 shadow-sm">
-                                            <span
-                                                class="material-symbols-outlined text-yellow-500 text-3xl mb-2">folder</span>
-                                            <span
-                                                class="text-[11px] font-black text-slate-900 tracking-wider uppercase">Proyectos</span>
-                                        </div>
-                                        <!-- Mini Card 2 -->
-                                        <div
-                                            class="bg-white border border-slate-100 rounded-xl p-4 flex flex-col items-center justify-center hover:shadow-md hover:-translate-y-1 transition-all cursor-pointer group/mini active:scale-95 delay-[50ms] shadow-sm">
-                                            <span
-                                                class="material-symbols-outlined text-blue-500 text-3xl mb-2">description</span>
-                                            <span
-                                                class="text-[11px] font-black text-slate-900 tracking-wider uppercase">Wiki</span>
-                                        </div>
-                                        <!-- Mini Card 3 -->
-                                        <div
-                                            class="bg-white border border-slate-100 rounded-xl p-4 flex flex-col items-center justify-center hover:shadow-md hover:-translate-y-1 transition-all cursor-pointer group/mini active:scale-95 delay-[100ms] shadow-sm">
-                                            <span
-                                                class="material-symbols-outlined text-emerald-500 text-3xl mb-2">checklist</span>
-                                            <span
-                                                class="text-[11px] font-black text-slate-900 tracking-wider uppercase">Tareas</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Bottom Status Bar -->
-                            <div
-                                class="h-8 bg-slate-50 border-t border-slate-100 px-4 flex items-center justify-between">
-                                <div class="flex items-center gap-2">
-                                    <div class="size-2 bg-emerald-500 rounded-full animate-pulse"></div>
-                                    <span class="text-[9px] font-bold text-slate-400 uppercase tracking-widest">Sistema
-                                        activo</span>
-                                </div>
-                                <span class="text-[9px] font-black text-slate-900">SYNC OK</span>
-                            </div>
+                        <div class="mt-auto pt-6">
+                            <a href="soluciones-a-medida.html" class="w-full sm:w-auto bg-blue-600 text-white font-bold py-4 px-8 rounded-full inline-flex items-center justify-center gap-2 hover:bg-blue-700 transition-all group/btn shadow-lg shadow-blue-200/50">
+                                <span>Información sobre soluciones a medida</span>
+                                <span class="material-symbols-outlined group-hover/btn:translate-x-1 transition-transform">arrow_forward</span>
+                            </a>
                         </div>
                     </div>
                 </div>
 
-                <!-- Pillar 3: Control de Datos -->
-                <div
-                    class="group premium-card rounded-3xl p-10 bg-slate-50 relative overflow-hidden flex flex-col items-start text-left stagger-child">
-                    <div class="mb-8 pl-0">
-                        <span
-                            class="material-symbols-outlined text-7xl text-slate-900 font-light translate-x-[-10px]">troubleshoot</span>
-                    </div>
-                    <h3 class="text-3xl font-black text-slate-900 mb-6 leading-tight">
-                        <span>Control de</span><br />
-                        <span class="relative inline-block">
-                            <span class="relative z-10">Datos</span>
-                            <div
-                                class="absolute bottom-1 left-0 w-full h-4 bg-yellow-200 -z-0 rounded-sm mix-blend-multiply opacity-70">
-                            </div>
-                        </span>
-                    </h3>
-                    <p class="text-slate-500 text-lg leading-snug mb-6 max-w-[280px]">
-                        De datos dispersos a paneles accionables para tomar decisiones reales.<br />
-                        <span class="block mt-4 font-bold text-slate-900 text-sm underline decoration-yellow-400">Datos
-                            dispersos → Decisiones claras</span>
-                    </p>
-
-                    <!-- Data Transformation Visual (More literal & clear iteration) -->
-                    <div class="w-full h-24 mb-6 flex items-center justify-between bg-white/40 border border-slate-100 rounded-2xl px-6 relative group/trans overflow-hidden shadow-sm shrink-0">
-                        <!-- Scattered Files (Data Dispersa) -->
-                        <div class="relative w-16 h-16 flex items-center justify-center">
-                            <span class="material-symbols-outlined absolute -top-1 -left-1 text-2xl text-slate-300 -rotate-12 opacity-60">description</span>
-                            <span class="material-symbols-outlined absolute top-4 left-4 text-3xl text-slate-400 rotate-6">table_chart</span>
-                            <span class="material-symbols-outlined absolute -bottom-1 right-0 text-xl text-slate-200 -rotate-45">article</span>
-                        </div>
-
-                        <!-- Central Flow Arrow -->
-                        <div class="flex-1 flex flex-col items-center justify-center gap-1">
-                            <div class="flex items-center justify-center w-full">
-                                <div class="h-[1px] w-8 bg-slate-200"></div>
-                                <span class="material-symbols-outlined text-blue-500 text-2xl group-hover/trans:translate-x-3 transition-transform duration-700 ease-in-out">trending_flat</span>
-                                <div class="h-[1px] w-2 bg-slate-200"></div>
-                            </div>
-                        </div>
-
-                        <!-- Dashboard Result (Dashboards Accionables) -->
-                        <div class="relative w-24 h-16 bg-white border-2 border-slate-900 rounded-lg p-2 shadow-sm group-hover/trans:shadow-xl transition-all duration-500 overflow-hidden">
-                            <!-- Top bar -->
-                            <div class="flex justify-between items-center mb-1.5">
-                                <div class="w-8 h-1.5 bg-slate-100 rounded-full"></div>
-                                <div class="size-2 bg-emerald-500 rounded-full scale-0 group-hover/trans:scale-100 transition-transform delay-300"></div>
-                            </div>
-                            <!-- Charts representation -->
-                            <div class="flex gap-1.5 h-full items-end pb-3">
-                                <div class="flex-1 bg-blue-500/10 rounded-t-sm relative overflow-hidden h-full">
-                                    <div class="absolute bottom-0 left-0 w-full bg-blue-500/40 h-2/3"></div>
-                                </div>
-                                <div class="flex-1 flex flex-col gap-1 justify-end h-full">
-                                    <div class="w-full h-3 bg-slate-900 rounded-t-sm"></div>
-                                    <div class="w-full h-1.5 bg-slate-400 rounded-t-sm"></div>
-                                </div>
-                                <div class="flex-1 bg-yellow-400/20 rounded-t-sm h-full flex items-end">
-                                    <div class="w-full h-[40%] bg-yellow-400/60"></div>
-                                </div>
-                            </div>
-                            <!-- Small overlay check -->
-                            <div class="absolute bottom-1 right-1 opacity-0 group-hover/trans:opacity-100 transition-opacity delay-500">
-                                <span class="material-symbols-outlined text-emerald-500 text-[10px] font-bold">check_circle</span>
-                            </div>
-                        </div>
+                <!-- Opción 2: Nexus -->
+                <div class="group premium-card rounded-[3rem] p-12 bg-white relative overflow-hidden flex flex-col stagger-child shadow-xl hover:shadow-2xl transition-all duration-700 border-2 border-slate-900">
+                    <span class="inline-block bg-yellow-100 text-yellow-900 text-[7px] md:text-[9px] font-black px-3 py-1 md:px-4 md:py-1.5 rounded-full absolute top-6 right-6 md:right-12 text-center uppercase tracking-widest z-10 shadow-sm border border-yellow-200/50">
+                        PYMES & AUTÓNOMOS
+                    </span>
+                    <!-- Video Visual: Nexus Business Operating (Fully Integrated) -->
+                    <div class="absolute md:bottom-14 bottom-[114px] md:right-8 right-0 md:w-[35%] w-[28%] opacity-100 z-0 pointer-events-none">
+                        <video class="w-full h-auto" autoplay muted loop playsinline preload="auto">
+                            <source src="Imputs/Nexus_business_operating_202604021839.mp4" type="video/mp4">
+                        </video>
                     </div>
 
-                    <!-- Mini-Dashboard: Control de Datos (Vertical Stack) -->
-                    <div class="mt-auto w-full flex flex-col gap-2">
-                        <!-- Card 1: Distribución -->
-                        <div
-                            class="bg-white border border-slate-200 rounded-2xl p-4 flex items-center justify-between hover:shadow-md transition-shadow group/sub">
-                            <div class="flex flex-col gap-1.5">
-                                <span
-                                    class="text-[14px] font-black text-slate-900 uppercase tracking-wider">Distribución</span>
-                                <span class="text-[11px] font-extrabold text-slate-400 uppercase">Visibilidad
-                                    total</span>
-                            </div>
-                            <div class="relative size-14">
-                                <svg viewBox="0 0 100 100" class="w-full h-full -rotate-90">
-                                    <circle cx="50" cy="50" r="40" fill="none" stroke="#f1f5f9" stroke-width="12" />
-                                    <circle cx="50" cy="50" r="40" fill="none" stroke="#0f172a" stroke-width="12"
-                                        stroke-dasharray="180 251"
-                                        class="transition-all duration-1000 group-hover/sub:stroke-dasharray-[210 251]" />
-                                    <circle cx="50" cy="50" r="28" fill="none" stroke="#cbd5e1" stroke-width="8"
-                                        stroke-dasharray="120 175" />
-                                </svg>
-                                <div class="absolute inset-0 flex items-center justify-center">
-                                    <span class="material-symbols-outlined text-sm text-slate-900">visibility</span>
-                                </div>
-                            </div>
+                    <div class="relative z-10 flex flex-col h-full">
+                        <div class="flex items-center gap-3 mb-6">
+                            <h3 class="text-3xl font-black text-slate-900 leading-tight">Nexus — <span class="text-slate-500 font-bold">Packs OS</span></h3>
                         </div>
+                        <p class="text-slate-600 text-lg leading-relaxed mb-8">
+                            Todo lo que necesitas para organizar, captar y gestionar tu negocio sin depender de múltiples herramientas.
+                        </p>
+                        
+                        <ul class="space-y-4 mb-10">
+                            <li class="flex items-center gap-3 text-slate-800 font-bold">
+                                <span class="material-symbols-outlined text-slate-900">web</span>
+                                <span>Creación Web + Notion como centro</span>
+                            </li>
+                            <li class="flex items-center gap-3 text-slate-800 font-bold">
+                                <span class="material-symbols-outlined text-slate-900">ads_click</span>
+                                <span>Captación de leads automatizada</span>
+                            </li>
+                            <li class="flex items-center gap-3 text-slate-800 font-bold">
+                                <span class="material-symbols-outlined text-slate-900">inventory_2</span>
+                                <span>Gestión del negocio en un solo sistema</span>
+                            </li>
+                        </ul>
 
-                        <!-- Card 2: Tendencia -->
-                        <div
-                            class="bg-white border border-slate-200 rounded-2xl p-4 flex items-center justify-between hover:shadow-md transition-shadow group/sub">
-                            <div class="flex flex-col gap-1.5">
-                                <span
-                                    class="text-[14px] font-black text-slate-900 uppercase tracking-wider">Tendencia</span>
-                                <div class="flex gap-2">
-                                    <span class="text-[11px] font-extrabold text-slate-400 uppercase">Q1</span>
-                                    <span class="text-[11px] font-black text-slate-900">→ Q4</span>
-                                </div>
-                            </div>
-                            <div class="flex items-end gap-1 h-10">
-                                <div class="w-2 bg-slate-200 rounded-t-sm animate-bar-grow h-[30%]"></div>
-                                <div
-                                    class="w-2 bg-slate-200 rounded-t-sm animate-bar-grow h-[50%] [animation-delay:0.2s]">
-                                </div>
-                                <div
-                                    class="w-2 bg-slate-400 rounded-t-sm animate-bar-grow h-[70%] [animation-delay:0.4s]">
-                                </div>
-                                <div
-                                    class="w-2 bg-slate-900 rounded-t-sm animate-bar-grow h-[100%] [animation-delay:0.6s]">
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Card 3: Confiabilidad -->
-                        <div
-                            class="bg-white border border-slate-200 rounded-2xl p-4 flex items-center justify-between hover:shadow-md transition-shadow group/sub overflow-hidden">
-                            <div class="flex flex-col gap-1.5">
-                                <span
-                                    class="text-[14px] font-black text-slate-900 uppercase tracking-wider">Confiabilidad</span>
-                                <span class="text-[11px] font-extrabold text-slate-400 uppercase">de la
-                                    información</span>
-                            </div>
-                            <div class="flex items-center gap-2">
-                                <span class="text-3xl font-black text-slate-900 tracking-tighter">100%</span>
-                                <span
-                                    class="material-symbols-outlined text-blue-500 text-xl group-hover/sub:translate-x-1 group-hover/sub:-translate-y-1 transition-transform">north_east</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Proceso Section (Horizontal Redesign) -->
-    <section class="py-32 px-6 bg-slate-50 overflow-hidden">
-        <div class="max-w-6xl mx-auto">
-            <div class="text-center mb-20 text-mask-container block">
-                <span
-                    class="text-blue-500 font-bold text-sm tracking-[0.2em] uppercase mb-4 block text-mask-child">Metodología</span>
-                <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 mb-6 text-mask-child tracking-tight"
-                    style="transition-delay: 0.1s;">
-                    <span class="premium-highlight inline">Un sistema claro. Sin improvisaciones.</span>
-                </h2>
-            </div>
-
-            <!-- Horizontal Step Container -->
-            <div class="relative grid grid-cols-1 md:grid-cols-4 gap-8 stagger-group">
-                <!-- SVG Connecting Lines (Desktop Only) -->
-                <div class="hidden md:block absolute top-[15%] left-0 w-full pointer-events-none">
-                    <div class="flex justify-around items-center px-12">
-                        <div class="w-1/4 flex justify-center translate-x-12">
-                            <svg width="100" height="20" viewBox="0 0 100 20" class="opacity-20">
-                                <path d="M0,10 L90,10" stroke="#0f172a" stroke-width="2" stroke-dasharray="4,4"
-                                    fill="none" class="animate-[dash_2s_linear_infinite]" />
-                                <path d="M85,5 L95,10 L85,15" stroke="#0f172a" stroke-width="2" fill="none" />
-                            </svg>
-                        </div>
-                        <div class="w-1/4 flex justify-center translate-x-4">
-                            <svg width="100" height="20" viewBox="0 0 100 20" class="opacity-20">
-                                <path d="M0,10 L90,10" stroke="#0f172a" stroke-width="2" stroke-dasharray="4,4"
-                                    fill="none" class="animate-[dash_2s_linear_infinite]" />
-                                <path d="M85,5 L95,10 L85,15" stroke="#0f172a" stroke-width="2" fill="none" />
-                            </svg>
-                        </div>
-                        <div class="w-1/4 flex justify-center -translate-x-4">
-                            <svg width="100" height="20" viewBox="0 0 100 20" class="opacity-20">
-                                <path d="M0,10 L90,10" stroke="#0f172a" stroke-width="2" stroke-dasharray="4,4"
-                                    fill="none" class="animate-[dash_2s_linear_infinite]" />
-                                <path d="M85,5 L95,10 L85,15" stroke="#0f172a" stroke-width="2" fill="none" />
-                            </svg>
+                        <div class="mt-auto pt-6">
+                            <a href="nexus.html" class="w-full sm:w-auto bg-yellow-400 text-slate-900 font-bold py-4 px-8 rounded-full inline-flex items-center justify-center gap-2 hover:bg-yellow-300 transition-all group/btn shadow-lg shadow-yellow-200/50">
+                                <span>Ver packs Nexus</span>
+                                <span class="material-symbols-outlined group-hover/btn:translate-x-1 transition-transform">arrow_forward</span>
+                            </a>
                         </div>
                     </div>
                 </div>
 
-                <!-- Step 1: Diagnóstico -->
-                <div
-                    class="relative bg-white p-8 rounded-3xl border border-slate-100 shadow-sm flex flex-col items-center hover:shadow-xl hover:-translate-y-2 transition-all duration-500 group/step stagger-child">
-                    <div
-                        class="size-16 rounded-full bg-slate-50 border-2 border-slate-100 flex items-center justify-center mb-6 group-hover/step:bg-yellow-50 group-hover/step:border-yellow-200 transition-colors">
-                        <span class="text-2xl font-black text-slate-900">01</span>
-                    </div>
-                    <span
-                        class="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-2">Diagnóstico</span>
-                    <h4 class="text-xl font-bold text-slate-900 mb-4">Análisis Inicial</h4>
-                    <p class="text-slate-500 text-sm text-center leading-relaxed">
-                        Analizamos frenos y tareas repetitivas para detectar el impacto real.
-                    </p>
-                </div>
-
-                <!-- Step 2: Diseño -->
-                <div
-                    class="relative bg-white p-8 rounded-3xl border border-slate-100 shadow-sm flex flex-col items-center hover:shadow-xl hover:-translate-y-2 transition-all duration-500 group/step stagger-child">
-                    <div
-                        class="size-16 rounded-full bg-slate-50 border-2 border-slate-100 flex items-center justify-center mb-6 group-hover/step:bg-blue-50 group-hover/step:border-blue-200 transition-colors">
-                        <span class="text-2xl font-black text-slate-900">02</span>
-                    </div>
-                    <span class="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-2">Diseño</span>
-                    <h4 class="text-xl font-bold text-slate-900 mb-4">Plan de Flujo</h4>
-                    <p class="text-slate-500 text-sm text-center leading-relaxed">
-                        Planificamos el flujo sin caos, definiendo el sistema a medida.
-                    </p>
-                </div>
-
-                <!-- Step 3: Construcción -->
-                <div
-                    class="relative bg-white p-8 rounded-3xl border border-slate-100 shadow-sm flex flex-col items-center hover:shadow-xl hover:-translate-y-2 transition-all duration-500 group/step stagger-child">
-                    <div
-                        class="size-16 rounded-full bg-slate-50 border-2 border-slate-100 flex items-center justify-center mb-6 group-hover/step:bg-emerald-50 group-hover/step:border-emerald-200 transition-colors">
-                        <span class="text-2xl font-black text-slate-900">03</span>
-                    </div>
-                    <span
-                        class="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-2">Construcción</span>
-                    <h4 class="text-xl font-bold text-slate-900 mb-4">Implementación</h4>
-                    <p class="text-slate-500 text-sm text-center leading-relaxed">
-                        Ejecutamos la automatización y configuramos las herramientas clave.
-                    </p>
-                </div>
-
-                <!-- Step 4: Optimización -->
-                <div
-                    class="relative bg-slate-900 p-8 rounded-3xl border border-slate-900 shadow-xl flex flex-col items-center hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 group/step scale-105 stagger-child">
-                    <div
-                        class="size-16 rounded-full bg-slate-800 border-2 border-slate-700 flex items-center justify-center mb-6 group-hover/step:border-yellow-400/50 transition-colors">
-                        <span class="text-2xl font-black text-white">04</span>
-                    </div>
-                    <span
-                        class="text-[10px] font-black text-slate-500 uppercase tracking-[0.2em] mb-2">Optimización</span>
-                    <h4 class="text-xl font-bold text-white mb-4">Impacto Real</h4>
-                    <p class="text-slate-400 text-sm text-center leading-relaxed">
-                        Pruebas en tiempo real, ajustes y medición del éxito obtenido.
-                    </p>
-                </div>
             </div>
         </div>
     </section>
@@ -1316,8 +1001,8 @@
                 </div>
             </div>
 
-            <!-- Row 2 (Reverse movement) -->
-            <div class="relative flex overflow-x-hidden group">
+            <!-- Row 2 (Reverse movement) - Hidden on Mobile -->
+            <div class="relative flex overflow-x-hidden group hidden md:flex">
                 <div
                     class="flex gap-8 py-4 animate-marquee-slow whitespace-nowrap group-hover:[animation-play-state:paused] [animation-direction:reverse]">
                     <div
