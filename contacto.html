@@ -403,7 +403,24 @@
         .theme-nexus .indicator.bg-active { background-color: #eab308 !important; }
         .theme-nexus #next-btn { background-color: #eab308 !important; }
         .theme-nexus .focus\:ring-blue-500:focus { --tw-ring-color: #eab308 !important; }
-    </style>
+    
+        /* Responsive Navigation for Mobile */
+        @media (max-width: 640px) {
+            .pill-nav {
+                width: 98vw !important;
+                padding: 0.1rem !important;
+                justify-content: center !important;
+                gap: 2px !important;
+            }
+
+            .nav-link {
+                padding: 0.5rem 0.35rem !important;
+                font-size: 0.65rem !important;
+                letter-spacing: -0.02em !important;
+                white-space: nowrap !important;
+            }
+        }
+</style>
 </head>
 
 <body class="bg-slate-50 text-slate-900">
@@ -1300,6 +1317,26 @@
             checkHash();
         });
     </script>
+
+    <!-- iOS Video Autoplay Fallback -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const allVids = document.querySelectorAll('video');
+            allVids.forEach(v => {
+                v.muted = true;
+                v.setAttribute('playsinline', '');
+                v.play().catch(() => {});
+            });
+            const unlockAllVids = () => {
+                allVids.forEach(v => v.play().catch(() => {}));
+                document.removeEventListener('touchstart', unlockAllVids);
+                document.removeEventListener('click', unlockAllVids);
+            };
+            document.addEventListener('touchstart', unlockAllVids, { once: true, passive: true });
+            document.addEventListener('click', unlockAllVids, { once: true, passive: true });
+        });
+    </script>
+
 </body>
 
 </html>

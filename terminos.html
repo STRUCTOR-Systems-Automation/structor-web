@@ -401,6 +401,26 @@
             checkHash();
         });
     </script>
+
+    <!-- iOS Video Autoplay Fallback -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const allVids = document.querySelectorAll('video');
+            allVids.forEach(v => {
+                v.muted = true;
+                v.setAttribute('playsinline', '');
+                v.play().catch(() => {});
+            });
+            const unlockAllVids = () => {
+                allVids.forEach(v => v.play().catch(() => {}));
+                document.removeEventListener('touchstart', unlockAllVids);
+                document.removeEventListener('click', unlockAllVids);
+            };
+            document.addEventListener('touchstart', unlockAllVids, { once: true, passive: true });
+            document.addEventListener('click', unlockAllVids, { once: true, passive: true });
+        });
+    </script>
+
 </body>
 
 </html>

@@ -104,7 +104,24 @@
                 text-align: center !important;
             }
         }
-    </style>
+    
+        /* Responsive Navigation for Mobile */
+        @media (max-width: 640px) {
+            .pill-nav {
+                width: 98vw !important;
+                padding: 0.1rem !important;
+                justify-content: center !important;
+                gap: 2px !important;
+            }
+
+            .nav-link {
+                padding: 0.5rem 0.35rem !important;
+                font-size: 0.65rem !important;
+                letter-spacing: -0.02em !important;
+                white-space: nowrap !important;
+            }
+        }
+</style>
 </head>
 <body class="bg-white text-slate-900 font-display">
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K3CWX83L" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -366,5 +383,25 @@
             window.reopenCookieBanner = () => banner.classList.remove('translate-y-full');
         });
     </script>
+
+    <!-- iOS Video Autoplay Fallback -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const allVids = document.querySelectorAll('video');
+            allVids.forEach(v => {
+                v.muted = true;
+                v.setAttribute('playsinline', '');
+                v.play().catch(() => {});
+            });
+            const unlockAllVids = () => {
+                allVids.forEach(v => v.play().catch(() => {}));
+                document.removeEventListener('touchstart', unlockAllVids);
+                document.removeEventListener('click', unlockAllVids);
+            };
+            document.addEventListener('touchstart', unlockAllVids, { once: true, passive: true });
+            document.addEventListener('click', unlockAllVids, { once: true, passive: true });
+        });
+    </script>
+
 </body>
 </html>
