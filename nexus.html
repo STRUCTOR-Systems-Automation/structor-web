@@ -1546,20 +1546,24 @@
                 });
 
                 // ═══════════════════════════════════════════
-                // VIDEO INTERSECTION LOGIC (Play when visible)
+                // VIDEO AUTOPLAY FALLBACK FOR IOS
                 // ═══════════════════════════════════════════
-                const videoObserver = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        const video = entry.target;
-                        if (entry.isIntersecting) {
-                            video.play().catch(() => {});
-                        } else {
-                            video.pause();
-                        }
-                    });
-                }, { threshold: 0.3 }); // Lower threshold for mobile visibility
+                const carouselVideos = carouselTrack.querySelectorAll('video');
+                carouselVideos.forEach(v => {
+                    v.muted = true;
+                    v.setAttribute('playsinline', '');
+                    v.play().catch(() => {});
+                });
 
-                carouselTrack.querySelectorAll('video').forEach(v => videoObserver.observe(v));
+                const forcePlayCarouselVideos = () => {
+                    carouselVideos.forEach(v => {
+                        v.play().catch(() => { });
+                    });
+                    document.removeEventListener('touchstart', forcePlayCarouselVideos);
+                    document.removeEventListener('click', forcePlayCarouselVideos);
+                };
+                document.addEventListener('touchstart', forcePlayCarouselVideos, { once: true, passive: true });
+                document.addEventListener('click', forcePlayCarouselVideos, { once: true, passive: true });
             }
         });
     </script>

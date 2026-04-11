@@ -878,19 +878,24 @@
 
         document.querySelectorAll('.text-mask-child, .stagger-group, .premium-highlight').forEach(el => observer.observe(el));
 
-        // Portfolio video autoplay on visibility
-        const videoObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                const video = entry.target;
-                if (entry.isIntersecting) {
-                    video.play().catch(() => {});
-                } else {
-                    video.pause();
-                }
-            });
-        }, { threshold: 0.3 });
+        // Portfolio video setup (bypassing intersection observer pause approach for iOS compatibility)
+        const videos = document.querySelectorAll('.portfolio-video');
+        videos.forEach(v => {
+            v.muted = true;
+            v.setAttribute('playsinline', '');
+            v.play().catch(() => {});
+        });
 
-        document.querySelectorAll('.portfolio-video').forEach(v => videoObserver.observe(v));
+        // The magical iOS Safari fix: Any user interaction validates video play
+        const forcePlayAllVideos = () => {
+            videos.forEach(v => {
+                v.play().catch(() => { });
+            });
+            document.removeEventListener('touchstart', forcePlayAllVideos);
+            document.removeEventListener('click', forcePlayAllVideos);
+        };
+        document.addEventListener('touchstart', forcePlayAllVideos, { once: true, passive: true });
+        document.addEventListener('click', forcePlayAllVideos, { once: true, passive: true });
     </script>
 </body>
 </html>

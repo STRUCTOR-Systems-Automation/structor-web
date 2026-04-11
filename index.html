@@ -1422,28 +1422,15 @@
             const targets = document.querySelectorAll('.reveal, .text-mask-container, .img-scale-container, .stagger-group');
             targets.forEach(el => premiumObserver.observe(el));
 
-            // Mobile Video Autoplay: force play when in viewport (required for iOS Safari)
             // iOS LOW POWER MODE / AUTOPLAY BYPASS
             // In low power mode, iOS Safari ignores 'autoplay' attribute.
-            // We force play() on intersection, and crucially, we attach a one-time global touch listener
-            // to trick Safari into thinking all videos are user-initiated.
+            // We attach a one-time global touch listener to trick Safari into thinking all videos are user-initiated.
             const videos = document.querySelectorAll('video');
-
-            const videoObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    const vid = entry.target;
-                    if (entry.isIntersecting) {
-                        vid.play().catch(() => {/* blocked by browser */ });
-                    } else {
-                        vid.pause();
-                    }
-                });
-            }, { threshold: 0.1 });
 
             videos.forEach(v => {
                 v.muted = true; // Ensure muted before play attempt
                 v.setAttribute('playsinline', ''); // Ensure playsinline is strictly applied
-                videoObserver.observe(v);
+                // Only rely on native autoplay, avoiding IntersectionObserver pause() which breaks iOS
                 v.play().catch(() => { });
             });
 
