@@ -66,18 +66,36 @@
             scroll-behavior: smooth;
         }
 
+        .pill-nav {
+            backdrop-filter: blur(12px);
+            background-color: rgba(255, 255, 255, 0.7);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .nav-link {
+            position: relative;
+            padding: 0.5rem 1.25rem;
+            border-radius: 9999px;
+            transition: all 0.2s ease;
+        }
+
+        .nav-link:hover {
+            background-color: #fef08a; /* bg-yellow-400 */
+            color: #0f172a; /* text-slate-900 */
+        }
+
         /* Mobile Specific Style Adjustments */
         @media (max-width: 640px) {
             .pill-nav {
-                width: 98vw;
-                padding: 0.1rem;
+                width: 95vw;
+                padding: 0.15rem;
                 justify-content: center;
                 gap: 2px;
             }
 
             .nav-link {
-                padding: 0.5rem 0.35rem;
-                font-size: 0.65rem;
+                padding: 0.5rem 0.5rem;
+                font-size: 0.7rem;
                 letter-spacing: -0.02em;
                 white-space: nowrap;
             }
@@ -181,23 +199,23 @@
             fill: none;
             stroke-dasharray: 20 100;
             animation: pulse-flow 4s linear infinite;
-            filter: drop-shadow(0 0 4px rgba(59, 130, 246, 0.8));
+            filter: none;
         }
 
         .node-flow.delayed {
             animation-delay: 2s;
             stroke: #fef08a;
-            filter: drop-shadow(0 0 6px rgba(254, 240, 138, 0.9));
+            filter: none;
         }
 
         .node-dot {
             fill: #60a5fa;
-            filter: drop-shadow(0 0 4px rgba(96, 165, 250, 0.8));
+            filter: none;
         }
 
         .node-dot.yellow {
             fill: #fef08a;
-            filter: drop-shadow(0 0 5px rgba(254, 240, 138, 0.9));
+            filter: none;
         }
 
         .faq-icon {
@@ -398,20 +416,17 @@
 
     <div id="mouse-spotlight"></div>
 
-    <!-- Header / Nav -->
-    <header class="fixed top-0 left-0 w-full z-50 px-6 py-6">
+    <!-- Header Navigation (Consistent) -->
+    <header class="fixed top-6 left-1/2 -translate-x-1/2 w-auto z-50">
         <nav
-            class="max-w-fit mx-auto bg-white/80 backdrop-blur-md border border-slate-200 rounded-full px-6 py-2 flex items-center gap-8 shadow-sm">
-            <a href="index.html" class="flex items-center gap-2 group">
-                <span
-                    class="material-symbols-outlined text-slate-900 group-hover:-translate-x-1 transition-transform">arrow_back</span>
-                <span class="font-bold text-slate-900 uppercase tracking-tighter text-sm">STRUCTOR</span>
-            </a>
-            <div class="h-4 w-px bg-slate-200"></div>
-            <a href="index.html"
-                class="text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors">Volver al inicio</a>
-            <a href="blog.html"
-                class="text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors">Blog</a>
+            class="pill-nav backdrop-blur-md bg-white/70 border border-slate-200/50 rounded-full px-2 py-2 flex items-center justify-center shadow-lg">
+            <div class="flex gap-1 text-sm font-semibold text-slate-600">
+                <a class="nav-link" href="index.html#inicio">Inicio</a>
+                <a class="nav-link" href="sobre-mi.html">Sobre mí</a>
+                <a class="nav-link" href="index.html#servicios">Servicios</a>
+                <a class="nav-link" href="blog.html">Blog</a>
+                <a class="nav-link bg-yellow-400 text-slate-900 shadow-sm" href="contacto.html">Contacto</a>
+            </div>
         </nav>
     </header>
 
@@ -860,149 +875,6 @@
         </div>
     </main>
 
-    <!-- Final Footer -->
-    <footer
-        class="pt-16 pb-12 px-6 bg-slate-900 text-white rounded-t-[3rem] mt-12 relative overflow-hidden text-center sm:text-left">
-        <!-- Animated Circuit/Lines Background -->
-        <div class="node-network" style="opacity: 0.15; z-index: 0;">
-            <svg preserveAspectRatio="xMidYMid slice" viewBox="0 0 1000 600" class="w-full h-full">
-                <!-- Grid Lines (Subtle Architecture) -->
-                <path d="M 0 150 L 1000 150 M 0 300 L 1000 300 M 0 450 L 1000 450" stroke="#334155" stroke-width="0.8"
-                    stroke-dasharray="4 4" fill="none" opacity="0.6"></path>
-                <path d="M 250 0 L 250 600 M 500 0 L 500 600 M 750 0 L 750 600" stroke="#334155" stroke-width="0.8"
-                    stroke-dasharray="4 4" fill="none" opacity="0.6"></path>
-
-                <!-- Structural Paths -->
-                <path class="node-path" d="M -50 100 L 250 100 L 400 250 L 600 250 L 750 150 L 1050 150"></path>
-                <path class="node-path" d="M -50 400 L 200 400 L 350 250 L 500 250 L 650 450 L 1050 450"></path>
-                <path class="node-path" d="M 250 100 L 250 200 L 500 400 L 500 650"></path>
-                <path class="node-path" d="M 750 150 L 750 300 L 650 450"></path>
-
-                <!-- Flow Paths (Animated Data Packets) -->
-                <path class="node-flow" d="M -50 100 L 250 100 L 400 250 L 600 250 L 750 150 L 1050 150"
-                    pathLength="100"></path>
-                <path class="node-flow delayed" d="M -50 400 L 200 400 L 350 250 L 500 250 L 650 450 L 1050 450"
-                    pathLength="100" style="animation-duration: 5s;"></path>
-                <path class="node-flow" d="M 250 100 L 250 200 L 500 400 L 500 650" pathLength="100"
-                    style="animation-duration: 3.5s;"></path>
-                <path class="node-flow delayed" d="M 750 150 L 750 300 L 650 450" pathLength="100"
-                    style="animation-duration: 4.5s;"></path>
-
-                <!-- Static Connecting Nodes (Dots) -->
-                <circle cx="250" cy="100" r="3" class="node-dot"></circle>
-                <circle cx="400" cy="250" r="3" class="node-dot yellow"></circle>
-                <circle cx="600" cy="250" r="3" class="node-dot"></circle>
-                <circle cx="750" cy="150" r="3" class="node-dot yellow"></circle>
-                <circle cx="200" cy="400" r="3" class="node-dot yellow"></circle>
-                <circle cx="350" cy="250" r="3" class="node-dot"></circle>
-                <circle cx="650" cy="450" r="3" class="node-dot yellow"></circle>
-                <circle cx="500" cy="400" r="3" class="node-dot"></circle>
-            </svg>
-        </div>
-
-        <!-- Dynamic Yellow Glow Background -->
-        <div class="absolute -top-24 left-0 w-full h-64 bg-yellow-400/5 blur-[120px] pointer-events-none z-0"></div>
-        <div class="absolute -bottom-24 -right-24 size-96 bg-blue-500/5 blur-[120px] pointer-events-none z-0"></div>
-
-        <div class="max-w-6xl mx-auto relative z-10">
-            <!-- Global Footer Content -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-12">
-                <!-- Left Column: Logo & Mission -->
-                <div class="flex flex-col items-center md:items-start gap-8">
-                    <div class="relative group">
-                        <!-- Branding Aura/Glow -->
-                        <div
-                            class="absolute -inset-4 bg-yellow-400/10 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none">
-                        </div>
-
-                        <!-- Logo Container (Premium Badge) -->
-                        <div
-                            class="relative bg-white p-2 rounded-full inline-flex items-center justify-center shadow-xl shadow-yellow-400/5 hover:shadow-yellow-400/20 transition-all duration-500 animate-float-gentle active:scale-95 group-hover:scale-110">
-                            <img src="Imputs/Juanchi Notion Avatar Transparente.png" alt="STRUCTOR"
-                                class="w-20 h-auto md:w-24" />
-                        </div>
-                    </div>
-                    <p class="text-slate-400 max-w-sm text-sm leading-relaxed text-center md:text-left">
-                        Elimino el caos operativo diseñando arquitecturas inteligentes que organizan, automatizan y
-                        optimizan la gestión de tu negocio.
-                    </p>
-                </div>
-
-                <!-- Right Column: Navigation, Social & Legal -->
-                <div class="grid grid-cols-2 sm:grid-cols-4 gap-8 md:justify-items-start z-10 footer-grid-mobile">
-                    <!-- Navigation -->
-                    <div class="flex flex-col gap-4 footer-col-center">
-                        <span class="text-xs font-bold text-slate-500 uppercase tracking-widest">Navegación</span>
-                        <a href="index.html#inicio"
-                            class="text-sm text-slate-300 hover:text-yellow-400 transition-colors">Inicio</a>
-                        <a href="index.html#sobre-mi"
-                            class="text-sm text-slate-300 hover:text-yellow-400 transition-colors">Sobre
-                            mí</a>
-                        <a href="index.html#servicios"
-                            class="text-sm text-slate-300 hover:text-yellow-400 transition-colors">Servicios</a>
-                        <a href="blog.html"
-                            class="text-sm text-slate-300 hover:text-yellow-400 transition-colors">Blog</a>
-                    </div>
-
-                    <!-- Company -->
-                    <div class="flex flex-col gap-4 footer-col-center">
-                        <span class="text-xs font-bold text-slate-500 uppercase tracking-widest">Contacto</span>
-                        <a href="contacto.html"
-                            class="text-sm text-slate-300 hover:text-yellow-400 transition-colors">Formulario</a>
-                    </div>
-
-                    <!-- Social -->
-                    <div class="flex flex-col gap-4 footer-col-center">
-                        <span class="text-xs font-bold text-slate-500 uppercase tracking-widest">Sígueme</span>
-                        <a href="https://www.linkedin.com/in/juan-andr%C3%A9s-ib%C3%A1%C3%B1ez-pasarella-structor/"
-                            target="_blank"
-                            class="flex items-center gap-2 text-sm text-slate-300 hover:text-yellow-400 transition-colors">
-                            <svg class="size-5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
-                            </svg>
-                            LinkedIn
-                        </a>
-                        <a href="https://www.instagram.com/structorsystemsautomation/" target="_blank"
-                            class="flex items-center gap-2 text-sm text-slate-300 hover:text-yellow-400 transition-colors">
-                            <svg class="size-5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
-                            </svg>
-                            Instagram
-                        </a>
-                        <a href="https://www.youtube.com/channel/UCTU9Q-_Yrzxpw_841MATBuA" target="_blank"
-                            class="flex items-center gap-2 text-sm text-slate-300 hover:text-yellow-400 transition-colors">
-                            <svg class="size-5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z" />
-                            </svg>
-                            YouTube
-                        </a>
-                        </a>
-                    </div>
-
-                    <!-- Legal -->
-                    <div class="flex flex-col gap-4 footer-col-center">
-                        <span class="text-xs font-bold text-slate-500 uppercase tracking-widest">Legal</span>
-                        <a href="terminos.html"
-                            class="text-[12px] text-slate-500 hover:text-yellow-400/80 transition-colors">Aviso
-                            Legal</a>
-                        <a href="privacidad.html"
-                            class="text-[12px] text-slate-500 hover:text-yellow-400/80 transition-colors">Privacidad</a>
-                        <a href="cookies.html#reopen"
-                            class="text-[12px] text-slate-500 hover:text-yellow-400/80 transition-colors">Cookies</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Bottom Row: Copyright -->
-            <div
-                class="pt-8 border-t border-slate-800 flex flex-col items-center justify-center text-xs text-slate-500 font-medium uppercase tracking-widest">
-                <span>© 2026 STRUCTOR | Systems & Automation</span>
-            </div>
-        </div>
-    </footer>
 
     <script>
         // Service Picker Logic
@@ -1243,20 +1115,111 @@
             animateSpotlight();
         });
     </script>
+    <!-- Final Footer -->
+    <footer class="mt-12 rounded-t-[3rem] pt-16 pb-12 px-6 bg-slate-900 text-white relative overflow-hidden text-center sm:text-left">
+        <!-- Animated Circuit/Lines Background -->
+        <div class="node-network" style="opacity: 0.15; z-index: 0;">
+            <svg preserveAspectRatio="xMidYMid slice" viewBox="0 0 1000 600" class="w-full h-full">
+                <!-- Grid Lines (Subtle Architecture) -->
+                <path d="M 0 150 L 1000 150 M 0 300 L 1000 300 M 0 450 L 1000 450" stroke="#334155" stroke-width="0.8"
+                    stroke-dasharray="4 4" fill="none" opacity="0.6"></path>
+                <path d="M 250 0 L 250 600 M 500 0 L 500 600 M 750 0 L 750 600" stroke="#334155" stroke-width="0.8"
+                    stroke-dasharray="4 4" fill="none" opacity="0.6"></path>
+
+                <!-- Structural Paths -->
+                <path class="node-path" d="M -50 100 L 250 100 L 400 250 L 600 250 L 750 150 L 1050 150"></path>
+                <path class="node-path" d="M -50 400 L 200 400 L 350 250 L 500 250 L 650 450 L 1050 450"></path>
+                <path class="node-path" d="M 250 100 L 250 200 L 500 400 L 500 650"></path>
+                <path class="node-path" d="M 750 150 L 750 300 L 650 450"></path>
+
+                <!-- Flow Paths (Animated Data Packets) -->
+                <path class="node-flow" d="M -50 100 L 250 100 L 400 250 L 600 250 L 750 150 L 1050 150"
+                    pathLength="100"></path>
+                <path class="node-flow delayed" d="M -50 400 L 200 400 L 350 250 L 500 250 L 650 450 L 1050 450"
+                    pathLength="100" style="animation-duration: 5s;"></path>
+                <path class="node-flow" d="M 250 100 L 250 200 L 500 400 L 500 650" pathLength="100"
+                    style="animation-duration: 3.5s;"></path>
+                <path class="node-flow delayed" d="M 750 150 L 750 300 L 650 450" pathLength="100"
+                    style="animation-duration: 4.5s;"></path>
+
+                <!-- Static Connecting Nodes (Dots) -->
+                <circle cx="250" cy="100" r="3" class="node-dot"></circle>
+                <circle cx="400" cy="250" r="3" class="node-dot yellow"></circle>
+                <circle cx="600" cy="250" r="3" class="node-dot"></circle>
+                <circle cx="750" cy="150" r="3" class="node-dot yellow"></circle>
+                <circle cx="200" cy="400" r="3" class="node-dot yellow"></circle>
+                <circle cx="350" cy="250" r="3" class="node-dot"></circle>
+                <circle cx="650" cy="450" r="3" class="node-dot yellow"></circle>
+                <circle cx="500" cy="400" r="3" class="node-dot"></circle>
+            </svg>
+        </div>
+
+        <!-- Dynamic Glow Background -->
+
+
+        <div class="max-w-6xl mx-auto relative z-10">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-12">
+                <div class="flex flex-col items-center md:items-start gap-8">
+                    <div class="relative group">
+                        <div class="absolute -inset-4 bg-yellow-400/10 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
+                        <div class="relative bg-white p-2 rounded-full inline-flex items-center justify-center shadow-xl shadow-yellow-400/5 hover:shadow-yellow-400/20 transition-all duration-500 animate-float-gentle active:scale-95 group-hover:scale-110">
+                            <img src="Imputs/Juanchi Notion Avatar Transparente.png" alt="STRUCTOR" class="w-20 h-auto md:w-24" />
+                        </div>
+                    </div>
+                    <p class="text-slate-400 max-w-sm text-sm leading-relaxed text-center md:text-left">
+                        Elimino el caos operativo diseñando arquitecturas inteligentes que organizan, automatizan y optimizan la gestión de tu negocio.
+                    </p>
+                </div>
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-8 md:justify-items-start z-10 footer-grid-mobile">
+                    <div class="flex flex-col gap-4 footer-col-center">
+                        <span class="text-xs font-bold text-slate-500 uppercase tracking-widest">Navegación</span>
+                        <a href="index.html#inicio" class="text-sm text-slate-300 hover:text-yellow-400 transition-colors">Inicio</a>
+                        <a href="sobre-mi.html" class="text-sm text-slate-300 hover:text-yellow-400 transition-colors">Sobre mí</a>
+                        <a href="index.html#servicios" class="text-sm text-slate-300 hover:text-yellow-400 transition-colors">Servicios</a>
+                        <a href="blog.html" class="text-sm text-slate-300 hover:text-yellow-400 transition-colors">Blog</a>
+                    </div>
+                    <div class="flex flex-col gap-4 footer-col-center">
+                        <span class="text-xs font-bold text-slate-500 uppercase tracking-widest">Contacto</span>
+                        <a href="contacto.html" class="text-sm text-slate-300 hover:text-yellow-400 transition-colors">Formulario</a>
+                    </div>
+                    <div class="flex flex-col gap-4 footer-col-center">
+                        <span class="text-xs font-bold text-slate-500 uppercase tracking-widest">Sígueme</span>
+                        <a href="https://www.linkedin.com/in/juan-andr%C3%A9s-ib%C3%A1%C3%B1ez-pasarella-structor/" target="_blank" class="flex items-center gap-2 text-sm text-slate-300 hover:text-yellow-400 transition-colors">
+                            <svg class="size-5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" /></svg> LinkedIn
+                        </a>
+                        <a href="https://www.instagram.com/structorsystemsautomation/" target="_blank" class="flex items-center gap-2 text-sm text-slate-300 hover:text-yellow-400 transition-colors">
+                            <svg class="size-5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" /></svg> Instagram
+                        </a>
+                        <a href="https://www.youtube.com/channel/UCTU9Q-_Yrzxpw_841MATBuA" target="_blank" class="flex items-center gap-2 text-sm text-slate-300 hover:text-yellow-400 transition-colors">
+                            <svg class="size-5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z" /></svg> YouTube
+                        </a>
+                    </div>
+                    <div class="flex flex-col gap-4 footer-col-center">
+                        <span class="text-xs font-bold text-slate-500 uppercase tracking-widest">Legal</span>
+                        <a href="terminos.html" class="text-[12px] text-slate-500 hover:text-yellow-400/80 transition-colors">Aviso Legal</a>
+                        <a href="privacidad.html" class="text-[12px] text-slate-500 hover:text-yellow-400/80 transition-colors">Privacidad</a>
+                        <a href="cookies.html#reopen" class="text-[12px] text-slate-500 hover:text-yellow-400/80 transition-colors">Cookies</a>
+                    </div>
+                </div>
+            </div>
+            <div class="pt-8 border-t border-slate-800 flex flex-col items-center justify-center text-xs text-slate-500 font-medium uppercase tracking-widest">
+                <span>© 2026 STRUCTOR | Systems & Automation</span>
+            </div>
+        </div>
+    </footer>
+
     <!-- Cookie Banner y Logica de Consentimiento -->
     <div id="cookie-banner"
         class="fixed bottom-0 left-0 right-0 p-4 md:p-6 z-[100] transform translate-y-full transition-transform duration-[600ms] ease-out flex justify-center">
         <div
-            class="bg-slate-900/95 backdrop-blur-xl border border-slate-700/50 shadow-2xl shadow-blue-900/20 rounded-2xl p-6 max-w-4xl w-full flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+            class="bg-slate-900/95 backdrop-blur-xl border border-slate-700/50 shadow-2xl shadow-yellow-900/20 rounded-2xl p-6 max-w-4xl w-full flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
             <div class="flex-1">
                 <div class="flex items-center gap-2 mb-2">
                     <span class="material-symbols-outlined text-yellow-400 text-xl">cookie</span>
                     <h3 class="text-white font-bold text-lg">Tu privacidad es importante</h3>
                 </div>
                 <p class="text-slate-300 text-sm leading-relaxed">
-                    Utilizo cookies propias y de terceros (Google Analytics y analíticas similares) para entender
-                    cómo interactúas con mi web y mejorar tu experiencia. Al hacer clic en "Aceptar todo",
-                    consientes el uso de TODAS las cookies para seguimiento analítico.
+                    Utilizo cookies propias y de terceros para entender cómo interactúas con mi web y mejorar tu experiencia. Al hacer clic en "Aceptar todo", consientes el uso de TODAS las cookies para seguimiento analítico.
                 </p>
             </div>
             <div class="flex flex-col sm:flex-row gap-3 w-full md:w-auto shrink-0">
@@ -1265,7 +1228,7 @@
                     Rechazar
                 </button>
                 <button id="btn-accept-cookies"
-                    class="px-6 py-2.5 rounded-full bg-blue-500 text-white font-bold hover:bg-blue-600 hover:shadow-lg hover:shadow-blue-500/30 transition-all text-sm text-center tracking-wide">
+                    class="px-6 py-2.5 rounded-full bg-yellow-400 text-slate-900 font-bold hover:bg-yellow-500 hover:shadow-lg hover:shadow-yellow-400/30 transition-all text-sm text-center tracking-wide">
                     Aceptar todo
                 </button>
             </div>

@@ -107,10 +107,8 @@
         }
 
         .nav-link:hover {
-            background-color: #fef08a;
-            /* bg-yellow-100 */
-            color: #0f172a;
-            /* text-slate-900 */
+            background-color: #fef08a; /* bg-yellow-400 */
+            color: #0f172a; /* text-slate-900 */
         }
 
         @keyframes slide-right {
@@ -247,28 +245,28 @@
             fill: none;
             stroke-dasharray: 20 100;
             animation: pulse-flow 4s linear infinite;
-            filter: drop-shadow(0 0 4px rgba(59, 130, 246, 0.8));
-            /* Blue glow */
+            filter: none;
+            /* Blue glow removed for flat design */
         }
 
         .node-flow.delayed {
             animation-delay: 2s;
             stroke: #fef08a;
             /* yellow-200 */
-            filter: drop-shadow(0 0 6px rgba(254, 240, 138, 0.9));
-            /* Yellow glow */
+            filter: none;
+            /* Yellow glow removed for flat design */
         }
 
         .node-dot {
             fill: #60a5fa;
             /* blue-400 */
-            filter: drop-shadow(0 0 4px rgba(96, 165, 250, 0.8));
+            filter: none;
         }
 
         .node-dot.yellow {
             fill: #fef08a;
             /* yellow-200 */
-            filter: drop-shadow(0 0 5px rgba(254, 240, 138, 0.9));
+            filter: none;
         }
 
         @keyframes marquee {
@@ -446,20 +444,19 @@
                 line-height: 1.9rem !important;
             }
 
-            /* Responsive Navigation for Mobile - Larger and more visible */
+            /* Responsive Navigation for Mobile */
             .pill-nav {
-                width: 96vw;
-                padding: 0.4rem 0.5rem;
+                width: 98vw;
+                padding: 0.1rem;
                 justify-content: center;
-                gap: 4px;
+                gap: 2px;
             }
 
             .nav-link {
-                padding: 0.65rem 0.7rem;
-                font-size: 0.78rem;
-                letter-spacing: -0.01em;
+                padding: 0.5rem 0.35rem;
+                font-size: 0.65rem;
+                letter-spacing: -0.02em;
                 white-space: nowrap;
-                font-weight: 700;
             }
 
             /* Adjust Hero Tagline */
@@ -528,12 +525,12 @@
 
     <div id="mouse-spotlight"></div>
     <!-- Header: Centered Pill Navigation -->
-    <header class="fixed top-4 left-1/2 -translate-x-1/2 w-auto z-50">
+    <header class="fixed top-6 left-1/2 -translate-x-1/2 w-auto z-50">
         <nav
-            class="pill-nav notion-shadow rounded-full px-2 py-2 flex items-center justify-center border border-slate-100/50">
+            class="pill-nav backdrop-blur-md bg-white/70 border border-slate-200/50 rounded-full px-2 py-2 flex items-center justify-center shadow-lg">
             <div class="flex gap-1 text-sm font-semibold text-slate-600">
                 <a class="nav-link" href="#inicio">Inicio</a>
-                <a class="nav-link" href="#sobre-mi">Sobre mí</a>
+                <a class="nav-link" href="sobre-mi.html">Sobre mí</a>
                 <a class="nav-link" href="#servicios">Servicios</a>
                 <a class="nav-link" href="blog.html">Blog</a>
                 <a class="nav-link" href="contacto.html">Contacto</a>
@@ -541,7 +538,7 @@
         </nav>
     </header>
     <!-- Hero Section -->
-    <section class="pt-40 pb-20 px-6 reveal" id="inicio">
+    <section class="pt-48 pb-32 px-6 reveal" id="inicio">
         <div class="max-w-4xl mx-auto flex flex-col items-center text-center">
 
             <!-- Large Logo -->
@@ -585,7 +582,7 @@
             </a>
 
             <!-- Comparison Header -->
-            <div class="mt-20 mb-16 text-mask-container">
+            <div class="mt-32 mb-16 text-mask-container">
                 <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 leading-tight text-mask-child">
                     Tu negocio no necesita más trabajo duro.<br />
                     <span class="text-slate-800">Necesita un sistema inteligente.</span>
@@ -672,34 +669,24 @@
 
         </div>
     </section>
-    <!-- Sobre mí Section (Integrated Premium Card) -->
-    <section class="py-32 bg-slate-900 px-6 reveal font-['Inter'] relative overflow-hidden" id="sobre-mi">
-        <!-- Dynamic Node Network Background -->
+    <!-- ROA Calculator Section (Interactivo) -->
+    <section class="py-12 bg-slate-900 px-6 reveal font-['Inter'] relative overflow-hidden" id="roa-calculator">
+        <!-- Dynamic Node Network Background (Preservado) -->
         <div class="node-network">
             <svg preserveAspectRatio="xMidYMid slice" viewBox="0 0 1000 600" class="w-full h-full">
-                <!-- Grid Lines (Subtle Architecture) -->
-                <path d="M 0 150 L 1000 150 M 0 300 L 1000 300 M 0 450 L 1000 450" stroke="#334155" stroke-width="0.8"
-                    stroke-dasharray="4 4" fill="none" opacity="0.6"></path>
-                <path d="M 250 0 L 250 600 M 500 0 L 500 600 M 750 0 L 750 600" stroke="#334155" stroke-width="0.8"
-                    stroke-dasharray="4 4" fill="none" opacity="0.6"></path>
+                <path d="M 0 150 L 1000 150 M 0 300 L 1000 300 M 0 450 L 1000 450" stroke="#334155" stroke-width="0.8" stroke-dasharray="4 4" fill="none" opacity="0.6"></path>
+                <path d="M 250 0 L 250 600 M 500 0 L 500 600 M 750 0 L 750 600" stroke="#334155" stroke-width="0.8" stroke-dasharray="4 4" fill="none" opacity="0.6"></path>
 
-                <!-- Structural Paths -->
                 <path class="node-path" d="M -50 100 L 250 100 L 400 250 L 600 250 L 750 150 L 1050 150"></path>
                 <path class="node-path" d="M -50 400 L 200 400 L 350 250 L 500 250 L 650 450 L 1050 450"></path>
                 <path class="node-path" d="M 250 100 L 250 200 L 500 400 L 500 650"></path>
                 <path class="node-path" d="M 750 150 L 750 300 L 650 450"></path>
 
-                <!-- Flow Paths (Animated Data Packets) -->
-                <path class="node-flow" d="M -50 100 L 250 100 L 400 250 L 600 250 L 750 150 L 1050 150"
-                    pathLength="100"></path>
-                <path class="node-flow delayed" d="M -50 400 L 200 400 L 350 250 L 500 250 L 650 450 L 1050 450"
-                    pathLength="100" style="animation-duration: 5s;"></path>
-                <path class="node-flow" d="M 250 100 L 250 200 L 500 400 L 500 650" pathLength="100"
-                    style="animation-duration: 3.5s;"></path>
-                <path class="node-flow delayed" d="M 750 150 L 750 300 L 650 450" pathLength="100"
-                    style="animation-duration: 4.5s;"></path>
+                <path class="node-flow" d="M -50 100 L 250 100 L 400 250 L 600 250 L 750 150 L 1050 150" pathLength="100"></path>
+                <path class="node-flow delayed" d="M -50 400 L 200 400 L 350 250 L 500 250 L 650 450 L 1050 450" pathLength="100" style="animation-duration: 5s;"></path>
+                <path class="node-flow" d="M 250 100 L 250 200 L 500 400 L 500 650" pathLength="100" style="animation-duration: 3.5s;"></path>
+                <path class="node-flow delayed" d="M 750 150 L 750 300 L 650 450" pathLength="100" style="animation-duration: 4.5s;"></path>
 
-                <!-- Static Connecting Nodes (Dots) -->
                 <circle cx="250" cy="100" r="3" class="node-dot"></circle>
                 <circle cx="400" cy="250" r="3" class="node-dot yellow"></circle>
                 <circle cx="600" cy="250" r="3" class="node-dot"></circle>
@@ -711,77 +698,152 @@
             </svg>
         </div>
 
-        <div
-            class="max-w-4xl mx-auto border border-slate-800 rounded-[3rem] p-10 md:p-16 bg-white relative overflow-hidden shadow-2xl relative z-10">
-            <!-- Subtle background glow -->
-            <div class="absolute -top-24 -right-24 size-64 bg-yellow-100/30 blur-3xl rounded-full"></div>
-            <div class="absolute -bottom-24 -left-24 size-64 bg-blue-50/30 blur-3xl rounded-full"></div>
+        <div class="max-w-5xl mx-auto border border-slate-800 rounded-[2rem] py-6 px-6 md:py-8 md:px-12 bg-white relative overflow-hidden shadow-2xl z-10 transition-all duration-500">
+            <!-- Background effects -->
+            <div class="absolute -top-24 -right-24 size-64 bg-blue-100/30 blur-3xl rounded-full"></div>
+            <div class="absolute -bottom-24 -left-24 size-64 bg-slate-50/50 blur-3xl rounded-full"></div>
 
-            <div class="mb-10 text-center md:text-left text-mask-container block">
-                <span
-                    class="text-blue-500 font-bold text-sm tracking-[0.2em] uppercase mb-4 block text-mask-child">SOBRE
-                    MÍ</span>
-                <h2 class="text-3xl md:text-4xl font-black text-slate-900 tracking-tight text-mask-child"
-                    style="transition-delay: 0.1s;">¿Quién está detrás de
-                    STRUCTOR?</h2>
+            <div class="mb-16 text-center max-w-4xl mx-auto relative px-4">
+                <span class="text-blue-500 font-bold text-xs tracking-[0.2em] uppercase mb-3 block text-mask-container"><span class="text-mask-child">CALCULADORA DE RETORNO</span></span>
+                <h2 class="text-3xl md:text-4xl font-black text-slate-900 tracking-tight mb-3 leading-tight">
+                    ¿Puedes ahorrar automatizando tus procesos?
+                </h2>
+                <p class="text-slate-500 text-base md:text-lg font-medium">
+                    Introduce tus datos y calcula si merece la pena automatizar en tu caso
+                </p>
             </div>
 
-            <div class="block">
-                <!-- Integrated Avatar -->
-                <div class="md:float-left mb-8 md:mb-4 md:mr-12 flex justify-center md:block">
-                    <div class="relative group">
-                        <div
-                            class="absolute -inset-2 bg-gradient-to-tr from-yellow-100 to-blue-50 rounded-full blur-lg opacity-40 group-hover:opacity-60 transition-opacity">
+            <!-- Main Layout Grid -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 md:gap-16 items-start">
+                
+                <!-- Inputs Section (Left/Top) -->
+                <div class="lg:col-span-5 space-y-6">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-6">
+                        <div class="space-y-1.5 focus-within:translate-x-1 transition-transform duration-300">
+                            <label class="text-xs font-bold text-slate-400 uppercase tracking-[0.1em] ml-1">Horas por tarea</label>
+                            <div class="relative group">
+                                <input type="number" id="roa-hours" value="1.5" step="0.5" min="0" 
+                                    class="w-full bg-slate-50 border-2 border-slate-100 rounded-2xl px-5 py-3 focus:bg-white focus:border-blue-500/50 transition-all outline-none font-bold text-slate-800 text-xl shadow-inner-sm">
+                                <span class="absolute right-5 top-1/2 -translate-y-1/2 text-slate-300 font-bold">h</span>
+                            </div>
                         </div>
-                        <div
-                            class="size-32 md:size-40 rounded-full overflow-hidden border-4 border-white shadow-xl relative z-10 bg-white">
-                            <div class="w-full h-full scale-[1.03]">
-                                <video autoplay loop muted playsinline class="w-full h-full object-cover"
-                                    poster="Imputs/sobre-mi.webp">
-                                    <source src="Imputs/sobre-mi.mp4" type="video/mp4">
-                                    <img src="Imputs/sobre-mi.webp"
-                                        alt="Juan Andrés Ibáñez Pasarella, arquitecto de sistemas operativos para negocios"
-                                        class="w-full h-full object-cover">
-                                </video>
+
+                        <div class="space-y-1.5 focus-within:translate-x-1 transition-transform duration-300">
+                            <label class="text-xs font-bold text-slate-400 uppercase tracking-[0.1em] ml-1">Frecuencia mensual</label>
+                            <div class="relative group">
+                                <input type="number" id="roa-frequency" value="60" min="0" 
+                                    class="w-full bg-slate-50 border-2 border-slate-100 rounded-2xl px-5 py-3 focus:bg-white focus:border-blue-500/50 transition-all outline-none font-bold text-slate-800 text-xl shadow-inner-sm">
+                                <span class="absolute right-5 top-1/2 -translate-y-1/2 text-slate-300 font-bold uppercase text-[10px]">Veces</span>
+                            </div>
+                        </div>
+
+                        <div class="space-y-1.5 focus-within:translate-x-1 transition-transform duration-300">
+                            <label class="text-xs font-bold text-slate-400 uppercase tracking-[0.1em] ml-1">Coste por hora</label>
+                            <div class="relative group">
+                                <input type="number" id="roa-cost-hour" value="25" min="0" 
+                                    class="w-full bg-slate-50 border-2 border-slate-100 rounded-2xl px-5 py-3 focus:bg-white focus:border-blue-500/50 transition-all outline-none font-bold text-slate-800 text-xl shadow-inner-sm">
+                                <span class="absolute right-5 top-1/2 -translate-y-1/2 text-slate-300 font-bold uppercase text-[10px]">&euro;/h</span>
+                            </div>
+                        </div>
+
+                        <div class="space-y-1.5 focus-within:translate-x-1 transition-transform duration-300">
+                            <label class="text-xs font-bold text-slate-400 uppercase tracking-[0.1em] ml-1">Meses horizonte</label>
+                            <div class="relative group">
+                                <input type="number" id="roa-months" value="12" min="1" max="60" 
+                                    class="w-full bg-slate-50 border-2 border-slate-100 rounded-2xl px-5 py-3 focus:bg-white focus:border-blue-500/50 transition-all outline-none font-bold text-slate-800 text-xl shadow-inner-sm">
+                                <span class="absolute right-5 top-1/2 -translate-y-1/2 text-slate-300 font-bold uppercase text-[10px]">Meses</span>
                             </div>
                         </div>
                     </div>
+
+                    <div class="p-5 bg-slate-50/50 rounded-2xl border border-slate-100/50 space-y-4">
+                        <div class="space-y-1">
+                            <label class="text-[10px] font-bold text-slate-400 uppercase tracking-[0.1em] ml-1">Implementación (Setup)</label>
+                            <div class="relative">
+                                <input type="number" id="roa-setup" value="1500" min="0" 
+                                    class="w-full bg-white border-2 border-slate-100 rounded-xl px-4 py-2.5 focus:border-blue-500/50 transition-all outline-none font-bold text-slate-800 text-lg shadow-sm">
+                                <span class="absolute right-4 top-1/2 -translate-y-1/2 text-slate-300 font-bold uppercase text-[9px]">&euro;</span>
+                            </div>
+                        </div>
+                        <div class="space-y-1">
+                            <label class="text-[10px] font-bold text-slate-400 uppercase tracking-[0.1em] ml-1">Mantenimiento mensual</label>
+                            <div class="relative">
+                                <input type="number" id="roa-maint" value="150" min="0" 
+                                    class="w-full bg-white border-2 border-slate-100 rounded-xl px-4 py-2.5 focus:border-blue-500/50 transition-all outline-none font-bold text-slate-800 text-lg shadow-sm">
+                                <span class="absolute right-4 top-1/2 -translate-y-1/2 text-slate-300 font-bold uppercase text-[9px]">&euro;/m</span>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-[10px] text-blue-600 font-medium leading-normal mt-3 pl-1 italic">
+                        *Esta es una estimación orientativa. En una llamada analizamos tu caso y ajustamos los números a tu realidad.
+                    </p>
                 </div>
 
-                <!-- Text Block (Editorial style) -->
-                <div class="text-slate-600 text-[15px] leading-[1.8] space-y-5">
-                    <h3 class="text-xl font-bold text-slate-900 mb-4 block">Juan Andrés Ibáñez Pasarella</h3>
-                    <p>Durante años trabajé en distintos entornos digitales y agencias gestionando estrategias de
-                        <strong class="text-slate-900 font-extrabold">Paid Media</strong> para marcas internacionales,
-                        optimizando campañas en entornos donde cada decisión debía generar retorno.
-                    </p>
+                <!-- Results Section (Right/Bottom) -->
+                <div class="lg:col-span-7 bg-slate-50 rounded-[2rem] py-5 px-6 lg:py-6 lg:px-8 border border-slate-100 shadow-inner flex flex-col h-full">
+                    <div class="flex-1 space-y-6">
+                        
+                        <!-- Top KPI Row -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div class="bg-white p-5 rounded-xl border border-slate-100 shadow-sm transition-all hover:shadow-md">
+                                <span class="text-[9px] uppercase tracking-widest text-slate-400 font-bold block mb-1.5">Coste Manual Actual</span>
+                                <div class="text-xl font-black text-slate-900" id="res-monthly-text">2.250 &euro;<span class="text-xs font-semibold text-slate-300 ml-1">/mes</span></div>
+                                <p class="text-[10px] text-slate-500 mt-1.5 font-medium">Hoy esta tarea te cuesta <span id="res-monthly-val" class="text-slate-900 font-bold">2.250</span> &euro; cada mes.</p>
+                            </div>
+                            <div class="bg-white p-5 rounded-xl border border-slate-100 shadow-sm transition-all hover:shadow-md">
+                                <span class="text-[9px] uppercase tracking-widest text-slate-400 font-bold block mb-1.5">Pérdida Proyectada</span>
+                                <div class="text-xl font-black text-slate-900" id="res-total-manual">27.000 &euro;</div>
+                                <p class="text-[10px] text-slate-500 mt-1.5 font-medium">En <span id="res-horizon-val" class="text-slate-900 font-bold">12</span> meses te costará <span id="res-total-manual-val" class="text-slate-900 font-bold">27.000</span> &euro; seguir así.</p>
+                            </div>
+                        </div>
 
-                    <p>En ese contexto entendí algo clave: el crecimiento no siempre falla por falta de tráfico,
-                        sino por <strong class="text-slate-900 font-extrabold">falta de sistema</strong>.</p>
+                        <!-- Main Savings Card -->
+                        <div class="bg-slate-900 rounded-[1.5rem] p-6 lg:p-8 text-white relative overflow-hidden group shadow-2xl">
+                            <div class="relative z-10">
+                                <div class="flex justify-between items-center mb-3">
+                                    <span class="text-[9px] uppercase tracking-widest text-slate-400 font-bold">Ahorro Neto Estimado</span>
+                                    <div class="bg-blue-500 text-[9px] px-2.5 py-0.5 rounded-full font-black uppercase tracking-tighter">Impacto Positivo</div>
+                                </div>
+                                <div class="text-4xl md:text-5xl font-black mb-6 tracking-tighter text-blue-50" id="res-savings">23.700 &euro;</div>
+                                
+                                <div class="grid grid-cols-2 gap-3">
+                                    <div class="bg-white/5 border border-white/10 rounded-xl p-3.5 transition-colors hover:bg-white/10">
+                                        <span class="text-[9px] text-slate-500 font-bold uppercase block mb-0.5">Retorno (ROA)</span>
+                                        <span class="text-xl font-black text-yellow-400" id="res-roa-pct">718%</span>
+                                    </div>
+                                    <div class="bg-white/5 border border-white/10 rounded-xl p-3.5 transition-colors hover:bg-white/10">
+                                        <span class="text-[9px] text-slate-500 font-bold uppercase block mb-0.5">Break-even</span>
+                                        <span class="text-xl font-black text-blue-400"><span id="res-be-val">0.7</span> <span class="text-[10px] uppercase font-bold text-slate-500 ml-0.5">meses</span></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Background Decor -->
+                            <div class="absolute top-0 right-0 p-6 opacity-10">
+                                <span class="material-symbols-outlined !text-7xl">analytics</span>
+                            </div>
+                        </div>
 
-                    <p>He visto equipos brillantes perder eficiencia por <strong
-                            class="text-slate-900 font-extrabold">procesos manuales</strong> y tareas operativas que
-                        consumen tiempo sin aportar valor real. Por eso empecé a diseñar mis propios sistemas,
-                        flujos y procesos que reducen la fricción.</p>
+                        <!-- Final Recommendation -->
+                        <div class="bg-white p-6 rounded-2xl border-2 border-slate-100 flex items-start gap-4 shadow-sm">
+                            <div class="size-10 rounded-xl bg-slate-50 flex items-center justify-center shrink-0" id="res-icon-box">
+                                <span class="material-symbols-outlined text-green-500 font-black" id="res-icon">verified_user</span>
+                            </div>
+                            <div class="space-y-1">
+                                <p class="text-sm font-black text-slate-900" id="res-final-msg">Automatizar este proceso tendría sentido económico en tu caso</p>
+                                <p class="text-xs text-slate-400 font-medium leading-relaxed">Automatizarlo te costaría <span id="res-total-auto-val" class="font-bold text-slate-600">3.300</span> &euro; en total frente a los <span id="res-total-manual-val-small" class="font-bold text-slate-600">27.000</span> &euro; del método manual.</p>
+                            </div>
+                        </div>
+                    </div>
 
-                    <p>Así nace <span class="font-black text-slate-900">STRUCTOR</span> (del latín <em
-                            class="italic text-xs font-normal">structor</em>: <strong
-                            class="text-slate-900 font-extrabold">arquitecto o constructor</strong>). Diseño la
-                        <strong class="text-slate-900 font-extrabold">arquitectura operativa</strong> que organiza
-                        procesos y convierte datos en decisiones.
-                    </p>
-
-                    <p>Hoy aplico esa misma mentalidad: menos improvisación y más <strong
-                            class="text-slate-900 font-extrabold">claridad para crecer con orden</strong>. Si tu
-                        negocio crece pero tu operación es manual, no necesitas más esfuerzo.</p>
-
-                    <p class="text-xl font-black text-slate-900 pt-2">Necesitas un <span class="relative"><span
-                                class="relative z-10">sistema</span><span
-                                class="absolute bottom-1 left-0 w-full h-3 bg-yellow-200/60 -z-1 rounded-sm mix-blend-multiply"></span></span>.
-                    </p>
+                    <!-- CTA Button -->
+                    <div class="mt-4">
+                        <a href="contacto.html" class="w-full bg-blue-600 text-white font-black py-5 px-10 rounded-2xl inline-flex items-center justify-center gap-3 hover:bg-blue-700 transition-all shadow-xl shadow-blue-600/20 active:scale-[0.98] group">
+                            <span class="text-lg">Analizar mi caso</span>
+                            <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">rocket_launch</span>
+                        </a>
+                    </div>
                 </div>
             </div>
-        </div>
         </div>
     </section>
     <!-- Servicios Section (Enriched) -->
@@ -789,12 +851,12 @@
     <section class="py-32 px-6 bg-white" id="servicios">
         <div class="max-w-6xl mx-auto">
             <span class="text-blue-500 font-bold text-sm tracking-[0.2em] uppercase mb-4 block text-center">SERVICIOS</span>
-            <div class="text-center mb-6 text-mask-container block max-w-full pb-2">
+            <div class="text-center mb-16 text-mask-container block max-w-full pb-2">
                 <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 text-mask-child tracking-tight active pb-2">Elige tu camino</h2>
             </div>
             
             <p class="text-slate-600 text-lg md:text-xl max-w-6xl mx-auto mb-16 text-center leading-relaxed">
-                No se trata de elegir un servicio, sino de definir el sistema adecuado. Los packs <span class="text-yellow-500 font-bold">Nexus</span> ofrecen una solución integral que implica una mayor inversión, pero también mayor impacto y escalabilidad desde el inicio, mientras que las <span class="text-blue-600 font-bold text-nowrap">soluciones a medida</span> se adaptan a necesidades más específicas. Puedes agendar una llamada gratuita para que analicemos tu caso y definamos la mejor opción.
+                No se trata de elegir un servicio, sino de definir el sistema adecuado. Los packs <span class="text-yellow-500 font-bold">Nexus</span> ofrecen una solución enfocada en PYMES y autónomos que incluye la creación de una web profesional y las integraciones necesarias para centralizar tu operativa, mientras que las <span class="text-blue-600 font-bold text-nowrap">soluciones a medida</span> se adaptan a necesidades más específicas. Puedes agendar una llamada gratuita para que analicemos tu caso y definamos la mejor opción.
 </p>
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:gap-20 gap-12 stagger-group active">
@@ -1185,10 +1247,9 @@
     </section>
 
     <!-- Final CTA Section (Extracted from footer for consistency) -->
-    <section class="py-8 px-6 bg-white reveal">
+    <section class="py-32 px-6 bg-white reveal">
         <div class="max-w-4xl mx-auto text-center">
-            <h2 class="text-4xl md:text-5xl font-extrabold mb-10 tracking-tight text-slate-900">¿Listo para sistematizar
-                tu éxito?</h2>
+            <h2 class="text-4xl md:text-5xl font-extrabold mb-16 tracking-tight text-slate-900">¿Listo para sistematizar tu éxito?</h2>
             <a href="contacto.html"
                 class="w-full sm:w-auto bg-slate-900 text-white font-bold py-5 px-10 rounded-full inline-flex items-center justify-center gap-2 hover:bg-slate-800 transition-all shadow-xl mx-auto group">
                 <span class="text-lg">Analizar mi negocio</span>
@@ -1199,9 +1260,7 @@
     </section>
 
     <!-- Final Footer -->
-    <!-- Final Footer -->
-    <footer
-        class="pt-16 pb-12 px-6 bg-slate-900 text-white rounded-t-[3rem] mt-12 relative overflow-hidden text-center sm:text-left">
+    <footer class="mt-12 rounded-t-[3rem] pt-16 pb-12 px-6 bg-slate-900 text-white relative overflow-hidden text-center sm:text-left">
         <!-- Animated Circuit/Lines Background -->
         <div class="node-network" style="opacity: 0.15; z-index: 0;">
             <svg preserveAspectRatio="xMidYMid slice" viewBox="0 0 1000 600" class="w-full h-full">
@@ -1240,104 +1299,54 @@
         </div>
 
         <!-- Dynamic Yellow Glow Background -->
-        <div class="absolute -top-24 left-0 w-full h-64 bg-yellow-400/5 blur-[120px] pointer-events-none z-0"></div>
-        <div class="absolute -bottom-24 -right-24 size-96 bg-blue-500/5 blur-[120px] pointer-events-none z-0"></div>
+
 
         <div class="max-w-6xl mx-auto relative z-10">
-            <!-- Global Footer Content -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-12">
-                <!-- Left Column: Logo & Mission -->
                 <div class="flex flex-col items-center md:items-start gap-8">
                     <div class="relative group">
-                        <!-- Branding Aura/Glow -->
-                        <div
-                            class="absolute -inset-4 bg-yellow-400/10 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none">
-                        </div>
-
-                        <!-- Logo Container (Premium Badge) -->
-                        <div
-                            class="relative bg-white p-2 rounded-full inline-flex items-center justify-center shadow-xl shadow-yellow-400/5 hover:shadow-yellow-400/20 transition-all duration-500 animate-float-gentle active:scale-95 group-hover:scale-110">
-                            <img src="Imputs/Juanchi Notion Avatar Transparente.png" alt="STRUCTOR"
-                                class="w-20 h-auto md:w-24" />
+                        <div class="absolute -inset-4 bg-yellow-400/10 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
+                        <div class="relative bg-white p-2 rounded-full inline-flex items-center justify-center shadow-xl shadow-yellow-400/5 hover:shadow-yellow-400/20 transition-all duration-500 animate-float-gentle active:scale-95 group-hover:scale-110">
+                            <img src="Imputs/Juanchi Notion Avatar Transparente.png" alt="STRUCTOR" class="w-20 h-auto md:w-24" />
                         </div>
                     </div>
                     <p class="text-slate-400 max-w-sm text-sm leading-relaxed text-center md:text-left">
-                        Elimino el caos operativo diseñando arquitecturas inteligentes que organizan, automatizan y
-                        optimizan la gestión de tu negocio.
+                        Elimino el caos operativo diseñando arquitecturas inteligentes que organizan, automatizan y optimizan la gestión de tu negocio.
                     </p>
                 </div>
-
-                <!-- Right Column: Navigation, Social & Legal -->
                 <div class="grid grid-cols-2 sm:grid-cols-4 gap-8 md:justify-items-start z-10 footer-grid-mobile">
-                    <!-- Navigation -->
                     <div class="flex flex-col gap-4 footer-col-center">
                         <span class="text-xs font-bold text-slate-500 uppercase tracking-widest">Navegación</span>
-                        <a href="index.html#inicio"
-                            class="text-sm text-slate-300 hover:text-yellow-400 transition-colors">Inicio</a>
-                        <a href="index.html#sobre-mi"
-                            class="text-sm text-slate-300 hover:text-yellow-400 transition-colors">Sobre
-                            mí</a>
-                        <a href="index.html#servicios"
-                            class="text-sm text-slate-300 hover:text-yellow-400 transition-colors">Servicios</a>
-                        <a href="blog.html"
-                            class="text-sm text-slate-300 hover:text-yellow-400 transition-colors">Blog</a>
+                        <a href="index.html#inicio" class="text-sm text-slate-300 hover:text-yellow-400 transition-colors">Inicio</a>
+                        <a href="sobre-mi.html" class="text-sm text-slate-300 hover:text-yellow-400 transition-colors">Sobre mí</a>
+                        <a href="index.html#servicios" class="text-sm text-slate-300 hover:text-yellow-400 transition-colors">Servicios</a>
+                        <a href="blog.html" class="text-sm text-slate-300 hover:text-yellow-400 transition-colors">Blog</a>
                     </div>
-
-                    <!-- Company -->
                     <div class="flex flex-col gap-4 footer-col-center">
                         <span class="text-xs font-bold text-slate-500 uppercase tracking-widest">Contacto</span>
-                        <a href="contacto.html"
-                            class="text-sm text-slate-300 hover:text-yellow-400 transition-colors">Formulario</a>
+                        <a href="contacto.html" class="text-sm text-slate-300 hover:text-yellow-400 transition-colors">Formulario</a>
                     </div>
-
-                    <!-- Social -->
                     <div class="flex flex-col gap-4 footer-col-center">
                         <span class="text-xs font-bold text-slate-500 uppercase tracking-widest">Sígueme</span>
-                        <a href="https://www.linkedin.com/in/juan-andr%C3%A9s-ib%C3%A1%C3%B1ez-pasarella-structor/"
-                            target="_blank"
-                            class="flex items-center gap-2 text-sm text-slate-300 hover:text-yellow-400 transition-colors">
-                            <svg class="size-5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
-                            </svg>
-                            LinkedIn
+                        <a href="https://www.linkedin.com/in/juan-andr%C3%A9s-ib%C3%A1%C3%B1ez-pasarella-structor/" target="_blank" class="flex items-center gap-2 text-sm text-slate-300 hover:text-yellow-400 transition-colors">
+                            <svg class="size-5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" /></svg> LinkedIn
                         </a>
-                        <a href="https://www.instagram.com/structorsystemsautomation/" target="_blank"
-                            class="flex items-center gap-2 text-sm text-slate-300 hover:text-yellow-400 transition-colors">
-                            <svg class="size-5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
-                            </svg>
-                            Instagram
+                        <a href="https://www.instagram.com/structorsystemsautomation/" target="_blank" class="flex items-center gap-2 text-sm text-slate-300 hover:text-yellow-400 transition-colors">
+                            <svg class="size-5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" /></svg> Instagram
                         </a>
-                        <a href="https://www.youtube.com/channel/UCTU9Q-_Yrzxpw_841MATBuA" target="_blank"
-                            class="flex items-center gap-2 text-sm text-slate-300 hover:text-yellow-400 transition-colors">
-                            <svg class="size-5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z" />
-                            </svg>
-                            YouTube
-                        </a>
+                        <a href="https://www.youtube.com/channel/UCTU9Q-_Yrzxpw_841MATBuA" target="_blank" class="flex items-center gap-2 text-sm text-slate-300 hover:text-yellow-400 transition-colors">
+                            <svg class="size-5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z" /></svg> YouTube
                         </a>
                     </div>
-
-                    <!-- Legal -->
                     <div class="flex flex-col gap-4 footer-col-center">
                         <span class="text-xs font-bold text-slate-500 uppercase tracking-widest">Legal</span>
-                        <a href="terminos.html"
-                            class="text-[12px] text-slate-500 hover:text-yellow-400/80 transition-colors">Aviso
-                            Legal</a>
-                        <a href="privacidad.html"
-                            class="text-[12px] text-slate-500 hover:text-yellow-400/80 transition-colors">Privacidad</a>
-                        <a href="cookies.html#reopen"
-                            class="text-[12px] text-slate-500 hover:text-yellow-400/80 transition-colors">Cookies</a>
+                        <a href="terminos.html" class="text-[12px] text-slate-500 hover:text-yellow-400/80 transition-colors">Aviso Legal</a>
+                        <a href="privacidad.html" class="text-[12px] text-slate-500 hover:text-yellow-400/80 transition-colors">Privacidad</a>
+                        <a href="cookies.html#reopen" class="text-[12px] text-slate-500 hover:text-yellow-400/80 transition-colors">Cookies</a>
                     </div>
                 </div>
             </div>
-
-            <!-- Bottom Row: Copyright -->
-            <div
-                class="pt-8 border-t border-slate-800 flex flex-col items-center justify-center text-xs text-slate-500 font-medium uppercase tracking-widest">
+            <div class="pt-8 border-t border-slate-800 flex flex-col items-center justify-center text-xs text-slate-500 font-medium uppercase tracking-widest">
                 <span>© 2026 STRUCTOR | Systems & Automation</span>
             </div>
         </div>
@@ -1459,19 +1468,105 @@
 
             // True Parallax Effect for SVG Node Network
             const nodeNetwork = document.querySelector('.node-network');
-            const sobreMiSection = document.getElementById('sobre-mi');
+            const roaSection = document.getElementById('roa-calculator');
 
-            if (nodeNetwork && sobreMiSection) {
+            if (nodeNetwork && roaSection) {
                 window.addEventListener('scroll', () => {
-                    const rect = sobreMiSection.getBoundingClientRect();
-                    // Only calculate when section is visible in viewport
+                    const rect = roaSection.getBoundingClientRect();
                     if (rect.top < window.innerHeight && rect.bottom > 0) {
-                        // Move background down slightly slower, and offset it upwards so it starts higher
                         const parallaxOffset = ((window.innerHeight - rect.top) * 0.15) - 150;
                         nodeNetwork.style.transform = `translateY(${parallaxOffset}px)`;
                     }
                 });
             }
+
+            // --- ROA CALCULATOR LOGIC ---
+            const roaInputs = [
+                'roa-hours', 'roa-frequency', 'roa-cost-hour', 
+                'roa-months', 'roa-setup', 'roa-maint'
+            ];
+
+            const updateROA = () => {
+                const getVal = id => parseFloat(document.getElementById(id).value) || 0;
+                
+                const h = getVal('roa-hours');
+                const f = getVal('roa-frequency');
+                const c = getVal('roa-cost-hour');
+                const m = getVal('roa-months') || 1;
+                const s = getVal('roa-setup');
+                const mt = getVal('roa-maint');
+
+                // Calculations
+                const monthlyManual = h * f * c;
+                const totalManual = monthlyManual * m;
+                const totalAuto = s + (mt * m);
+                const savings = totalManual - totalAuto;
+                const roa = totalAuto > 0 ? (savings / totalAuto) * 100 : 0;
+                const monthlySaving = monthlyManual - mt;
+                const breakEven = monthlySaving > 0 ? s / monthlySaving : 0;
+
+                // Formatting
+                const fmt = (v) => new Intl.NumberFormat('de-DE').format(Math.round(v)) + ' \u20ac';
+                const cleanFmt = (v) => new Intl.NumberFormat('de-DE').format(Math.round(v));
+                
+                // Update UI
+                const textMonthly = document.getElementById('res-monthly-text');
+                if (textMonthly) textMonthly.innerHTML = `${fmt(monthlyManual)}<span class="text-xs font-semibold text-slate-300 ml-1">/mes</span>`;
+                
+                const valMonthly = document.getElementById('res-monthly-val');
+                if (valMonthly) valMonthly.innerText = cleanFmt(monthlyManual);
+
+                const totalMan = document.getElementById('res-total-manual');
+                if (totalMan) totalMan.innerText = fmt(totalManual);
+
+                const totalManVal = document.getElementById('res-total-manual-val');
+                if (totalManVal) totalManVal.innerText = cleanFmt(totalManual);
+
+                const totalManValSmall = document.getElementById('res-total-manual-val-small');
+                if (totalManValSmall) totalManValSmall.innerText = cleanFmt(totalManual);
+                
+                const resSavings = document.getElementById('res-savings');
+                if (resSavings) resSavings.innerText = fmt(savings);
+
+                const resRoa = document.getElementById('res-roa-pct');
+                if (resRoa) resRoa.innerText = `${Math.round(roa)}%`;
+
+                const resBE = document.getElementById('res-be-val');
+                if (resBE) resBE.innerText = breakEven.toFixed(1);
+                
+                const resTotalAutoVal = document.getElementById('res-total-auto-val');
+                if (resTotalAutoVal) resTotalAutoVal.innerText = cleanFmt(totalAuto);
+
+                const resHorizon = document.getElementById('res-horizon-val');
+                if (resHorizon) resHorizon.innerText = m;
+
+                // Recommendation Message
+                const msg = document.getElementById('res-final-msg');
+                const icon = document.getElementById('res-icon');
+                const iconBox = document.getElementById('res-icon-box');
+
+                if (msg && icon && iconBox) {
+                    if (savings > 0) {
+                        msg.innerText = "Automatizar este proceso tendr\u00eda sentido econ\u00f3mico en tu caso";
+                        icon.innerText = "verified_user";
+                        icon.className = "material-symbols-outlined text-green-500 font-black";
+                        iconBox.className = "size-10 rounded-xl bg-green-50 flex items-center justify-center shrink-0";
+                    } else {
+                        msg.innerText = "Con estos datos, la automatizaci\u00f3n tardar\u00eda m\u00e1s en ser rentable";
+                        icon.innerText = "warning";
+                        icon.className = "material-symbols-outlined text-amber-500 font-black";
+                        iconBox.className = "size-10 rounded-xl bg-amber-50 flex items-center justify-center shrink-0";
+                    }
+                }
+            };
+
+            roaInputs.forEach(id => {
+                const el = document.getElementById(id);
+                if (el) el.addEventListener('input', updateROA);
+            });
+
+            // Initial calculation
+            updateROA();
 
         });
     </script>
@@ -1479,16 +1574,14 @@
     <div id="cookie-banner"
         class="fixed bottom-0 left-0 right-0 p-4 md:p-6 z-[100] transform translate-y-full transition-transform duration-[600ms] ease-out flex justify-center">
         <div
-            class="bg-slate-900/95 backdrop-blur-xl border border-slate-700/50 shadow-2xl shadow-blue-900/20 rounded-2xl p-6 max-w-4xl w-full flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+            class="bg-slate-900/95 backdrop-blur-xl border border-slate-700/50 shadow-2xl shadow-yellow-900/20 rounded-2xl p-6 max-w-4xl w-full flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
             <div class="flex-1">
                 <div class="flex items-center gap-2 mb-2">
                     <span class="material-symbols-outlined text-yellow-400 text-xl">cookie</span>
                     <h3 class="text-white font-bold text-lg">Tu privacidad es importante</h3>
                 </div>
                 <p class="text-slate-300 text-sm leading-relaxed">
-                    Utilizo cookies propias y de terceros (Google Analytics y analíticas similares) para entender
-                    cómo interactúas con mi web y mejorar tu experiencia. Al hacer clic en "Aceptar todo",
-                    consientes el uso de TODAS las cookies para seguimiento analítico.
+                    Utilizo cookies propias y de terceros para entender cómo interactúas con mi web y mejorar tu experiencia. Al hacer clic en "Aceptar todo", consientes el uso de TODAS las cookies para seguimiento analítico.
                 </p>
             </div>
             <div class="flex flex-col sm:flex-row gap-3 w-full md:w-auto shrink-0">
@@ -1497,7 +1590,7 @@
                     Rechazar
                 </button>
                 <button id="btn-accept-cookies"
-                    class="px-6 py-2.5 rounded-full bg-blue-500 text-white font-bold hover:bg-blue-600 hover:shadow-lg hover:shadow-blue-500/30 transition-all text-sm text-center tracking-wide">
+                    class="px-6 py-2.5 rounded-full bg-yellow-400 text-slate-900 font-bold hover:bg-yellow-500 hover:shadow-lg hover:shadow-yellow-400/30 transition-all text-sm text-center tracking-wide">
                     Aceptar todo
                 </button>
             </div>

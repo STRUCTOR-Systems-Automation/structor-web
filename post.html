@@ -158,23 +158,23 @@
             fill: none;
             stroke-dasharray: 20 100;
             animation: pulse-flow 4s linear infinite;
-            filter: drop-shadow(0 0 4px rgba(59, 130, 246, 0.8));
+            filter: none;
         }
 
         .node-flow.delayed {
             animation-delay: 2s;
             stroke: #fef08a;
-            filter: drop-shadow(0 0 6px rgba(254, 240, 138, 0.9));
+            filter: none;
         }
 
         .node-dot {
             fill: #60a5fa;
-            filter: drop-shadow(0 0 4px rgba(96, 165, 250, 0.8));
+            filter: none;
         }
 
         .node-dot.yellow {
             fill: #fef08a;
-            filter: drop-shadow(0 0 5px rgba(254, 240, 138, 0.9));
+            filter: none;
         }
 
         .pill-nav {
@@ -243,9 +243,9 @@
     <div id="progress-bar"></div>
 
     <!-- Header Navigation (Consistent) -->
-    <header class="fixed top-8 left-1/2 -translate-x-1/2 w-auto z-50">
+    <header class="fixed top-6 left-1/2 -translate-x-1/2 w-auto z-50">
         <nav
-            class="pill-nav shadow-lg rounded-full px-2 py-2 flex items-center justify-center border border-slate-100/50">
+            class="pill-nav backdrop-blur-md bg-white/70 border border-slate-200/50 rounded-full px-2 py-2 flex items-center justify-center shadow-lg">
             <div class="flex gap-1 text-sm font-semibold text-slate-600">
                 <a class="nav-link" href="blog.html">← Volver al Blog</a>
                 <div class="h-4 w-px bg-slate-200 mt-2.5 mx-2"></div>
@@ -306,8 +306,7 @@
     </article>
 
     <!-- Final Footer -->
-    <footer
-        class="pt-16 pb-12 px-6 bg-slate-900 text-white rounded-t-[3rem] mt-12 relative overflow-hidden text-center sm:text-left">
+    <footer class="mt-12 rounded-t-[3rem] pt-16 pb-12 px-6 bg-slate-900 text-white relative overflow-hidden text-center sm:text-left">
         <!-- Animated Circuit/Lines Background -->
         <div class="node-network" style="opacity: 0.15; z-index: 0;">
             <svg preserveAspectRatio="xMidYMid slice" viewBox="0 0 1000 600" class="w-full h-full">
@@ -345,9 +344,7 @@
             </svg>
         </div>
 
-        <!-- Dynamic Yellow Glow Background -->
-        <div class="absolute -top-24 left-0 w-full h-64 bg-yellow-400/5 blur-[120px] pointer-events-none z-0"></div>
-        <div class="absolute -bottom-24 -right-24 size-96 bg-blue-500/5 blur-[120px] pointer-events-none z-0"></div>
+
 
         <div class="max-w-6xl mx-auto relative z-10">
             <!-- Global Footer Content -->
@@ -387,7 +384,7 @@
                             class="text-sm text-slate-300 hover:text-yellow-400 transition-colors">Servicios</a>
                         <a href="blog.html"
                             class="text-sm text-slate-300 hover:text-yellow-400 transition-colors">Blog</a>
-                    </div>
+                        </div>
 
                     <!-- Company -->
                     <div class="flex flex-col gap-4 footer-col-center">

@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <!-- Google Tag Manager & Consent Mode v2 -->
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('consent', 'default', {
+            'analytics_storage': 'denied',
+            'ad_storage': 'denied',
+            'ad_user_data': 'denied',
+            'ad_personalization': 'denied',
+            'wait_for_update': 500
+        });
+        (function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-K3CWX83L');
+    </script>
+    <!-- End Google Tag Manager -->
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Sobre Mí | Juan Andrés Ibáñez Pasarella - STRUCTOR</title>
+    <meta name="description" content="Conoce a Juan Andrés Ibáñez Pasarella, el arquitecto detrás de STRUCTOR. Especialista en automatización de procesos y arquitectura operativa para negocios.">
+    
+    <link rel="icon" type="image/png" href="Imputs/favicon.png">
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" />
+    
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#136dec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101822",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+        .notion-shadow { box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06); }
+        .pill-nav { backdrop-filter: blur(12px); background-color: rgba(255, 255, 255, 0.7); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+        .nav-link { position: relative; padding: 0.5rem 1.25rem; border-radius: 9999px; transition: all 0.2s ease; }
+        .nav-link:hover { background-color: #fef08a; color: #0f172a; }
+        
+        .node-network {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none;
+            overflow: hidden; z-index: 0; opacity: 0.35; background-attachment: fixed;
+        }
+        .node-path { stroke: #475569; stroke-width: 1.5; fill: none; }
+        .node-flow {
+            stroke: #3b82f6; stroke-width: 2.5; fill: none; stroke-dasharray: 20 100;
+            animation: pulse-flow 4s linear infinite; filter: none;
+        }
+        .node-flow.delayed { animation-delay: 2s; stroke: #fef08a; filter: none; }
+        .node-dot { fill: #60a5fa; filter: none; }
+        .node-dot.yellow { fill: #fef08a; filter: none; }
+        @keyframes pulse-flow { 0% { stroke-dashoffset: 100; opacity: 0; } 50% { opacity: 1; } 100% { stroke-dashoffset: -100; opacity: 0; } }
+
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        .text-mask-container { overflow: hidden; display: inline-block; vertical-align: top; }
+        .text-mask-child { display: inline-block; transform: translateY(110%); transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1); will-change: transform; }
+        .text-mask-child.active { transform: translateY(0); }
+
+        @keyframes float-gentle {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        .animate-float-gentle { animation: float-gentle 6s ease-in-out infinite; }
+        /* Center Footer on Mobile */
+        @media (max-width: 640px) {
+            .footer-grid-mobile {
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: center !important;
+                text-align: center !important;
+                gap: 2.5rem !important;
+            }
+
+            .footer-col-center {
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: center !important;
+                text-align: center !important;
+            }
+        }
+    </style>
+</head>
+<body class="bg-white text-slate-900 font-display">
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K3CWX83L" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <h1 class="sr-only">Sobre mí - Juan Andrés Ibáñez Pasarella | STRUCTOR</h1>
+
+    <header class="fixed top-6 left-1/2 -translate-x-1/2 w-auto z-50">
+        <nav
+            class="pill-nav backdrop-blur-md bg-white/70 border border-slate-200/50 rounded-full px-2 py-2 flex items-center justify-center shadow-lg">
+            <div class="flex gap-1 text-sm font-semibold text-slate-600">
+                <a class="nav-link" href="index.html#inicio">Inicio</a>
+                <a class="nav-link bg-yellow-400 text-slate-900" href="sobre-mi.html">Sobre mí</a>
+                <a class="nav-link" href="index.html#servicios">Servicios</a>
+                <a class="nav-link" href="blog.html">Blog</a>
+                <a class="nav-link" href="contacto.html">Contacto</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="pt-20">
+        <section class="py-32 bg-slate-900 px-6 reveal font-['Inter'] relative overflow-hidden min-h-screen flex items-center" id="sobre-mi-section">
+            <div class="node-network">
+                <svg preserveAspectRatio="xMidYMid slice" viewBox="0 0 1000 600" class="w-full h-full">
+                    <path d="M 0 150 L 1000 150 M 0 300 L 1000 300 M 0 450 L 1000 450" stroke="#334155" stroke-width="0.8" stroke-dasharray="4 4" fill="none" opacity="0.6"></path>
+                    <path d="M 250 0 L 250 600 M 500 0 L 500 600 M 750 0 L 750 600" stroke="#334155" stroke-width="0.8" stroke-dasharray="4 4" fill="none" opacity="0.6"></path>
+                    <path class="node-path" d="M -50 100 L 250 100 L 400 250 L 600 250 L 750 150 L 1050 150"></path>
+                    <path class="node-path" d="M -50 400 L 200 400 L 350 250 L 500 250 L 650 450 L 1050 450"></path>
+                    <path class="node-path" d="M 250 100 L 250 200 L 500 400 L 500 650"></path>
+                    <path class="node-path" d="M 750 150 L 750 300 L 650 450"></path>
+                    <path class="node-flow" d="M -50 100 L 250 100 L 400 250 L 600 250 L 750 150 L 1050 150" pathLength="100"></path>
+                    <path class="node-flow delayed" d="M -50 400 L 200 400 L 350 250 L 500 250 L 650 450 L 1050 450" pathLength="100" style="animation-duration: 5s;"></path>
+                    <path class="node-flow" d="M 250 100 L 250 200 L 500 400 L 500 650" pathLength="100" style="animation-duration: 3.5s;"></path>
+                    <path class="node-flow delayed" d="M 750 150 L 750 300 L 650 450" pathLength="100" style="animation-duration: 4.5s;"></path>
+                    <circle cx="250" cy="100" r="3" class="node-dot"></circle>
+                    <circle cx="400" cy="250" r="3" class="node-dot yellow"></circle>
+                    <circle cx="600" cy="250" r="3" class="node-dot"></circle>
+                    <circle cx="750" cy="150" r="3" class="node-dot yellow"></circle>
+                    <circle cx="200" cy="400" r="3" class="node-dot yellow"></circle>
+                    <circle cx="350" cy="250" r="3" class="node-dot"></circle>
+                    <circle cx="650" cy="450" r="3" class="node-dot yellow"></circle>
+                    <circle cx="500" cy="400" r="3" class="node-dot"></circle>
+                </svg>
+            </div>
+            <div class="max-w-4xl mx-auto border border-slate-800 rounded-[3rem] p-10 md:p-16 bg-white relative overflow-hidden shadow-2xl relative z-10">
+                <div class="absolute -top-24 -right-24 size-64 bg-yellow-100/30 blur-3xl rounded-full"></div>
+                <div class="absolute -bottom-24 -left-24 size-64 bg-blue-50/30 blur-3xl rounded-full"></div>
+                <div class="mb-10 text-center md:text-left text-mask-container block">
+                    <span class="text-blue-500 font-bold text-sm tracking-[0.2em] uppercase mb-4 block text-mask-child">SOBRE MÍ</span>
+                    <h2 class="text-3xl md:text-4xl font-black text-slate-900 tracking-tight text-mask-child" style="transition-delay: 0.1s;">¿Quién está detrás de STRUCTOR?</h2>
+                </div>
+                <div class="block">
+                    <div class="md:float-left mb-8 md:mb-4 md:mr-12 flex justify-center md:block">
+                        <div class="relative group">
+                            <div class="absolute -inset-2 bg-gradient-to-tr from-yellow-100 to-blue-50 rounded-full blur-lg opacity-40 group-hover:opacity-60 transition-opacity"></div>
+                            <div class="size-32 md:size-40 rounded-full overflow-hidden border-4 border-white shadow-xl relative z-10 bg-white">
+                                <div class="w-full h-full scale-[1.03]">
+                                    <video autoplay loop muted playsinline class="w-full h-full object-cover" poster="Imputs/sobre-mi.webp">
+                                        <source src="Imputs/sobre-mi.mp4" type="video/mp4">
+                                        <img src="Imputs/sobre-mi.webp" alt="Juan Andrés Ibáñez Pasarella" class="w-full h-full object-cover">
+                                    </video>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-slate-600 text-[15px] leading-[1.8] space-y-5">
+                        <h3 class="text-xl font-bold text-slate-900 mb-4 block">Juan Andrés Ibáñez Pasarella</h3>
+                        <p>Durante años trabajé en distintos entornos digitales y agencias gestionando estrategias de <strong class="text-slate-900 font-extrabold">Paid Media</strong> para marcas internacionales, optimizando campañas en entornos donde cada decisión debía generar retorno.</p>
+                        <p>En ese contexto entendí algo clave: el crecimiento no siempre falla por falta de tráfico, sino por <strong class="text-slate-900 font-extrabold">falta de sistema</strong>.</p>
+                        <p>He visto equipos brillantes perder eficiencia por <strong class="text-slate-900 font-extrabold">procesos manuales</strong> y tareas operativas que consumen tiempo sin aportar valor real. Por eso empecé a diseñar mis propios sistemas, flujos y procesos que reducen la fricción.</p>
+                        <p>Así nace <span class="font-black text-slate-900">STRUCTOR</span> (del latín <em class="italic text-xs font-normal">structor</em>: <strong class="text-slate-900 font-extrabold">arquitecto o constructor</strong>). Diseño la <strong class="text-slate-900 font-extrabold">arquitectura operativa</strong> que organiza procesos y convierte datos en decisiones.</p>
+                        <p>Hoy aplico esa misma mentalidad: menos improvisación y más <strong class="text-slate-900 font-extrabold">claridad para crecer con orden</strong>. Si tu negocio crece pero tu operación es manual, no necesitas más esfuerzo.</p>
+                        <p class="text-xl font-black text-slate-900 pt-2">Necesitas un <span class="relative"><span class="relative z-10">sistema</span><span class="absolute bottom-1 left-0 w-full h-3 bg-yellow-200/60 -z-1 rounded-sm mix-blend-multiply"></span></span>.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="py-24 bg-white px-6 text-center reveal font-['Inter']">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-4xl md:text-5xl font-black text-slate-900 mb-10 tracking-tight leading-tight">
+                    ¿Hablamos?
+                </h2>
+                <div class="flex justify-center">
+                    <a href="contacto.html" class="inline-flex items-center gap-3 bg-slate-900 text-white font-bold py-5 px-10 rounded-full hover:bg-slate-800 transition-all shadow-xl hover:shadow-slate-900/20 active:scale-95 group">
+                        <span class="text-lg">Analizar mi negocio</span>
+                        <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Final Footer -->
+    <footer class="mt-12 rounded-t-[3rem] pt-16 pb-12 px-6 bg-slate-900 text-white relative overflow-hidden text-center sm:text-left">
+        <!-- Animated Circuit/Lines Background -->
+        <div class="node-network" style="opacity: 0.15; z-index: 0;">
+            <svg preserveAspectRatio="xMidYMid slice" viewBox="0 0 1000 600" class="w-full h-full">
+                <path d="M 0 150 L 1000 150 M 0 300 L 1000 300 M 0 450 L 1000 450" stroke="#334155" stroke-width="0.8" stroke-dasharray="4 4" fill="none" opacity="0.6"></path>
+                <path d="M 250 0 L 250 600 M 500 0 L 500 600 M 750 0 L 750 600" stroke="#334155" stroke-width="0.8" stroke-dasharray="4 4" fill="none" opacity="0.6"></path>
+                <path class="node-path" d="M -50 100 L 250 100 L 400 250 L 600 250 L 750 150 L 1050 150"></path>
+                <path class="node-path" d="M -50 400 L 200 400 L 350 250 L 500 250 L 650 450 L 1050 450"></path>
+                <path class="node-path" d="M 250 100 L 250 200 L 500 400 L 500 650"></path>
+                <path class="node-path" d="M 750 150 L 750 300 L 650 450"></path>
+                <path class="node-flow" d="M -50 100 L 250 100 L 400 250 L 600 250 L 750 150 L 1050 150" pathLength="100"></path>
+                <path class="node-flow delayed" d="M -50 400 L 200 400 L 350 250 L 500 250 L 650 450 L 1050 450" pathLength="100" style="animation-duration: 5s;"></path>
+                <path class="node-flow" d="M 250 100 L 250 200 L 500 400 L 500 650" pathLength="100" style="animation-duration: 3.5s;"></path>
+                <path class="node-flow delayed" d="M 750 150 L 750 300 L 650 450" pathLength="100" style="animation-duration: 4.5s;"></path>
+                <circle cx="250" cy="100" r="3" class="node-dot"></circle>
+                <circle cx="400" cy="250" r="3" class="node-dot yellow"></circle>
+                <circle cx="600" cy="250" r="3" class="node-dot"></circle>
+                <circle cx="750" cy="150" r="3" class="node-dot yellow"></circle>
+                <circle cx="200" cy="400" r="3" class="node-dot yellow"></circle>
+                <circle cx="350" cy="250" r="3" class="node-dot"></circle>
+                <circle cx="650" cy="450" r="3" class="node-dot yellow"></circle>
+                <circle cx="500" cy="400" r="3" class="node-dot"></circle>
+            </svg>
+        </div>
+
+
+
+        <div class="max-w-6xl mx-auto relative z-10">
+            <!-- Global Footer Content -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-12">
+                <!-- Left Column: Logo & Mission -->
+                <div class="flex flex-col items-center md:items-start gap-8">
+                    <div class="relative group">
+                        <div class="absolute -inset-4 bg-yellow-400/10 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
+                        <div class="relative bg-white p-2 rounded-full inline-flex items-center justify-center shadow-xl shadow-yellow-400/5 hover:shadow-yellow-400/20 transition-all duration-500 animate-float-gentle active:scale-95 group-hover:scale-110">
+                            <img src="Imputs/Juanchi Notion Avatar Transparente.png" alt="STRUCTOR" class="w-20 h-auto md:w-24" />
+                        </div>
+                    </div>
+                    <p class="text-slate-400 max-w-sm text-sm leading-relaxed text-center md:text-left">
+                        Elimino el caos operativo diseñando arquitecturas inteligentes que organizan, automatizan y optimizan la gestión de tu negocio.
+                    </p>
+                </div>
+
+                <!-- Right Column: Navigation, Social & Legal -->
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-8 md:justify-items-start z-10 footer-grid-mobile">
+                    <div class="flex flex-col gap-4 footer-col-center text-left">
+                        <span class="text-xs font-bold text-slate-500 uppercase tracking-widest">Navegación</span>
+                        <a href="index.html#inicio" class="text-sm text-slate-300 hover:text-yellow-400 transition-colors">Inicio</a>
+                        <a href="sobre-mi.html" class="text-sm text-slate-300 hover:text-yellow-400 transition-colors">Sobre mí</a>
+                        <a href="index.html#servicios" class="text-sm text-slate-300 hover:text-yellow-400 transition-colors">Servicios</a>
+                        <a href="blog.html" class="text-sm text-slate-300 hover:text-yellow-400 transition-colors">Blog</a>
+                        <a href="contacto.html" class="text-sm text-slate-300 hover:text-yellow-400 transition-colors">Contacto</a>
+                    </div>
+                    <div class="flex flex-col gap-4 footer-col-center text-left">
+                        <span class="text-xs font-bold text-slate-500 uppercase tracking-widest">Social</span>
+                        <a href="https://www.linkedin.com/in/juanandresibanez/" target="_blank" class="text-sm text-slate-300 hover:text-yellow-400 transition-colors">LinkedIn</a>
+                        <a href="https://www.instagram.com/structorsystemsautomation/" target="_blank" class="text-sm text-slate-300 hover:text-yellow-400 transition-colors">Instagram</a>
+                    </div>
+                    <div class="flex flex-col gap-4 footer-col-center text-left">
+                        <span class="text-xs font-bold text-slate-500 uppercase tracking-widest">Legal</span>
+                        <a href="terminos.html" class="text-xs text-slate-500 hover:text-yellow-400/80 transition-colors">Aviso Legal</a>
+                        <a href="privacidad.html" class="text-xs text-slate-500 hover:text-yellow-400/80 transition-colors">Privacidad</a>
+                        <a href="#reopen" onclick="window.reopenCookieBanner()" class="text-xs text-slate-500 hover:text-yellow-400/80 transition-colors">Cookies</a>
+                    </div>
+                </div>
+            </div>
+            <div class="pt-8 border-t border-slate-800/50 flex flex-col items-center justify-center text-[10px] text-slate-600 font-bold uppercase tracking-[0.3em]">
+                <span>© 2026 STRUCTOR | Systems & Automation</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cookie Banner y Logica de Consentimiento -->
+    <div id="cookie-banner"
+        class="fixed bottom-0 left-0 right-0 p-4 md:p-6 z-[100] transform translate-y-full transition-transform duration-[600ms] ease-out flex justify-center">
+        <div
+            class="bg-slate-900/95 backdrop-blur-xl border border-slate-700/50 shadow-2xl shadow-yellow-900/20 rounded-2xl p-6 max-w-4xl w-full flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+            <div class="flex-1">
+                <div class="flex items-center gap-2 mb-2">
+                    <span class="material-symbols-outlined text-yellow-400 text-xl">cookie</span>
+                    <h3 class="text-white font-bold text-lg">Tu privacidad es importante</h3>
+                </div>
+                <p class="text-slate-300 text-sm leading-relaxed">
+                    Utilizo cookies propias y de terceros para entender cómo interactúas con mi web y mejorar tu experiencia. Al hacer clic en "Aceptar todo", consientes el uso de TODAS las cookies para seguimiento analítico.
+                </p>
+            </div>
+            <div class="flex flex-col sm:flex-row gap-3 w-full md:w-auto shrink-0">
+                <button id="btn-reject-cookies"
+                    class="px-6 py-2.5 rounded-full border border-slate-600 text-slate-300 font-medium hover:bg-slate-800 transition-colors text-sm text-center">
+                    Rechazar
+                </button>
+                <button id="btn-accept-cookies"
+                    class="px-6 py-2.5 rounded-full bg-yellow-400 text-slate-900 font-bold hover:bg-yellow-500 hover:shadow-lg hover:shadow-yellow-400/30 transition-all text-sm text-center tracking-wide">
+                    Aceptar todo
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const premiumObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        if (entry.target.classList.contains('text-mask-container')) {
+                            entry.target.querySelectorAll('.text-mask-child').forEach(c => c.classList.add('active'));
+                        }
+                    }
+                });
+            }, { threshold: 0.1 });
+            document.querySelectorAll('.reveal, .text-mask-container').forEach(el => premiumObserver.observe(el));
+
+            const videos = document.querySelectorAll('video');
+            videos.forEach(v => { v.muted = true; v.play().catch(() => {}); });
+
+            const nodeNetwork = document.querySelector('.node-network');
+            const sobreMiSection = document.getElementById('sobre-mi-section');
+            if (nodeNetwork && sobreMiSection) {
+                window.addEventListener('scroll', () => {
+                    const rect = sobreMiSection.getBoundingClientRect();
+                    if (rect.top < window.innerHeight && rect.bottom > 0) {
+                        const parallaxOffset = ((window.innerHeight - rect.top) * 0.15) - 150;
+                        nodeNetwork.style.transform = `translateY(${parallaxOffset}px)`;
+                    }
+                });
+            }
+
+            // Cookie Logic
+            const banner = document.getElementById('cookie-banner');
+            const btnAccept = document.getElementById('btn-accept-cookies');
+            const btnReject = document.getElementById('btn-reject-cookies');
+            
+            if (!localStorage.getItem('structor_cookie_consent')) {
+                setTimeout(() => banner.classList.remove('translate-y-full'), 1500);
+            }
+
+            btnAccept.onclick = () => {
+                localStorage.setItem('structor_cookie_consent', 'accepted');
+                banner.classList.add('translate-y-full');
+            };
+            btnReject.onclick = () => {
+                localStorage.setItem('structor_cookie_consent', 'rejected');
+                banner.classList.add('translate-y-full');
+            };
+            window.reopenCookieBanner = () => banner.classList.remove('translate-y-full');
+        });
+    </script>
+</body>
+</html>
