@@ -88,13 +88,14 @@
         }
         .animate-float-gentle { animation: float-gentle 6s ease-in-out infinite; }
         /* Center Footer on Mobile */
+        /* Mobile Styles */
         @media (max-width: 640px) {
             .footer-grid-mobile {
                 display: flex !important;
                 flex-direction: column !important;
                 align-items: center !important;
                 text-align: center !important;
-                gap: 2.5rem !important;
+                gap: 2rem !important;
             }
 
             .footer-col-center {
@@ -103,10 +104,7 @@
                 align-items: center !important;
                 text-align: center !important;
             }
-        }
-    
-        /* Responsive Navigation for Mobile */
-        @media (max-width: 640px) {
+
             .pill-nav {
                 width: 98vw !important;
                 padding: 0.1rem !important;
@@ -119,6 +117,37 @@
                 font-size: 0.65rem !important;
                 letter-spacing: -0.02em !important;
                 white-space: nowrap !important;
+            }
+
+            section {
+                padding-left: 1.5rem !important;
+                padding-right: 1.5rem !important;
+            }
+
+            .py-32 {
+                padding-top: 4rem !important;
+                padding-bottom: 4rem !important;
+            }
+
+            .py-24 {
+                padding-top: 3rem !important;
+                padding-bottom: 3rem !important;
+            }
+
+            .mb-16 {
+                margin-bottom: 2rem !important;
+            }
+
+            .mb-12 {
+                margin-bottom: 1.5rem !important;
+            }
+
+            .gap-20 {
+                gap: 2.5rem !important;
+            }
+
+            .gap-12 {
+                gap: 1.5rem !important;
             }
         }
 </style>
