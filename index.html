@@ -29,13 +29,13 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
 
     <!-- SEO Optimization -->
-    <title>Automatización de Procesos para Empresas | STRUCTOR</title>
+    <title>Automatización de Procesos para PYMEs y Autónomos | STRUCTOR</title>
     <meta name="description"
-        content="Te ayudo a eliminar el trabajo manual y el caos operativo diseñando sistemas inteligentes que organizan, automatizan y optimizan la gestión de tu negocio.">
+        content="Diseño sistemas de automatización y operaciones en Notion para PYMEs y autónomos. Elimina el trabajo manual y escala tu negocio sin trabajar más horas.">
 
     <!-- Open Graph / Social Media -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Automatización de Procesos para Empresas | STRUCTOR">
+    <meta property="og:title" content="Automatización de Procesos para PYMEs y Autónomos | STRUCTOR">
     <meta property="og:description"
         content="Te ayudo a eliminar el trabajo manual y el caos operativo diseñando sistemas inteligentes que organizan, automatizan y optimizan la gestión de tu negocio.">
     <meta property="og:image" content="https://structorsystemsautomation.com/Imputs/social-share-card.png">
@@ -44,18 +44,41 @@
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Automatización de Procesos para Empresas | STRUCTOR">
+    <meta name="twitter:title" content="Automatización de Procesos para PYMEs y Autónomos | STRUCTOR">
     <meta name="twitter:description"
         content="Te ayudo a eliminar el trabajo manual y el caos operativo diseñando sistemas inteligentes que organizan, automatizan y optimizan la gestión de tu negocio.">
     <meta name="twitter:image" content="https://structorsystemsautomation.com/Imputs/social-share-card.png">
 
 
     <link rel="icon" type="image/png" href="Imputs/favicon.png">
+
+    <!-- Schema Markup -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      "name": "STRUCTOR | Systems & Automation",
+      "description": "Automatización de procesos y sistemas operativos en Notion para PYMEs y autónomos hispanohablantes.",
+      "url": "https://structorsystemsautomation.com",
+      "logo": "https://structorsystemsautomation.com/Imputs/favicon.png",
+      "founder": {
+        "@type": "Person",
+        "name": "Juan Andrés Ibáñez Pasarella"
+      },
+      "serviceType": [
+        "Automatización de procesos",
+        "Sistemas Operativos en Notion",
+        "Consultoría operativa para PYMEs"
+      ],
+      "areaServed": ["ES", "MX", "AR", "CO", "CL"],
+      "sameAs": [
+        "https://www.linkedin.com/in/juan-andr%C3%A9s-ib%C3%A1%C3%B1ez-pasarella-structor/",
+        "https://www.instagram.com/structorsystemsautomation/"
+      ]
+    }
+    </script>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap"
-        rel="stylesheet" />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
         rel="stylesheet" />
     <link
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
@@ -423,12 +446,83 @@
         }
 
         .premium-card:hover {
-            border-color: rgba(254, 240, 138, 0.5); 
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 
-                        0 8px 10px -6px rgba(0, 0, 0, 0.1), 
-                        0 0 20px rgba(254, 240, 138, 0.2); 
+            border-color: rgba(254, 240, 138, 0.5);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+                        0 8px 10px -6px rgba(0, 0, 0, 0.1),
+                        0 0 20px rgba(254, 240, 138, 0.2);
             transform: translateY(-4px);
         }
+
+        /* ── Custom Scrollbar ── */
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: #f8fafc; }
+        ::-webkit-scrollbar-thumb { background: #3b82f6; border-radius: 9999px; }
+
+        /* ── CTA Shimmer ── */
+        @keyframes cta-shimmer {
+            0% { transform: translateX(-150%) skewX(-15deg); }
+            100% { transform: translateX(350%) skewX(-15deg); }
+        }
+        .cta-shimmer { position: relative; overflow: hidden; }
+        .cta-shimmer::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 35%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.13), transparent);
+            animation: cta-shimmer 3.5s ease-in-out infinite;
+            animation-delay: 2s;
+            pointer-events: none;
+        }
+
+        /* ── Nav scrolled state ── */
+        .pill-nav.scrolled {
+            box-shadow: 0 8px 32px -4px rgba(15, 23, 42, 0.14);
+            transform: scale(0.97);
+        }
+
+        /* ── Card spotlight (radial hover) ── */
+        .premium-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            background: radial-gradient(
+                circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+                rgba(254, 240, 138, 0.09) 0%,
+                transparent 60%
+            );
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+        .premium-card:hover::before { opacity: 1; }
+
+        /* ── Page load fade-in ── */
+        @keyframes page-fade-in {
+            from { opacity: 0; transform: translateY(5px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        body { animation: page-fade-in 0.45s ease-out; }
+
+        /* ── Scroll progress bar ── */
+        #scroll-progress {
+            position: fixed; top: 0; left: 0; height: 3px; width: 0%;
+            background: linear-gradient(90deg, #3b82f6, #2563eb);
+            z-index: 9999; transition: width 0.08s linear; pointer-events: none;
+            border-radius: 0 9999px 9999px 0;
+        }
+
+        /* ── Nav active section ── */
+        .nav-link.active-section { background-color: #f1f5f9; color: #0f172a; }
+
+        /* ── ROA card entrance pulse ── */
+        @keyframes roa-pulse {
+            0%   { box-shadow: 0 0 0 0 rgba(59,130,246,0.3), 0 25px 50px -12px rgba(0,0,0,0.25); }
+            65%  { box-shadow: 0 0 0 18px rgba(59,130,246,0), 0 25px 50px -12px rgba(0,0,0,0.25); }
+            100% { box-shadow: 0 0 0 0 rgba(59,130,246,0), 0 25px 50px -12px rgba(0,0,0,0.25); }
+        }
+        .roa-pulse { animation: roa-pulse 1.3s ease-out; }
     </style>
     <style>
         body {
@@ -453,10 +547,13 @@
             }
 
             .nav-link {
-                padding: 0.5rem 0.35rem !important;
-                font-size: 0.65rem !important;
+                padding: 0.75rem 0.5rem !important;
+                font-size: 0.68rem !important;
                 letter-spacing: -0.02em !important;
                 white-space: nowrap !important;
+                min-height: 44px !important;
+                display: inline-flex !important;
+                align-items: center !important;
             }
 
             /* Adjust Hero Tagline */
@@ -546,13 +643,11 @@
 </head>
 
 <body class="bg-white text-slate-900 font-display">
+    <div id="scroll-progress"></div>
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K3CWX83L" height="0" width="0"
             style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
-    <!-- Semantic SEO H1 (Invisible visually but critical for Google) -->
-    <h1 class="sr-only">Automatización de procesos para empresas</h1>
-
     <div id="mouse-spotlight"></div>
     <!-- Header: Centered Pill Navigation -->
     <header class="fixed top-6 left-1/2 -translate-x-1/2 w-auto z-50">
@@ -568,51 +663,48 @@
         </nav>
     </header>
     <!-- Hero Section -->
-    <section class="pt-48 pb-32 px-6 reveal" id="inicio">
+    <section class="pt-48 pb-24 px-6 reveal" id="inicio">
         <div class="max-w-4xl mx-auto flex flex-col items-center text-center">
 
-            <!-- Large Logo -->
+            <!-- Avatar -->
             <img src="Imputs/Juanchi Notion Avatar Transparente.png"
                 alt="Consultor experto en automatización de procesos de negocio"
-                class="w-48 h-auto mb-8 drop-shadow-sm img-scale-child" id="hero-avatar" />
+                class="w-40 h-auto mb-8 drop-shadow-sm img-scale-child" id="hero-avatar" />
 
-            <!-- Main Title Base -->
-            <h2 class="text-4xl sm:text-5xl font-extrabold tracking-tight text-slate-900 mb-2">
-                <span class="text-mask-container"><span class="text-mask-child" id="hero-title-1">STRUCTOR | <span
-                            class="font-normal text-slate-700">Systems & Automation</span></span></span>
-            </h2>
+            <!-- H1 Principal -->
+            <h1 class="font-extrabold tracking-tight text-slate-900 mb-6 leading-tight text-mask-container pb-3">
+                <span class="text-mask-child text-4xl sm:text-5xl md:text-6xl block" id="hero-title-1">Deja de gestionar.</span>
+                <span class="text-mask-child text-3xl sm:text-4xl md:text-5xl block" id="hero-title-2"><span class="premium-highlight">Automatiza, ordena y escala.</span></span>
+            </h1>
 
-            <!-- Highlighted Tagline -->
-            <h2 class="text-2xl sm:text-3xl font-medium text-slate-800 mb-12 relative inline-block text-mask-container">
-                <span class="text-mask-child relative inline sm:block" id="hero-title-2">
-                    <span class="relative z-10 premium-highlight">Elimina el caos operativo. Automatiza lo
-                        repetitivo.</span>
-                </span>
-            </h2>
+            <!-- Subheadline -->
+            <p class="text-lg sm:text-xl text-slate-600 mb-10 max-w-2xl leading-relaxed text-mask-container">
+                <span class="text-mask-child" id="hero-subtitle">Automatización de procesos con IA + toda tu operativa organizada en un solo sistema. Para <strong class="text-slate-900 font-semibold">PYMEs y autónomos</strong> que quieren orden, claridad y tiempo libre.</span>
+            </p>
 
-            <!-- Conversational Speech Bubble -->
-            <div
-                class="relative bg-white border border-slate-200 rounded-2xl p-6 md:p-8 shadow-sm mb-12 max-w-3xl text-left sm:text-center text-lg text-slate-700 leading-relaxed">
-                <div
-                    class="absolute -top-3 left-1/2 -translate-x-1/2 w-6 h-6 bg-white border-t border-l border-slate-200 rotate-45">
-                </div>
-                <p class="relative z-10 text-center">
-                    Te ayudo a eliminar el trabajo manual y el caos operativo diseñando <span
-                        class="font-bold text-slate-900">sistemas inteligentes</span> que organizan, automatizan y
-                    optimizan la gestión de tu negocio.
-                </p>
+            <!-- CTAs -->
+            <div class="flex flex-col sm:flex-row items-center gap-4 mb-0">
+                <a href="contacto.html"
+                    class="w-full sm:w-auto bg-slate-900 text-white font-bold py-5 px-10 rounded-full inline-flex items-center justify-center gap-2 hover:bg-slate-800 transition-all shadow-xl group cta-shimmer">
+                    <span class="text-lg">Analizar mi negocio</span>
+                    <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                </a>
+                <a href="nexus.html" class="text-slate-600 font-semibold hover:text-slate-900 transition-colors flex items-center gap-1.5 group/sec">
+                    <span>Ver packs Nexus</span>
+                    <span class="material-symbols-outlined text-base group-hover/sec:translate-x-0.5 transition-transform">arrow_forward</span>
+                </a>
             </div>
 
-            <!-- New Minimalist CTA -->
-            <a href="contacto.html"
-                class="w-full sm:w-auto bg-slate-900 text-white font-bold py-5 px-10 rounded-full inline-flex items-center justify-center gap-2 hover:bg-slate-800 transition-all shadow-xl mx-auto group mb-16">
-                <span class="text-lg">Analizar mi negocio</span>
-                <span
-                    class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
-            </a>
+        </div>
+    </section>
+
+    <!-- Comparison Section -->
+    <section class="py-20 px-6 bg-white reveal">
+        <div class="max-w-4xl mx-auto flex flex-col items-center text-center">
 
             <!-- Comparison Header -->
-            <div class="mt-32 mb-16 text-mask-container">
+            <div class="mb-16 text-mask-container">
+                <span class="text-blue-500 font-bold text-sm tracking-[0.2em] uppercase mb-4 block text-mask-child">PROBLEMA</span>
                 <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 leading-tight text-mask-child">
                     Tu negocio no necesita más trabajo duro.<br />
                     <span class="text-slate-800">Necesita un sistema inteligente.</span>
@@ -696,9 +788,164 @@
                 </div>
             </div>
 
-
         </div>
     </section>
+
+    <!-- Cómo Funciona Section -->
+    <section class="py-20 px-6 bg-slate-50 reveal">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-12 text-mask-container block">
+                <span class="text-blue-500 font-bold text-sm tracking-[0.2em] uppercase mb-4 block">PROCESO</span>
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 mb-4 text-mask-child tracking-tight active">
+                    Un sistema claro.<br><span class="premium-highlight active inline">Sin improvisaciones.</span>
+                </h2>
+                <p class="text-slate-500 text-lg max-w-2xl mx-auto leading-relaxed mt-4">De la primera llamada al sistema funcionando.</p>
+            </div>
+            <div class="relative grid grid-cols-1 md:grid-cols-4 gap-8 stagger-group active">
+                <div class="relative bg-white p-8 rounded-3xl border border-slate-100 shadow-sm flex flex-col items-center hover:shadow-xl hover:-translate-y-2 transition-all duration-500 group/step stagger-child">
+                    <div class="size-16 rounded-full bg-slate-50 border-2 border-slate-100 flex items-center justify-center mb-6 group-hover/step:bg-yellow-50 group-hover/step:border-yellow-200 transition-colors">
+                        <span class="text-2xl font-black text-slate-900">01</span>
+                    </div>
+                    <span class="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-2">Diagnóstico</span>
+                    <h3 class="text-xl font-bold text-slate-900 mb-4 text-center">Análisis Inicial</h3>
+                    <p class="text-slate-500 text-sm text-center leading-relaxed">Llamada gratuita para identificar tus frenos y tareas repetitivas y calcular el impacto real.</p>
+                </div>
+                <div class="relative bg-white p-8 rounded-3xl border border-slate-100 shadow-sm flex flex-col items-center hover:shadow-xl hover:-translate-y-2 transition-all duration-500 group/step stagger-child">
+                    <div class="size-16 rounded-full bg-slate-50 border-2 border-slate-100 flex items-center justify-center mb-6 group-hover/step:bg-blue-50 group-hover/step:border-blue-200 transition-colors">
+                        <span class="text-2xl font-black text-slate-900">02</span>
+                    </div>
+                    <span class="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-2">Diseño</span>
+                    <h3 class="text-xl font-bold text-slate-900 mb-4 text-center">Plan de Flujo</h3>
+                    <p class="text-slate-500 text-sm text-center leading-relaxed">Planificamos el sistema a medida: flujos, herramientas y estructura sin caos.</p>
+                </div>
+                <div class="relative bg-white p-8 rounded-3xl border border-slate-100 shadow-sm flex flex-col items-center hover:shadow-xl hover:-translate-y-2 transition-all duration-500 group/step stagger-child">
+                    <div class="size-16 rounded-full bg-slate-50 border-2 border-slate-100 flex items-center justify-center mb-6 group-hover/step:bg-emerald-50 group-hover/step:border-emerald-200 transition-colors">
+                        <span class="text-2xl font-black text-slate-900">03</span>
+                    </div>
+                    <span class="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-2">Construcción</span>
+                    <h3 class="text-xl font-bold text-slate-900 mb-4 text-center">Implementación</h3>
+                    <p class="text-slate-500 text-sm text-center leading-relaxed">Ejecutamos las automatizaciones y configuramos todas las herramientas clave.</p>
+                </div>
+                <div class="relative bg-slate-900 p-8 rounded-3xl border border-slate-900 shadow-xl flex flex-col items-center hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 group/step scale-105 stagger-child">
+                    <div class="size-16 rounded-full bg-slate-800 border-2 border-slate-700 flex items-center justify-center mb-6 group-hover/step:border-yellow-400/50 transition-colors">
+                        <span class="text-2xl font-black text-white">04</span>
+                    </div>
+                    <span class="text-[10px] font-black text-slate-500 uppercase tracking-[0.2em] mb-2">Optimización</span>
+                    <h3 class="text-xl font-bold text-white mb-4 text-center">Impacto Real</h3>
+                    <p class="text-slate-400 text-sm text-center leading-relaxed">Pruebas en tiempo real, ajustes y medición del retorno obtenido.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Servicios Section (Enriched) -->
+    <!-- Elige tu Camino Section (Redesigned Services) -->
+    <section class="py-32 px-6 bg-white" id="servicios">
+        <div class="max-w-6xl mx-auto">
+            <span class="text-blue-500 font-bold text-sm tracking-[0.2em] uppercase mb-4 block text-center">SERVICIOS</span>
+            <div class="text-center mb-16 text-mask-container block max-w-full pb-2">
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 text-mask-child tracking-tight active pb-2">Elige tu camino</h2>
+            </div>
+            
+            <p class="text-slate-600 text-lg md:text-xl max-w-6xl mx-auto mb-16 text-center leading-relaxed">
+                No se trata de elegir un servicio, sino de definir el sistema adecuado. Los packs <span class="text-yellow-500 font-bold">Nexus</span> ofrecen una solución enfocada en PYMES y autónomos que incluye la creación de una web profesional y las integraciones necesarias para centralizar tu operativa, mientras que las <span class="text-blue-600 font-bold text-nowrap">soluciones a medida</span> se adaptan a necesidades más específicas. Puedes agendar una llamada gratuita para que analicemos tu caso y definamos la mejor opción.
+</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:gap-20 gap-12 stagger-group active">
+                
+                <!-- Opción 1: Soluciones a Medida -->
+                <div class="group premium-card rounded-[3rem] p-12 bg-slate-50 relative overflow-hidden flex flex-col stagger-child shadow-xl hover:shadow-2xl transition-all duration-700">
+                    <!-- Technical Architecture Visual -->
+                    <div class="absolute top-0 right-0 w-1/2 h-full opacity-[0.07] pointer-events-none group-hover:opacity-[0.12] transition-opacity duration-700">
+                        <svg viewBox="0 0 200 400" class="w-full h-full">
+                            <path class="node-path" d="M 50 50 L 150 100 L 100 200 L 180 300" stroke="#0f172a" fill="none" stroke-width="2" />
+                            <circle cx="50" cy="50" r="4" fill="#0f172a" />
+                            <circle cx="150" cy="100" r="4" fill="#3b82f6" />
+                            <circle cx="100" cy="200" r="4" fill="#0f172a" />
+                            <circle cx="180" cy="300" r="4" fill="#facc15" />
+                            <!-- Animated flow line -->
+                            <path d="M 50 50 L 150 100 L 100 200 L 180 300" stroke="#3b82f6" fill="none" stroke-width="3" stroke-dasharray="10 20" class="animate-[dash_3s_linear_infinite]" />
+                        </svg>
+                    </div>
+
+                    <div class="relative z-10 flex flex-col h-full">
+                        <h3 class="text-3xl font-black text-slate-900 mb-6 leading-tight">Soluciones a <br/><span class="text-blue-600">tu medida</span></h3>
+                        <p class="text-slate-600 text-lg leading-relaxed mb-8">
+                            Diseñemos juntos un sistema adaptado a tus necesidades para organizar tus flujos, tus equipos y tus datos.
+                        </p>
+                        
+                        <ul class="space-y-4 mb-10">
+                            <li class="flex items-center gap-3 text-slate-800 font-bold">
+                                <span class="material-symbols-outlined text-blue-500">settings_suggest</span>
+                                <span>Automatización de procesos</span>
+                            </li>
+                            <li class="flex items-center gap-3 text-slate-800 font-bold">
+                                <img src="Imputs/notion_logo_blue.png" class="w-6 h-6 object-contain" alt="Notion">
+                                <span>Sistemas Operativos en Notion</span>
+                            </li>
+                            <li class="flex items-center gap-3 text-slate-800 font-bold">
+                                <span class="material-symbols-outlined text-blue-500">monitoring</span>
+                                <span>Control de datos</span>
+                            </li>
+                        </ul>
+
+                        <div class="mt-auto pt-6">
+                            <a href="soluciones-a-medida.html" class="w-full sm:w-auto bg-blue-600 text-white font-bold py-4 px-8 rounded-full inline-flex items-center justify-center gap-2 hover:bg-blue-700 transition-all group/btn shadow-lg shadow-blue-200/50">
+                                <span>Ver soluciones a medida</span>
+                                <span class="material-symbols-outlined group-hover/btn:translate-x-1 transition-transform">arrow_forward</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Opción 2: Nexus -->
+                <div class="group premium-card rounded-[3rem] p-12 bg-white relative overflow-hidden flex flex-col stagger-child shadow-xl hover:shadow-2xl transition-all duration-700 border-2 border-slate-900">
+                    <span class="inline-block bg-yellow-100 text-yellow-900 text-[7px] md:text-[9px] font-black px-3 py-1 md:px-4 md:py-1.5 rounded-full absolute top-6 right-6 md:right-12 text-center uppercase tracking-widest z-10 shadow-sm border border-yellow-200/50">
+                        PYMES & AUTÓNOMOS
+                    </span>
+                    <!-- Video Visual: Nexus Business Operating (Fully Integrated) -->
+                    <div class="absolute md:bottom-14 bottom-[114px] md:right-8 right-0 md:w-[35%] w-[28%] opacity-100 z-0 pointer-events-none">
+                        <video class="w-full h-auto" autoplay muted loop playsinline preload="auto">
+                            <source src="Imputs/Nexus_business_operating_202604021839.mp4" type="video/mp4">
+                        </video>
+                    </div>
+
+                    <div class="relative z-10 flex flex-col h-full">
+                        <div class="flex items-center gap-3 mb-6">
+                            <h3 class="text-3xl font-black text-slate-900 leading-tight">Nexus — <span class="text-yellow-500 font-bold">Packs</span></h3>
+                        </div>
+                        <p class="text-slate-600 text-lg leading-relaxed mb-8">
+                            Todo lo que necesitas para organizar, captar y gestionar tu negocio sin depender de múltiples herramientas.
+                        </p>
+                        
+                        <ul class="space-y-4 mb-10">
+                            <li class="flex items-center gap-3 text-slate-800 font-bold">
+                                <span class="material-symbols-outlined text-slate-900">web</span>
+                                <span>Creación Web + sistema centralizado</span>
+                            </li>
+                            <li class="flex items-center gap-3 text-slate-800 font-bold">
+                                <span class="material-symbols-outlined text-slate-900">ads_click</span>
+                                <span>Captación de leads automatizada</span>
+                            </li>
+                            <li class="flex items-center gap-3 text-slate-800 font-bold">
+                                <span class="material-symbols-outlined text-slate-900">inventory_2</span>
+                                <span>Gestión del negocio en un solo sistema</span>
+                            </li>
+                        </ul>
+
+                        <div class="mt-auto pt-6">
+                            <a href="nexus.html" class="w-full sm:w-auto bg-yellow-400 text-slate-900 font-bold py-4 px-8 rounded-full inline-flex items-center justify-center gap-2 hover:bg-yellow-300 transition-all group/btn shadow-lg shadow-yellow-200/50">
+                                <span>Ver packs Nexus</span>
+                                <span class="material-symbols-outlined group-hover/btn:translate-x-1 transition-transform">arrow_forward</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
     <!-- ROA Calculator Section (Interactivo) -->
     <section class="py-12 bg-slate-900 px-6 reveal font-['Inter'] relative overflow-hidden" id="roa-calculator">
         <!-- Dynamic Node Network Background (Preservado) -->
@@ -728,7 +975,7 @@
             </svg>
         </div>
 
-        <div class="max-w-5xl mx-auto border border-slate-800 rounded-[2rem] py-6 px-6 md:py-8 md:px-12 bg-white relative overflow-hidden shadow-2xl z-10 transition-all duration-500">
+        <div id="roa-card" class="max-w-5xl mx-auto border border-slate-800 rounded-[2rem] py-6 px-6 md:py-8 md:px-12 bg-white relative overflow-hidden shadow-2xl z-10 transition-all duration-500">
             <!-- Background effects -->
             <div class="absolute -top-24 -right-24 size-64 bg-blue-100/30 blur-3xl rounded-full"></div>
             <div class="absolute -bottom-24 -left-24 size-64 bg-slate-50/50 blur-3xl rounded-full"></div>
@@ -745,14 +992,14 @@
 
             <!-- Main Layout Grid -->
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 md:gap-16 items-start">
-                
+
                 <!-- Inputs Section (Left/Top) -->
                 <div class="lg:col-span-5 space-y-6">
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-6">
                         <div class="space-y-1.5 focus-within:translate-x-1 transition-transform duration-300">
                             <label class="text-xs font-bold text-slate-400 uppercase tracking-[0.1em] ml-1">Horas por tarea</label>
                             <div class="relative group">
-                                <input type="number" id="roa-hours" value="1.5" step="0.5" min="0" 
+                                <input type="number" id="roa-hours" value="1.5" step="0.5" min="0"
                                     class="w-full bg-slate-50 border-2 border-slate-100 rounded-2xl px-5 py-3 focus:bg-white focus:border-blue-500/50 transition-all outline-none font-bold text-slate-800 text-xl shadow-inner-sm">
                                 <span class="absolute right-5 top-1/2 -translate-y-1/2 text-slate-300 font-bold">h</span>
                             </div>
@@ -761,7 +1008,7 @@
                         <div class="space-y-1.5 focus-within:translate-x-1 transition-transform duration-300">
                             <label class="text-xs font-bold text-slate-400 uppercase tracking-[0.1em] ml-1">Frecuencia mensual</label>
                             <div class="relative group">
-                                <input type="number" id="roa-frequency" value="60" min="0" 
+                                <input type="number" id="roa-frequency" value="60" min="0"
                                     class="w-full bg-slate-50 border-2 border-slate-100 rounded-2xl px-5 py-3 focus:bg-white focus:border-blue-500/50 transition-all outline-none font-bold text-slate-800 text-xl shadow-inner-sm">
                                 <span class="absolute right-5 top-1/2 -translate-y-1/2 text-slate-300 font-bold uppercase text-[10px]">Veces</span>
                             </div>
@@ -770,7 +1017,7 @@
                         <div class="space-y-1.5 focus-within:translate-x-1 transition-transform duration-300">
                             <label class="text-xs font-bold text-slate-400 uppercase tracking-[0.1em] ml-1">Coste por hora</label>
                             <div class="relative group">
-                                <input type="number" id="roa-cost-hour" value="25" min="0" 
+                                <input type="number" id="roa-cost-hour" value="25" min="0"
                                     class="w-full bg-slate-50 border-2 border-slate-100 rounded-2xl px-5 py-3 focus:bg-white focus:border-blue-500/50 transition-all outline-none font-bold text-slate-800 text-xl shadow-inner-sm">
                                 <span class="absolute right-5 top-1/2 -translate-y-1/2 text-slate-300 font-bold uppercase text-[10px]">&euro;/h</span>
                             </div>
@@ -779,7 +1026,7 @@
                         <div class="space-y-1.5 focus-within:translate-x-1 transition-transform duration-300">
                             <label class="text-xs font-bold text-slate-400 uppercase tracking-[0.1em] ml-1">Meses horizonte</label>
                             <div class="relative group">
-                                <input type="number" id="roa-months" value="12" min="1" max="60" 
+                                <input type="number" id="roa-months" value="12" min="1" max="60"
                                     class="w-full bg-slate-50 border-2 border-slate-100 rounded-2xl px-5 py-3 focus:bg-white focus:border-blue-500/50 transition-all outline-none font-bold text-slate-800 text-xl shadow-inner-sm">
                                 <span class="absolute right-5 top-1/2 -translate-y-1/2 text-slate-300 font-bold uppercase text-[10px]">Meses</span>
                             </div>
@@ -787,10 +1034,11 @@
                     </div>
 
                     <div class="p-5 bg-slate-50/50 rounded-2xl border border-slate-100/50 space-y-4">
+                        <p class="text-[10px] font-black text-slate-400 uppercase tracking-[0.1em]">Parámetros opcionales</p>
                         <div class="space-y-1">
-                            <label class="text-[10px] font-bold text-slate-400 uppercase tracking-[0.1em] ml-1">Implementación (Setup)</label>
+                            <label class="text-[10px] font-bold text-slate-400 uppercase tracking-[0.1em] ml-1">Coste de implementación</label>
                             <div class="relative">
-                                <input type="number" id="roa-setup" value="1500" min="0" 
+                                <input type="number" id="roa-setup" value="1500" min="0"
                                     class="w-full bg-white border-2 border-slate-100 rounded-xl px-4 py-2.5 focus:border-blue-500/50 transition-all outline-none font-bold text-slate-800 text-lg shadow-sm">
                                 <span class="absolute right-4 top-1/2 -translate-y-1/2 text-slate-300 font-bold uppercase text-[9px]">&euro;</span>
                             </div>
@@ -798,7 +1046,7 @@
                         <div class="space-y-1">
                             <label class="text-[10px] font-bold text-slate-400 uppercase tracking-[0.1em] ml-1">Mantenimiento mensual</label>
                             <div class="relative">
-                                <input type="number" id="roa-maint" value="150" min="0" 
+                                <input type="number" id="roa-maint" value="150" min="0"
                                     class="w-full bg-white border-2 border-slate-100 rounded-xl px-4 py-2.5 focus:border-blue-500/50 transition-all outline-none font-bold text-slate-800 text-lg shadow-sm">
                                 <span class="absolute right-4 top-1/2 -translate-y-1/2 text-slate-300 font-bold uppercase text-[9px]">&euro;/m</span>
                             </div>
@@ -812,7 +1060,7 @@
                 <!-- Results Section (Right/Bottom) -->
                 <div class="lg:col-span-7 bg-slate-50 rounded-[2rem] py-5 px-6 lg:py-6 lg:px-8 border border-slate-100 shadow-inner flex flex-col h-full">
                     <div class="flex-1 space-y-6">
-                        
+
                         <!-- Top KPI Row -->
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             <div class="bg-white p-5 rounded-xl border border-slate-100 shadow-sm transition-all hover:shadow-md">
@@ -835,7 +1083,7 @@
                                     <div class="bg-blue-500 text-[9px] px-2.5 py-0.5 rounded-full font-black uppercase tracking-tighter">Impacto Positivo</div>
                                 </div>
                                 <div class="text-4xl md:text-5xl font-black mb-6 tracking-tighter text-blue-50" id="res-savings">23.700 &euro;</div>
-                                
+
                                 <div class="grid grid-cols-2 gap-3">
                                     <div class="bg-white/5 border border-white/10 rounded-xl p-3.5 transition-colors hover:bg-white/10">
                                         <span class="text-[9px] text-slate-500 font-bold uppercase block mb-0.5">Retorno (ROA)</span>
@@ -876,113 +1124,6 @@
             </div>
         </div>
     </section>
-    <!-- Servicios Section (Enriched) -->
-    <!-- Elige tu Camino Section (Redesigned Services) -->
-    <section class="py-32 px-6 bg-white" id="servicios">
-        <div class="max-w-6xl mx-auto">
-            <span class="text-blue-500 font-bold text-sm tracking-[0.2em] uppercase mb-4 block text-center">SERVICIOS</span>
-            <div class="text-center mb-16 text-mask-container block max-w-full pb-2">
-                <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 text-mask-child tracking-tight active pb-2">Elige tu camino</h2>
-            </div>
-            
-            <p class="text-slate-600 text-lg md:text-xl max-w-6xl mx-auto mb-16 text-center leading-relaxed">
-                No se trata de elegir un servicio, sino de definir el sistema adecuado. Los packs <span class="text-yellow-500 font-bold">Nexus</span> ofrecen una solución enfocada en PYMES y autónomos que incluye la creación de una web profesional y las integraciones necesarias para centralizar tu operativa, mientras que las <span class="text-blue-600 font-bold text-nowrap">soluciones a medida</span> se adaptan a necesidades más específicas. Puedes agendar una llamada gratuita para que analicemos tu caso y definamos la mejor opción.
-</p>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:gap-20 gap-12 stagger-group active">
-                
-                <!-- Opción 1: Soluciones a Medida -->
-                <div class="group premium-card rounded-[3rem] p-12 bg-slate-50 relative overflow-hidden flex flex-col stagger-child shadow-xl hover:shadow-2xl transition-all duration-700">
-                    <!-- Technical Architecture Visual -->
-                    <div class="absolute top-0 right-0 w-1/2 h-full opacity-[0.07] pointer-events-none group-hover:opacity-[0.12] transition-opacity duration-700">
-                        <svg viewBox="0 0 200 400" class="w-full h-full">
-                            <path class="node-path" d="M 50 50 L 150 100 L 100 200 L 180 300" stroke="#0f172a" fill="none" stroke-width="2" />
-                            <circle cx="50" cy="50" r="4" fill="#0f172a" />
-                            <circle cx="150" cy="100" r="4" fill="#3b82f6" />
-                            <circle cx="100" cy="200" r="4" fill="#0f172a" />
-                            <circle cx="180" cy="300" r="4" fill="#facc15" />
-                            <!-- Animated flow line -->
-                            <path d="M 50 50 L 150 100 L 100 200 L 180 300" stroke="#3b82f6" fill="none" stroke-width="3" stroke-dasharray="10 20" class="animate-[dash_3s_linear_infinite]" />
-                        </svg>
-                    </div>
-
-                    <div class="relative z-10 flex flex-col h-full">
-                        <h3 class="text-3xl font-black text-slate-900 mb-6 leading-tight">Soluciones a <br/><span class="text-blue-600">tu medida</span></h3>
-                        <p class="text-slate-600 text-lg leading-relaxed mb-8">
-                            Diseñemos juntos un sistema adaptado a tus necesidades para organizar tus flujos, tus equipos y tus datos.
-                        </p>
-                        
-                        <ul class="space-y-4 mb-10">
-                            <li class="flex items-center gap-3 text-slate-800 font-bold">
-                                <span class="material-symbols-outlined text-blue-500">settings_suggest</span>
-                                <span>Automatización estratégica</span>
-                            </li>
-                            <li class="flex items-center gap-3 text-slate-800 font-bold">
-                                <img src="Imputs/notion_logo_blue.png" class="w-6 h-6 object-contain" alt="Notion">
-                                <span>Sistemas Operativos en Notion</span>
-                            </li>
-                            <li class="flex items-center gap-3 text-slate-800 font-bold">
-                                <span class="material-symbols-outlined text-blue-500">monitoring</span>
-                                <span>Control de datos</span>
-                            </li>
-                        </ul>
-
-                        <div class="mt-auto pt-6">
-                            <a href="soluciones-a-medida.html" class="w-full sm:w-auto bg-blue-600 text-white font-bold py-4 px-8 rounded-full inline-flex items-center justify-center gap-2 hover:bg-blue-700 transition-all group/btn shadow-lg shadow-blue-200/50">
-                                <span>Información sobre soluciones a medida</span>
-                                <span class="material-symbols-outlined group-hover/btn:translate-x-1 transition-transform">arrow_forward</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Opción 2: Nexus -->
-                <div class="group premium-card rounded-[3rem] p-12 bg-white relative overflow-hidden flex flex-col stagger-child shadow-xl hover:shadow-2xl transition-all duration-700 border-2 border-slate-900">
-                    <span class="inline-block bg-yellow-100 text-yellow-900 text-[7px] md:text-[9px] font-black px-3 py-1 md:px-4 md:py-1.5 rounded-full absolute top-6 right-6 md:right-12 text-center uppercase tracking-widest z-10 shadow-sm border border-yellow-200/50">
-                        PYMES & AUTÓNOMOS
-                    </span>
-                    <!-- Video Visual: Nexus Business Operating (Fully Integrated) -->
-                    <div class="absolute md:bottom-14 bottom-[114px] md:right-8 right-0 md:w-[35%] w-[28%] opacity-100 z-0 pointer-events-none">
-                        <video class="w-full h-auto" autoplay muted loop playsinline preload="auto">
-                            <source src="Imputs/Nexus_business_operating_202604021839.mp4" type="video/mp4">
-                        </video>
-                    </div>
-
-                    <div class="relative z-10 flex flex-col h-full">
-                        <div class="flex items-center gap-3 mb-6">
-                            <h3 class="text-3xl font-black text-slate-900 leading-tight">Nexus — <span class="text-slate-500 font-bold">Packs OS</span></h3>
-                        </div>
-                        <p class="text-slate-600 text-lg leading-relaxed mb-8">
-                            Todo lo que necesitas para organizar, captar y gestionar tu negocio sin depender de múltiples herramientas.
-                        </p>
-                        
-                        <ul class="space-y-4 mb-10">
-                            <li class="flex items-center gap-3 text-slate-800 font-bold">
-                                <span class="material-symbols-outlined text-slate-900">web</span>
-                                <span>Creación Web + Notion como centro</span>
-                            </li>
-                            <li class="flex items-center gap-3 text-slate-800 font-bold">
-                                <span class="material-symbols-outlined text-slate-900">ads_click</span>
-                                <span>Captación de leads automatizada</span>
-                            </li>
-                            <li class="flex items-center gap-3 text-slate-800 font-bold">
-                                <span class="material-symbols-outlined text-slate-900">inventory_2</span>
-                                <span>Gestión del negocio en un solo sistema</span>
-                            </li>
-                        </ul>
-
-                        <div class="mt-auto pt-6">
-                            <a href="nexus.html" class="w-full sm:w-auto bg-yellow-400 text-slate-900 font-bold py-4 px-8 rounded-full inline-flex items-center justify-center gap-2 hover:bg-yellow-300 transition-all group/btn shadow-lg shadow-yellow-200/50">
-                                <span>Ver packs Nexus</span>
-                                <span class="material-symbols-outlined group-hover/btn:translate-x-1 transition-transform">arrow_forward</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
 
     <!-- Tech Stack Section (Refined: Real Logos & Integrated Quote) -->
     <section class="py-20 px-6 bg-white border-t border-slate-100 overflow-hidden">
@@ -1000,8 +1141,7 @@
                     <!-- Marquee Row 1: Zero-Dependency Embedded SVGs -->
                     <div
                         class="flex-shrink-0 flex items-center gap-3 bg-white border border-slate-100 px-6 py-3.5 rounded-xl shadow-sm hover:border-slate-300 transition-all min-w-[140px]">
-                        <img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/notion.svg" class="h-7 w-auto"
-                            alt="Notion" />
+                        <img src="Imputs/notion_logo_blue.png" class="h-7 w-auto" alt="Notion" />
                         <span class="text-sm font-bold text-slate-800 tracking-tight">Notion</span>
                     </div>
                     <div
@@ -1035,8 +1175,7 @@
                     <!-- Duplicate for marquee loop -->
                     <div
                         class="flex-shrink-0 flex items-center gap-3 bg-white border border-slate-100 px-6 py-3.5 rounded-xl shadow-sm hover:border-slate-300 transition-all min-w-[140px]">
-                        <img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/notion.svg" class="h-7 w-auto"
-                            alt="Notion" />
+                        <img src="Imputs/notion_logo_blue.png" class="h-7 w-auto" alt="Notion" />
                         <span class="text-sm font-bold text-slate-800 tracking-tight">Notion</span>
                     </div>
                     <div
@@ -1181,8 +1320,7 @@
                     <div
                         class="flex-shrink-0 flex items-center gap-3 bg-white border border-slate-100 px-6 py-3.5 rounded-xl shadow-sm hover:border-slate-300 transition-all min-w-[140px]">
                         <!-- Telegram (Official Logo) -->
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Telegram_logo.svg/3840px-Telegram_logo.svg.png"
-                            class="h-7 w-auto" alt="Telegram" />
+                        <svg class="h-7 w-auto" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#2AABEE"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
                         <span class="text-sm font-bold text-slate-800 tracking-tight">Telegram</span>
                     </div>
                     <!-- Duplicate for loop -->
@@ -1267,8 +1405,7 @@
                     <div
                         class="flex-shrink-0 flex items-center gap-3 bg-white border border-slate-100 px-6 py-3.5 rounded-xl shadow-sm hover:border-slate-300 transition-all min-w-[140px]">
                         <!-- Telegram (Official Logo) -->
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Telegram_logo.svg/3840px-Telegram_logo.svg.png"
-                            class="h-7 w-auto" alt="Telegram" />
+                        <svg class="h-7 w-auto" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#2AABEE"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
                         <span class="text-sm font-bold text-slate-800 tracking-tight">Telegram</span>
                     </div>
                 </div>
@@ -1276,15 +1413,15 @@
         </div>
     </section>
 
-    <!-- Final CTA Section (Extracted from footer for consistency) -->
+    <!-- Final CTA Section -->
     <section class="py-32 px-6 bg-white reveal">
         <div class="max-w-4xl mx-auto text-center">
-            <h2 class="text-4xl md:text-5xl font-extrabold mb-16 tracking-tight text-slate-900">¿Listo para sistematizar tu éxito?</h2>
+            <h2 class="text-4xl md:text-5xl font-extrabold mb-4 tracking-tight text-slate-900">Tu negocio merece trabajar para ti, no al revés.</h2>
+            <p class="text-slate-500 text-xl mb-12 leading-relaxed">El primer paso es una llamada gratuita de diagnóstico.</p>
             <a href="contacto.html"
-                class="w-full sm:w-auto bg-slate-900 text-white font-bold py-5 px-10 rounded-full inline-flex items-center justify-center gap-2 hover:bg-slate-800 transition-all shadow-xl mx-auto group">
-                <span class="text-lg">Analizar mi negocio</span>
-                <span
-                    class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                class="w-full sm:w-auto bg-slate-900 text-white font-bold py-5 px-10 rounded-full inline-flex items-center justify-center gap-2 hover:bg-slate-800 transition-all shadow-xl mx-auto group cta-shimmer">
+                <span class="text-lg">Analizar mi negocio gratis</span>
+                <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
             </a>
         </div>
     </section>
@@ -1584,6 +1721,78 @@
 
             // Initial calculation
             updateROA();
+
+            // ── Nav scroll shadow ──
+            const pillNav = document.querySelector('.pill-nav');
+            if (pillNav) {
+                window.addEventListener('scroll', () => {
+                    pillNav.classList.toggle('scrolled', window.scrollY > 60);
+                }, { passive: true });
+            }
+
+            // ── Hero mouse parallax (node network) ──
+            const heroSection = document.getElementById('inicio');
+            const heroNetwork = heroSection ? heroSection.querySelector('.node-network') : null;
+            if (heroSection && heroNetwork) {
+                heroSection.addEventListener('mousemove', (e) => {
+                    const rect = heroSection.getBoundingClientRect();
+                    const cx = (e.clientX - rect.left) / rect.width - 0.5;
+                    const cy = (e.clientY - rect.top) / rect.height - 0.5;
+                    heroNetwork.style.transform = `translate(${cx * 22}px, ${cy * 14}px)`;
+                    heroNetwork.style.transition = 'transform 0.25s ease-out';
+                });
+                heroSection.addEventListener('mouseleave', () => {
+                    heroNetwork.style.transform = 'translate(0, 0)';
+                    heroNetwork.style.transition = 'transform 0.9s ease-out';
+                });
+            }
+
+            // ── Card spotlight (radial gradient follows cursor) ──
+            document.querySelectorAll('.premium-card').forEach(card => {
+                card.addEventListener('mousemove', (e) => {
+                    const rect = card.getBoundingClientRect();
+                    card.style.setProperty('--mouse-x', `${((e.clientX - rect.left) / rect.width) * 100}%`);
+                    card.style.setProperty('--mouse-y', `${((e.clientY - rect.top) / rect.height) * 100}%`);
+                });
+            });
+
+            // ── Scroll progress bar ──
+            const scrollProgress = document.getElementById('scroll-progress');
+            if (scrollProgress) {
+                window.addEventListener('scroll', () => {
+                    const pct = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+                    scrollProgress.style.width = Math.min(pct, 100) + '%';
+                }, { passive: true });
+            }
+
+            // ── Nav active section highlight ──
+            const navLinks = document.querySelectorAll('.nav-link');
+            const sectionIds = ['inicio', 'servicios'];
+            const sectionObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        navLinks.forEach(l => l.classList.remove('active-section'));
+                        const active = document.querySelector(`.nav-link[href="#${entry.target.id}"]`);
+                        if (active) active.classList.add('active-section');
+                    }
+                });
+            }, { threshold: 0.35 });
+            sectionIds.forEach(id => {
+                const el = document.getElementById(id);
+                if (el) sectionObserver.observe(el);
+            });
+
+            // ── ROA card entrance pulse ──
+            const roaCard = document.getElementById('roa-card');
+            if (roaCard) {
+                const roaObserver = new IntersectionObserver((entries) => {
+                    if (entries[0].isIntersecting) {
+                        setTimeout(() => roaCard.classList.add('roa-pulse'), 250);
+                        roaObserver.disconnect();
+                    }
+                }, { threshold: 0.35 });
+                roaObserver.observe(roaCard);
+            }
 
         });
     </script>

@@ -24,10 +24,41 @@
         })(window, document, 'script', 'dataLayer', 'GTM-K3CWX83L');
     </script>
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>Soluciones a tu medida | TU SOLUCIÓN | STRUCTOR</title>
-    <meta name="description" content="Diseño arquitecturas operativas personalizadas: automatización estratégica, sistemas en Notion y control de datos para negocios complejos.">
+    <title>Automatización de Procesos a Medida para PYMEs | STRUCTOR</title>
+    <meta name="description" content="Automatización de procesos a medida para PYMEs y autónomos. Sistemas operativos en Notion, integración de herramientas y control de datos para negocios que quieren escalar sin trabajar más horas.">
     
     <link rel="icon" type="image/png" href="Imputs/favicon.png">
+    <link rel="canonical" href="https://structorsystemsautomation.com/soluciones-a-medida.html" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://structorsystemsautomation.com/soluciones-a-medida.html" />
+    <meta property="og:title" content="Automatización de Procesos a Medida para PYMEs | STRUCTOR" />
+    <meta property="og:description" content="Automatización de procesos a medida para PYMEs y autónomos. Sistemas operativos en Notion, integración de herramientas y control de datos para negocios que quieren escalar." />
+    <meta property="og:image" content="https://structorsystemsautomation.com/Imputs/og-image.png" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Automatización de Procesos a Medida para PYMEs | STRUCTOR" />
+    <meta name="twitter:description" content="Automatización de procesos a medida para PYMEs y autónomos. Sistemas operativos en Notion, integración de herramientas y control de datos para negocios que quieren escalar." />
+
+    <!-- Schema: Service -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Automatización de Procesos a Medida",
+        "description": "Diseño de sistemas de automatización personalizados para PYMEs y autónomos: automatización de procesos, sistemas operativos en Notion y control de datos.",
+        "provider": {
+            "@type": "ProfessionalService",
+            "name": "STRUCTOR | Systems & Automation",
+            "url": "https://structorsystemsautomation.com"
+        },
+        "serviceType": "Business Process Automation",
+        "areaServed": ["España", "Latinoamérica"]
+    }
+    </script>
+
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" />
@@ -69,6 +100,9 @@
             padding: 0.5rem 1.25rem;
             border-radius: 9999px;
             transition: all 0.2s ease;
+            min-height: 44px;
+            display: inline-flex;
+            align-items: center;
         }
 
         .nav-link:hover {
@@ -122,6 +156,19 @@
         @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
         .animate-marquee { animation: marquee 40s linear infinite; }
         .animate-marquee-slow { animation: marquee 60s linear infinite; }
+
+        /* ── Scroll progress bar ── */
+        #scroll-progress {
+            position: fixed; top: 0; left: 0; height: 3px; width: 0%;
+            background: linear-gradient(90deg, #3b82f6, #2563eb);
+            z-index: 9999; transition: width 0.08s linear; pointer-events: none;
+            border-radius: 0 9999px 9999px 0;
+        }
+        /* ── Nav scrolled shadow ── */
+        .pill-nav.scrolled { box-shadow: 0 8px 32px -4px rgba(15,23,42,0.14); transform: scale(0.97); }
+        /* ── Page load fade-in ── */
+        @keyframes page-fade-in { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+        body { animation: page-fade-in 0.45s ease-out; }
         @keyframes dash { to { stroke-dashoffset: -8; } }
         @keyframes bar-grow { 0% { transform: scaleY(0.4); opacity: 0.5; } 100% { transform: scaleY(1); opacity: 1; } }
         .animate-bar-grow { animation: bar-grow 1.2s ease-in-out infinite alternate; transform-origin: bottom; }
@@ -203,6 +250,7 @@
 </head>
 
 <body class="bg-white text-slate-900 font-display">
+    <div id="scroll-progress"></div>
     <!-- Header -->
     <header class="fixed top-6 left-1/2 -translate-x-1/2 w-auto z-50">
         <nav
@@ -226,9 +274,18 @@
             </svg>
         </div>
         <div class="max-w-4xl mx-auto text-center relative z-10">
-            <span class="text-blue-500 font-bold text-sm tracking-[0.2em] uppercase mb-4 block">TU SOLUCIÓN</span>
-            <h1 class="text-4xl sm:text-6xl font-black text-slate-900 mb-6 tracking-tight">Soluciones a <span class="premium-highlight active">tu medida</span></h1>
-            <p class="text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed">Las herramientas por sí solas no organizan un negocio. Lo que necesitas es un sistema diseñado a medida para tus flujos, tus equipos y tus datos.</p>
+            <span class="text-blue-500 font-bold text-sm tracking-[0.2em] uppercase mb-4 block">SOLUCIONES A TU MEDIDA</span>
+            <h1 class="text-4xl sm:text-6xl font-black text-slate-900 mb-6 tracking-tight">Automatización de procesos y sistemas de organización <span class="premium-highlight active">diseñados para tu negocio.</span></h1>
+            <p class="text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed mb-10">No instalamos herramientas. Construimos el sistema que conecta tus flujos, tus datos y tu equipo.</p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="contacto.html" class="bg-slate-900 text-white font-bold py-4 px-8 rounded-full inline-flex items-center gap-2 hover:bg-slate-800 transition-all shadow-xl">
+                    <span>Analizar mi negocio gratis</span>
+                    <span class="material-symbols-outlined">arrow_forward</span>
+                </a>
+                <a href="#pilares" class="border-2 border-slate-300 text-slate-700 font-semibold py-4 px-8 rounded-full inline-flex items-center gap-2 hover:bg-slate-100 transition-all">
+                    Ver cómo funciona
+                </a>
+            </div>
         </div>
     </section>
 
@@ -252,7 +309,7 @@
                     <h3 class="text-3xl font-black text-slate-900 mb-6 leading-tight">
                         <span>Automatización</span><br />
                         <span class="relative inline-block">
-                            <span class="relative z-10">Estratégica</span>
+                            <span class="relative z-10">de procesos</span>
                             <div
                                 class="absolute bottom-1 left-0 w-full h-4 bg-yellow-200 -z-0 rounded-sm mix-blend-multiply opacity-70">
                             </div>
@@ -260,8 +317,6 @@
                     </h3>
                     <p class="text-slate-500 text-lg leading-snug mb-6 max-w-[280px]">
                         Convertir tareas repetitivas en procesos que funcionan solos conectando herramientas, datos e IA cuando aporta valor.<br />
-                        <span class="block mt-4 text-sm font-bold text-slate-900 italic opacity-80">"Lo que antes
-                            llevaba días, ahora en minutos."</span>
                     </p>
                     <div
                         class="mt-auto pt-6 border-t border-slate-200 w-full opacity-60 group-hover:opacity-100 transition-opacity">
@@ -558,66 +613,42 @@
         </div>
     </section>
 
-    <!-- Methodology Section (Extracted from index.html) -->
-    <section class="py-16 md:py-24 px-6 bg-slate-50 overflow-hidden">
-        <div class="max-w-6xl mx-auto">
-            <div class="text-center mb-12 text-mask-container block">
-                <span class="text-blue-500 font-bold text-sm tracking-[0.2em] uppercase mb-4 block">Metodología</span>
-                <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 mb-6 text-mask-child tracking-tight active" style="transition-delay: 0.1s;">
-                    <span class="premium-highlight active inline">Un sistema claro. Sin improvisaciones.</span>
-                </h2>
-            </div>
-            <div class="relative grid grid-cols-1 md:grid-cols-4 gap-8 stagger-group active">
-                <div class="relative bg-white p-8 rounded-3xl border border-slate-100 shadow-sm flex flex-col items-center hover:shadow-xl hover:-translate-y-2 transition-all duration-500 group/step stagger-child">
-                    <div class="size-16 rounded-full bg-slate-50 border-2 border-slate-100 flex items-center justify-center mb-6 group-hover/step:bg-yellow-50 group-hover/step:border-yellow-200 transition-colors">
-                        <span class="text-2xl font-black text-slate-900">01</span>
-                    </div>
-                    <span class="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-2">Diagnóstico</span>
-                    <h4 class="text-xl font-bold text-slate-900 mb-4">Análisis Inicial</h4>
-                    <p class="text-slate-500 text-sm text-center leading-relaxed">Analizamos frenos y tareas repetitivas para detectar el impacto real.</p>
-                </div>
-                <div class="relative bg-white p-8 rounded-3xl border border-slate-100 shadow-sm flex flex-col items-center hover:shadow-xl hover:-translate-y-2 transition-all duration-500 group/step stagger-child">
-                    <div class="size-16 rounded-full bg-slate-50 border-2 border-slate-100 flex items-center justify-center mb-6 group-hover/step:bg-blue-50 group-hover/step:border-blue-200 transition-colors">
-                        <span class="text-2xl font-black text-slate-900">02</span>
-                    </div>
-                    <span class="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-2">Diseño</span>
-                    <h4 class="text-xl font-bold text-slate-900 mb-4">Plan de Flujo</h4>
-                    <p class="text-slate-500 text-sm text-center leading-relaxed">Planificamos el flujo sin caos, definiendo el sistema a medida.</p>
-                </div>
-                <div class="relative bg-white p-8 rounded-3xl border border-slate-100 shadow-sm flex flex-col items-center hover:shadow-xl hover:-translate-y-2 transition-all duration-500 group/step stagger-child">
-                    <div class="size-16 rounded-full bg-slate-50 border-2 border-slate-100 flex items-center justify-center mb-6 group-hover/step:bg-emerald-50 group-hover/step:border-emerald-200 transition-colors">
-                        <span class="text-2xl font-black text-slate-900">03</span>
-                    </div>
-                    <span class="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-2">Construcción</span>
-                    <h4 class="text-xl font-bold text-slate-900 mb-4">Implementación</h4>
-                    <p class="text-slate-500 text-sm text-center leading-relaxed">Ejecutamos la automatización y configuramos las herramientas clave.</p>
-                </div>
-                <div class="relative bg-slate-900 p-8 rounded-3xl border border-slate-900 shadow-xl flex flex-col items-center hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 group/step scale-105 stagger-child">
-                    <div class="size-16 rounded-full bg-slate-800 border-2 border-slate-700 flex items-center justify-center mb-6 group-hover/step:border-yellow-400/50 transition-colors">
-                        <span class="text-2xl font-black text-white">04</span>
-                    </div>
-                    <span class="text-[10px] font-black text-slate-500 uppercase tracking-[0.2em] mb-2">Optimización</span>
-                    <h4 class="text-xl font-bold text-white mb-4">Impacto Real</h4>
-                    <p class="text-slate-400 text-sm text-center leading-relaxed">Pruebas en tiempo real, ajustes y medición del éxito obtenido.</p>
-                </div>
-            </div>
+
+    <!-- ── CTA intermedio ── -->
+    <section class="py-14 px-6 bg-slate-50 text-center reveal">
+        <div class="max-w-2xl mx-auto">
+            <p class="text-slate-500 text-lg mb-6 leading-relaxed">¿Ya tienes claro que lo necesitas? <span class="text-slate-900 font-semibold">Primera llamada gratuita, sin compromiso.</span></p>
+            <a href="contacto.html" class="inline-flex items-center gap-2 px-8 py-4 bg-slate-900 text-white font-black rounded-full hover:bg-slate-700 transition-all shadow-lg group">
+                Analizar mi negocio gratis
+                <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+            </a>
         </div>
     </section>
 
     <!-- ═══════════════════════════════════════════════
-         PORTFOLIO — Ejemplos de lo que puedes automatizar
+         PORTFOLIO — Ejemplos de lo que construimos
          ═══════════════════════════════════════════════ -->
     <section class="py-16 md:py-24 px-6 bg-white overflow-hidden" id="portfolio-auto">
         <div class="max-w-6xl mx-auto">
             <!-- Section Header -->
-            <div class="text-center mb-12 text-mask-container block">
+            <div class="text-center mb-16 text-mask-container block">
                 <span class="text-blue-500 font-bold text-sm tracking-[0.2em] uppercase mb-4 block">EJEMPLOS</span>
                 <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 mb-6 text-mask-child tracking-tight" style="transition-delay: 0.1s;">
-                    Ejemplos de lo que puedes <span class="premium-highlight">automatizar</span>
+                    Ejemplos de lo que <span class="premium-highlight">construimos</span>
                 </h2>
                 <p class="text-slate-500 text-lg max-w-2xl mx-auto leading-relaxed text-mask-child" style="transition-delay: 0.25s;">
-                    Desde la captación hasta la operativa interna. Adaptado a tu negocio.
+                    Automatizaciones, sistemas en Notion y paneles de datos. Adaptado a tu negocio.
                 </p>
+            </div>
+
+            <!-- ── Automatización de Procesos ── -->
+            <div class="flex items-center gap-4 mb-10">
+                <div class="h-px flex-1 bg-slate-100"></div>
+                <div class="flex items-center gap-2 px-4 py-1.5 bg-slate-50 border border-slate-100 rounded-full">
+                    <span class="material-symbols-outlined text-slate-700 text-sm">electric_bolt</span>
+                    <span class="text-[11px] font-black text-slate-500 uppercase tracking-[0.2em]">Automatización de Procesos</span>
+                </div>
+                <div class="h-px flex-1 bg-slate-100"></div>
             </div>
 
             <!-- Cards Grid 2×2 -->
@@ -754,12 +785,221 @@
                     </div>
                     <!-- Text -->
                     <div class="p-8 md:p-10 flex flex-col flex-1">
-                        <h3 class="text-2xl font-black text-slate-900 mb-3 leading-tight">Y más... Nos adaptamos a cualquier proceso de tu negocio</h3>
+                        <h3 class="text-2xl font-black text-slate-900 mb-3 leading-tight">¿Tienes algo específico en mente? Lo automatizamos.</h3>
                         <p class="text-slate-500 text-[15px] leading-relaxed">Analizamos tus procesos y los convertimos en sistemas automatizados que trabajan por ti.</p>
                     </div>
                 </div>
 
-            </div><!-- /grid -->
+            </div><!-- /automation-grid -->
+
+            <!-- ── Sistemas de Organización en Notion ── -->
+            <div class="flex items-center gap-4 mt-20 mb-10">
+                <div class="h-px flex-1 bg-slate-100"></div>
+                <div class="flex items-center gap-2 px-4 py-1.5 bg-slate-50 border border-slate-100 rounded-full">
+                    <svg class="w-3.5 h-3.5 text-slate-700" viewBox="0 0 24 24" fill="currentColor"><path d="M4.459 4.208c.746.606 1.026.56 2.428.466l13.215-.793c.28 0 .047-.28-.046-.326L17.86 1.968c-.42-.326-.981-.7-2.055-.607L3.01 2.295c-.466.046-.56.28-.374.466zm.793 3.08v13.904c0 .747.373 1.027 1.214.98l14.523-.84c.841-.046.935-.56.935-1.167V6.354c0-.606-.233-.933-.748-.887l-15.177.887c-.56.047-.747.327-.747.933zm14.337.745c.093.42 0 .84-.42.888l-.7.14v10.264c-.608.327-1.168.514-1.635.514-.748 0-.935-.234-1.495-.933l-4.577-7.186v6.952L12.21 19s0 .84-1.168.84l-3.222.186c-.093-.186 0-.653.327-.746l.84-.233V9.854L7.822 9.76c-.094-.42.14-1.026.793-1.073l3.456-.233 4.764 7.279v-6.44l-1.215-.139c-.093-.514.28-.887.747-.933z"/></svg>
+                    <span class="text-[11px] font-black text-slate-500 uppercase tracking-[0.2em]">Sistemas en Notion</span>
+                </div>
+                <div class="h-px flex-1 bg-slate-100"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+
+                <!-- NOTION CARD 1 — CRM / Pipeline -->
+                <div class="group premium-card rounded-3xl bg-slate-50 relative overflow-hidden flex flex-col">
+                    <div class="relative w-full bg-gradient-to-br from-slate-50 to-white rounded-t-3xl p-8 overflow-hidden h-[320px] flex flex-col gap-3">
+                        <div class="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-2">Vista Kanban · CRM</div>
+                        <div class="flex gap-2 flex-1 min-h-0">
+                            <!-- Col Nuevos -->
+                            <div class="flex-1 flex flex-col gap-1.5">
+                                <div class="flex items-center justify-between mb-1">
+                                    <span class="text-[9px] font-black text-slate-400 uppercase">Nuevos</span>
+                                    <span class="text-[9px] font-black text-blue-400 bg-blue-50 rounded-full px-1.5">3</span>
+                                </div>
+                                <div class="bg-white border border-slate-100 rounded-lg p-2 shadow-sm"><div class="w-full h-1.5 bg-slate-100 rounded-full mb-1.5"></div><div class="w-3/4 h-1.5 bg-slate-100 rounded-full"></div></div>
+                                <div class="bg-white border border-slate-100 rounded-lg p-2 shadow-sm"><div class="w-full h-1.5 bg-slate-100 rounded-full mb-1.5"></div><div class="w-2/3 h-1.5 bg-slate-100 rounded-full"></div></div>
+                                <div class="bg-white border border-slate-100 rounded-lg p-2 shadow-sm"><div class="w-full h-1.5 bg-slate-100 rounded-full mb-1.5"></div><div class="w-4/5 h-1.5 bg-slate-100 rounded-full"></div></div>
+                            </div>
+                            <!-- Col Contacto -->
+                            <div class="flex-1 flex flex-col gap-1.5">
+                                <div class="flex items-center justify-between mb-1">
+                                    <span class="text-[9px] font-black text-slate-400 uppercase">Contacto</span>
+                                    <span class="text-[9px] font-black text-yellow-600 bg-yellow-50 rounded-full px-1.5">5</span>
+                                </div>
+                                <div class="bg-yellow-50 border border-yellow-100 rounded-lg p-2 shadow-sm"><div class="w-full h-1.5 bg-yellow-100 rounded-full mb-1.5"></div><div class="w-3/4 h-1.5 bg-yellow-100 rounded-full"></div></div>
+                                <div class="bg-yellow-50 border border-yellow-100 rounded-lg p-2 shadow-sm"><div class="w-full h-1.5 bg-yellow-100 rounded-full mb-1.5"></div><div class="w-1/2 h-1.5 bg-yellow-100 rounded-full"></div></div>
+                            </div>
+                            <!-- Col Clientes -->
+                            <div class="flex-1 flex flex-col gap-1.5">
+                                <div class="flex items-center justify-between mb-1">
+                                    <span class="text-[9px] font-black text-slate-400 uppercase">Clientes</span>
+                                    <span class="text-[9px] font-black text-emerald-600 bg-emerald-50 rounded-full px-1.5">8</span>
+                                </div>
+                                <div class="bg-emerald-50 border border-emerald-100 rounded-lg p-2 shadow-sm"><div class="w-full h-1.5 bg-emerald-100 rounded-full mb-1.5"></div><div class="w-2/3 h-1.5 bg-emerald-100 rounded-full"></div></div>
+                                <div class="bg-emerald-50 border border-emerald-100 rounded-lg p-2 shadow-sm"><div class="w-full h-1.5 bg-emerald-100 rounded-full mb-1.5"></div><div class="w-3/4 h-1.5 bg-emerald-100 rounded-full"></div></div>
+                                <div class="bg-emerald-50 border border-emerald-100 rounded-lg p-2 shadow-sm"><div class="w-full h-1.5 bg-emerald-100 rounded-full mb-1.5"></div><div class="w-1/2 h-1.5 bg-emerald-100 rounded-full"></div></div>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-2 pt-3 border-t border-slate-100">
+                            <div class="size-1.5 bg-emerald-400 rounded-full animate-pulse"></div>
+                            <span class="text-[9px] font-bold text-slate-400 uppercase tracking-widest">Sincronizado con tu web · Actualizado en tiempo real</span>
+                        </div>
+                    </div>
+                    <div class="p-8 md:p-10 flex flex-col flex-1">
+                        <h3 class="text-2xl font-black text-slate-900 mb-3 leading-tight">CRM y pipeline de ventas</h3>
+                        <p class="text-slate-500 text-[15px] leading-relaxed">Gestiona leads, clientes y oportunidades desde un panel visual conectado con tu web y automatizaciones.</p>
+                    </div>
+                </div>
+
+                <!-- NOTION CARD 2 — Wiki / Base de conocimiento -->
+                <div class="group premium-card rounded-3xl bg-slate-50 relative overflow-hidden flex flex-col">
+                    <div class="relative w-full bg-gradient-to-br from-slate-50 to-white rounded-t-3xl p-8 overflow-hidden h-[320px] flex flex-col gap-3">
+                        <div class="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-2">Base de conocimiento operativa</div>
+                        <div class="flex-1 flex flex-col gap-0.5 text-[11px] font-semibold text-slate-700">
+                            <div class="flex items-center gap-2 py-1.5 px-2 rounded-lg bg-blue-50/60 border border-blue-100/60">
+                                <span class="material-symbols-outlined text-slate-400 text-sm">expand_more</span>
+                                <span class="material-symbols-outlined text-yellow-500 text-sm">folder</span>
+                                <span class="font-black text-slate-900">Empresa</span>
+                            </div>
+                            <div class="flex items-center gap-2 py-1.5 px-2 rounded-lg ml-4">
+                                <span class="material-symbols-outlined text-slate-300 text-sm">chevron_right</span>
+                                <span class="material-symbols-outlined text-blue-400 text-sm">description</span>
+                                <span>Procesos internos</span>
+                            </div>
+                            <div class="flex items-center gap-2 py-1.5 px-2 rounded-lg ml-4">
+                                <span class="material-symbols-outlined text-slate-300 text-sm">chevron_right</span>
+                                <span class="material-symbols-outlined text-blue-400 text-sm">description</span>
+                                <span>Onboarding de equipo</span>
+                            </div>
+                            <div class="flex items-center gap-2 py-1.5 px-2 rounded-lg ml-4">
+                                <span class="material-symbols-outlined text-slate-300 text-sm">chevron_right</span>
+                                <span class="material-symbols-outlined text-blue-400 text-sm">description</span>
+                                <span>Clientes activos</span>
+                            </div>
+                            <div class="flex items-center gap-2 py-1.5 px-2 rounded-lg">
+                                <span class="material-symbols-outlined text-slate-400 text-sm">expand_more</span>
+                                <span class="material-symbols-outlined text-yellow-500 text-sm">folder</span>
+                                <span class="font-black text-slate-900">Proyectos</span>
+                            </div>
+                            <div class="flex items-center gap-2 py-1.5 px-2 rounded-lg ml-4">
+                                <span class="material-symbols-outlined text-slate-300 text-sm">chevron_right</span>
+                                <span class="material-symbols-outlined text-emerald-500 text-sm">checklist</span>
+                                <span>Tareas activas</span>
+                            </div>
+                            <div class="flex items-center gap-2 py-1.5 px-2 rounded-lg ml-4">
+                                <span class="material-symbols-outlined text-slate-300 text-sm">chevron_right</span>
+                                <span class="material-symbols-outlined text-slate-400 text-sm">checklist</span>
+                                <span>Entregables</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-2 pt-3 border-t border-slate-100">
+                            <div class="size-1.5 bg-emerald-400 rounded-full animate-pulse"></div>
+                            <span class="text-[9px] font-bold text-slate-400 uppercase tracking-widest">Todo centralizado · Siempre accesible</span>
+                        </div>
+                    </div>
+                    <div class="p-8 md:p-10 flex flex-col flex-1">
+                        <h3 class="text-2xl font-black text-slate-900 mb-3 leading-tight">Base de conocimiento operativa</h3>
+                        <p class="text-slate-500 text-[15px] leading-relaxed">Procesos, onboarding y proyectos organizados para que cualquier miembro del equipo pueda operar sin depender de ti.</p>
+                    </div>
+                </div>
+
+            </div><!-- /notion-grid -->
+
+            <!-- ── Control de Datos ── -->
+            <div class="flex items-center gap-4 mt-20 mb-10">
+                <div class="h-px flex-1 bg-slate-100"></div>
+                <div class="flex items-center gap-2 px-4 py-1.5 bg-slate-50 border border-slate-100 rounded-full">
+                    <span class="material-symbols-outlined text-slate-700 text-sm">troubleshoot</span>
+                    <span class="text-[11px] font-black text-slate-500 uppercase tracking-[0.2em]">Control de Datos</span>
+                </div>
+                <div class="h-px flex-1 bg-slate-100"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+
+                <!-- DATA CARD 1 — Dashboard KPIs -->
+                <div class="group premium-card rounded-3xl bg-slate-50 relative overflow-hidden flex flex-col">
+                    <div class="relative w-full bg-gradient-to-br from-slate-900 to-slate-800 rounded-t-3xl p-8 overflow-hidden h-[320px] flex flex-col gap-4">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <div class="text-[9px] font-black text-slate-500 uppercase tracking-widest">Dashboard</div>
+                                <div class="text-white font-black text-sm">Resumen de Negocio</div>
+                            </div>
+                            <div class="flex items-center gap-1.5 bg-slate-800 px-3 py-1.5 rounded-full border border-slate-700">
+                                <div class="size-1.5 bg-emerald-400 rounded-full animate-pulse"></div>
+                                <span class="text-[9px] font-bold text-slate-400">En vivo</span>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-3 gap-2">
+                            <div class="bg-slate-800/60 border border-slate-700/50 rounded-xl p-2.5 flex flex-col gap-1">
+                                <span class="text-[9px] font-bold text-slate-500 uppercase">Ingresos</span>
+                                <span class="text-lg font-black text-white">18.4k€</span>
+                                <span class="text-[9px] text-emerald-400 font-bold">↑ +12%</span>
+                            </div>
+                            <div class="bg-slate-800/60 border border-slate-700/50 rounded-xl p-2.5 flex flex-col gap-1">
+                                <span class="text-[9px] font-bold text-slate-500 uppercase">Leads</span>
+                                <span class="text-lg font-black text-white">47</span>
+                                <span class="text-[9px] text-yellow-400 font-bold">↑ +8%</span>
+                            </div>
+                            <div class="bg-slate-800/60 border border-slate-700/50 rounded-xl p-2.5 flex flex-col gap-1">
+                                <span class="text-[9px] font-bold text-slate-500 uppercase">Proyectos</span>
+                                <span class="text-lg font-black text-white">12</span>
+                                <span class="text-[9px] text-blue-400 font-bold">Activos</span>
+                            </div>
+                        </div>
+                        <div class="flex-1 flex items-end gap-1.5">
+                            <div class="flex-1 flex flex-col items-center gap-1"><div class="w-full bg-slate-700 rounded-t-sm" style="height:40%"></div><span class="text-[8px] text-slate-600">Ene</span></div>
+                            <div class="flex-1 flex flex-col items-center gap-1"><div class="w-full bg-slate-600 rounded-t-sm" style="height:60%"></div><span class="text-[8px] text-slate-600">Feb</span></div>
+                            <div class="flex-1 flex flex-col items-center gap-1"><div class="w-full bg-slate-600 rounded-t-sm" style="height:50%"></div><span class="text-[8px] text-slate-600">Mar</span></div>
+                            <div class="flex-1 flex flex-col items-center gap-1"><div class="w-full bg-blue-600 rounded-t-sm" style="height:75%"></div><span class="text-[8px] text-slate-600">Abr</span></div>
+                            <div class="flex-1 flex flex-col items-center gap-1"><div class="w-full bg-yellow-400 rounded-t-sm" style="height:90%"></div><span class="text-[8px] text-slate-500 font-bold">May</span></div>
+                        </div>
+                    </div>
+                    <div class="p-8 md:p-10 flex flex-col flex-1">
+                        <h3 class="text-2xl font-black text-slate-900 mb-3 leading-tight">Dashboard de negocio en tiempo real</h3>
+                        <p class="text-slate-500 text-[15px] leading-relaxed">Ingresos, leads, proyectos y métricas clave en un panel central. Toma decisiones basadas en datos, no en intuición.</p>
+                    </div>
+                </div>
+
+                <!-- DATA CARD 2 — Informes automatizados -->
+                <div class="group premium-card rounded-3xl bg-slate-50 relative overflow-hidden flex flex-col">
+                    <div class="relative w-full bg-gradient-to-br from-slate-50 to-white rounded-t-3xl p-8 overflow-hidden h-[320px] flex flex-col justify-between">
+                        <div>
+                            <div class="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-3">Informe semanal automatizado</div>
+                            <div class="space-y-2">
+                                <div class="flex items-center justify-between py-2 border-b border-slate-100">
+                                    <div class="flex items-center gap-2"><div class="size-2 rounded-full bg-blue-400"></div><span class="text-[11px] font-semibold text-slate-600">Leads captados esta semana</span></div>
+                                    <span class="text-[11px] font-black text-slate-900">23</span>
+                                </div>
+                                <div class="flex items-center justify-between py-2 border-b border-slate-100">
+                                    <div class="flex items-center gap-2"><div class="size-2 rounded-full bg-emerald-400"></div><span class="text-[11px] font-semibold text-slate-600">Conversión a clientes</span></div>
+                                    <span class="text-[11px] font-black text-emerald-600">34%</span>
+                                </div>
+                                <div class="flex items-center justify-between py-2 border-b border-slate-100">
+                                    <div class="flex items-center gap-2"><div class="size-2 rounded-full bg-yellow-400"></div><span class="text-[11px] font-semibold text-slate-600">Horas de trabajo ahorradas</span></div>
+                                    <span class="text-[11px] font-black text-yellow-600">12 h</span>
+                                </div>
+                                <div class="flex items-center justify-between py-2">
+                                    <div class="flex items-center gap-2"><div class="size-2 rounded-full bg-slate-300"></div><span class="text-[11px] font-semibold text-slate-600">Tareas completadas</span></div>
+                                    <span class="text-[11px] font-black text-slate-900">48 / 52</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-3 bg-blue-50 border border-blue-100 rounded-xl px-4 py-3">
+                            <span class="material-symbols-outlined text-blue-500 text-lg">send</span>
+                            <div>
+                                <div class="text-[10px] font-black text-blue-700 uppercase tracking-wider">Enviado automáticamente</div>
+                                <div class="text-[10px] text-blue-500">Cada lunes a las 09:00 en tu correo</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-8 md:p-10 flex flex-col flex-1">
+                        <h3 class="text-2xl font-black text-slate-900 mb-3 leading-tight">Informes automatizados de rendimiento</h3>
+                        <p class="text-slate-500 text-[15px] leading-relaxed">Recibe cada semana un resumen de tus métricas clave sin tener que generarlo manualmente.</p>
+                    </div>
+                </div>
+
+            </div><!-- /data-grid -->
+
         </div>
     </section>
 
@@ -773,9 +1013,10 @@
     <!-- CTA Section -->
     <section class="py-16 md:py-24 px-6 bg-white">
         <div class="max-w-4xl mx-auto text-center">
-            <h2 class="text-2xl md:text-4xl font-bold text-slate-900 mb-8 tracking-tight">¿Quieres que analicemos dónde puedes ganar eficiencia y diseñemos una estrategia para tus procesos?</h2>
+            <h2 class="text-2xl md:text-4xl font-bold text-slate-900 mb-4 tracking-tight">Tu negocio tiene procesos que se pueden automatizar.</h2>
+            <p class="text-slate-500 text-lg mb-8 max-w-xl mx-auto">El primer paso es una llamada gratuita de diagnóstico.</p>
             <a href="contacto.html" class="bg-slate-900 text-white font-bold py-5 px-10 rounded-full inline-flex items-center gap-2 hover:bg-slate-800 transition-all shadow-xl">
-                <span>Analizar mi negocio</span>
+                <span>Analizar mi negocio gratis</span>
                 <span class="material-symbols-outlined">arrow_forward</span>
             </a>
         </div>
@@ -912,6 +1153,23 @@
         }, { threshold: 0.1 });
 
         document.querySelectorAll('.text-mask-child, .stagger-group, .premium-highlight').forEach(el => observer.observe(el));
+
+        // ── Scroll progress bar ──
+        const scrollProgress = document.getElementById('scroll-progress');
+        if (scrollProgress) {
+            window.addEventListener('scroll', () => {
+                const pct = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+                scrollProgress.style.width = Math.min(pct, 100) + '%';
+            }, { passive: true });
+        }
+
+        // ── Nav scroll shadow ──
+        const pillNav = document.querySelector('.pill-nav');
+        if (pillNav) {
+            window.addEventListener('scroll', () => {
+                pillNav.classList.toggle('scrolled', window.scrollY > 60);
+            }, { passive: true });
+        }
 
         // Portfolio video setup (bypassing intersection observer pause approach for iOS compatibility)
         const videos = document.querySelectorAll('.portfolio-video');

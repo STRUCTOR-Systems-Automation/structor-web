@@ -24,9 +24,36 @@
         })(window, document, 'script', 'dataLayer', 'GTM-K3CWX83L');
     </script>
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>Nexus | Packs Business OS para Pymes | STRUCTOR</title>
-    <meta name="description" content="Packs Business OS 'llave en mano' para organizar, captar y gestionar tu negocio desde un solo sistema.">
-    
+    <title>Nexus | Sistema Centralizado para PYMEs y Autónomos | STRUCTOR</title>
+    <meta name="description" content="Packs llave en mano que integran tu web, captación de leads y gestión operativa en un sistema conectado. Para PYMEs y autónomos que quieren claridad y orden.">
+    <link rel="canonical" href="https://structorsystemsautomation.com/nexus.html">
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Nexus | Sistema Centralizado para PYMEs | STRUCTOR">
+    <meta property="og:description" content="Packs llave en mano que integran tu web, captación de leads y gestión operativa en un sistema conectado. Para PYMEs y autónomos.">
+    <meta property="og:url" content="https://structorsystemsautomation.com/nexus.html">
+    <meta property="og:image" content="https://structorsystemsautomation.com/landing_page/Imputs/og-nexus.png">
+    <meta property="og:locale" content="es_ES">
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Nexus | Sistema Centralizado para PYMEs | STRUCTOR">
+    <meta name="twitter:description" content="Packs llave en mano que integran tu web, captación de leads y gestión operativa en un sistema conectado.">
+    <meta name="twitter:image" content="https://structorsystemsautomation.com/landing_page/Imputs/og-nexus.png">
+    <!-- Schema JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Product",
+      "name": "Nexus — Sistema Operativo para PYMEs",
+      "description": "Pack llave en mano que integra web, captación de leads y gestión operativa en un sistema conectado. Disponible en tres niveles: Basic, Plus y Pro.",
+      "brand": { "@type": "Brand", "name": "STRUCTOR | Systems & Automation" },
+      "offers": [
+        { "@type": "Offer", "name": "Nexus Basic", "price": "1500", "priceCurrency": "EUR", "availability": "https://schema.org/InStock" },
+        { "@type": "Offer", "name": "Nexus Plus",  "price": "2500", "priceCurrency": "EUR", "availability": "https://schema.org/InStock" },
+        { "@type": "Offer", "name": "Nexus Pro",   "price": "4000", "priceCurrency": "EUR", "availability": "https://schema.org/InStock" }
+      ]
+    }
+    </script>
     <link rel="icon" type="image/png" href="Imputs/favicon.png">
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet" />
@@ -69,6 +96,9 @@
             padding: 0.5rem 1.25rem;
             border-radius: 9999px;
             transition: all 0.2s ease;
+            min-height: 44px;
+            display: inline-flex;
+            align-items: center;
         }
 
         .nav-link:hover {
@@ -156,6 +186,19 @@
         .comparison-table th { background-color: #f8fafc; color: #64748b; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; }
         .comparison-table td { border-bottom: 1px solid #f1f5f9; }
         
+        /* ── Scroll progress bar ── */
+        #scroll-progress {
+            position: fixed; top: 0; left: 0; height: 3px; width: 0%;
+            background: linear-gradient(90deg, #facc15, #eab308);
+            z-index: 9999; transition: width 0.08s linear; pointer-events: none;
+            border-radius: 0 9999px 9999px 0;
+        }
+        /* ── Nav scrolled shadow ── */
+        .pill-nav.scrolled { box-shadow: 0 8px 32px -4px rgba(15,23,42,0.14); transform: scale(0.97); }
+        /* ── Page load fade-in ── */
+        @keyframes page-fade-in { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+        body { animation: page-fade-in 0.45s ease-out; }
+
         .glow-yellow { box-shadow: 0 0 40px -10px rgba(234, 179, 8, 0.2); }
         .glow-red { box-shadow: 0 0 40px -5px rgba(239, 68, 68, 0.3), 0 10px 30px -10px rgba(0,0,0,0.1); }
         .glow-green { box-shadow: 0 0 40px -5px rgba(34, 197, 94, 0.3), 0 10px 30px -10px rgba(0,0,0,0.1); }
@@ -713,6 +756,7 @@
 </head>
 
 <body class="bg-white text-slate-900 font-display selection:bg-yellow-100 uppercase-titles">
+    <div id="scroll-progress"></div>
     <header class="fixed top-6 left-1/2 -translate-x-1/2 w-auto z-50">
         <nav
             class="pill-nav backdrop-blur-md bg-white/70 border border-slate-200/50 rounded-full px-2 py-2 flex items-center justify-center shadow-lg">
@@ -731,15 +775,15 @@
         <section id="nexus-hero" class="relative pt-48 pb-32 px-6 overflow-hidden">
             <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                 <div class="reveal active">
-                    <span class="text-yellow-500 font-bold tracking-[0.2em] uppercase text-xs mb-4 block">Centralización Inteligente</span>
+                    <span class="text-yellow-500 font-bold tracking-[0.2em] uppercase text-xs mb-4 block">Packs Llave en Mano</span>
                     <h1 class="text-5xl md:text-7xl font-black text-slate-900 tracking-tight leading-[1.1] mb-2">
-                        Nexus — <span class="text-yellow-500">Business OS</span>
+                        Nexus — <span class="text-yellow-500">tu negocio en un solo sistema</span>
                     </h1>
                     <h2 class="text-2xl md:text-3xl font-bold text-slate-700 mb-6">
-                        Packs para PYMEs y autónomos
+                        Para PYMEs y autónomos
                     </h2>
                     <p class="text-xl text-slate-500 font-medium leading-relaxed mb-10 max-w-lg">
-                        Creamos tu web y centralizamos tus leads y tu operativa en un solo sistema conectado. Unifica tu negocio para escalar sin fricción.
+                        Creamos tu web, captamos tus leads y centralizamos toda tu operativa en un sistema conectado. Sin herramientas dispersas, sin datos perdidos.
                     </p>
                     <div class="flex flex-wrap gap-4">
                         <a href="#planes" class="px-8 py-4 bg-yellow-400 text-slate-900 font-black rounded-full hover:bg-yellow-500 hover:shadow-xl hover:shadow-yellow-400/20 transition-all active:scale-95">
@@ -749,6 +793,7 @@
                             Analizar mi negocio
                         </a>
                     </div>
+                    <p class="text-sm text-slate-400 mt-4 font-medium">Packs desde <span class="text-slate-600 font-bold">1.500€</span> · Implementación completa incluida</p>
                 </div>
                 
                 <div class="relative reveal active flex items-center justify-center p-8" style="transition-delay: 0.3s;">
@@ -845,7 +890,7 @@
                                 </div>
                                 <div>
                                     <h4 class="text-lg font-bold text-slate-900 mb-1">Web Conectada</h4>
-                                    <p class="text-slate-500 text-xs leading-relaxed">Sincronización en tiempo real.</p>
+                                    <p class="text-slate-500 text-xs leading-relaxed">Tu web conectada con tu CRM y tu operativa desde el primer clic.</p>
                                 </div>
                             </div>
 
@@ -855,7 +900,7 @@
                                 </div>
                                 <div>
                                     <h4 class="text-lg font-bold text-slate-900 mb-1">CRM + CMS</h4>
-                                    <p class="text-slate-500 text-xs leading-relaxed">Control operativo total.</p>
+                                    <p class="text-slate-500 text-xs leading-relaxed">Leads, clientes y contenido gestionados desde un único panel.</p>
                                 </div>
                             </div>
 
@@ -865,7 +910,7 @@
                                 </div>
                                 <div>
                                     <h4 class="text-lg font-bold text-slate-900 mb-1">Automatización</h4>
-                                    <p class="text-slate-500 text-xs leading-relaxed">Automatización inteligente.</p>
+                                    <p class="text-slate-500 text-xs leading-relaxed">Procesos repetitivos que se ejecutan solos, sin intervención manual.</p>
                                 </div>
                             </div>
                         </div>
@@ -962,7 +1007,9 @@
                     <!-- Total Value -->
                     <div class="reveal p-10 rounded-3xl bg-yellow-400 text-slate-900 shadow-2xl shadow-yellow-400/20 flex flex-col justify-center items-center hover:scale-[1.05] transition-all" style="transition-delay: 0.8s;">
                         <div class="text-xl md:text-2xl font-black mb-1 uppercase tracking-wide">Nexus incluye todo en un pack</div>
-                        <p class="text-sm md:text-base text-slate-700">Sincronización total</p>
+                        <p class="text-sm md:text-base text-slate-700 mb-3">Sincronización total</p>
+                        <p class="text-2xl font-black">desde 1.500€</p>
+                        <a href="#planes" class="mt-4 px-6 py-2 bg-slate-900 text-white font-black rounded-full text-xs hover:bg-slate-700 transition-all">Ver planes</a>
                     </div>
             </div> <!-- CLAVE: Ahora sí cerramos la Grid -->
             
@@ -972,6 +1019,17 @@
                 </p>
             </div>
             </div> <!-- Closes max-w-7xl -->
+        </section>
+
+        <!-- ── CTA intermedio ── -->
+        <section class="py-16 px-6 bg-white text-center reveal">
+            <div class="max-w-2xl mx-auto">
+                <p class="text-slate-500 text-lg mb-6 leading-relaxed">¿Ya tienes claro que lo necesitas? <span class="text-slate-900 font-semibold">Hablamos sin compromiso.</span></p>
+                <a href="contacto.html" class="inline-flex items-center gap-2 px-8 py-4 bg-slate-900 text-white font-black rounded-full hover:bg-slate-700 transition-all shadow-lg group">
+                    Analizar mi negocio gratis
+                    <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                </a>
+            </div>
         </section>
 
         <!-- ═══════════════════════════════════════════════
@@ -1228,6 +1286,9 @@
                             <span class="font-medium text-slate-400 text-[15px]">Integraciones a medida</span>
                         </li>
                     </ul>
+                    <a href="contacto.html?plan=basic" class="mt-8 w-full py-4 bg-slate-900 text-white font-black rounded-full hover:bg-slate-700 transition-all text-center text-sm tracking-wide">
+                        Empezar con Basic
+                    </a>
                 </div>
 
                 <!-- PLUS -->
@@ -1286,6 +1347,9 @@
                             <span class="font-medium text-slate-500 text-[15px]">Integraciones a medida</span>
                         </li>
                     </ul>
+                    <a href="contacto.html?plan=plus" class="mt-8 w-full py-4 bg-yellow-400 text-slate-900 font-black rounded-full hover:bg-yellow-500 hover:shadow-xl hover:shadow-yellow-400/30 transition-all text-center text-sm tracking-wide">
+                        Empezar con Plus
+                    </a>
                 </div>
 
                 <!-- PRO -->
@@ -1339,6 +1403,9 @@
                             <span class="font-medium text-slate-700 text-[15px]">Integraciones a medida</span>
                         </li>
                     </ul>
+                    <a href="contacto.html?plan=pro" class="mt-8 w-full py-4 bg-blue-600 text-white font-black rounded-full hover:bg-blue-700 transition-all text-center text-sm tracking-wide">
+                        Empezar con Pro
+                    </a>
                 </div>
             </div>
         </section>
@@ -1349,8 +1416,8 @@
         <section class="py-32 px-6 text-center">
             <div class="max-w-4xl mx-auto reveal">
                 <h2 class="text-4xl md:text-6xl font-black text-slate-900 mb-8 leading-tight">
-                    ¿Listo para convertir tu <br/>
-                    negocio en un sistema?
+                    Tu negocio merece<br/>
+                    trabajar para ti.
                 </h2>
                 <a href="contacto.html" class="inline-flex items-center gap-3 px-12 py-6 bg-yellow-400 text-slate-900 font-black rounded-full hover:bg-yellow-500 hover:shadow-2xl hover:shadow-yellow-400/30 transition-all active:scale-95 group">
                     Analizar mi negocio
@@ -1475,11 +1542,28 @@
             }, observerOptions);
 
             document.querySelectorAll('.reveal, .premium-highlight, .text-mask-container, .stagger-group').forEach(el => observer.observe(el));
-            
+
             // Hero animation trigger
             setTimeout(() => {
                 document.querySelectorAll('.premium-highlight').forEach(item => item.classList.add('active'));
             }, 100);
+
+            // ── Scroll progress bar ──
+            const scrollProgress = document.getElementById('scroll-progress');
+            if (scrollProgress) {
+                window.addEventListener('scroll', () => {
+                    const pct = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+                    scrollProgress.style.width = Math.min(pct, 100) + '%';
+                }, { passive: true });
+            }
+
+            // ── Nav scroll shadow ──
+            const pillNav = document.querySelector('.pill-nav');
+            if (pillNav) {
+                window.addEventListener('scroll', () => {
+                    pillNav.classList.toggle('scrolled', window.scrollY > 60);
+                }, { passive: true });
+            }
 
             // ═══════════════════════════════════════════
             // NEXUS CAROUSEL — Horizontal Scroll Engine

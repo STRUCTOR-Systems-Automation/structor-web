@@ -86,6 +86,15 @@
                 padding-right: 1.5rem !important;
             }
 
+            main.pt-48 {
+                padding-top: 6rem !important;
+                padding-bottom: 1.5rem !important;
+            }
+
+            .mb-24 {
+                margin-bottom: 2rem !important;
+            }
+
             /* Center Footer on Mobile */
             .footer-grid-mobile {
                 display: flex !important;
@@ -284,10 +293,19 @@
                 text-align: center !important;
             }
         }
+    
+        /* ── Scroll progress bar ── */
+        #scroll-progress { position: fixed; top: 0; left: 0; height: 3px; width: 0%; background: linear-gradient(90deg, #3b82f6, #2563eb); z-index: 9999; transition: width 0.08s linear; pointer-events: none; border-radius: 0 9999px 9999px 0; }
+        /* ── Nav scrolled shadow ── */
+        .pill-nav.scrolled { box-shadow: 0 8px 32px -4px rgba(15,23,42,0.14); transform: scale(0.97); }
+        /* ── Page load fade-in ── */
+        @keyframes page-fade-in { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+        body { animation: page-fade-in 0.45s ease-out; }
     </style>
 </head>
 
 <body class="bg-slate-50 text-slate-900 overflow-x-hidden">
+    <div id="scroll-progress"></div>
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K3CWX83L" height="0" width="0"
             style="display:none;visibility:hidden"></iframe></noscript>
@@ -315,7 +333,7 @@
                 <span class="text-mask-child text-blue-500 font-bold tracking-[0.2em] uppercase text-sm">PENSAMIENTOS Y
                     ESTRATEGIA</span>
             </div>
-            <h1 class="text-5xl md:text-7xl font-black tracking-tight text-slate-900 mb-6">
+            <h1 class="text-3xl sm:text-5xl md:text-7xl font-black tracking-tight text-slate-900 mb-6">
                 Blog de <span class="relative inline-block">
                     <span class="relative z-10">Aceleración</span>
                     <div
@@ -725,6 +743,12 @@
         });
     </script>
 
+    <script>
+        const _sp = document.getElementById('scroll-progress');
+        if (_sp) window.addEventListener('scroll', () => { _sp.style.width = Math.min((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100, 100) + '%'; }, { passive: true });
+        const _pn = document.querySelector('.pill-nav');
+        if (_pn) window.addEventListener('scroll', () => { _pn.classList.toggle('scrolled', window.scrollY > 60); }, { passive: true });
+    </script>
 </body>
 
 </html>

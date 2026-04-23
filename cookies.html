@@ -140,10 +140,19 @@
 
         @keyframes float-gentle { 0% { transform: translateY(0); } 100% { transform: translateY(-5px); } }
         .animate-float-gentle { animation: float-gentle 2s ease-in-out infinite alternate; }
+    
+        /* ── Scroll progress bar ── */
+        #scroll-progress { position: fixed; top: 0; left: 0; height: 3px; width: 0%; background: linear-gradient(90deg, #3b82f6, #2563eb); z-index: 9999; transition: width 0.08s linear; pointer-events: none; border-radius: 0 9999px 9999px 0; }
+        /* ── Nav scrolled shadow ── */
+        .pill-nav.scrolled { box-shadow: 0 8px 32px -4px rgba(15,23,42,0.14); transform: scale(0.97); }
+        /* ── Page load fade-in ── */
+        @keyframes page-fade-in { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+        body { animation: page-fade-in 0.45s ease-out; }
     </style>
 </head>
 
 <body class="bg-slate-50 text-slate-900 selection:bg-yellow-100 selection:text-slate-900 font-display">
+    <div id="scroll-progress"></div>
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K3CWX83L" height="0" width="0"
             style="display:none;visibility:hidden"></iframe></noscript>
@@ -426,6 +435,12 @@
         });
     </script>
 
+    <script>
+        const _sp = document.getElementById('scroll-progress');
+        if (_sp) window.addEventListener('scroll', () => { _sp.style.width = Math.min((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100, 100) + '%'; }, { passive: true });
+        const _pn = document.querySelector('.pill-nav');
+        if (_pn) window.addEventListener('scroll', () => { _pn.classList.toggle('scrolled', window.scrollY > 60); }, { passive: true });
+    </script>
 </body>
 
 </html>

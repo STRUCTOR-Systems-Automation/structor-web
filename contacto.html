@@ -391,53 +391,6 @@
             animation: float-gentle 2s ease-in-out infinite alternate;
         }
 
-        /* Service Picker Toggle */
-        .service-toggle-container {
-            display: flex;
-            background: #f1f5f9;
-            padding: 4px;
-            border-radius: 9999px;
-            position: relative;
-            isolation: isolate;
-            cursor: pointer;
-        }
-        .service-toggle-bg {
-            position: absolute;
-            top: 4px;
-            left: 4px;
-            height: calc(100% - 8px);
-            width: calc(50% - 4px);
-            background: #3b82f6; /* Blue by default */
-            border-radius: 9999px;
-            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            z-index: 1;
-            pointer-events: none; /* Crucial: Let clicks through to buttons */
-        }
-        .service-btn {
-            flex: 1;
-            padding: 12px 16px;
-            font-size: 0.85rem;
-            font-weight: 700;
-            text-align: center;
-            color: #64748b;
-            position: relative;
-            z-index: 2;
-            transition: color 0.3s ease;
-            user-select: none;
-        }
-        .service-btn.active { color: white !important; }
-        
-        .toggle-nexus .service-toggle-bg { 
-            transform: translateX(100%); 
-            background: #eab308; 
-            box-shadow: 0 4px 12px rgba(234, 179, 8, 0.2);
-        }
-
-        /* Dynamic Theme Overrides */
-        .theme-nexus .indicator.bg-active { background-color: #eab308 !important; }
-        .theme-nexus #next-btn { background-color: #eab308 !important; }
-        .theme-nexus .focus\:ring-blue-500:focus { --tw-ring-color: #eab308 !important; }
     
         /* Responsive Navigation for Mobile */
         @media (max-width: 640px) {
@@ -455,10 +408,19 @@
                 white-space: nowrap !important;
             }
         }
-</style>
+
+        /* ── Scroll progress bar ── */
+        #scroll-progress { position: fixed; top: 0; left: 0; height: 3px; width: 0%; background: linear-gradient(90deg, #3b82f6, #2563eb); z-index: 9999; transition: width 0.08s linear; pointer-events: none; border-radius: 0 9999px 9999px 0; }
+        /* ── Nav scrolled shadow ── */
+        .pill-nav.scrolled { box-shadow: 0 8px 32px -4px rgba(15,23,42,0.14); transform: scale(0.97); }
+        /* ── Page load fade-in ── */
+        @keyframes page-fade-in { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+        body { animation: page-fade-in 0.45s ease-out; }
+    </style>
 </head>
 
 <body class="bg-slate-50 text-slate-900">
+    <div id="scroll-progress"></div>
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K3CWX83L" height="0" width="0"
             style="display:none;visibility:hidden"></iframe></noscript>
@@ -609,17 +571,6 @@
             <div
                 class="bg-white rounded-[2.5rem] p-8 md:p-12 shadow-xl border border-slate-100 reveal active relative order-2 lg:order-2">
                 <form id="lead-form" class="space-y-8">
-                    <!-- Service Picker -->
-                    <div class="space-y-4">
-                        <label class="block text-xs font-bold text-slate-400 uppercase tracking-widest mb-2">¿En qué estás interesad@? *</label>
-                        <div class="service-toggle-container toggle-soluciones" id="service-picker">
-                            <div class="service-toggle-bg"></div>
-                            <div class="service-btn active soluciones" data-value="Soluciones a medida">Soluciones a medida</div>
-                            <div class="service-btn nexus" data-value="Nexus">Nexus</div>
-                        </div>
-                        <input type="hidden" name="servicio_interesado" id="servicio_interesado_input" value="Soluciones a medida">
-                    </div>
-
                     <!-- Section 1: Datos Básicos -->
                     <div class="form-section active" data-section="1">
                         <div class="space-y-6">
@@ -929,41 +880,6 @@
 
 
     <script>
-        // Service Picker Logic
-        const initServicePicker = () => {
-            const servicePicker = document.getElementById('service-picker');
-            const serviceInput = document.getElementById('servicio_interesado_input');
-            const serviceBtns = document.querySelectorAll('.service-btn');
-            const leadForm = document.getElementById('lead-form');
-
-            if (!servicePicker) return;
-
-            serviceBtns.forEach(btn => {
-                btn.addEventListener('click', () => {
-                    const val = btn.getAttribute('data-value');
-                    serviceInput.value = val;
-                    
-                    // Update classes
-                    serviceBtns.forEach(b => b.classList.remove('active'));
-                    btn.classList.add('active');
-                    
-                    if(val === 'Nexus') {
-                        servicePicker.classList.remove('toggle-soluciones');
-                        servicePicker.classList.add('toggle-nexus');
-                        leadForm.classList.add('theme-nexus');
-                        leadForm.classList.remove('theme-soluciones');
-                    } else {
-                        servicePicker.classList.remove('toggle-nexus');
-                        servicePicker.classList.add('toggle-soluciones');
-                        leadForm.classList.remove('theme-nexus');
-                        leadForm.classList.add('theme-soluciones');
-                    }
-                });
-            });
-        };
-
-        // Initialize on load
-        initServicePicker();
 
         const form = document.getElementById('lead-form');
         const sections = document.querySelectorAll('.form-section');
@@ -1069,7 +985,6 @@
                 procesos_actuales: data.procesos_actuales,
                 timeline: getSelectText('timeline'),
                 presupuesto: getSelectText('presupuesto'),
-                servicio_interesado: data.servicio_interesado,
                 source: "web-form",
                 created_at: new Date().toISOString()
             };
@@ -1372,6 +1287,12 @@
         });
     </script>
 
+    <script>
+        const _sp = document.getElementById('scroll-progress');
+        if (_sp) window.addEventListener('scroll', () => { _sp.style.width = Math.min((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100, 100) + '%'; }, { passive: true });
+        const _pn = document.querySelector('.pill-nav');
+        if (_pn) window.addEventListener('scroll', () => { _pn.classList.toggle('scrolled', window.scrollY > 60); }, { passive: true });
+    </script>
 </body>
 
 </html>
